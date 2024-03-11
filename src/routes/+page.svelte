@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Banner from '$lib/components/Banner.svelte';
-	import { AlertTriangle, ArrowLeft, ArrowRight, Boxes, Clock, NotebookIcon, Star } from 'lucide-svelte';
+	import { AlertCircle, AlertTriangle, ArrowLeft, ArrowRight, Boxes, Clock, NotebookIcon, Star } from 'lucide-svelte';
 	import TypeWriter from 'svelte-typewriter';
 	import WavyBackground from '$lib/components/ui/WavyBackground/WavyBackground.svelte';
 	import GridAndDotBackgroundsSmallGrid from '$lib/components/ui/GridAndDotBackgrounds/GridAndDotBackgroundsSmallGrid.svelte';
@@ -22,16 +22,23 @@
 
 	import { getContext } from 'svelte';
 	import Popup from '$lib/components/Popup.svelte';
+	import { superForm } from 'sveltekit-superforms';
+	import { whitelistSchema } from '$lib/schema.js';
+	import { zod } from 'sveltekit-superforms/adapters';
+	import type { PageData } from './$types.js';
+	import { enhance } from '$app/forms';
+	// import { Circle } from 'svelte-loading-spinners';
 
+	export let data: PageData;
 	//   @ts-ignore
 	const { open } = getContext('simple-modal');
+	const { form, errors, constraints, delayed, message } = superForm(data.form, {
+		validators: zod(whitelistSchema),
+		id: 'whitelistHero',
+		clearOnSubmit: 'errors-and-message',
+		onSubmit: ({}) => open(Popup, { type: 'email-verification' })
+	});
 
-	const handleSignup = () => {
-		// Change Button State
-		// Open Modal
-		open(Popup, { type: 'email-verification' });
-		// Add to DB
-	};
 	const iconComponents: { [key: string]: typeof SvelteComponent } = {
 		// @ts-ignore
 		'1inch': Icon_1inch,
@@ -200,8 +207,10 @@
 		<Banner />
 
 		<nav class="z-30 flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
-			<img class="h-10 w-10" src="/logo2.svg" alt="logo" />
-			<button class="relative inline-flex h-12 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white">
+			<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
+			<button
+				on:click={() => window.open('https://docs.0xargus.org', '_blank')}
+				class="relative inline-flex h-12 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white">
 				<span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#6366f1_0%,#a855f7_50%,#6366f1_100%)]" />
 				<span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 font-citerne text-sm font-medium text-white backdrop-blur-3xl">
 					<Boxes class="mr-2 text-xs" />
@@ -234,24 +243,40 @@
 					<span class="font-semibold text-indigo-500">Solana.</span>
 					<span class="font-semibold text-blue-500">Arbitrum.</span>
 				</TypeWriter>
-				<span class="hidden whitespace-nowrap text-blue-500">Arbitrum.</span>
 			</div>
 			<!-- HERO TEXT END -->
 
 			<!-- WHITELIST BUTTON -->
-			<div class="relative z-50 flex w-[640px] justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-lg">
+			<form method="POST" use:enhance class="relative z-50 flex w-[640px] justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-lg">
 				<input
+					class="absolute inset-0 h-full w-full rounded-3xl bg-transparent p-4 pl-8 text-2xl text-white focus:outline-none focus:outline-purple-500 focus:ring focus:ring-purple-500"
 					placeholder="hello@moon.com"
-					class="absolute inset-0 h-full w-full rounded-3xl bg-transparent p-4 pl-8 text-2xl text-white focus:outline-none focus:outline-purple-500 focus:ring focus:ring-purple-500" />
+					type="email"
+					name="email"
+					aria-invalid={$errors.email ? 'true' : undefined}
+					bind:value={$form.email}
+					{...$constraints.email} />
 				<button
-					on:click={handleSignup}
-					class="duration-400 h-full transform rounded-3xl border border-white bg-transparent px-6 py-2 font-bold text-white shadow-[0_0_0_3px_#000000_inset] transition hover:-translate-y-1 focus:border-purple-500 focus:outline-none focus:ring focus:ring-purple-500 dark:border-white dark:text-white">
-					JOIN THE WHITELIST
+					class="h-full transform rounded-3xl border border-white bg-transparent px-6 py-2 font-bold text-white transition duration-300 ease-in-out hover:scale-110 focus:border-purple-500 focus:outline-none focus:ring focus:ring-purple-500 dark:border-white dark:text-white">
+					{#if $delayed}
+						<!-- <Circle color="white" /> -->
+						<p>run</p>
+					{:else}
+						JOIN THE WHITELIST
+					{/if}
 				</button>
-			</div>
-			<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
-				<Clock class="purple-500" /> 1300/1500 eligible genesis founder slots remaining.
-			</p>
+			</form>
+			{#if $message}
+				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
+					<Clock class="purple-500" /> Submittion Complete
+				</p>
+			{:else if $errors.email}
+				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-red-500"><AlertCircle /> {$errors.email.join('/n')}</p>
+			{:else}
+				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
+					<Clock class="purple-500" /> 1300/1500 eligible genesis founder slots remaining.
+				</p>
+			{/if}
 			<!-- WHITELIST BUTTON END -->
 		</div>
 	</div>
@@ -391,8 +416,8 @@
 	<footer class="z-50 w-full rounded-lg bg-white shadow dark:bg-neutral-950">
 		<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
 			<div class="sm:flex sm:items-center sm:justify-between">
-				<a href="https://flowbite.com/" class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">
-					<img class="h-10 w-10" src="/logo2.svg" alt="logo" />
+				<a href="https://0xargus.org" class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">
+					<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
 
 					<span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">0xArgus</span>
 				</a>
