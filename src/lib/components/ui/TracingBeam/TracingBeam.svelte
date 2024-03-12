@@ -15,7 +15,7 @@
 		svgHeight = contentRef.offsetHeight;
 
 		const handleScroll = () => {
-			const currentScrollY = window.scrollY;
+			const currentScrollY = window.scrollY * 1;
 			scrollYProgress = currentScrollY / (document.body.offsetHeight - window.innerHeight);
 			const scrollDelta = currentScrollY - lastScrollY;
 			lastScrollY = currentScrollY;
@@ -40,7 +40,7 @@
 
 <svelte:window />
 
-<div class="relative mx-auto h-full w-full max-w-7xl">
+<div class="relative mx-auto mt-20 h-full w-full max-w-7xl">
 	<div class="absolute -right-8 top-3">
 		<div
 			class="border-netural-200 ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border shadow-sm"

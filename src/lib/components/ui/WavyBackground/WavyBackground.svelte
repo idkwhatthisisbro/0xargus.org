@@ -18,6 +18,15 @@
 	const speedMap = { slow: 1e-3, fast: 2e-3 };
 
 	const getSpeed = (): number => speedMap[speed] || 1e-3;
+	const debounce = (func, delay) => {
+		let debounceTimer;
+		return function () {
+			const context = this;
+			const args = arguments;
+			clearTimeout(debounceTimer);
+			debounceTimer = setTimeout(() => func.apply(context, args), delay);
+		};
+	};
 
 	const resizeCanvas = () => {
 		w = ctx.canvas.width = window.innerWidth;
@@ -52,6 +61,7 @@
 	onMount(() => {
 		ctx = canvasRef.getContext('2d');
 		resizeCanvas();
+		const debouncedResize = debounce(resizeCanvas, 200); // Debounce resize event
 		window.addEventListener('resize', resizeCanvas); // Use addEventListener for resize
 		const animate = () => {
 			render();
@@ -64,4 +74,4 @@
 	});
 </script>
 
-<canvas class="inset-0 z-0 h-[500px] w-full" bind:this={canvasRef} id="canvas"></canvas>
+<canvas class="absolute inset-x-0 -bottom-60 z-0 h-[500px] w-full" bind:this={canvasRef} id="canvas"></canvas>

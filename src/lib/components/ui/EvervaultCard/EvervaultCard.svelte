@@ -7,11 +7,11 @@
 	let randomString = '';
 
 	onMount(() => {
-		randomString = generateRandomString(1500);
+		randomString = generateRandomString(3000);
 
 		const cont = setInterval(() => {
-			randomString = generateRandomString(1500);
-		}, 30);
+			randomString = generateRandomString(3000);
+		}, 30000);
 
 		return () => clearInterval(cont);
 	});
@@ -34,7 +34,7 @@
 		<div class="pointer-events-none">
 			<div class="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-100"></div>
 
-			<div class="">
+			<div class="max-h-[32px]">
 				<div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-700 brightness-75 backdrop-blur-xl transition duration-500 group-hover/card:opacity-100" />
 			</div>
 

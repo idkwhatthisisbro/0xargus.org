@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Banner from '$lib/components/Banner.svelte';
-	import { AlertCircle, AlertTriangle, ArrowLeft, ArrowRight, Boxes, Clock, NotebookIcon, Star } from 'lucide-svelte';
+	import { AlertCircle, AlertTriangle, ArrowLeft, ArrowRight, Boxes, ChevronRight, ChevronRightCircle, Clock, Mail, MailCheck, MailIcon, MailPlus, MailX, NotebookIcon, Star } from 'lucide-svelte';
 	import TypeWriter from 'svelte-typewriter';
 	import WavyBackground from '$lib/components/ui/WavyBackground/WavyBackground.svelte';
 	import GridAndDotBackgroundsSmallGrid from '$lib/components/ui/GridAndDotBackgrounds/GridAndDotBackgroundsSmallGrid.svelte';
@@ -27,6 +27,7 @@
 	import { zod } from 'sveltekit-superforms/adapters';
 	import type { PageData } from './$types.js';
 	import { enhance } from '$app/forms';
+	import { cn } from '$lib/utils/cn.js';
 	// import { Circle } from 'svelte-loading-spinners';
 
 	export let data: PageData;
@@ -35,7 +36,6 @@
 	const { form, errors, constraints, delayed, message } = superForm(data.form, {
 		validators: zod(whitelistSchema),
 		id: 'whitelistHero',
-		clearOnSubmit: 'errors-and-message',
 		onSubmit: ({}) => open(Popup, { type: 'email-verification' })
 	});
 
@@ -210,11 +210,11 @@
 			<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
 			<button
 				on:click={() => window.open('https://docs.0xargus.org', '_blank')}
-				class="relative inline-flex h-12 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white">
+				class="relative inline-flex h-12 w-12 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white sm:w-auto">
 				<span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#6366f1_0%,#a855f7_50%,#6366f1_100%)]" />
-				<span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 font-citerne text-sm font-medium text-white backdrop-blur-3xl">
-					<Boxes class="mr-2 text-xs" />
-					Documentation
+				<span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 p-2 text-sm font-medium text-white backdrop-blur-3xl sm:px-3 sm:py-1">
+					<Boxes class="text-xs sm:mr-2" />
+					<p class="hidden sm:block">Documentation</p>
 				</span>
 			</button>
 		</nav>
@@ -225,7 +225,7 @@
 		<div class="flex flex-col items-center justify-center">
 			<!-- HERO TITLE -->
 			<div>
-				<h1 class="relative z-[31] text-center font-saira text-3xl font-black text-white md:text-7xl lg:text-9xl">0xArgus</h1>
+				<h1 class="relative z-[31] text-center font-saira text-6xl font-black text-white md:text-7xl lg:text-9xl">0xArgus</h1>
 				<div class="relative z-30 h-20 w-[40rem]">
 					<div class="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm" />
 					<div class="absolute inset-x-20 top-0 h-px w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
@@ -236,7 +236,7 @@
 			<!-- HERO TITLE END -->
 
 			<!-- HERO TEXT -->
-			<div style="max-w-5xl text-center w-full  --cursor-width: 0.125ch; --cursor-color: #ffffff;" class="mb-24 mt-8 font-outfit text-4xl text-neutral-200">
+			<div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="mb-24 text-center font-outfit text-4xl text-neutral-200 sm:mt-8">
 				Introducing RugPull Prevention Middleware for
 				<TypeWriter element="span" class="whitespace-nowrap" as="span" keepCursorOnFinish mode="loop" wordInterval={4000}>
 					<span class="font-semibold text-purple-500">Ethereum.</span>
@@ -247,9 +247,20 @@
 			<!-- HERO TEXT END -->
 
 			<!-- WHITELIST BUTTON -->
-			<form method="POST" use:enhance class="relative z-50 flex w-[640px] justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-lg">
+			<form method="POST" use:enhance class="relative z-50 flex w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-lg sm:w-[640px]">
 				<input
-					class="absolute inset-0 h-full w-full rounded-3xl bg-transparent p-4 pl-8 text-2xl text-white focus:outline-none focus:outline-purple-500 focus:ring focus:ring-purple-500"
+					class={cn(
+						// Global
+						'absolute inset-0 h-full w-full bg-transparent',
+						// Desktop
+						'p-4 pl-8 text-2xl',
+						// Mobile
+						'',
+						// Animations
+						'',
+						// Focus/Hover
+						'rounded-3xl text-white focus:outline-none focus:outline-purple-500 focus:ring focus:ring-purple-500'
+					)}
 					placeholder="hello@moon.com"
 					type="email"
 					name="email"
@@ -257,12 +268,30 @@
 					bind:value={$form.email}
 					{...$constraints.email} />
 				<button
-					class="h-full transform rounded-3xl border border-white bg-transparent px-6 py-2 font-bold text-white transition duration-300 ease-in-out hover:scale-110 focus:border-purple-500 focus:outline-none focus:ring focus:ring-purple-500 dark:border-white dark:text-white">
+					class={cn(
+						// Global
+						'flex items-center justify-center border-white bg-transparent text-white shadow-xl dark:border-neutral-400 dark:text-white',
+						// Desktop
+						'group transform font-bold tracking-wide sm:h-full sm:space-x-2 sm:rounded-full sm:px-6 sm:py-2',
+						// Mobile
+						'rounded-lg border-2 px-2 py-1 ',
+						// Animations
+						'transition duration-300 ease-in-out',
+						// Focus/Hover
+						'hover:scale-105 hover:border-indigo-400 hover:bg-indigo-600 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500'
+					)}>
 					{#if $delayed}
 						<!-- <Circle color="white" /> -->
 						<p>run</p>
 					{:else}
-						JOIN THE WHITELIST
+						<p class="hidden sm:block">JOIN THE WHITELIST</p>
+						<div class="hidden rounded-full bg-neutral-700 p-2 text-xs shadow-lg group-hover:bg-indigo-700 sm:block">
+							<MailPlus class="m-auto h-4 w-4 rounded-full text-xs" />
+						</div>
+
+						<div>
+							<ChevronRight class="h-8 w-8 text-neutral-300 sm:hidden" />
+						</div>
 					{/if}
 				</button>
 			</form>
@@ -281,81 +310,98 @@
 		</div>
 	</div>
 
-	<div class="absolute -bottom-60 z-0 w-full">
-		<WavyBackground />
-	</div>
+	<WavyBackground />
 </main>
 <!-- HERO END -->
 
 <!-- Prevent the background of the wave from clipping -->
-<div class="mt-32" />
+<div class="sm:mt-32" />
 
 <!-- Product Summary + Features Start -->
-<div class="overflow-hidden">
-	<GridAndDotBackgroundsSmallGrid>
-		<TracingBeam>
-			<!-- PRODUCT SUMMARY SECTION -->
-			<Section class="pb-12">
-				<h2 class="bg-gradient-to-t from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-center text-6xl font-bold text-transparent">Your Guardian in the DeFi Universe</h2>
+<GridAndDotBackgroundsSmallGrid>
+	<TracingBeam>
+		<!-- PRODUCT SUMMARY SECTION -->
+		<Section class="pb-12">
+			<h2 class="bg-gradient-to-t from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-center text-6xl font-bold text-transparent">Your Guardian in the DeFi Universe</h2>
 
-				<p class="mx-auto mt-16 max-w-3xl text-center text-3xl font-normal text-white">
-					Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence.
-				</p>
+			<p class="mx-auto mt-16 max-w-3xl text-center text-3xl font-normal text-white">
+				Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence.
+			</p>
 
-				<!-- TODO: FIX Over complicating a simple solution -->
-				<div class="mt-24 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-neutral-400">
-					{#each ['1inch', 'metamask', 'uniswap', 'safepal'] as icon}
-						<div class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 p-12">
-							{#if iconComponents[icon]}
-								<svelte:component this={iconComponents[icon]} height="30" classes="saturate-0" />
-							{/if}
+			<!-- TODO: FIX Over complicating a simple solution -->
+			<div class="mt-24 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-neutral-400">
+				{#each ['1inch', 'metamask', 'uniswap', 'safepal'] as icon}
+					<div class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 p-12">
+						{#if iconComponents[icon]}
+							<svelte:component this={iconComponents[icon]} height="30" classes="saturate-0" />
+						{/if}
+					</div>
+				{/each}
+			</div>
+		</Section>
+
+		<!-- FEATURES SECTION-->
+		<Section class="">
+			<SectionHeader title="Features" subtitle="The first ever safety layer middleware" />
+
+			<!-- FEATURES BENTO -->
+			<div class="flex flex-col gap-8">
+				<!-- FEATURE CARDS -->
+				<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+					{#each featureCards as { circle, desc, tag }}
+						<div class="relative flex h-[30rem] w-full flex-col items-start border border-black/[0.2] p-4 dark:border-white/[0.2]">
+							<Icon class="absolute -left-3 -top-3 h-6 w-6 text-black dark:text-white" />
+							<Icon class="absolute -bottom-3 -left-3 h-6 w-6 text-black dark:text-white" />
+							<Icon class="absolute -right-3 -top-3 h-6 w-6 text-black dark:text-white" />
+							<Icon class="absolute -bottom-3 -right-3 h-6 w-6 text-black dark:text-white" />
+
+							<EvervaultCard text={circle} />
+
+							<h2 class="mt-4 text-base font-light text-black dark:text-white">{desc}</h2>
+							<p class="mt-4 rounded-full border border-black/[0.2] px-2 py-0.5 text-sm font-light text-black dark:border-white/[0.2] dark:text-white">{tag}</p>
 						</div>
 					{/each}
-				</div>
-			</Section>
-
-			<!-- FEATURES SECTION-->
-			<Section class="">
-				<SectionHeader title="Features" subtitle="The first ever safety layer middleware" />
-
-				<!-- FEATURES BENTO -->
-				<div class="-mt-24 flex flex-col gap-8">
-					<!-- FEATURE CARDS -->
-					<div class="grid grid-cols-3 gap-8">
-						{#each featureCards as { circle, desc, tag }}
-							<div class="relative flex h-[30rem] max-w-sm flex-col items-start border border-black/[0.2] p-4 dark:border-white/[0.2]">
-								<Icon class="absolute -left-3 -top-3 h-6 w-6 text-black dark:text-white" />
-								<Icon class="absolute -bottom-3 -left-3 h-6 w-6 text-black dark:text-white" />
-								<Icon class="absolute -right-3 -top-3 h-6 w-6 text-black dark:text-white" />
-								<Icon class="absolute -bottom-3 -right-3 h-6 w-6 text-black dark:text-white" />
-
-								<EvervaultCard text={circle} />
-
-								<h2 class="mt-4 text-base font-light text-black dark:text-white">{desc}</h2>
-								<p class="mt-4 rounded-full border border-black/[0.2] px-2 py-0.5 text-sm font-light text-black dark:border-white/[0.2] dark:text-white">{tag}</p>
+					<div class="group hidden md:block lg:hidden">
+						<GlowingStarsBackgroundCard>
+							<GlowingStarsTitle>Invest Fearlessly</GlowingStarsTitle>
+							<div class="flex items-end justify-between">
+								<GlowingStarsDescription>Feel safe investing in small coins. Seemlessly intergrate rugpull protection into all your favourite exchanges.</GlowingStarsDescription>
+								<div class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 stroke-2 text-white">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+									</svg>
+								</div>
 							</div>
-						{/each}
+						</GlowingStarsBackgroundCard>
 					</div>
+				</div>
 
-					<!-- GLOWING STARS CARD -->
+				<!-- GLOWING STARS CARD -->
+
+				<a href="https://docs.0xargus.org" class="group block cursor-pointer md:hidden lg:block">
 					<GlowingStarsBackgroundCard>
 						<GlowingStarsTitle>Invest Fearlessly</GlowingStarsTitle>
 						<div class="flex items-end justify-between">
 							<GlowingStarsDescription>Feel safe investing in small coins. Seemlessly intergrate rugpull protection into all your favourite exchanges.</GlowingStarsDescription>
-							<div class="flex h-8 w-8 items-center justify-center rounded-full bg-[hsla(0,0%,100%,.1)]">
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 stroke-2 text-white">
+							<div class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="1.5"
+									stroke="currentColor"
+									class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:-rotate-90">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
 								</svg>
 							</div>
 						</div>
 					</GlowingStarsBackgroundCard>
-					<!-- GLOWING STARS CARD END-->
-				</div>
-				<div />
-			</Section>
-		</TracingBeam>
-	</GridAndDotBackgroundsSmallGrid>
-</div>
+				</a>
+			</div>
+			<div />
+		</Section>
+	</TracingBeam>
+</GridAndDotBackgroundsSmallGrid>
 <!-- Product Summary + Features End -->
 <Section class="pb-0">
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
@@ -373,7 +419,7 @@
 </div>
 
 <Section>
-	<div class="grid text-white child:p-24 even:child:flex-row-reverse">
+	<div class="flex text-white child:p-24 sm:flex-col sm:even:child:flex-row-reverse">
 		{#each howItWorkCards as card}
 			<!-- Card -->
 			<div class="-border-2 -shadow-2xl mt-12 flex h-[450px] items-center gap-12 rounded-3xl dark:border-white/[0.2]">
@@ -386,8 +432,8 @@
 
 				<!-- Text -->
 				<div class="space-y-4">
-					<p class="text-2xl font-semibold">{card.title}</p>
-					<div class="max-w-3xl">
+					<p class="text-3xl font-semibold">{card.title}</p>
+					<div class="max-w-lg leading-relaxed">
 						{card.desc}
 					</div>
 				</div>
