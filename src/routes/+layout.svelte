@@ -7,30 +7,19 @@
 	// $: styleCloseButton = { backgroundColor: '#0a0a0a', color: '#ffffff', stroke: '#ffffff' };
 </script>
 
-<div class="gradient-text select relative flex flex-col bg-neutral-950 font-outfit">
-	<Modal {styleWindow} {styleCloseButton} classWindow="p-2 bg-neutral-950 rounded-3xl">
+<Modal {styleWindow} {styleCloseButton} classWindow="p-2 bg-neutral-950 rounded-3xl">
+	<div class="relative bg-neutral-950 font-outfit">
 		<slot />
-	</Modal>
-</div>
+	</div>
+</Modal>
 
 <style>
-	.gradient-text::selection {
-		background: linear-gradient(to right, red, blue);
-		-webkit-background-clip: text;
-		color: transparent;
+	::selection {
+		background: #ff4500; /* Or any other color */
+		color: white;
 	}
-	.gradient-text::-moz-selection {
-		background: linear-gradient(to right, red, blue);
-		-webkit-background-clip: text;
-		color: transparent;
+	::-moz-selection {
+		background: #ff4500; /* Or any other color */
+		color: white;
 	}
-
-	    ::selection {
-        background: #ff4500; /* Or any other color */
-        color: white;
-    }
-    ::-moz-selection {
-        background: #ff4500; /* Or any other color */
-        color: white;
-    }
 </style>

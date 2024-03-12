@@ -28,6 +28,8 @@
 	import type { PageData } from './$types.js';
 	import { enhance } from '$app/forms';
 	import { cn } from '$lib/utils/cn.js';
+	import { MetaTags } from 'svelte-meta-tags';
+
 	// import { Circle } from 'svelte-loading-spinners';
 
 	export let data: PageData;
@@ -75,7 +77,7 @@
 			img: 'https://img.icons8.com/?size=256&id=43678&format=png&color=6366f1,a855f7'
 		},
 		{
-			title: 'Manipulating Token Functionalities:',
+			title: 'Manipulating Token Functionalities',
 			desc: 'We constantly monitor for any changes to the token contract. This includes unauthorized minting of new tokens, changes to transaction fees, or any other modifications that could potentially harm token holders. Our system will react to any such changes by securing your assets.',
 			img: 'https://img.icons8.com/?size=256&id=tSjEZJQnFcC9&format=png&color=6366f1,a855f7'
 		},
@@ -109,12 +111,14 @@
 		{
 			id: '1',
 			type: 'input',
-			data: { label: 'Used subscribes contract via 0xArgus extension or Dapp' },
+			data: { label: 'User subscribes contract via 0xArgus extension or Dapp' },
 			position: { x: 0, y: 0 },
+
+			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center',
 			// @ts-ignore
-			sourcePosition: 'right',
+			sourcePosition: 'bottom',
 			// @ts-ignore
-			targetPosition: 'left'
+			targetPosition: 'top'
 		},
 		// {
 		// 	id: '2',
@@ -132,22 +136,29 @@
 			id: 'A',
 			type: 'default',
 			data: { label: 'ArgusAI Scans for Fraudulent Activities' },
-			position: { x: 400, y: 3 },
+			style: 'background-color: {blue};',
+			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center',
+
+			position: { x: 0, y: 175 },
 			// @ts-ignore
 			sourcePosition: 'bottom',
 			// @ts-ignore
-			targetPosition: 'left'
+			targetPosition: 'top'
 		},
 
 		{
 			id: 'A-1',
 			data: { label: 'Front-Run Transaction - Returning the funds back to your wallet' },
+
+			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center',
 			position: { x: -200, y: 250 },
 			parentNode: 'A',
 			extent: 'parent'
 		},
 		{
 			id: 'A-2',
+			expandParent: false,
+			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center',
 			data: { label: 'Continue Monitoring' },
 			position: { x: 200, y: 250 },
 			parentNode: 'A',
@@ -201,7 +212,47 @@
 
 <!-- HERO -->
 
-<main class="relative z-30 flex h-screen w-full flex-col items-center justify-center bg-neutral-950 py-64">
+<MetaTags
+	title="Home"
+	titleTemplate="%s | 0xArgus"
+	description="0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum."
+	canonical="0xargus.org"
+	openGraph={{
+		url: 'https://www.0xargus.org',
+		title: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
+		description: 'Open Graph Description',
+		images: [
+			{
+				url: 'https://0xargus.org/logo-rounded.svg',
+				width: 800,
+				height: 600,
+				alt: 'Og Image Alt'
+			},
+			{
+				url: 'https://0xargus.org/logo-rounded.svg',
+				width: 900,
+				height: 800,
+				alt: 'Og Image Alt Second'
+			},
+			{ url: 'https://0xargus.org/logo-rounded.svg' },
+			{ url: 'https://0xargus.org/logo-rounded.svg' }
+		],
+		siteName: '0xArgus'
+	}}
+	twitter={{
+		handle: '@0xargusorg',
+		site: '0xargus.org',
+		cardType: 'summary_large_image',
+		title: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
+		description: '',
+		image: 'https://www.example.ie/twitter-image.jpg',
+		imageAlt: 'Twitter image alt'
+	}}
+	facebook={{
+		appId: '1234567890'
+	}} />
+
+<main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
 	<div class="absolute top-0 flex w-full flex-col items-center gap-5">
 		<Banner />
@@ -222,7 +273,7 @@
 	<!-- ANNOUNCEMENT BANNER & NAVBAR END -->
 
 	<div class="w-full max-w-7xl">
-		<div class="flex flex-col items-center justify-center">
+		<div class="flex flex-col items-center justify-center px-4 sm:px-0">
 			<!-- HERO TITLE -->
 			<div>
 				<h1 class="relative z-[31] text-center font-saira text-6xl font-black text-white md:text-7xl lg:text-9xl">0xArgus</h1>
@@ -247,11 +298,11 @@
 			<!-- HERO TEXT END -->
 
 			<!-- WHITELIST BUTTON -->
-			<form method="POST" use:enhance class="relative z-50 flex w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-lg sm:w-[640px]">
+			<form method="POST" use:enhance class="relative z-50 flex w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-lg sm:w-[640px] sm:px-4">
 				<input
 					class={cn(
 						// Global
-						'absolute inset-0 h-full w-full bg-transparent',
+						'absolute inset-0 h-full w-full rounded-3xl bg-transparent text-white',
 						// Desktop
 						'p-4 pl-8 text-2xl',
 						// Mobile
@@ -259,7 +310,7 @@
 						// Animations
 						'',
 						// Focus/Hover
-						'rounded-3xl text-white focus:outline-none focus:outline-purple-500 focus:ring focus:ring-purple-500'
+						'focus:outline-none focus:outline-purple-500 focus:ring focus:ring-purple-500'
 					)}
 					placeholder="hello@moon.com"
 					type="email"
@@ -272,9 +323,9 @@
 						// Global
 						'flex items-center justify-center border-white bg-transparent text-white shadow-xl dark:border-neutral-400 dark:text-white',
 						// Desktop
-						'group transform font-bold tracking-wide sm:h-full sm:space-x-2 sm:rounded-full sm:px-6 sm:py-2',
+						'group transform font-bold tracking-wide sm:h-full sm:w-auto sm:space-x-2 sm:rounded-full sm:px-6 sm:py-2',
 						// Mobile
-						'rounded-lg border-2 px-2 py-1 ',
+						'h-12 w-12 rounded-full border-2 p-1',
 						// Animations
 						'transition duration-300 ease-in-out',
 						// Focus/Hover
@@ -284,14 +335,14 @@
 						<!-- <Circle color="white" /> -->
 						<p>run</p>
 					{:else}
+						<!-- Desktop -->
 						<p class="hidden sm:block">JOIN THE WHITELIST</p>
 						<div class="hidden rounded-full bg-neutral-700 p-2 text-xs shadow-lg group-hover:bg-indigo-700 sm:block">
 							<MailPlus class="m-auto h-4 w-4 rounded-full text-xs" />
 						</div>
 
-						<div>
-							<ChevronRight class="h-8 w-8 text-neutral-300 sm:hidden" />
-						</div>
+						<!-- Mobile -->
+						<ChevronRight class="h-8 w-8 text-neutral-300 sm:hidden" />
 					{/if}
 				</button>
 			</form>
@@ -310,6 +361,7 @@
 		</div>
 	</div>
 
+	<!-- TODO: Make this effecient -->
 	<WavyBackground />
 </main>
 <!-- HERO END -->
@@ -322,16 +374,16 @@
 	<TracingBeam>
 		<!-- PRODUCT SUMMARY SECTION -->
 		<Section class="pb-12">
-			<h2 class="bg-gradient-to-t from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-center text-6xl font-bold text-transparent">Your Guardian in the DeFi Universe</h2>
+			<h2 class="bg-gradient-to-t from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-center text-4xl font-bold text-transparent sm:text-6xl">Your Guardian in the DeFi Universe</h2>
 
-			<p class="mx-auto mt-16 max-w-3xl text-center text-3xl font-normal text-white">
+			<p class="mx-auto mt-6 max-w-3xl text-center text-xl font-normal text-white sm:mt-16 sm:text-3xl">
 				Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence.
 			</p>
 
 			<!-- TODO: FIX Over complicating a simple solution -->
-			<div class="mt-24 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-neutral-400">
+			<div class="mt-12 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-neutral-400 sm:mt-24">
 				{#each ['1inch', 'metamask', 'uniswap', 'safepal'] as icon}
-					<div class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 p-12">
+					<div class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 px-2 py-8 sm:p-12">
 						{#if iconComponents[icon]}
 							<svelte:component this={iconComponents[icon]} height="30" classes="saturate-0" />
 						{/if}
@@ -345,9 +397,9 @@
 			<SectionHeader title="Features" subtitle="The first ever safety layer middleware" />
 
 			<!-- FEATURES BENTO -->
-			<div class="flex flex-col gap-8">
+			<div class="flex flex-col gap-4 gap-y-8 sm:gap-8">
 				<!-- FEATURE CARDS -->
-				<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+				<div class="grid grid-cols-1 gap-4 gap-y-8 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{#each featureCards as { circle, desc, tag }}
 						<div class="relative flex h-[30rem] w-full flex-col items-start border border-black/[0.2] p-4 dark:border-white/[0.2]">
 							<Icon class="absolute -left-3 -top-3 h-6 w-6 text-black dark:text-white" />
@@ -403,12 +455,15 @@
 	</TracingBeam>
 </GridAndDotBackgroundsSmallGrid>
 <!-- Product Summary + Features End -->
-<Section class="pb-0">
+<Section class="relative pb-0">
+	<div class="absolute -top-64 z-50">
+		<img alt="gradient" src="/blur.png" />
+	</div>
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
 </Section>
 
-<div class="relative h-96">
-	<SvelteFlow attributionPosition="bottom-right" class="bg-neutral-950" {nodes} {edges} {snapGrid} fitView nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
+<div class="relative h-[1000px]">
+	<SvelteFlow class="" attributionPosition="bottom-right" {nodes} {edges} {snapGrid} fitView nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
 		<Background patternColor="#0a0a0a" bgColor="#0a0a0a" />
 	</SvelteFlow>
 
@@ -419,10 +474,15 @@
 </div>
 
 <Section>
-	<div class="flex text-white child:p-24 sm:flex-col sm:even:child:flex-row-reverse">
+	<div class="flex flex-wrap items-center justify-center text-white child:p-4 sm:child:flex-col sm:child:p-24 sm:odd:child:flex-row-reverse">
 		{#each howItWorkCards as card}
 			<!-- Card -->
-			<div class="-border-2 -shadow-2xl mt-12 flex h-[450px] items-center gap-12 rounded-3xl dark:border-white/[0.2]">
+			<div
+				class={cn(
+					'-border-2 -shadow-2xl mt-12 flex w-full flex-col items-center gap-12 rounded-3xl sm:h-[450px] sm:w-auto sm:flex-row dark:border-white/[0.2]',
+					'relative flex max-h-[600px] w-full flex-col overflow-hidden rounded-xl border border-[#d33df529] bg-neutral-900/50 pl-5 pr-5 pt-4 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] md:rounded-3xl md:pl-10 md:pt-10'
+				)}>
+				<div class="absolute -right-[20rem] -top-[20rem] left-auto z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl" />
 				<!-- Image -->
 				{#if card.img}
 					<img alt="s" src={card.img} class="h-full rounded-xl" />
@@ -431,15 +491,16 @@
 				{/if}
 
 				<!-- Text -->
-				<div class="space-y-4">
-					<p class="text-3xl font-semibold">{card.title}</p>
-					<div class="max-w-lg leading-relaxed">
+				<div class="z-50 space-y-4 text-neutral-300">
+					<p class="text-center text-3xl font-semibold sm:text-left">{card.title}</p>
+					<div class="max-w-lg text-center leading-relaxed sm:text-left">
 						{card.desc}
 					</div>
 				</div>
 			</div>
 		{/each}
-	</div></Section>
+	</div>
+</Section>
 
 <!-- WAITLIST START -->
 <section class="relative z-50 mt-12 flex h-[30rem] w-full flex-col items-center justify-center bg-neutral-950 pt-32 font-outfit -antialiased">

@@ -16,7 +16,7 @@
 		<!-- text wrapper -->
 		<div class="flex w-full max-w-7xl items-center justify-center gap-2 p-2">
 			<!-- <Megaphone color="white" /> -->
-			<p class="flex text-lg font-medium tracking-wide text-white brightness-100">🎉 Whitelist Signups are now Live!</p>
+			<p class="flex text-sm font-medium tracking-wide text-indigo-50 brightness-100 sm:text-lg">🎉 Whitelist Signups are now Live!</p>
 		</div>
 		<button class="absolute right-2 flex h-2 items-center text-indigo-200" on:click={close}>
 			<X height="12px" />
