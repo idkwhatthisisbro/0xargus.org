@@ -14,6 +14,9 @@ dependencies:
   '@tailwindcss/aspect-ratio':
     specifier: ^0.4.2
     version: 0.4.2(tailwindcss@3.4.1)
+  '@tma.js/init-data-node':
+    specifier: ^1.1.10
+    version: 1.1.10
   '@xyflow/svelte':
     specifier: ^0.0.38
     version: 0.0.38(svelte@4.2.12)
@@ -64,6 +67,9 @@ devDependencies:
   '@types/eslint':
     specifier: ^8.56.0
     version: 8.56.5
+  '@types/telegram-web-app':
+    specifier: ^7.1.0
+    version: 7.1.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^7.0.0
     version: 7.1.1(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@5.4.2)
@@ -823,6 +829,16 @@ packages:
       tailwindcss: 3.4.1
     dev: false
 
+  /@tma.js/init-data-node@1.1.10:
+    resolution: {integrity: sha512-2LrYaSePpxVXb0GjShxIoPzoG5UP9US2AwPGOAQ9jpnssZtV6QfGlq6dp2+tyFrd28ncAOEYbFH1vay2skK48w==}
+    dependencies:
+      '@tma.js/sdk': 1.4.9
+    dev: false
+
+  /@tma.js/sdk@1.4.9:
+    resolution: {integrity: sha512-QtDSJmyxiqoZoCFf+a7rr3dzoUJ1gYQoyOHwIxF2K6qWLSJ5zROh2QAnOXU3+HlKlM0mJ2a22iRVTVOzdnRW1g==}
+    dev: false
+
   /@types/cookie@0.6.0:
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
     dev: true
@@ -1056,6 +1072,10 @@ packages:
 
   /@types/semver@7.5.8:
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
+    dev: true
+
+  /@types/telegram-web-app@7.1.0:
+    resolution: {integrity: sha512-uQ34+6jhCFq38wHhD6PkmIkgtBTfSWGqGenALUHcaR7Cks6abOskDrgcqwAyfrts0YZ2A/ywM1fLDGQkHjykUQ==}
     dev: true
 
   /@types/validator@13.11.9:

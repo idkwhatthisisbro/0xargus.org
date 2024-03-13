@@ -1,11 +1,8 @@
 import { supabase } from './supabaseClient';
 import { env } from '$env/dynamic/private';
-const accountSid = env.TWILIO_ACCOUNT_SID;
-const authToken = env.TWILIO_AUTH_TOKEN;
-
 import twilio from 'twilio';
 
-const client = twilio(accountSid, authToken);
+const client = twilio(env.TWILIO_ACCOUNT_SID, env.TWILIO_ACCOUNT_SID);
 
 const messageType = {
 	alreadyVerified: 'Email already verified',
@@ -17,12 +14,6 @@ const messageType = {
 type MessageTypeValue = (typeof messageType)[keyof typeof messageType];
 
 export async function userSignUp(email: string): Promise<MessageTypeValue> {
-	// Validate the email format using a simple regex pattern
-	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	if (!emailRegex.test(email)) {
-		throw new Error(messageType.invalidEmail);
-	}
-
 	// Check if the email is already verified in the database
 	const { data, error } = await supabase.from('users').select('email_verified').eq('email', email).single();
 	if (error && !(error?.code === 'PGRST116')) {

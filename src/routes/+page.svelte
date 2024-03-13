@@ -30,6 +30,10 @@
 	import { cn } from '$lib/utils/cn.js';
 	import { MetaTags } from 'svelte-meta-tags';
 
+	// @ts-ignore
+	import { LottiePlayer } from '@lottiefiles/svelte-lottie-player';
+	import { browser } from '$app/environment';
+
 	// import { Circle } from 'svelte-loading-spinners';
 
 	export let data: PageData;
@@ -37,7 +41,7 @@
 	const { open } = getContext('simple-modal');
 	const { form, errors, constraints, delayed, message } = superForm(data.form, {
 		validators: zod(whitelistSchema),
-		id: 'whitelistHero',
+		id: 'whitelist-hero',
 		onSubmit: ({}) => open(Popup, { type: 'email-verification' })
 	});
 
@@ -74,17 +78,17 @@
 		{
 			title: 'Liquidity Withdrawals',
 			desc: "Our system is designed to detect any large-scale liquidity withdrawals. These are often a red flag for rug pulls, where token creators remove their liquidity from a market, causing the token's value to plummet. If such activity is detected, Argus will immediately execute a transaction to secure your holdings.",
-			img: 'https://img.icons8.com/?size=256&id=43678&format=png&color=6366f1,a855f7'
+			img: 'https://www.dissentmagazine.org/wp-content/files_mf/1659985189666_GettyImages1241318592.jpeg'
 		},
 		{
 			title: 'Manipulating Token Functionalities',
 			desc: 'We constantly monitor for any changes to the token contract. This includes unauthorized minting of new tokens, changes to transaction fees, or any other modifications that could potentially harm token holders. Our system will react to any such changes by securing your assets.',
-			img: 'https://img.icons8.com/?size=256&id=tSjEZJQnFcC9&format=png&color=6366f1,a855f7'
+			img: 'https://images.ctfassets.net/23aumh6u8s0i/3LicB7o8n7rtwGu6Sfyncy/53bf56ecd9f99f2fecbace9923585228/authentication-tokens'
 		},
 		{
 			title: 'AI Algorithms',
 			desc: 'Our AI algorithms are at the core of our platform. They continuously scan and learn from the entire Ethereum network, identifying patterns and behaviors associated with fraudulent activities. This allows us to constantly improve our detection capabilities and provide better protection for your assets.Continue Monitoring',
-			img: 'https://img.icons8.com/?size=256&id=77156&format=png&color=6366f1,a855f7'
+			lottie: 'ai.json'
 		}
 	];
 
@@ -114,7 +118,7 @@
 			data: { label: 'User subscribes contract via 0xArgus extension or Dapp' },
 			position: { x: 0, y: 0 },
 
-			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center',
+			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
 			// @ts-ignore
 			sourcePosition: 'bottom',
 			// @ts-ignore
@@ -219,8 +223,8 @@
 	canonical="0xargus.org"
 	openGraph={{
 		url: 'https://www.0xargus.org',
-		title: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
-		description: 'Open Graph Description',
+		title: '0xArgus',
+		description: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
 		images: [
 			{
 				url: 'https://0xargus.org/logo-rounded.svg',
@@ -436,6 +440,28 @@
 						<div class="flex items-end justify-between">
 							<GlowingStarsDescription>Feel safe investing in small coins. Seemlessly intergrate rugpull protection into all your favourite exchanges.</GlowingStarsDescription>
 							<div class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
+								<a
+									role="button"
+									tabindex="0"
+									aria-label="GLOWING to documentation"
+									on:click={() => window.open('https://docs.0xargus.org', '_blank')}
+									on:keydown={(event) => {
+										if (event.key === 'Enter') window.open('https://docs.0xargus.org', '_blank');
+									}}
+									href="https://docs.0xargus.org"
+									target="_blank"
+									class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke-width="1.5"
+										stroke="currentColor"
+										class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:-rotate-90"
+										aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+									</svg>
+								</a>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -462,7 +488,7 @@
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
 </Section>
 
-<div class="relative h-[1000px]">
+<div class="relative flex h-[1000px] items-center justify-center">
 	<SvelteFlow class="" attributionPosition="bottom-right" {nodes} {edges} {snapGrid} fitView nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
 		<Background patternColor="#0a0a0a" bgColor="#0a0a0a" />
 	</SvelteFlow>
@@ -474,20 +500,22 @@
 </div>
 
 <Section>
-	<div class="flex flex-wrap items-center justify-center text-white child:p-4 sm:child:flex-col sm:child:p-24 sm:odd:child:flex-row-reverse">
+	<div class="flex flex-col flex-wrap items-center justify-center text-white child:p-4 sm:child:flex-1 sm:odd:child:flex-row-reverse">
 		{#each howItWorkCards as card}
 			<!-- Card -->
 			<div
 				class={cn(
-					'-border-2 -shadow-2xl mt-12 flex w-full flex-col items-center gap-12 rounded-3xl sm:h-[450px] sm:w-auto sm:flex-row dark:border-white/[0.2]',
-					'relative flex max-h-[600px] w-full flex-col overflow-hidden rounded-xl border border-[#d33df529] bg-neutral-900/50 pl-5 pr-5 pt-4 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] md:rounded-3xl md:pl-10 md:pt-10'
+					'-border-2  -shadow-2xl mt-12 flex w-full flex-col items-center gap-12 rounded-3xl sm:w-auto sm:flex-row sm:p-24 dark:border-white/[0.2]',
+					'relative flex max-h-[600px] w-full flex-col overflow-hidden rounded-xl border border-[#d33df529] bg-neutral-900/50 py-4 pl-5 pr-5 pt-4 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] md:rounded-3xl md:pl-10 md:pt-10'
 				)}>
 				<div class="absolute -right-[20rem] -top-[20rem] left-auto z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl" />
 				<!-- Image -->
 				{#if card.img}
-					<img alt="s" src={card.img} class="h-full rounded-xl" />
-				{:else}
-					<div class="h-full w-full rounded-xl bg-neutral-800"></div>
+					<img alt="s" src={card.img} class="h-full max-w-96 rounded-xl shadow-2xl" />
+				{:else if browser}
+					<div class="h-full max-w-96 rounded-xl shadow-2xl">
+						<LottiePlayer class="" src="ai.json" autoplay loop={true} renderer="svg" background="transparent" />
+					</div>
 				{/if}
 
 				<!-- Text -->
@@ -505,21 +533,26 @@
 <!-- WAITLIST START -->
 <section class="relative z-50 mt-12 flex h-[30rem] w-full flex-col items-center justify-center bg-neutral-950 pt-32 font-outfit -antialiased">
 	<div class="mx-auto max-w-2xl p-4">
-		<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-600 bg-clip-text text-center font-sans text-lg font-bold text-transparent md:text-7xl">Join the waitlist</h1>
-		<p class="relative z-10 mx-auto my-2 max-w-lg text-center text-sm text-neutral-500">
+		<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-center font-sans text-3xl font-bold text-transparent sm:to-neutral-600 sm:text-7xl">
+			Join the waitlist
+		</h1>
+		<p class="relative z-10 mx-auto my-2 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
 			Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
 		</p>
 		<div class="mt-8 flex items-center justify-center">
 			<input
 				type="text"
 				placeholder="hello@moon.com"
-				class="relative z-20 w-full rounded-l-lg border border-neutral-700 bg-neutral-950 p-2 text-white duration-300 ease-in-out placeholder:text-neutral-700 hover:z-50 focus:z-50 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+				class="relative z-20 w-full rounded-l-lg border border-neutral-700 bg-neutral-950 p-2 text-white duration-300 ease-in-out placeholder:text-neutral-400 hover:z-50 focus:z-50 focus:outline-none focus:ring-2 focus:ring-purple-500 sm:placeholder:text-neutral-700" />
 			<button
-				class="z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-neutral-700 p-2 text-neutral-500 transition duration-300 ease-in-out hover:z-50 hover:scale-110 hover:bg-purple-500 hover:text-white focus:z-50 focus:scale-105 focus:border-l focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:hover:bg-purple-500 dark:focus:border-purple-500 dark:focus:ring-2 dark:focus:ring-purple-500"
-				><ArrowRight /></button>
+				class="z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-neutral-700 p-2 text-neutral-500 transition duration-300 ease-in-out hover:z-50 hover:scale-110 hover:bg-purple-500 hover:text-white focus:z-50 focus:scale-105 focus:border-l focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:hover:bg-purple-500 dark:focus:border-purple-500 dark:focus:ring-2 dark:focus:ring-purple-500">
+				<ArrowRight />
+			</button>
 		</div>
 	</div>
+
 	<div class="mt-24"></div>
+
 	<footer class="z-50 w-full rounded-lg bg-white shadow dark:bg-neutral-950">
 		<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
 			<div class="sm:flex sm:items-center sm:justify-between">
