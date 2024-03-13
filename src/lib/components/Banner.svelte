@@ -27,7 +27,7 @@
 					<LottiePlayer class="" src="ai.json" autoplay loop={true} renderer="svg" background="transparent" />
 				</div>
 			{/if}
-			<p class="flex text-sm font-medium tracking-wide text-indigo-50 sm:text-lg">Whitelist Signups are now Live!</p>
+			<p class="flex text-sm font-medium tracking-wide text-white sm:text-lg">Whitelist Signups are now Live!</p>
 		</div>
 		<button class="absolute right-2 flex h-2 items-center text-indigo-200" on:click={close}>
 			<X height="12px" />
