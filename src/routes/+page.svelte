@@ -282,7 +282,7 @@
 		<div class="flex w-full flex-col items-center justify-center px-4 sm:px-0">
 			<!-- HERO TITLE -->
 			<div>
-				<h1 class="relative z-[31] text-center font-saira text-6xl font-black text-white md:text-7xl lg:text-9xl">0xArgus</h1>
+				<h1 class="relative z-[31] text-center font-saira text-6xl font-black text-neutral-50 md:text-7xl lg:text-9xl">0xArgus</h1>
 				<div class="relative z-30 h-20 w-[40rem]">
 					<div class="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm" />
 					<div class="absolute inset-x-20 top-0 h-px w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
@@ -293,7 +293,7 @@
 			<!-- HERO TITLE END -->
 
 			<!-- HERO TEXT -->
-			<div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="mb-24 text-center font-outfit text-4xl text-neutral-200 sm:mt-8">
+			<div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="mb-24 text-center font-outfit text-4xl text-white sm:mt-8">
 				Introducing RugPull Prevention Middleware for
 				<TypeWriter element="span" class="whitespace-nowrap" as="span" keepCursorOnFinish mode="loop" wordInterval={4000}>
 					<span class="font-semibold text-purple-500">Ethereum.</span>
