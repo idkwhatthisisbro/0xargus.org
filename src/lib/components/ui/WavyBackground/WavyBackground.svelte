@@ -61,11 +61,11 @@
 	onMount(() => {
 		ctx = canvasRef.getContext('2d');
 		resizeCanvas();
-		const debouncedResize = debounce(resizeCanvas, 200); // Debounce resize event
 		window.addEventListener('resize', resizeCanvas); // Use addEventListener for resize
 		const animate = () => {
 			render();
-			requestAnimationFrame(animate);
+
+			// requestAnimationFrame(animate);
 		};
 		animate(); // Initiate animation loop
 		return () => {

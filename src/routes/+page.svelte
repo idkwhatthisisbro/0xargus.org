@@ -33,6 +33,8 @@
 	// @ts-ignore
 	import { LottiePlayer } from '@lottiefiles/svelte-lottie-player';
 	import { browser } from '$app/environment';
+	import LampEffect from '$lib/components/ui/LampEffect/LampEffect.svelte';
+	import { Motion } from 'svelte-motion';
 
 	// import { Circle } from 'svelte-loading-spinners';
 
@@ -277,7 +279,7 @@
 	<!-- ANNOUNCEMENT BANNER & NAVBAR END -->
 
 	<div class="w-full max-w-7xl">
-		<div class="flex flex-col items-center justify-center px-4 sm:px-0">
+		<div class="flex w-full flex-col items-center justify-center px-4 sm:px-0">
 			<!-- HERO TITLE -->
 			<div>
 				<h1 class="relative z-[31] text-center font-saira text-6xl font-black text-white md:text-7xl lg:text-9xl">0xArgus</h1>
@@ -302,7 +304,7 @@
 			<!-- HERO TEXT END -->
 
 			<!-- WHITELIST BUTTON -->
-			<form method="POST" use:enhance class="relative z-50 flex w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-lg sm:w-[640px] sm:px-4">
+			<form method="POST" use:enhance class="relative z-50 flex h-16 w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px] sm:px-4">
 				<input
 					class={cn(
 						// Global
@@ -314,7 +316,7 @@
 						// Animations
 						'',
 						// Focus/Hover
-						'focus:outline-none focus:outline-purple-500 focus:ring focus:ring-purple-500'
+						'focus:outline-none focus:outline-indigo-500 focus:ring focus:ring-indigo-500'
 					)}
 					placeholder="hello@moon.com"
 					type="email"
@@ -322,43 +324,43 @@
 					aria-invalid={$errors.email ? 'true' : undefined}
 					bind:value={$form.email}
 					{...$constraints.email} />
+				<!-- Disabled when loading -->
 				<button
 					class={cn(
 						// Global
-						'flex items-center justify-center border-white bg-transparent text-white shadow-xl dark:border-neutral-400 dark:text-white',
+						'shadow-3xl absolute inset-y-0 right-0 flex items-center justify-center border-white bg-transparent bg-gradient-to-tr from-neutral-600 via-neutral-700 to-neutral-900 text-white dark:border-neutral-400  dark:text-white',
 						// Desktop
-						'group transform font-bold tracking-wide sm:h-full sm:w-auto sm:space-x-2 sm:rounded-full sm:px-6 sm:py-2',
+						'-sm:rounded-l-none group transform font-bold tracking-wide sm:m-0 sm:h-full sm:w-auto sm:space-x-2 sm:rounded-3xl sm:border-0 sm:px-6 sm:py-2',
 						// Mobile
-						'h-12 w-12 rounded-full border-2 p-1',
+						'my-auto mr-4 h-12  w-12 rounded-full border-2 p-1',
 						// Animations
 						'transition duration-300 ease-in-out',
 						// Focus/Hover
-						'hover:scale-105 hover:border-indigo-400 hover:bg-indigo-600 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500'
+						'hover:scale-105 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500'
 					)}>
+					<!-- Desktop -->
+					<p class="hidden tracking-widest sm:block">JOIN THE WHITELIST</p>
 					{#if $delayed}
 						<!-- <Circle color="white" /> -->
-						<p>run</p>
 					{:else}
-						<!-- Desktop -->
-						<p class="hidden sm:block">JOIN THE WHITELIST</p>
-						<div class="hidden rounded-full bg-neutral-700 p-2 text-xs shadow-lg group-hover:bg-indigo-700 sm:block">
+						<div class="hidden rounded-full bg-neutral-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-neutral-600 sm:block">
 							<MailPlus class="m-auto h-4 w-4 rounded-full text-xs" />
 						</div>
 
 						<!-- Mobile -->
-						<ChevronRight class="h-8 w-8 text-neutral-300 sm:hidden" />
+						<ChevronRight class="h-5 w-5 text-neutral-300 sm:hidden" />
 					{/if}
 				</button>
 			</form>
 			{#if $message}
 				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
-					<Clock class="purple-500" /> Submittion Complete
+					<Clock class="purple-500" /> Submittion Completed
 				</p>
 			{:else if $errors.email}
 				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-red-500"><AlertCircle /> {$errors.email.join('/n')}</p>
 			{:else}
-				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
-					<Clock class="purple-500" /> 1300/1500 eligible genesis founder slots remaining.
+				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-sm font-medium tracking-wide text-neutral-600">
+					<Clock class=" w-5 text-xs" /> 1300/1500 eligible genesis founder slots remaining.
 				</p>
 			{/if}
 			<!-- WHITELIST BUTTON END -->
@@ -482,9 +484,23 @@
 </GridAndDotBackgroundsSmallGrid>
 <!-- Product Summary + Features End -->
 <Section class="relative pb-0">
-	<div class="absolute -top-64 z-50">
+	<!-- <div class="absolute -top-64 z-50">
 		<img alt="gradient" src="/blur.png" />
-	</div>
+	</div> -->
+
+	<!-- <LampEffect>
+		<Motion
+			let:motion
+			initial={{ opacity: 0.5, y: 100 }}
+			transition={{
+				delay: 0.3,
+				duration: 0.8,
+				ease: 'easeInOut'
+			}}>
+			<div class="-mt-64" use:motion>
+			</div>
+		</Motion>
+	</LampEffect> -->
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
 </Section>
 

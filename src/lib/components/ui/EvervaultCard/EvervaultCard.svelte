@@ -11,7 +11,7 @@
 
 		const cont = setInterval(() => {
 			randomString = generateRandomString(3000);
-		}, 30000);
+		}, 100);
 
 		return () => clearInterval(cont);
 	});

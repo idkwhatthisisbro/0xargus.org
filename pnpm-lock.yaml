@@ -35,6 +35,9 @@ dependencies:
   simplex-noise:
     specifier: ^4.0.1
     version: 4.0.1
+  svelte-inview:
+    specifier: ^4.0.2
+    version: 4.0.2(svelte@4.2.12)
   svelte-motion:
     specifier: ^0.12.2
     version: 0.12.2(svelte@4.2.12)
@@ -3240,6 +3243,14 @@ packages:
     dependencies:
       svelte: 4.2.12
     dev: true
+
+  /svelte-inview@4.0.2(svelte@4.2.12):
+    resolution: {integrity: sha512-saJp2QRCUEBletGPnI3utxROHqruDGRPfPhtdpNYQwD97P2oCKiVIlZE3tFNEiC7h3nCvU+8czaKWcH1o/axrA==}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0
+    dependencies:
+      svelte: 4.2.12
+    dev: false
 
   /svelte-loading-spinners@0.3.4:
     resolution: {integrity: sha512-vKaW71QMCBcTNijAGc0mUl8k3DQ66iYmp6MB8BMGCXyWk82bTrcLy8FOnSm9fE+8q6TwzD6PLUoYFHt0II93Xw==}
