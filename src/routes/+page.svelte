@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Banner from '$lib/components/Banner.svelte';
-	import { AlertCircle, AlertTriangle, ArrowLeft, ArrowRight, Boxes, ChevronRight, ChevronRightCircle, Clock, Mail, MailCheck, MailIcon, MailPlus, MailX, NotebookIcon, Star } from 'lucide-svelte';
+	import { AlertCircle, ArrowRight, Boxes, ChevronRight, Clock, MailPlus } from 'lucide-svelte';
 	import TypeWriter from 'svelte-typewriter';
 	import WavyBackground from '$lib/components/ui/WavyBackground/WavyBackground.svelte';
 	import GridAndDotBackgroundsSmallGrid from '$lib/components/ui/GridAndDotBackgrounds/GridAndDotBackgroundsSmallGrid.svelte';
 	import { SvelteComponent } from 'svelte';
 	import Icon_1inch from '$lib/icons/1inch.svelte';
+	// @ts-ignore
 	import Icon_metamask from '$lib/icons/metamask.svelte';
 	import Icon_uniswap from '$lib/icons/uniswap.svelte';
 	import Icon_safepal from '$lib/icons/safepal.svelte';
@@ -33,8 +34,6 @@
 	// @ts-ignore
 	import { LottiePlayer } from '@lottiefiles/svelte-lottie-player';
 	import { browser } from '$app/environment';
-	import LampEffect from '$lib/components/ui/LampEffect/LampEffect.svelte';
-	import { Motion } from 'svelte-motion';
 
 	// import { Circle } from 'svelte-loading-spinners';
 
@@ -113,38 +112,28 @@
 	];
 
 	// We are using writables for the nodes and edges to sync them easily. When a user drags a node for example, Svelte Flow updates its position.
-	const nodes = writable<Node[]>([
+	let nodes = writable<Node[]>([
 		{
 			id: '1',
 			type: 'input',
 			data: { label: 'User subscribes contract via 0xArgus extension or Dapp' },
 			position: { x: 0, y: 0 },
 
-			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
+			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
 			// @ts-ignore
 			sourcePosition: 'bottom',
 			// @ts-ignore
 			targetPosition: 'top'
 		},
-		// {
-		// 	id: '2',
-		// 	type: 'default',
-		// 	data: { label: 'Perm2 Stores Approval' },
-		// 	position: { x: 150, y: 0 }
-		// },
-		// {
-		// 	id: '3',
-		// 	type: 'default',
-		// 	data: { label: 'Argus Sentinel Monitors Transactions' },
-		// 	position: { y: 0, x: 175 }
-		// },
+
 		{
 			id: 'A',
 			type: 'default',
 			data: { label: 'ArgusAI Scans for Fraudulent Activities' },
-			style: 'background-color: {blue};',
-			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center',
+			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
 			position: { x: 0, y: 175 },
 			// @ts-ignore
 			sourcePosition: 'bottom',
@@ -156,19 +145,25 @@
 			id: 'A-1',
 			data: { label: 'Front-Run Transaction - Returning the funds back to your wallet' },
 
-			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			position: { x: -200, y: 250 },
 			parentNode: 'A',
-			extent: 'parent'
+			extent: 'parent',
+			// @ts-ignore
+			sourcePosition: 'top'
 		},
 		{
 			id: 'A-2',
 			expandParent: false,
-			class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
 			data: { label: 'Continue Monitoring' },
 			position: { x: 200, y: 250 },
 			parentNode: 'A',
-			extent: 'parent'
+			extent: 'parent',
+
+			// @ts-ignore
+			sourcePosition: 'top'
 		}
 	]);
 
@@ -179,8 +174,10 @@
 			type: 'default',
 			source: '1',
 			target: 'A',
+			labelStyle: 'stroke: {blue};',
 			animated: true,
 			label: 'Perm2 Stored Approval'
+			// class: 'rounded-xl bg-blue-500 '
 		},
 
 		{
@@ -328,7 +325,7 @@
 				<button
 					class={cn(
 						// Global
-						'shadow-3xl absolute inset-y-0 right-0 flex items-center justify-center border-white bg-transparent bg-gradient-to-tr from-neutral-600 via-neutral-700 to-neutral-900 text-white dark:border-neutral-400  dark:text-white',
+						'absolute inset-y-0 right-0 flex items-center justify-center border-white bg-transparent bg-gradient-to-tr from-neutral-700 via-neutral-800 to-neutral-900 text-white shadow-2xl dark:border-neutral-400  dark:text-white',
 						// Desktop
 						'-sm:rounded-l-none group transform font-bold tracking-wide sm:m-0 sm:h-full sm:w-auto sm:space-x-2 sm:rounded-3xl sm:border-0 sm:px-6 sm:py-2',
 						// Mobile
@@ -459,7 +456,7 @@
 										viewBox="0 0 24 24"
 										stroke-width="1.5"
 										stroke="currentColor"
-										class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:-rotate-90"
+										class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:translate-x-0.5"
 										aria-hidden="true">
 										<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
 									</svg>
@@ -470,7 +467,7 @@
 									viewBox="0 0 24 24"
 									stroke-width="1.5"
 									stroke="currentColor"
-									class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:-rotate-90">
+									class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:translate-x-0.5">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
 								</svg>
 							</div>
@@ -488,49 +485,47 @@
 		<img alt="gradient" src="/blur.png" />
 	</div> -->
 
-	<!-- <LampEffect>
-		<Motion
-			let:motion
-			initial={{ opacity: 0.5, y: 100 }}
-			transition={{
-				delay: 0.3,
-				duration: 0.8,
-				ease: 'easeInOut'
-			}}>
-			<div class="-mt-64" use:motion>
-			</div>
-		</Motion>
-	</LampEffect> -->
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
+	<div class="relative flex h-[700px] w-full items-center justify-center overflow-hidden sm:hidden">
+		<SvelteFlow class="" attributionPosition="bottom-right" {nodes} fitView fitViewOptions={{ duration: 2 }} {edges} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
+			<Background patternColor="#0a0a0a" bgColor="#0a0a0a" />
+		</SvelteFlow>
+
+		<!-- Hide Attribution -->
+		<div class="absolute bottom-0 right-0 h-12 w-20 bg-neutral-950" />
+		<!-- Overlay to prevent moving -->
+		<div class="absolute inset-0" />
+	</div>
+	<div class={'svelte-flow-container relative hidden w-full items-center justify-center overflow-hidden sm:flex sm:h-[1000px]'}>
+		<SvelteFlow class="" attributionPosition="bottom-right" {nodes} fitView fitViewOptions={{ duration: 2 }} {edges} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
+			<Background patternColor="#0a0a0a" bgColor="#0a0a0a" />
+		</SvelteFlow>
+
+		<!-- Hide Attribution -->
+		<div class="absolute bottom-0 right-0 h-12 w-20 bg-neutral-950" />
+		<!-- Overlay to prevent moving -->
+		<div class="absolute inset-0" />
+	</div>
 </Section>
 
-<div class="relative flex h-[1000px] items-center justify-center">
-	<SvelteFlow class="" attributionPosition="bottom-right" {nodes} {edges} {snapGrid} fitView nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
-		<Background patternColor="#0a0a0a" bgColor="#0a0a0a" />
-	</SvelteFlow>
-
-	<!-- Hide Attribution -->
-	<div class="absolute bottom-0 right-0 h-12 w-20 bg-neutral-950" />
-	<!-- Overlay to prevent moving -->
-	<div class="absolute inset-0" />
-</div>
-
 <Section>
-	<div class="flex flex-col flex-wrap items-center justify-center text-white child:p-4 sm:child:flex-1 sm:odd:child:flex-row-reverse">
+	<div class="flex flex-col flex-wrap items-center justify-center text-white sm:mt-48 sm:odd:child:flex-row-reverse">
 		{#each howItWorkCards as card}
 			<!-- Card -->
 			<div
 				class={cn(
-					'-border-2  -shadow-2xl mt-12 flex w-full flex-col items-center gap-12 rounded-3xl sm:w-auto sm:flex-row sm:p-24 dark:border-white/[0.2]',
-					'relative flex max-h-[600px] w-full flex-col overflow-hidden rounded-xl border border-[#d33df529] bg-neutral-900/50 py-4 pl-5 pr-5 pt-4 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] md:rounded-3xl md:pl-10 md:pt-10'
+					'mt-12 flex w-full flex-col items-center gap-12 rounded-3xl border-2 shadow-2xl sm:w-auto sm:flex-row sm:p-24 dark:border-white/[0.2]',
+					'relative flex max-h-[800px] w-full flex-col overflow-hidden rounded-xl border border-[#d33df529] bg-neutral-900/50 p-4 py-12 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] md:rounded-3xl md:p-10'
 				)}>
 				<div class="absolute -right-[20rem] -top-[20rem] left-auto z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl" />
 				<!-- Image -->
 				{#if card.img}
-					<img alt="s" src={card.img} class="h-full max-w-96 rounded-xl shadow-2xl" />
+					<div class="h-96 w-96">
+						<img alt="s" src={card.img} class="w- h-full rounded-xl shadow-2xl" />
+					</div>
 				{:else if browser}
-					<div class="h-full max-w-96 rounded-xl shadow-2xl">
-						<LottiePlayer class="" src="ai.json" autoplay loop={true} renderer="svg" background="transparent" />
+					<div class="h-96 w-96 rounded-xl shadow-2xl">
+						<LottiePlayer src="ai.json" autoplay loop={true} renderer="svg" background="transparent" />
 					</div>
 				{/if}
 
