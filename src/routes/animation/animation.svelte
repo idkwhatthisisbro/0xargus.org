@@ -1,51 +1,50 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
-	import { fly, slide } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
+	import { tweened } from 'svelte/motion';
+	import { backOut } from 'svelte/easing';
 
 	const words = ['Ethereum', 'Solana', 'Arbitrum'];
-	let currentWord = 0;
+	let currentIndex = 0;
 
-	let visible = true;
-	let transitioning = false;
+	let width = 0;
 
-	const switchWord = () => {
-		if (transitioning) return;
-		
-		transitioning = true;
-		visible = false;
+	let tweenedWidth = tweened(0, {
+		duration: 500,
+		easing: backOut
+	});
 
-		setTimeout(() => {
-			transitioning = true;
-			visible = true;
-			transitioning = false;
-			currentWord = (currentWord + 1) % words.length; 
-		}, 2000);
-		
-			currentWord = (currentWord + 1) % words.length; 
-	};
-	
-	const interval = setInterval(switchWord, 4000);
+	$: tweenedWidth.set(width);
+
+	const interval = setInterval(() => currentIndex = (currentIndex + 1) % words.length, 1000);
+
 	onDestroy(() => clearInterval(interval));
 </script>
 
 <div class="h-96 bg-black py-20">
-	<div class="mx-auto max-w-4xl text-start">̊
-		<h1 class="flex bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200 bg-clip-text text-3xl text-transparent sm:ml-12 font-outfit">
-			Introducing RugPull Prevention Middleware for
+	<div class="mx-auto max-w-4xl text-start">
+		<div class="flex gap-[5px] text-white">
+			<h1 class="relative flex gap-[5px] bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200 bg-clip-text font-outfit text-3xl text-transparent sm:ml-12">
+				Let your website
 
-			<div class="relative ml-2 mr-1 inline-flex whitespace-nowrap font-semibold">
-				<span class="opacity-0">{words[currentWord]}</span>
-				{#if visible}
-					<div in:fly={{ y: '100%', duration: 500 }} out:fly={{ y: '-50%', duration: 500 }} class="absolute {currentWord === 0 && 'text-purple-500'} {currentWord === 1 && 'text-indigo-500'} {currentWord === 2 && 'text-blue-500'}">
-						{words[currentWord]}
-					</div>
-				{:else}
-					<div in:fly={{ y: '100%', duration: 500 }} out:fly={{ y: '-50%', duration: 500 }} class="absolute {currentWord === 0 && 'text-purple-500'} {currentWord === 1 && 'text-indigo-500'} {currentWord === 2 && 'text-blue-500'}">
-						{words[currentWord]}
-					</div>
-				{/if}
-			</div>
-			.
-		</h1>
+				<div class="relative">
+					{#key currentIndex}
+						<div
+							in:fly={{ y: 20, duration: 500 }}
+							out:fly={{ y: -20, duration: 500 }}
+							bind:clientWidth={width}
+							class="absolute"
+							class:text-purple-500={words[currentIndex] === 'Ethereum'}
+							class:text-indigo-500={words[currentIndex] === 'Solana'}
+							class:text-blue-500={words[currentIndex] === 'Arbitrum'}>
+							{words[currentIndex]}
+						</div>
+					{/key}
+					<div style:width="{$tweenedWidth}px" />
+				</div>
+
+				itself.
+			</h1>
+		</div>
 	</div>
 </div>
