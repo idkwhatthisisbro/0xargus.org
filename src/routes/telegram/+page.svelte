@@ -1,50 +1,76 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
-	import { fly } from 'svelte/transition';
+	import { browser } from '$app/environment';
+	import Popup from '$lib/components/Popup.svelte';
+	import { whitelistSchema } from '$lib/schema';
+	import { getContext, onMount } from 'svelte';
+	import { superForm } from 'sveltekit-superforms';
+	import { zod } from 'sveltekit-superforms/adapters';
 
-	const words = ['grow', 'perfect', 'improve'];
-	let currentWord = 0;
-	let visible = false;
+	// @ts-ignore
+	import { LottiePlayer } from '@lottiefiles/svelte-lottie-player';
 
-	const switchWord = () => {
-		currentWord = (currentWord + 1) % words.length;
-		visible = true;
-		setTimeout(() => {
-			visible = false;
-		}, 1000); // Adjust the duration as needed
+	let userId: number | undefined;
+	let sendData: Telegram['WebApp']['sendData'] | undefined;
+
+	onMount(() => {
+		console.log(window.Telegram.WebApp.initDataUnsafe.user?.id);
+		userId = window.Telegram.WebApp.initDataUnsafe.user?.id;
+		sendData = window.Telegram.WebApp.sendData;
+	});
+	const handleSubmit = () => {
+		step = 2;
+
+		isVerified();
 	};
 
-	const interval = setInterval(switchWord, 3000); // Adjust the interval duration as needed
+	// TODO: Poll DB for verification result
+	const isVerified = () => {
+		// Lets Telegram Know to close the browser
+		sendData && sendData('1');
+	};
 
-	onDestroy(() => {
-		clearInterval(interval);
-	});
+	const { form, errors, constraints, delayed, message } = superForm(
+		{},
+		{
+			validators: zod(whitelistSchema),
+			id: 'whitelist-telegram',
+			onSubmit: ({}) => handleSubmit
+		}
+	);
+
+	let step: 1 | 2 | 3 = 1;
 </script>
 
-<div class="flex h-96 items-center justify-center bg-black">
-	<h1 class="h1 aos-init aos-animate ml-0 flex bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 bg-clip-text pb-4 text-transparent sm:ml-12" data-aos="fade-down">
-		Let your website
-		<div class="relative mx-2.5 inline-flex whitespace-nowrap text-white">
-			{#if visible}
-				<div class="fade-up" in:fly={{ y: '100%', duration: 500 }} out:fly={{ y: '-100%', duration: 500 }}>
-					{words[currentWord]}
-				</div>
-				<div class="fade-up absolute" in:fly={{ y: '100%', duration: 500 }} out:fly={{ y: '-100%', duration: 500 }}>
-					{words[(currentWord + 1) % words.length]}
-				</div>
-			{/if}
-		</div>
-		itself
-	</h1>
+<svelte:head>
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</svelte:head>
+
+<div class="flex h-screen flex-col items-center gap-4 overflow-hidden bg-neutral-950 px-12 py-8 font-outfit text-neutral-100">
+	{#if browser}
+		{#if step === 1}
+			<form method="POST">
+				<input type="text" placeholder="email" class="rounded-sm px-2 py-1" />
+				<button></button>
+				{#if userId}
+					<input type="hidden" name="tgId" value={userId} />
+				{/if}
+			</form>
+		{/if}
+
+		{#if step === 2}
+			<div class="w-32 rounded-lg">
+				<LottiePlayer src="mail2.json" autoplay loop={true} renderer="svg" background="transparent" />
+			</div>
+			<p class="text-center text-3xl font-bold text-neutral-50">You're Almost There!</p>
+			<p>Please verify your email to continue.</p>
+		{/if}
+
+		{#if step === 3}
+			<div class="w-32 rounded-lg">
+				<LottiePlayer src="mail2.json" autoplay loop={true} renderer="svg" background="transparent" />
+			</div>
+			<p class="text-center text-3xl font-bold text-neutral-50">Your in TG_FIRST_NAME!</p>
+			<p>If selected to participate the presale, you'll be notified via email.</p>
+		{/if}
+	{/if}
 </div>
-
-<!-- <div style="opacity: 1; transform: translateY(0%);">perfect</div>
-			<div style="opacity: 1; transform: translateY(0%);">improve</div> -->
-
-<style>
-	.fly-up {
-		transition:
-			transform 0.5s ease,
-			opacity 0.5s ease;
-	}
-</style>
