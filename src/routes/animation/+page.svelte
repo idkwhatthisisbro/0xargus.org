@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { tweened } from 'svelte/motion';
 	import { backOut } from 'svelte/easing';
