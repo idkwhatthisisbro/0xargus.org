@@ -295,8 +295,8 @@
 <!-- HERO -->
 
 <MetaTags
-	title="Home"
-	titleTemplate="%s | 0xArgus"
+	title="WhiteList Now Open"
+	titleTemplate="0xArgus - %s"
 	description="0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum."
 	canonical="https://0xargus.org"
 	openGraph={{
