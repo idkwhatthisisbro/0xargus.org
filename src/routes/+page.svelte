@@ -307,7 +307,7 @@
 			{
 				url: 'https://0xargus.org/Banner.png',
 				width: 840,
-				height: 470,
+				height: 469,
 				alt: 'Og Image Alt'
 			}
 		],
