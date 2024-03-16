@@ -510,7 +510,7 @@
 			<div
 				class={cn(
 					'mt-12 flex w-full flex-col items-center rounded-3xl border-2 shadow-2xl sm:w-auto sm:flex-row sm:p-24 dark:border-white/[0.2]',
-					'relative flex max-h-[800px] w-full flex-col overflow-hidden rounded-xl border border-[#d33df529] bg-neutral-900/50 p-4 py-12 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] md:rounded-3xl md:p-10'
+					'relative flex max-h-[800px] w-full flex-col gap-y-12 overflow-hidden rounded-xl border border-[#d33df529] bg-neutral-900/50 p-4 py-12 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:gap-x-12 sm:gap-y-0 md:rounded-3xl md:p-10'
 				)}>
 				<div class="absolute -right-[20rem] -top-[20rem] left-auto z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl" />
 				<!-- Image -->
@@ -519,7 +519,7 @@
 						<img alt="s" src={card.img} class="w- h-full rounded-xl shadow-2xl" />
 					</div>
 				{:else if browser}
-					<div class="h-96 w-96 rounded-xl shadow-2xl">
+					<div class="h-96 w-96 rounded-xl drop-shadow-2xl">
 						<LottiePlayer src="ai.json" autoplay loop={true} renderer="svg" background="transparent" />
 					</div>
 				{/if}
