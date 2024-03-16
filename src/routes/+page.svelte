@@ -305,7 +305,7 @@
 		description: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
 		images: [
 			{
-				url: 'https://0xargus.org/banner.png',
+				url: 'https://0xargus.org/Banner.png',
 				width: 840,
 				height: 470,
 				alt: 'Og Image Alt'
@@ -319,7 +319,7 @@
 		cardType: 'summary_large_image',
 		title: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
 		description: '',
-		image: 'https://0xargus.org/banner.png',
+		image: 'https://0xargus.org/Banner.png',
 		imageAlt: 'Twitter image alt'
 	}}
 	facebook={{
