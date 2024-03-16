@@ -1,67 +1,71 @@
 <script lang="ts">
-<<<<<<< HEAD
-   import { supabase, signUp } from "$lib/supabase/supabase";
+	import { cn } from '$lib/utils/cn';
+	import { supabase, findUserByEmail, signUp } from '$lib/supabase/supabase';
+	import { writable } from 'svelte/store';
 
+	const emailAddress = 'w.ix.sto.c.le@googlemail.com';
 
-   signUp('joneltmp+qruco@gmail.com').then(async (res) => {
-      const { data, error } = res;
+	let ui = writable<{ id: string | null; email: string | null; email_confirmed_at: string | null }>({ id: null, email: null, email_confirmed_at: null });
 
-      if (error) {
-         console.error(error);
-      } else {
-         console.log(data);
-      }
-   });
+	const testing = async (email: string) => {
+		let publicUsers = await findUserByEmail(emailAddress);
 
-// register - send email confirmation
+		// if user is not found, sign them up
+		if (publicUsers.length === 0) {
+			const authUser = await signUp(emailAddress);
+			if (!authUser) return;
 
-// if user already signed up but didn't confirm, email confirmation is resent (default behaviour)
+			$ui.id = authUser.id;
+			$ui.email = authUser.email;
+		}
+		// if user is found
+		if (publicUsers.length === 1) {
+			$ui.id = publicUsers[0].id;
+			$ui.email = publicUsers[0].email;
 
-// if user already signed up and confirmed, modal status changes to "confirmed"
+			// if user has confirmed email
+			if (publicUsers[0].email_confirmed_at) {
+				$ui.email_confirmed_at = publicUsers[0].email_confirmed_at;
+			}
+			// if user has not yet confirmed email
+			if (publicUsers[0].email_confirmed_at === null) {
+				// resend confirmation email and prompt user to check email
+				const authUser = await signUp(emailAddress);
+			}
+		}
+	};
+
+	const channel = supabase
+		.channel('schema-db-changes')
+		.on(
+			'postgres_changes',
+			{
+				event: 'UPDATE',
+				schema: 'public'
+			},
+			(payload) => {
+				if (payload.new.id === $ui.id) {
+					$ui.email_confirmed_at = payload.new.email_confirmed_at;
+				}
+			}
+		)
+		.subscribe();
 </script>
 
-=======
-	import { supabase, signUp } from '$lib/supabase/supabase';
+<div class="flex flex-col items-center justify-center gap-10 py-20">
+	<button on:click={() => testing(emailAddress)} class="rouned-md border-2 border-white px-2 py-1 text-white">REGISTER</button>
 
-	const email = 'jocktmp+vlqrf@gmail.com';
-   // signUp(email)
-
-	async function findUserByEmail(email: string) {
-		try {
-			const { data, error } = await supabase
-            .from('users')
-            .select('*')
-            .eq('email', email)
-            .select('*')
-
-			if (error) throw error;
-
-			return data;
-		} catch (error) {
-			console.error('Error finding user by email:', error.message);
-			throw error;
-		}
-	}
-
-	async function userExists(email: string) {
-		try {
-			const { data, error } = await supabase
-            .from('users')
-            .select('count(*)', { count: 'exact' })
-            .eq('email', email);
-
-			if (error) throw error;
-
-			return data && data.length > 0
-		} catch (error) {
-			console.error('Error checking if user exists:', error.message);
-			throw error;
-		}
-	}
-
-	userExists(email).then((data) => {
-		console.log(data);
-	});
-
-</script>
->>>>>>> ed0a20cbbd33bbcc18a048621dde15fd00f0ea7c
+	{#if $ui.id}
+		<div class="flex flex-col gap-5 text-lg text-white">
+			<span>
+				ID: {$ui.email}
+			</span>
+			<span>
+				EMAIL: {$ui.id}
+			</span>
+			<span>
+				EMAIL_CONFIRMED_AT: {$ui.email_confirmed_at}
+			</span>
+		</div>
+	{/if}
+</div>
