@@ -8,7 +8,7 @@
 </script>
 
 <Modal {styleWindow} {styleCloseButton} classWindow="p-2 bg-neutral-950 rounded-3xl">
-	<div class="relative bg-neutral-950 font-outfit">
+	<div class="relative overflow-hidden bg-neutral-950 font-outfit">
 		<slot />
 	</div>
 </Modal>
