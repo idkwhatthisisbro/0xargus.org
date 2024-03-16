@@ -40,8 +40,8 @@
 
 <svelte:window />
 
-<div class="relative mx-auto mt-20 hidden h-full w-full max-w-7xl sm:block">
-	<div class=" absolute -right-32 top-3 mt-64">
+<div class="relative mx-auto mt-20 h-full w-full max-w-7xl">
+	<div class=" absolute -right-32 top-3 mt-64 hidden sm:block">
 		<div
 			class="ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border border-neutral-200 shadow-sm"
 			style="box-shadow: {scrollYProgress > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
