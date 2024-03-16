@@ -285,10 +285,10 @@
 			<!-- HERO TITLE END -->
 
 			<!-- HERO TEXT -->
-			<div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="mb-24 text-center font-outfit text-4xl text-white sm:mt-8">
+			<div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="relative mb-24 text-center font-outfit text-4xl text-white sm:mt-8">
 				Introducing RugPull Prevention Middleware for
-				<div class="overflow-hidden">
-					<TypeWriter element="span" class="whitespace-nowrap" cursor={false} as="span" mode="loop" wordInterval={4000}>
+				<div class="hidden">
+					<TypeWriter element="span" class="absolute inset-0 whitespace-nowrap" cursor={false} as="span" mode="loop" wordInterval={4000}>
 						<span class="inline-block font-semibold text-purple-500">Ethereum.</span>
 						<span class="inline-block font-semibold text-indigo-500">Solana.</span>
 						<span class="inline-block font-semibold text-blue-500">Arbitrum.</span>
