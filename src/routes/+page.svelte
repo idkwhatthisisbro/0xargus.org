@@ -298,26 +298,18 @@
 	title="Home"
 	titleTemplate="%s | 0xArgus"
 	description="0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum."
-	canonical="0xargus.org"
+	canonical="https://0xargus.org"
 	openGraph={{
 		url: 'https://www.0xargus.org',
 		title: '0xArgus',
 		description: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
 		images: [
 			{
-				url: 'https://0xargus.org/logo-rounded.svg',
-				width: 800,
-				height: 600,
+				url: 'https://0xargus.org/banner.png',
+				width: 840,
+				height: 470,
 				alt: 'Og Image Alt'
-			},
-			{
-				url: 'https://0xargus.org/logo-rounded.svg',
-				width: 900,
-				height: 800,
-				alt: 'Og Image Alt Second'
-			},
-			{ url: 'https://0xargus.org/logo-rounded.svg' },
-			{ url: 'https://0xargus.org/logo-rounded.svg' }
+			}
 		],
 		siteName: '0xArgus'
 	}}
@@ -327,7 +319,7 @@
 		cardType: 'summary_large_image',
 		title: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
 		description: '',
-		image: 'https://www.example.ie/twitter-image.jpg',
+		image: 'https://0xargus.org/banner.png',
 		imageAlt: 'Twitter image alt'
 	}}
 	facebook={{
