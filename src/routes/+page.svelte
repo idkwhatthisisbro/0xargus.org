@@ -515,11 +515,11 @@
 				<div class="absolute -right-[20rem] -top-[20rem] left-auto z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl" />
 				<!-- Image -->
 				{#if card.img}
-					<div class="h-96 w-96">
+					<div class="h-96 max-w-96">
 						<img alt="s" src={card.img} class="w- h-full rounded-xl shadow-2xl" />
 					</div>
 				{:else if browser}
-					<div class="h-96 w-96 rounded-xl drop-shadow-2xl">
+					<div class="h-96 max-w-96 rounded-xl drop-shadow-2xl">
 						<LottiePlayer src="ai.json" autoplay loop={true} renderer="svg" background="transparent" />
 					</div>
 				{/if}
