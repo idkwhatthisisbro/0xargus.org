@@ -287,11 +287,13 @@
 			<!-- HERO TEXT -->
 			<div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="mb-24 text-center font-outfit text-4xl text-white sm:mt-8">
 				Introducing RugPull Prevention Middleware for
-				<TypeWriter element="span" class="whitespace-nowrap" as="span" mode="loop" wordInterval={4000}>
-					<span class="font-semibold text-purple-500">Ethereum.</span>
-					<span class="font-semibold text-indigo-500">Solana.</span>
-					<span class="font-semibold text-blue-500">Arbitrum.</span>
-				</TypeWriter>
+				<div class="overflow-hidden">
+					<TypeWriter element="span" class="whitespace-nowrap" cursor={false} as="span" mode="loop" wordInterval={4000}>
+						<span class="inline-block font-semibold text-purple-500">Ethereum.</span>
+						<span class="inline-block font-semibold text-indigo-500">Solana.</span>
+						<span class="inline-block font-semibold text-blue-500">Arbitrum.</span>
+					</TypeWriter>
+				</div>
 			</div>
 			<!-- HERO TEXT END -->
 
@@ -509,17 +511,18 @@
 			<!-- Card -->
 			<div
 				class={cn(
-					'mt-12 flex w-full flex-col items-center rounded-3xl border-2 shadow-2xl sm:w-auto sm:flex-row sm:p-24 dark:border-white/[0.2]',
+					'mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-2 shadow-2xl sm:w-auto sm:flex-row sm:p-24 dark:border-white/[0.2]',
 					'relative flex max-h-[800px] w-full flex-col gap-y-12 overflow-hidden rounded-xl border border-[#d33df529] bg-neutral-900/50 p-4 py-12 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:gap-x-12 sm:gap-y-0 md:rounded-3xl md:p-10'
 				)}>
-				<div class="absolute -right-[20rem] -top-[20rem] left-auto z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl" />
+				<!-- BG Blur -->
+				<div class="absolute -bottom-[20rem] -right-[20rem] left-auto z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl sm:-top-[20rem]" />
 				<!-- Image -->
 				{#if card.img}
-					<div class="h-96 max-w-96">
+					<div class="-m-4 -mt-12 h-96 max-w-96 sm:m-0">
 						<img alt="s" src={card.img} class="w- h-full rounded-xl shadow-2xl" />
 					</div>
 				{:else if browser}
-					<div class="h-96 max-w-96 rounded-xl drop-shadow-2xl">
+					<div class="sm-0 -mx-4 -mt-12 h-96 max-w-96 rounded-xl drop-shadow-2xl sm:m-0">
 						<LottiePlayer src="ai.json" autoplay loop={true} renderer="svg" background="transparent" />
 					</div>
 				{/if}
