@@ -92,13 +92,8 @@
 			lottie: 'ai.json'
 		}
 	];
-
 	const featureCards = [
-		{
-			circle: 'No',
-			desc: 'Argus sees the drain before it happens – safeguarding your tokens from vanishing liquidity.',
-			tag: 'Liquidity Pulls'
-		},
+		{ circle: 'No', desc: 'Argus sees the drain before it happens – safeguarding your tokens from vanishing liquidity.', tag: 'Liquidity Pulls' },
 		{
 			circle: 'More',
 			desc: "Don't let hidden changes erode your investment. Argus shields your tokens from malicious modifications.",
@@ -292,7 +287,7 @@
 			<!-- HERO TEXT -->
 			<div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="mb-24 text-center font-outfit text-4xl text-white sm:mt-8">
 				Introducing RugPull Prevention Middleware for
-				<TypeWriter element="span" class="whitespace-nowrap" as="span" keepCursorOnFinish mode="loop" wordInterval={4000}>
+				<TypeWriter element="span" class="whitespace-nowrap" as="span" mode="loop" wordInterval={4000}>
 					<span class="font-semibold text-purple-500">Ethereum.</span>
 					<span class="font-semibold text-indigo-500">Solana.</span>
 					<span class="font-semibold text-blue-500">Arbitrum.</span>
