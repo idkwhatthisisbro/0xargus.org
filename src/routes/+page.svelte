@@ -161,9 +161,93 @@
 			sourcePosition: 'top'
 		}
 	]);
+	let nodesMobile = writable<Node[]>([
+		{
+			id: '1',
+			type: 'input',
+			data: { label: 'User subscribes contract via 0xArgus extension or Dapp' },
+			position: { x: 0, y: 0 },
+
+			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			// @ts-ignore
+			sourcePosition: 'bottom',
+			// @ts-ignore
+			targetPosition: 'top'
+		},
+
+		{
+			id: 'A',
+			type: 'default',
+			data: { label: 'ArgusAI Scans for Fraudulent Activities' },
+			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
+
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			position: { x: 0, y: 175 },
+			// @ts-ignore
+			sourcePosition: 'bottom',
+			// @ts-ignore
+			targetPosition: 'top'
+		},
+
+		{
+			id: 'A-1',
+			data: { label: 'Front-Run Transaction - Returning the funds back to your wallet' },
+
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
+			position: { x: 0, y: 250 },
+			parentNode: 'A',
+			extent: 'parent',
+			// @ts-ignore
+			sourcePosition: 'top'
+		}
+	]);
 
 	// same for edges
+
 	const edges = writable([
+		{
+			id: '1-2',
+			type: 'default',
+			source: '1',
+			target: 'A',
+			labelStyle: 'stroke: {blue};',
+			animated: true,
+			label: 'Perm2 Stored Approval'
+			// class: 'rounded-xl bg-blue-500 '
+		},
+
+		{
+			id: '3-5',
+			type: 'default',
+			source: '3',
+			target: '5',
+			animated: true,
+			label: 'Argus Sentinal Activates'
+		},
+		// { id: 'a1-a2', source: 'A-1', target: 'A-2' },
+
+		{
+			id: '6',
+			type: 'default',
+			source: 'A',
+			target: 'A-1',
+			label: 'Detected',
+			class: 'rounded-xl bg-red-500',
+			labelStyle: 'background-color: {red};',
+			animated: true
+		},
+		{
+			id: '5',
+			type: 'default',
+			source: 'A',
+			target: 'A-2',
+			label: 'Undetected',
+			animated: true
+		}
+	]);
+	const edgesMobile = writable([
 		{
 			id: '1-2',
 			type: 'default',
@@ -298,7 +382,7 @@
 			<!-- HERO TEXT END -->
 
 			<!-- WHITELIST BUTTON -->
-			<form method="POST" use:enhance class="relative z-50 flex h-16 w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px] sm:px-4">
+			<form method="POST" use:enhance class="relative z-50 flex h-16 w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px]">
 				<input
 					class={cn(
 						// Global
@@ -353,9 +437,12 @@
 			{:else if $errors.email}
 				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-red-500"><AlertCircle /> {$errors.email.join('/n')}</p>
 			{:else}
-				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-sm font-medium tracking-wide text-neutral-600">
-					<Clock class=" w-5 text-xs" /> 1300/1500 eligible genesis founder slots remaining.
-				</p>
+				<div class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-neutral-600">
+					<Clock class="hidden w-5 sm:block" />
+					<p>
+						<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible genesis founder slots remaining.
+					</p>
+				</div>
 			{/if}
 			<!-- WHITELIST BUTTON END -->
 		</div>
@@ -483,8 +570,17 @@
 	</div> -->
 
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
-	<div class="relative flex h-[700px] w-full items-center justify-center overflow-hidden sm:hidden">
-		<SvelteFlow class="" attributionPosition="bottom-right" {nodes} fitView fitViewOptions={{ duration: 2 }} {edges} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
+	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
+		<SvelteFlow
+			class=""
+			attributionPosition="bottom-right"
+			nodes={nodesMobile}
+			fitView
+			fitViewOptions={{ minZoom: 100, duration: 2 }}
+			edges={edgesMobile}
+			nodesDraggable={false}
+			nodesConnectable={false}
+			elementsSelectable={false}>
 			<Background patternColor="#0a0a0a" bgColor="#0a0a0a" />
 		</SvelteFlow>
 
