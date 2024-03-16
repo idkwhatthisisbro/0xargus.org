@@ -1,1 +1,1 @@
-src/routes/waitlist/+page.svelte
+src/routes/waitlist/*
