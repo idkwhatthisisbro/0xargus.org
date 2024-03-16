@@ -3,7 +3,6 @@ import { whitelistSchema } from '$lib/schema.js';
 import { fail } from '@sveltejs/kit';
 import { setError, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
-import { userSignUp } from '$lib/email.js';
 /** @type {import('./$types').Actions} */
 
 export const load = async () => {
@@ -23,7 +22,7 @@ export const actions = {
 
 		try {
 			console.log(`running signUpResult ${form.data.email}`);
-			const signUpResult = await userSignUp(form.data.email);
+			const signUpResult = ''
 			return message(form, signUpResult);
 		} catch (error) {
 			console.log(error);

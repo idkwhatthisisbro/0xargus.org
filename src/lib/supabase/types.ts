@@ -11,6 +11,7 @@ export type Database = {
     Tables: {
       users: {
         Row: {
+<<<<<<< HEAD
           bot_subscriber: boolean | null
           created_at: string
           email: string | null
@@ -20,10 +21,21 @@ export type Database = {
           phone: string | null
           phone_verified: boolean | null
           phone_verified_at: string | null
+=======
+          created_at: string
+          email: string | null
+          email_confirmed_at: string | null
+          id: string
+          phone: string | null
+          phone_confirmed_at: string | null
+          phone_verified: boolean | null
+          tg_bot_subscriber: boolean | null
+>>>>>>> ed0a20cbbd33bbcc18a048621dde15fd00f0ea7c
           tg_id: number | null
           wallet: string | null
         }
         Insert: {
+<<<<<<< HEAD
           bot_subscriber?: boolean | null
           created_at?: string
           email?: string | null
@@ -33,10 +45,21 @@ export type Database = {
           phone?: string | null
           phone_verified?: boolean | null
           phone_verified_at?: string | null
+=======
+          created_at?: string
+          email?: string | null
+          email_confirmed_at?: string | null
+          id: string
+          phone?: string | null
+          phone_confirmed_at?: string | null
+          phone_verified?: boolean | null
+          tg_bot_subscriber?: boolean | null
+>>>>>>> ed0a20cbbd33bbcc18a048621dde15fd00f0ea7c
           tg_id?: number | null
           wallet?: string | null
         }
         Update: {
+<<<<<<< HEAD
           bot_subscriber?: boolean | null
           created_at?: string
           email?: string | null
@@ -46,6 +69,16 @@ export type Database = {
           phone?: string | null
           phone_verified?: boolean | null
           phone_verified_at?: string | null
+=======
+          created_at?: string
+          email?: string | null
+          email_confirmed_at?: string | null
+          id?: string
+          phone?: string | null
+          phone_confirmed_at?: string | null
+          phone_verified?: boolean | null
+          tg_bot_subscriber?: boolean | null
+>>>>>>> ed0a20cbbd33bbcc18a048621dde15fd00f0ea7c
           tg_id?: number | null
           wallet?: string | null
         }
@@ -56,7 +89,27 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+<<<<<<< HEAD
       [_ in never]: never
+=======
+      create_new_user: {
+        Args: {
+          email: string
+        }
+        Returns: {
+          created_at: string
+          email: string | null
+          email_confirmed_at: string | null
+          id: string
+          phone: string | null
+          phone_confirmed_at: string | null
+          phone_verified: boolean | null
+          tg_bot_subscriber: boolean | null
+          tg_id: number | null
+          wallet: string | null
+        }
+      }
+>>>>>>> ed0a20cbbd33bbcc18a048621dde15fd00f0ea7c
     }
     Enums: {
       [_ in never]: never

@@ -1,4 +1,8 @@
 <script lang="ts">
+<<<<<<< HEAD
+=======
+	import { onDestroy } from 'svelte';
+>>>>>>> ed0a20cbbd33bbcc18a048621dde15fd00f0ea7c
 	import { fly } from 'svelte/transition';
 	import { tweened } from 'svelte/motion';
 	import { backOut } from 'svelte/easing';
@@ -15,7 +19,11 @@
 
 	$: tweenedWidth.set(width);
 
+<<<<<<< HEAD
 	const interval = setInterval(() => currentIndex = (currentIndex + 1) % words.length, 1000);
+=======
+	const interval = setInterval(() => currentIndex = (currentIndex + 1) % words.length, 2000);
+>>>>>>> ed0a20cbbd33bbcc18a048621dde15fd00f0ea7c
 
 	onDestroy(() => clearInterval(interval));
 </script>
@@ -26,11 +34,19 @@
 			<h1 class="relative flex gap-[5px] bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200 bg-clip-text font-outfit text-3xl text-transparent sm:ml-12">
 				Let your website
 
+<<<<<<< HEAD
 				<div class="relative">
 					{#key currentIndex}
 						<div
 							in:fly={{ y: 20, duration: 500 }}
 							out:fly={{ y: -20, duration: 500 }}
+=======
+				<div class="relative font-bold">
+					{#key currentIndex}
+						<div
+							in:fly={{ y: 20, duration: 500,  easing: backOut }}
+							out:fly={{ y: '-100%', duration: 500}}
+>>>>>>> ed0a20cbbd33bbcc18a048621dde15fd00f0ea7c
 							bind:clientWidth={width}
 							class="absolute"
 							class:text-purple-500={words[currentIndex] === 'Ethereum'}
@@ -46,4 +62,8 @@
 			</h1>
 		</div>
 	</div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> ed0a20cbbd33bbcc18a048621dde15fd00f0ea7c
