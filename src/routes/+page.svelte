@@ -26,19 +26,18 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { whitelistSchema } from '$lib/schema.js';
 	import { zod } from 'sveltekit-superforms/adapters';
-	import type { PageData } from './$types.js';
 	import { enhance } from '$app/forms';
+	import type { PageData } from './$types.js';
 	import { cn } from '$lib/utils/cn.js';
 	import { MetaTags } from 'svelte-meta-tags';
 
-	// @ts-ignore
-	import { LottiePlayer } from '@lottiefiles/svelte-lottie-player';
-	import { browser } from '$app/environment';
+	import CustomLottiePlayer from '$lib/components/CustomLottiePlayer.svelte';
 
 	// import { Circle } from 'svelte-loading-spinners';
 
 	export let data: PageData;
 	//   @ts-ignore
+
 	const { open } = getContext('simple-modal');
 	const { form, errors, constraints, delayed, message } = superForm(data.form, {
 		validators: zod(whitelistSchema),
@@ -56,24 +55,6 @@
 		// @ts-ignore
 		safepal: Icon_safepal
 	};
-
-	const howItWorkCards2 = [
-		{
-			title: 'Liquidity Withdrawals',
-			desc: "Our system is designed to detect any large-scale liquidity withdrawals. These are often a red flag for rug pulls, where token creators remove their liquidity from a market, causing the token's value to plummet. If such activity is detected, Argus will immediately execute a transaction to secure your holdings.",
-			img: ''
-		},
-		{
-			title: 'Manipulating Token Functionalities:',
-			desc: 'We constantly monitor for any changes to the token contract. This includes unauthorized minting of new tokens, changes to transaction fees, or any other modifications that could potentially harm token holders. Our system will react to any such changes by securing your assets.',
-			img: 'https://img.icons8.com/?size=256&id=tSjEZJQnFcC9&format=png&color=6366f1,a855f7'
-		},
-		{
-			title: 'AI Algorithms',
-			desc: 'Our AI algorithms are at the core of our platform. They continuously scan and learn from the entire Ethereum network, identifying patterns and behaviors associated with fraudulent activities. This allows us to constantly improve our detection capabilities and provide better protection for your assets.Continue Monitoring',
-			img: 'https://img.icons8.com/?size=256&id=77156&format=png&color=6366f1,a855f7'
-		}
-	];
 
 	const howItWorkCards = [
 		{
@@ -290,10 +271,10 @@
 	]);
 
 	const snapGrid = [25, 25];
+
 </script>
 
 <!-- HERO -->
-
 <MetaTags
 	title="WhiteList Now Open"
 	titleTemplate="0xArgus - %s"
@@ -609,9 +590,9 @@
 					<div class="-m-4 -mt-12 h-96 max-w-96 sm:m-0">
 						<img alt="s" src={card.img} class="w- h-full rounded-xl shadow-2xl" />
 					</div>
-				{:else if browser}
-					<div class="sm-0 -mx-4 -mt-12 h-96 max-w-96 rounded-xl drop-shadow-2xl sm:m-0">
-						<LottiePlayer src="ai.json" autoplay loop={true} renderer="svg" background="transparent" />
+				{:else}
+					<div class="h-96 max-w-96 rounded-xl drop-shadow-2xl">
+						<CustomLottiePlayer src='ai.json' />
 					</div>
 				{/if}
 
