@@ -13,22 +13,52 @@
 	import type { Context } from 'svelte-simple-modal';
 	import SuperDebug from 'sveltekit-superforms';
 
+	import { supabase } from '$lib/supabase';
+	import type { RealtimeChannel } from '@supabase/supabase-js';
+
 	export let data: PageData;
 
 	const { open } = getContext<Context>('simple-modal');
 
-	const { form, errors, constraints, delayed, message, enhance } = superForm(data.form, {
+	const { form, errors, constraints, delayed, submitting, message, enhance } = superForm(data.form, {
 		validators: zod(whitelistSchema),
 		id: 'whitelist-hero',
 		resetForm: false,
-		onSubmit: ({ formData }) => {
-			// console.log(formData);
-			// open(Popup, { type: 'email-verification' })
+		onUpdate: async ({form: formData}) => {
+			const user = formData.data
+			// OPEN VERIFICATION MODAL
+			open(Popup, { form })
 		},
-		onUpdate: ({ form }) => {
-			// console.log(form);
+		onUpdated: async({form: formData}) => {
+			const user = formData.data
+			
+			if (!user.email_confirmed_at) {				
+				await new Promise<void>((resolve) => {
+					let channel: RealtimeChannel
+					// Subscribe to email confirmation
+					channel = supabase.channel('schema-db-changes').on('postgres_changes',
+						{ event: 'UPDATE', schema: 'public' },
+						(payload) => {
+							if (payload.new.id === user.id && payload.new.email_confirmed_at) {
+								// Update form with new email_confirmed_at
+								form.update((form) => {
+									$form.email_confirmed_at = payload.new.email_confirmed_at;
+									return $form;
+								},
+								{ taint: false });
+
+								supabase.removeChannel(channel)
+								resolve()
+							}
+						}
+					)
+					.subscribe();
+				})
+			}
 		}
 	});
+
+	$: console.log($form);
 </script>
 
 <SuperDebug data={$form} />
@@ -84,50 +114,3 @@
 		</button>
 	</form>
 </div>
-
-<!-- 
-	// let ui = writable<{ id: string | null; email: string | null; email_confirmed_at: string | null }>({ id: null, email: null, email_confirmed_at: null });
-
-	// const testing = async (email: string) => {
-	// 	let publicUsers = await findUserByEmail(emailAddress);
-
-	// 	// if user is not found, sign them up
-	// 	if (publicUsers.length === 0) {
-	// 		const authUser = await signUp(emailAddress);
-	// 		if (!authUser) return;
-
-	// 		$ui.id = authUser.id;
-	// 		$ui.email = authUser.email;
-	// 	}
-	// 	// if user is found
-	// 	if (publicUsers.length === 1) {
-	// 		$ui.id = publicUsers[0].id;
-	// 		$ui.email = publicUsers[0].email;
-
-	// 		// if user has confirmed email
-	// 		if (publicUsers[0].email_confirmed_at) {
-	// 			$ui.email_confirmed_at = publicUsers[0].email_confirmed_at;
-	// 		}
-	// 		// if user has not yet confirmed email
-	// 		if (publicUsers[0].email_confirmed_at === null) {
-	// 			// resend confirmation email and prompt user to check email
-	// 			const authUser = await signUp(emailAddress);
-	// 		}
-	// 	}
-	// };
-
-	// const channel = supabase
-	// 	.channel('schema-db-changes')
-	// 	.on(
-	// 		'postgres_changes',
-	// 		{
-	// 			event: 'UPDATE',
-	// 			schema: 'public'
-	// 		},
-	// 		(payload) => {
-	// 			if (payload.new.id === $ui.id) {
-	// 				$ui.email_confirmed_at = payload.new.email_confirmed_at;
-	// 			}
-	// 		}
-	// 	)
-	// 	.subscribe(); -->
