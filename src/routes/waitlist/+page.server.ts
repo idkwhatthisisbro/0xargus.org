@@ -36,16 +36,8 @@ export const actions: Actions = {
 
          // If user exists
 			if (user) {
-            form.data.id = user.id
-
-				// If user already confirmed email
-				if (user.email_confirmed_at) {
-               // Notify frontend that user is already on the list
-               form.data.email_confirmed_at = user.email_confirmed_at
-				} else {
-				// Notify frontend to check email for verification
-               form.data.email_confirmed_at = user.email_confirmed_at
-				}
+            form.data.id = user.id            
+            form.data.email_confirmed_at = user.email_confirmed_at
 
             return { form }
 			}
@@ -55,22 +47,3 @@ export const actions: Actions = {
       }   
    }
 };
-
-
-// Subscribe to email confirmation
-// const channel = supabaseAdmin.channel('schema-db-changes').on('postgres_changes',
-// 		{
-// 			event: 'UPDATE',
-// 			schema: 'public'
-// 		},
-// 		(payload) => {
-//          console.log(payload.new);
-         
-// 			if (user && payload.new.id === user.id) {
-// 				// Notify frontend that email is confirmed
-//             // console.log( {user, confirmationRequired: false, alreadyOnList: true });
-// 				return { user, confirmationRequired: false, alreadyOnList: true };
-// 			}
-// 		}
-// 	)
-// 	.subscribe();
