@@ -4,7 +4,6 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zod } from 'sveltekit-superforms/adapters';
 	import { whitelistSchema } from '$lib/schema.js';
-	import { enhance } from '$app/forms';
 
 	import Popup from '$lib/components/Popup.svelte';
 	import { ChevronRight, Circle, MailPlus } from 'lucide-svelte';
@@ -18,27 +17,24 @@
 
 	const { open } = getContext<Context>('simple-modal');
 
-	const { form, errors, constraints, delayed, message } = superForm(data.form, {
+	const { form, errors, constraints, delayed, message, enhance } = superForm(data.form, {
 		validators: zod(whitelistSchema),
 		id: 'whitelist-hero',
-		onSubmit: (formData) => {
-			console.log('submit', formData);
+		resetForm: false,
+		onSubmit: ({ formData }) => {
+			// console.log(formData);
 			// open(Popup, { type: 'email-verification' })
 		},
-		onUpdate(form) {
-			console.log('update', form);
-		},
-		onUpdated({ form }) {
-			console.log('updated', form);
+		onUpdate: ({ form }) => {
+			// console.log(form);
 		}
-	})
-	
+	});
 </script>
 
 <SuperDebug data={$form} />
 
-<div class="h-20 flex w-full items-center justify-center bg-red-500 text-white">
-	<form method="POST" use:enhance action="/waitlist" class="flex justify-between items-center">
+<div class="flex h-20 w-full items-center justify-center bg-red-500 text-white">
+	<form method="POST" use:enhance action="/waitlist" class="flex items-center justify-between">
 		<input
 			placeholder="hello@moon.com"
 			type="email"
@@ -135,60 +131,3 @@
 	// 		}
 	// 	)
 	// 	.subscribe(); -->
-
-<!-- {#if $message}
-	<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
-		<Clock class="purple-500" /> Submittion Completed
-	</p>
-	{:else if $errors.email}
-	<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-red-500">
-		<AlertCircle /> {$errors.email.join('/n')}
-	</p>
-{:else}
-	<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-sm font-medium tracking-wide text-neutral-600">
-		<Clock class=" w-5 text-xs" /> 1300/1500 eligible genesis founder slots remaining.
-	</p>
-{/if} -->
-
-<!-- ========================================== -->
-<!-- <form method="POST" use:enhance class="relative z-50 flex h-16 w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px] sm:px-4">
-	<input
-		class={cn(
-			// Global
-			'absolute inset-0 h-full w-full rounded-3xl bg-transparent text-white',
-			// Desktop
-			'p-4 pl-8 text-2xl',
-			// Mobile
-			'',
-			// Animations
-			'',
-			// Focus/Hover
-			'focus:outline-none focus:outline-indigo-500 focus:ring focus:ring-indigo-500'
-		)}
-		placeholder="hello@moon.com"
-		type="email"
-		name="email"
-		aria-invalid={$errors.email ? 'true' : undefined}
-		bind:value={$form.email}
-		{...$constraints.email} /> -->
-<!-- Disabled when loading -->
-<!-- </form> -->
-<!-- ========================================== -->
-
-<!-- <div class="flex flex-col items-center justify-center gap-10 py-20">
-	<button on:click={() => testing(emailAddress)} class="rouned-md border-2 border-white px-2 py-1 text-white">REGISTER</button>
-
-	{#if $ui.id}
-		<div class="flex flex-col gap-5 text-lg text-white">
-			<span>
-				ID: {$ui.id}
-			</span>
-			<span>
-				EMAIL: {$ui.email}
-			</span>
-			<span>
-				EMAIL_CONFIRMED_AT: {$ui.email_confirmed_at}
-			</span>
-		</div>
-	{/if}
-</div> -->
