@@ -2,7 +2,6 @@ import { fail } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
 import { zod } from 'sveltekit-superforms/adapters';
 import { whitelistSchema } from '$lib/schema';
-import { supabase } from '$lib/supabase';
 import { supabaseAdmin } from '$lib/server/supabase';
 
 import type { Actions } from './$types';
@@ -22,12 +21,12 @@ export const actions: Actions = {
 
 		try {
 			// check if user exists
-			const { data: { users }, error } = await supabase.auth.admin.listUsers();
+			const { data: { users }, error } = await supabaseAdmin.auth.admin.listUsers();
          const user = users.find((user) => user.email === form.data.email)
          
 			// if user does not exist, sign up
          if (!user) {
-            const { data, error } = await supabase.auth.signUp({ email: form.data.email, password: form.data.password })
+            const { data, error } = await supabaseAdmin.auth.signUp({ email: form.data.email, password: form.data.password })
             // Return user and notify frontend that user is signed up and needs to confirm email
             form.data.user = {user: data.user, confirmationRequired: true, alreadyOnList: false};
             console.log(form);
@@ -49,7 +48,7 @@ export const actions: Actions = {
 			}
 
          // Subscribe to email confirmation
-			const channel = supabase.channel('schema-db-changes').on('postgres_changes',
+			const channel = supabaseAdmin.channel('schema-db-changes').on('postgres_changes',
 					{
 						event: 'UPDATE',
 						schema: 'public'
