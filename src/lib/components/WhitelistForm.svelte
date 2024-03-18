@@ -183,7 +183,7 @@
 	</button>
 </form>
 
-{#if id === 'whitelist-footer'}
+{#if id === 'whitelist-hero'}
 	{#if $message}
 		<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
 			<Clock class="purple-500" /> Submittion Completed
