@@ -18,13 +18,13 @@
 
 	const { open } = getContext<Context>('simple-modal');
 
-	// $: if ($page.url.searchParams.has('type')) {
-	// 	const typeCheck = $page.url.searchParams.get('type');
+	$: if ($page.url.searchParams.has('type')) {
+		const typeCheck = $page.url.searchParams.get('type');
 
-	// 	if (typeCheck === 'verify_email' || typeCheck === 'confirmed_email') {
-	// 		open(Popup, { typeCheck });
-	// 	}
-	// }
+		if (typeCheck === 'verify_email' || typeCheck === 'confirmed_email') {
+			open(Popup, { typeCheck });
+		}
+	}
 
 	const { form, errors, constraints, delayed, submitting, message, enhance } = superForm(data, {
 		validators: zod(whitelistSchema),
