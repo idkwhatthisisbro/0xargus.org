@@ -11,9 +11,9 @@
 	import { supabase } from '$lib/supabase';
 	import type { RealtimeChannel } from '@supabase/supabase-js';
 	import { page } from '$app/stores';
-	
+
 	export let data: SuperValidated<Infer<WhitelistSchema>>;
-	export let id: 'whitelist-hero' | 'whitelist-footer'
+	export let id: 'whitelist-hero' | 'whitelist-footer';
 	export let debug = false;
 
 	const { open } = getContext<Context>('simple-modal');
@@ -79,30 +79,29 @@
 	<SuperDebug data={$form} />
 {/if}
 
-<form 
-	method="POST" 
-	use:enhance 
+<form
+	method="POST"
+	use:enhance
 	class={cn(
-			// classes for both forms
-			'',
-			// Additional classes for whitelist-hero form
-			id === 'whitelist-hero' && (
-				// Global
-				'relative z-50 flex h-16 w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px]'
-				// Desktop
-				// Mobile
-				// Focus/Hover
-			),
-			// Additional classes for whitelist-footer form
-			id === 'whitelist-footer' && (
-				// Global
-				'mt-8 flex items-center justify-center'
-				// Desktop
-				// Mobile
-				// Focus/Hover
-			)
+		// classes for both forms
+		'',
+		// Additional classes for whitelist-hero form
+		id === 'whitelist-hero' && [
+			// Global
+			'relative z-50 flex h-16 w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px]'
+			// Desktop
+			// Mobile
+			// Focus/Hover
+		],
+		// Additional classes for whitelist-footer form
+		id === 'whitelist-footer' && [
+			// Global
+			'mt-8 flex items-center justify-center'
+			// Desktop
+			// Mobile
+			// Focus/Hover
+		]
 	)}>
-			
 	<input
 		placeholder="hello@moon.com"
 		type="email"
@@ -114,17 +113,17 @@
 			// classes for both forms
 			'',
 			// Additional classes for whitelist-hero form
-			id === 'whitelist-hero' &&
+			id === 'whitelist-hero' && [
 				// Global
-				'absolute inset-0 h-full w-full rounded-3xl bg-transparent text-white p-4 pl-8 text-2xl',
+				'absolute inset-0 h-full w-full rounded-3xl bg-transparent p-4 pl-8 text-2xl text-white',
 				// Desktop
 				// Mobile
 				// Animations
 				// Focus/Hover
 				'focus:outline-none focus:outline-indigo-500 focus:ring focus:ring-indigo-500'
-			,
+			],
 			// Additional classes for whitelist-footer form
-			id === 'whitelist-footer' &&
+			id === 'whitelist-footer' && [
 				// Global
 				'relative z-20 w-full rounded-l-lg border border-neutral-700 bg-neutral-950 p-2 text-white duration-300 ease-in-out placeholder:text-neutral-400 sm:placeholder:text-neutral-700',
 				// Desktop
@@ -132,7 +131,8 @@
 				// Animations
 				// Focus/Hover
 				'hover:z-50 focus:z-50 focus:outline-none focus:ring-2 focus:ring-purple-500'
-		)}/>
+			]
+		)} />
 
 	<button
 		type="submit"
@@ -140,7 +140,7 @@
 			// classes for both forms
 			'',
 			// Additional classes for whitelist-hero form
-			id === 'whitelist-hero' && 
+			id === 'whitelist-hero' && [
 				// Global
 				'absolute inset-y-0 right-0 flex items-center justify-center border-white bg-transparent bg-gradient-to-tr from-neutral-700 via-neutral-800 to-neutral-900 text-white shadow-2xl dark:border-neutral-400  dark:text-white',
 				// Desktop
@@ -151,21 +151,18 @@
 				'transition duration-300 ease-in-out',
 				// Focus/Hover
 				'hover:scale-105 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500'
-			,
-			// Additional classes for whitelist-footer form
-			id === 'whitelist-footer' &&
+			],
+				// Additional classes for whitelist-footer forms
+			id === 'whitelist-footer' && [
 				// Global
-				'z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-neutral-700 p-2 text-neutral-500 transition duration-300 ease-in-out hover:z-50 hover:scale-110 hover:bg-purple-500 hover:text-white focus:z-50 focus:scale-105 focus:border-l focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:hover:bg-purple-500 dark:focus:border-purple-500 dark:focus:ring-2 dark:focus:ring-purple-500',
+				'z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-neutral-700 p-2 text-neutral-500 transition duration-300 ease-in-out',
 				// Desktop
-				'',
 				// Mobile
-				'',
 				// Animations
-				'',
 				// Focus/Hover
-				''
+				'hover:z-50 hover:scale-110 hover:bg-purple-500 hover:text-white focus:z-50 focus:scale-105 focus:border-l focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:hover:bg-purple-500 dark:focus:border-purple-500 dark:focus:ring-2 dark:focus:ring-purple-500'
+			]
 		)}>
-
 		{#if id === 'whitelist-hero'}
 			<p class="hidden tracking-widest sm:block">JOIN THE WHITELIST</p>
 			{#if $delayed}
@@ -183,20 +180,22 @@
 		{#if id === 'whitelist-footer'}
 			<ArrowRight />
 		{/if}
-	</button>		
+	</button>
 </form>
 
-{#if $message}
-	<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
-		<Clock class="purple-500" /> Submittion Completed
-	</p>
-{:else if $errors.email}
-	<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-red-500"><AlertCircle /> {$errors.email.join('/n')}</p>
-{:else}
-	<div class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-neutral-600">
-		<Clock class="hidden w-5 sm:block" />
-		<p>
-			<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible genesis founder slots remaining.
+{#if id === 'whitelist-footer'}
+	{#if $message}
+		<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
+			<Clock class="purple-500" /> Submittion Completed
 		</p>
-	</div>
+	{:else if $errors.email}
+		<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-red-500"><AlertCircle /> {$errors.email.join('/n')}</p>
+	{:else}
+		<div class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-neutral-600">
+			<Clock class="hidden w-5 sm:block" />
+			<p>
+				<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible genesis founder slots remaining.
+			</p>
+		</div>
+	{/if}
 {/if}
