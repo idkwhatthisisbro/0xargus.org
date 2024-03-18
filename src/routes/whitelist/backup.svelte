@@ -15,55 +15,68 @@
 
 	import { supabase } from '$lib/supabase';
 	import type { RealtimeChannel } from '@supabase/supabase-js';
+	import { page } from '$app/stores';
 
 	export let data: PageData;
 
 	const { open } = getContext<Context>('simple-modal');
 
-	const { form, errors, constraints, delayed, submitting, message, enhance } = superForm(data.form, {
+	$: if ($page.url.searchParams.has('type')) {
+		const typeCheck = $page.url.searchParams.get('type');
+
+		if (typeCheck === 'verify_email' || typeCheck === 'confirmed_email') {
+			open(Popup, { typeCheck });
+		}
+	}
+
+	const { form, errors, constraints, delayed, submitting, message, enhance, reset } = superForm(data.form, {
 		validators: zod(whitelistSchema),
 		id: 'whitelist-hero',
 		resetForm: false,
-		onUpdate: async ({form: formData}) => {
-			const user = formData.data
+
+		onUpdate: async ({ form: formData }) => {
+			const user = formData.data;
 			// OPEN VERIFICATION MODAL
-			open(Popup, { form })
+			// if (user.email_confirmed_at) {
+			// 	open(Popup, { type: 'confirmed_email' });
+			// }
+
+			open(Popup, { form });
 		},
-		onUpdated: async({form: formData}) => {
-			const user = formData.data
-			
-			if (!user.email_confirmed_at) {				
+		onUpdated: async ({ form: formData }) => {
+			const user = formData.data;
+
+			if (!user.email_confirmed_at) {
 				await new Promise<void>((resolve) => {
-					let channel: RealtimeChannel
+					let channel: RealtimeChannel;
 					// Subscribe to email confirmation
-					channel = supabase.channel('schema-db-changes').on('postgres_changes',
-						{ event: 'UPDATE', schema: 'public' },
-						(payload) => {
+					channel = supabase
+						.channel('schema-db-changes')
+						.on('postgres_changes', { event: 'UPDATE', schema: 'public' }, (payload) => {
 							if (payload.new.id === user.id && payload.new.email_confirmed_at) {
 								// Update form with new email_confirmed_at
-								form.update((form) => {
-									$form.email_confirmed_at = payload.new.email_confirmed_at;
-									return $form;
-								},
-								{ taint: false });
+								form.update(
+									(form) => {
+										$form.email_confirmed_at = payload.new.email_confirmed_at;
+										return $form;
+									},
+									{ taint: false }
+								);
 
-								supabase.removeChannel(channel)
-								resolve()
+								supabase.removeChannel(channel);
+								resolve();
 							}
-						}
-					)
-					.subscribe();
-				})
+						})
+						.subscribe();
+				});
 			}
+
+			reset();
 		}
 	});
-
-	$: console.log($form);
 </script>
 
-<SuperDebug data={$form} />
-
-<div class="flex h-20 w-full items-center justify-center bg-red-500 text-white">
+<div class="my-20 flex w-full flex-col items-center justify-center gap-28 text-white">
 	<form method="POST" use:enhance action="/waitlist" class="flex items-center justify-between">
 		<input
 			placeholder="hello@moon.com"

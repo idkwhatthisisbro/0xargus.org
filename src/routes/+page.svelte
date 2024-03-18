@@ -32,6 +32,8 @@
 	import { MetaTags } from 'svelte-meta-tags';
 
 	import CustomLottiePlayer from '$lib/components/CustomLottiePlayer.svelte';
+	import AnimatedHeroText from '$lib/components/AnimatedHeroText.svelte';
+	import Spotlight from '$lib/components/ui/SpotLight/Spotlight.svelte';
 
 	// import { Circle } from 'svelte-loading-spinners';
 
@@ -271,7 +273,6 @@
 	]);
 
 	const snapGrid = [25, 25];
-
 </script>
 
 <!-- HERO -->
@@ -342,7 +343,7 @@
 			<!-- HERO TITLE END -->
 
 			<!-- HERO TEXT -->
-			<div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="relative mb-24 text-center font-outfit text-4xl text-white sm:mt-8">
+			<!-- <div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="relative mb-24 text-center font-outfit text-4xl text-white sm:mt-8">
 				Introducing RugPull Prevention Middleware for
 				<div class="overflow-hidden">
 					<TypeWriter element="span" class="absolute inset-0 whitespace-nowrap" cursor={false} as="span" mode="loop" wordInterval={4000}>
@@ -351,8 +352,10 @@
 						<span class="inline-block font-semibold text-blue-500">Arbitrum.</span>
 					</TypeWriter>
 				</div>
-			</div>
+			</div> -->
 			<!-- HERO TEXT END -->
+
+			<AnimatedHeroText />
 
 			<!-- WHITELIST BUTTON -->
 			<form method="POST" use:enhance class="relative z-50 flex h-16 w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px]">
@@ -434,7 +437,9 @@
 	<TracingBeam>
 		<!-- PRODUCT SUMMARY SECTION -->
 		<Section class="pb-12">
-			<h2 class="bg-gradient-to-t from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-center text-4xl font-bold text-transparent sm:text-6xl">Your Guardian in the DeFi Universe</h2>
+			<h2 class="bg-gradient-to-t from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-center font-outfit text-4xl font-bold text-transparent sm:text-6xl">
+				Your Guardian in the DeFi Universe
+			</h2>
 
 			<p class="mx-auto mt-6 max-w-3xl text-center text-xl font-normal text-white sm:mt-16 sm:text-3xl">
 				Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence.
@@ -542,10 +547,12 @@
 		<img alt="gradient" src="/blur.png" />
 	</div> -->
 
+	<Spotlight fill="#a855f7" className="absolute  z-[51]" />
+
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
-	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
+	<div class="relative right-0 z-[52] flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
 		<SvelteFlow
-			class=""
+			class="z-[52]"
 			attributionPosition="bottom-right"
 			nodes={nodesMobile}
 			fitView
@@ -563,7 +570,7 @@
 		<div class="absolute inset-0" />
 	</div>
 	<div class={'svelte-flow-container relative hidden w-full items-center justify-center overflow-hidden sm:flex sm:h-[1000px]'}>
-		<SvelteFlow class="" attributionPosition="bottom-right" {nodes} fitView fitViewOptions={{ duration: 2 }} {edges} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
+		<SvelteFlow class="z-[52]" attributionPosition="bottom-right" {nodes} fitView fitViewOptions={{ duration: 2 }} {edges} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
 			<Background patternColor="#0a0a0a" bgColor="#0a0a0a" />
 		</SvelteFlow>
 
@@ -592,7 +599,7 @@
 					</div>
 				{:else}
 					<div class="h-96 max-w-96 rounded-xl drop-shadow-2xl">
-						<CustomLottiePlayer src='ai.json' />
+						<CustomLottiePlayer src="ai.json" />
 					</div>
 				{/if}
 
@@ -608,7 +615,7 @@
 	</div>
 </Section>
 
-<!-- WAITLIST START -->
+<!-- FOOTER START -->
 <section class="relative z-50 mt-12 flex h-[30rem] w-full flex-col items-center justify-center bg-neutral-950 pt-32 font-outfit -antialiased">
 	<div class="mx-auto max-w-2xl p-4">
 		<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-center font-sans text-3xl font-bold text-transparent sm:to-neutral-600 sm:text-7xl">
