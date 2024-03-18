@@ -47,9 +47,6 @@ dependencies:
   svelte-simple-modal:
     specifier: ^1.6.2
     version: 1.6.2(svelte@4.2.12)
-  svelte-typewriter:
-    specifier: ^3.2.3
-    version: 3.2.3(svelte@4.2.12)
   tailwind-children:
     specifier: ^0.5.0
     version: 0.5.0
@@ -385,27 +382,6 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
-
-  /@formatjs/ecma402-abstract@1.18.2:
-    resolution: {integrity: sha512-+QoPW4csYALsQIl8GbN14igZzDbuwzcpWrku9nyMXlaqAlwRBgl5V+p0vWMGFqHOw37czNXaP/lEk4wbLgcmtA==}
-    dependencies:
-      '@formatjs/intl-localematcher': 0.5.4
-      tslib: 2.6.2
-    dev: false
-
-  /@formatjs/intl-localematcher@0.5.4:
-    resolution: {integrity: sha512-zTwEpWOzZ2CiKcB93BLngUX59hQkuZjT2+SAQEscSm52peDW/getsawMcWF1rGRpMCX6D7nSJA3CzJ8gn13N/g==}
-    dependencies:
-      tslib: 2.6.2
-    dev: false
-
-  /@formatjs/intl-segmenter@11.5.5:
-    resolution: {integrity: sha512-mMbJKFGzwYJBcwfL9EfqFje75Ce5WPar5rSi7wWvFtBPFY2Zi1cWIss7FSm2MNNM9l1BycBAsBQuXFt+Hd+0tQ==}
-    dependencies:
-      '@formatjs/ecma402-abstract': 1.18.2
-      '@formatjs/intl-localematcher': 0.5.4
-      tslib: 2.6.2
-    dev: false
 
   /@gcornut/valibot-json-schema@0.0.25(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.19.12)(valibot@0.29.0):
     resolution: {integrity: sha512-JlOmghA8OMM8B+3lLSWrZqce4FM5SrCO/bmYGZQz3ZYPja/mXhLYa2qEOFUsBaz24prv04un3zXIUpJzgglAkw==}
@@ -3304,15 +3280,6 @@ packages:
     peerDependencies:
       svelte: ^3.30.0 || ^4.0.0
     dependencies:
-      svelte: 4.2.12
-    dev: false
-
-  /svelte-typewriter@3.2.3(svelte@4.2.12):
-    resolution: {integrity: sha512-762k01kIU+IyXfe5f2MEYQ1yIfJZfueAEmJNbO36cxJG56/vciHiWacPQLnSECK/4cvlH/Ll1Mv6B45InMJ1zg==}
-    peerDependencies:
-      svelte: '>=3.47.x'
-    dependencies:
-      '@formatjs/intl-segmenter': 11.5.5
       svelte: 4.2.12
     dev: false
 
