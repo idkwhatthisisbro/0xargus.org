@@ -1,51 +1,34 @@
 <script lang="ts">
 	import Banner from '$lib/components/Banner.svelte';
-	import { AlertCircle, ArrowRight, Boxes, ChevronRight, Clock, MailPlus } from 'lucide-svelte';
-	import TypeWriter from 'svelte-typewriter';
-	import WavyBackground from '$lib/components/ui/WavyBackground/WavyBackground.svelte';
-	import GridAndDotBackgroundsSmallGrid from '$lib/components/ui/GridAndDotBackgrounds/GridAndDotBackgroundsSmallGrid.svelte';
-	import { SvelteComponent } from 'svelte';
+	import AnimatedHeroText from '$lib/components/AnimatedHeroText.svelte';
+	import WhitelistForm from '$lib/components/WhitelistForm.svelte';
+	import CustomLottiePlayer from '$lib/components/CustomLottiePlayer.svelte';
+	import Section from '$lib/layouts/Section.svelte';
+	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import Icon_1inch from '$lib/icons/1inch.svelte';
-	// @ts-ignore
 	import Icon_metamask from '$lib/icons/metamask.svelte';
 	import Icon_uniswap from '$lib/icons/uniswap.svelte';
 	import Icon_safepal from '$lib/icons/safepal.svelte';
+	import WavyBackground from '$lib/components/ui/WavyBackground/WavyBackground.svelte';
+	import GridAndDotBackgroundsSmallGrid from '$lib/components/ui/GridAndDotBackgrounds/GridAndDotBackgroundsSmallGrid.svelte';
 	import TracingBeam from '$lib/components/ui/TracingBeam/TracingBeam.svelte';
 	import { EvervaultCard, Icon } from '$lib/components/ui/EvervaultCard/';
 	import { GlowingStarsBackgroundCard, GlowingStarsDescription, GlowingStarsTitle } from '$lib/components/ui/GlowingStars/';
 	import BackgroundBeams from '$lib/components/ui/BackgroundBeams/BackgroundBeams.svelte';
-	import '@xyflow/svelte/dist/style.css';
-	import { writable } from 'svelte/store';
-	import { SvelteFlow, Background } from '@xyflow/svelte';
-	import type { Node } from '@xyflow/svelte';
-	import Section from '$lib/layouts/Section.svelte';
-	import SectionHeader from '$lib/components/SectionHeader.svelte';
-
-	import { getContext } from 'svelte';
-	import Popup from '$lib/components/Popup.svelte';
-	import { superForm } from 'sveltekit-superforms';
-	import { whitelistSchema } from '$lib/schema.js';
-	import { zod } from 'sveltekit-superforms/adapters';
-	import { enhance } from '$app/forms';
-	import type { PageData } from './$types.js';
-	import { cn } from '$lib/utils/cn.js';
-	import { MetaTags } from 'svelte-meta-tags';
-
-	import CustomLottiePlayer from '$lib/components/CustomLottiePlayer.svelte';
-	import AnimatedHeroText from '$lib/components/AnimatedHeroText.svelte';
 	import Spotlight from '$lib/components/ui/SpotLight/Spotlight.svelte';
-
+	import { ArrowRight, Boxes } from 'lucide-svelte';
+	import { cn } from '$lib/utils/cn.js';
+	import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
+	import '@xyflow/svelte/dist/style.css';
+	
 	// import { Circle } from 'svelte-loading-spinners';
-
+	import { SvelteComponent } from 'svelte';
+	import { writable } from 'svelte/store';
+	import { MetaTags } from 'svelte-meta-tags';
+	import type { PageData } from './$types.js';
+	
 	export let data: PageData;
-	//   @ts-ignore
-
-	const { open } = getContext('simple-modal');
-	const { form, errors, constraints, delayed, message } = superForm(data.form, {
-		validators: zod(whitelistSchema),
-		id: 'whitelist-hero',
-		onSubmit: ({}) => open(Popup, { type: 'email-verification' })
-	});
+	
 
 	const iconComponents: { [key: string]: typeof SvelteComponent } = {
 		// @ts-ignore
@@ -188,7 +171,6 @@
 	]);
 
 	// same for edges
-
 	const edges = writable([
 		{
 			id: '1-2',
@@ -343,83 +325,11 @@
 			<!-- HERO TITLE END -->
 
 			<!-- HERO TEXT -->
-			<!-- <div style="--cursor-width: 0.125ch; --cursor-color: #ffffff;" class="relative mb-24 text-center font-outfit text-4xl text-white sm:mt-8">
-				Introducing RugPull Prevention Middleware for
-				<div class="overflow-hidden">
-					<TypeWriter element="span" class="absolute inset-0 whitespace-nowrap" cursor={false} as="span" mode="loop" wordInterval={4000}>
-						<span class="inline-block font-semibold text-purple-500">Ethereum.</span>
-						<span class="inline-block font-semibold text-indigo-500">Solana.</span>
-						<span class="inline-block font-semibold text-blue-500">Arbitrum.</span>
-					</TypeWriter>
-				</div>
-			</div> -->
+			<AnimatedHeroText />
 			<!-- HERO TEXT END -->
 
-			<AnimatedHeroText />
-
 			<!-- WHITELIST BUTTON -->
-			<form method="POST" use:enhance class="relative z-50 flex h-16 w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px]">
-				<input
-					class={cn(
-						// Global
-						'absolute inset-0 h-full w-full rounded-3xl bg-transparent text-white',
-						// Desktop
-						'p-4 pl-8 text-2xl',
-						// Mobile
-						'',
-						// Animations
-						'',
-						// Focus/Hover
-						'focus:outline-none focus:outline-indigo-500 focus:ring focus:ring-indigo-500'
-					)}
-					placeholder="hello@moon.com"
-					type="email"
-					name="email"
-					aria-invalid={$errors.email ? 'true' : undefined}
-					bind:value={$form.email}
-					{...$constraints.email} />
-				<!-- Disabled when loading -->
-				<button
-					class={cn(
-						// Global
-						'absolute inset-y-0 right-0 flex items-center justify-center border-white bg-transparent bg-gradient-to-tr from-neutral-700 via-neutral-800 to-neutral-900 text-white shadow-2xl dark:border-neutral-400  dark:text-white',
-						// Desktop
-						'-sm:rounded-l-none group transform font-bold tracking-wide sm:m-0 sm:h-full sm:w-auto sm:space-x-2 sm:rounded-3xl sm:border-0 sm:px-6 sm:py-2',
-						// Mobile
-						'my-auto mr-4 h-12  w-12 rounded-full border-2 p-1',
-						// Animations
-						'transition duration-300 ease-in-out',
-						// Focus/Hover
-						'hover:scale-105 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500'
-					)}>
-					<!-- Desktop -->
-					<p class="hidden tracking-widest sm:block">JOIN THE WHITELIST</p>
-					{#if $delayed}
-						<!-- <Circle color="white" /> -->
-					{:else}
-						<div class="hidden rounded-full bg-neutral-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-neutral-600 sm:block">
-							<MailPlus class="m-auto h-4 w-4 rounded-full text-xs" />
-						</div>
-
-						<!-- Mobile -->
-						<ChevronRight class="h-5 w-5 text-neutral-300 sm:hidden" />
-					{/if}
-				</button>
-			</form>
-			{#if $message}
-				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-indigo-500">
-					<Clock class="purple-500" /> Submittion Completed
-				</p>
-			{:else if $errors.email}
-				<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-red-500"><AlertCircle /> {$errors.email.join('/n')}</p>
-			{:else}
-				<div class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-neutral-600">
-					<Clock class="hidden w-5 sm:block" />
-					<p>
-						<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible genesis founder slots remaining.
-					</p>
-				</div>
-			{/if}
+			<WhitelistForm data={data.form} id="whitelist-hero" />
 			<!-- WHITELIST BUTTON END -->
 		</div>
 	</div>
@@ -624,20 +534,12 @@
 		<p class="relative z-10 mx-auto my-2 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
 			Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
 		</p>
-		<div class="mt-8 flex items-center justify-center">
-			<input
-				type="text"
-				placeholder="hello@moon.com"
-				class="relative z-20 w-full rounded-l-lg border border-neutral-700 bg-neutral-950 p-2 text-white duration-300 ease-in-out placeholder:text-neutral-400 hover:z-50 focus:z-50 focus:outline-none focus:ring-2 focus:ring-purple-500 sm:placeholder:text-neutral-700" />
-			<button
-				class="z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-neutral-700 p-2 text-neutral-500 transition duration-300 ease-in-out hover:z-50 hover:scale-110 hover:bg-purple-500 hover:text-white focus:z-50 focus:scale-105 focus:border-l focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:hover:bg-purple-500 dark:focus:border-purple-500 dark:focus:ring-2 dark:focus:ring-purple-500">
-				<ArrowRight />
-			</button>
-		</div>
+		
+	
+		<WhitelistForm data={data.form} id="whitelist-footer" />
 	</div>
 
 	<div class="mt-24"></div>
-
 	<footer class="z-50 w-full rounded-lg bg-white shadow dark:bg-neutral-950">
 		<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
 			<div class="sm:flex sm:items-center sm:justify-between">
