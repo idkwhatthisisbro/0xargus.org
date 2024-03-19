@@ -16,12 +16,10 @@
 	import { GlowingStarsBackgroundCard, GlowingStarsDescription, GlowingStarsTitle } from '$lib/components/ui/GlowingStars/';
 	import BackgroundBeams from '$lib/components/ui/BackgroundBeams/BackgroundBeams.svelte';
 	import Spotlight from '$lib/components/ui/SpotLight/Spotlight.svelte';
-	import { ArrowRight, Boxes } from 'lucide-svelte';
+	import { Boxes } from 'lucide-svelte';
 	import { cn } from '$lib/utils/cn.js';
 	import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
-	import '@xyflow/svelte/dist/style.css';
-	
-	// import { Circle } from 'svelte-loading-spinners';
+	import '@xyflow/svelte/dist/style.css';	
 	import { SvelteComponent } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { MetaTags } from 'svelte-meta-tags';
@@ -253,8 +251,6 @@
 			animated: true
 		}
 	]);
-
-	const snapGrid = [25, 25];
 </script>
 
 <!-- HERO -->
@@ -286,9 +282,7 @@
 		image: 'https://0xargus.org/Banner.png',
 		imageAlt: 'Twitter image alt'
 	}}
-	facebook={{
-		appId: '1234567890'
-	}} />
+	/>
 
 <main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
@@ -531,11 +525,11 @@
 		<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-center font-sans text-3xl font-bold text-transparent sm:to-neutral-600 sm:text-7xl">
 			Join the waitlist
 		</h1>
+
 		<p class="relative z-10 mx-auto my-2 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
 			Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
 		</p>
 		
-	
 		<WhitelistForm data={data.form} id="whitelist-footer" />
 	</div>
 

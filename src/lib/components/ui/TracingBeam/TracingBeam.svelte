@@ -1,12 +1,14 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 
+
 	let svgHeight = 0;
 	let scrollYProgress = 0;
 	let lastScrollY = 0;
-	let contentRef;
+	let contentRef: HTMLDivElement;
+	let baseY = 0;
 
 	const y1 = tweened(0, { duration: 500, easing: cubicOut });
 	const y2 = tweened(0, { duration: 500, easing: cubicOut });
@@ -16,32 +18,31 @@
 
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY * 2;
-			scrollYProgress = currentScrollY / (document.body.offsetHeight - window.innerHeight);
 			const scrollDelta = currentScrollY - lastScrollY;
 			lastScrollY = currentScrollY;
+
+			scrollYProgress = currentScrollY / (document.body.offsetHeight - window.innerHeight);
 
 			const velo = Math.min(1, Math.abs(scrollDelta / 10));
 			let dynamicLength = Math.max(1, scrollYProgress * svgHeight * 0.5);
 			dynamicLength = Math.min(dynamicLength, svgHeight * 0.2);
 
-			const baseY = scrollYProgress * (svgHeight - dynamicLength);
+			baseY = Math.max(0, Math.min(svgHeight - dynamicLength, baseY + (scrollDelta > 0 ? velo * 75 : -velo * 75)));
 
-			y1.set(Math.max(0, baseY));
-			y2.set(Math.min(svgHeight, baseY + dynamicLength));
+			y1.set(baseY);
+			y2.set(baseY + dynamicLength);
 		};
 
 		window.addEventListener('scroll', handleScroll);
 
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
+		return () => window.removeEventListener('scroll', handleScroll);
 	});
 </script>
 
 <svelte:window />
 
 <div class="relative mx-auto mt-20 h-full w-full max-w-7xl">
-	<div class=" absolute -right-32 top-3 mt-64 hidden sm:block">
+	<div class="absolute -right-32 top-3 mt-64 hidden sm:block">
 		<div
 			class="ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border border-neutral-200 shadow-sm"
 			style="box-shadow: {scrollYProgress > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
@@ -69,3 +70,4 @@
 		<slot />
 	</div>
 </div>
+

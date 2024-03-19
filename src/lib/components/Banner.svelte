@@ -6,9 +6,7 @@
 	let showBanner = false
 	const close = () => (showBanner = false);
 
-	onMount(async () => {
-		showBanner = true
-	});
+	onMount(async () => showBanner = true);
 
 </script>
 

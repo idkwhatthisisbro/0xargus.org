@@ -2,9 +2,11 @@
 	import CustomLottiePlayer from './CustomLottiePlayer.svelte';
 	import type { Writable } from 'svelte/store';
 	import type { WhitelistSchema } from '$lib/schema';
+	import type { Infer } from 'sveltekit-superforms';
 
-	export let form: Writable<WhitelistSchema> | undefined;
+	export let data: Writable<Infer<WhitelistSchema>> | undefined
 	export let type: 'verify_email' | 'confirmed_email' | undefined;
+
 
 	const text = {
 		verify_email: {
@@ -33,10 +35,7 @@
 		}
 	};
 
-	// let currentText = (type && text[type]) || ($form && text[$form.email_confirmed_at ? 'confirmed_email' : 'verify_email']) || text['error'];
-	$: currentText = (type && text[type]) || ($form && text[$form.email_confirmed_at ? 'confirmed_email' : 'verify_email']) || text['error'];
-
-	$: console.log({ currentText });
+	$: currentText = (type && text[type]) || ($data && text[$data.email_confirmed_at ? 'confirmed_email' : 'verify_email']) || text['error'];
 </script>
 
 <div class="flex h-[400px] flex-col items-center gap-4 bg-neutral-950 p-12 font-outfit text-neutral-100">
