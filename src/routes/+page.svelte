@@ -15,13 +15,27 @@
 	import { Boxes } from 'lucide-svelte';
 	import { cn } from '$lib/utils/cn.js';
 	import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
-	import '@xyflow/svelte/dist/style.css';	
+	import '@xyflow/svelte/dist/style.css';
+
+	// import { Circle } from 'svelte-loading-spinners';
+	import { SvelteComponent } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { MetaTags } from 'svelte-meta-tags';
 	import type { PageData } from './$types.js';
-	
+
 	export let data: PageData;
-	
+
+	const iconComponents: { [key: string]: typeof SvelteComponent } = {
+		// @ts-ignore
+		'1inch': Icon_1inch,
+		// @ts-ignore
+		metamask: Icon_metamask,
+		// @ts-ignore
+		uniswap: Icon_uniswap,
+		// @ts-ignore
+		safepal: Icon_safepal
+	};
+
 	const howItWorkCards = [
 		{
 			title: 'Liquidity Withdrawals',
@@ -264,8 +278,7 @@
 		description: '',
 		image: 'https://0xargus.org/Banner.png',
 		imageAlt: 'Twitter image alt'
-	}}
-	/>
+	}} />
 
 <main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
@@ -335,7 +348,7 @@
 			<div class="mt-12 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-neutral-400 sm:mt-24">
 				{#each ['1inch', 'metamask', 'uniswap', 'safepal'] as icon}
 					<div class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 px-2 py-8 sm:p-12">
-						<img src="{icon}.svg" alt="icon-{icon}" class="h-[30px] saturate-0">
+						<img src="{icon}.svg" alt="icon-{icon}" class="h-[30px] saturate-0" />
 					</div>
 				{/each}
 			</div>
@@ -509,7 +522,6 @@
 		<p class="relative z-10 mx-auto my-2 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
 			Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
 		</p>
-		
 		<WhitelistForm data={data.form} id="whitelist-footer" />
 	</div>
 
