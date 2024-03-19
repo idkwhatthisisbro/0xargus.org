@@ -2,10 +2,11 @@
 	import CustomLottiePlayer from './CustomLottiePlayer.svelte';
 	import type { Writable } from 'svelte/store';
 	import type { WhitelistSchema } from '$lib/schema';
-	import type { SuperValidated, Infer } from 'sveltekit-superforms';
+	import type { Infer } from 'sveltekit-superforms';
 
-	export let data: Writable<SuperValidated<Infer<WhitelistSchema>>['data']> | undefined
+	export let data: Writable<Infer<WhitelistSchema>> | undefined
 	export let type: 'verify_email' | 'confirmed_email' | undefined;
+
 
 	const text = {
 		verify_email: {
