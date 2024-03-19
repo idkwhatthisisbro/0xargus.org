@@ -1,9 +1,4 @@
-<script lang="ts">
-	export let height = '30';
-	export let classes = '';
-</script>
-
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" viewBox="0 0 120 40" {height} class={classes}>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2" viewBox="0 0 120 40" class="">
 	<path
 		d="M47.097 13.686h4.81v19.239h4.81V8.876h-4.81c-2.643 0-4.81 2.166-4.81 4.81Zm14.429 19.258h4.81v-9.619c0-2.643-2.166-4.81-4.81-4.81v14.429Zm9.62-14.429v14.429h4.809v-9.619h4.83v4.81c0 2.643 2.166 4.809 4.81 4.809v-9.619c0-2.643-2.167-4.81-4.81-4.81h-9.639Zm43.307 0h-4.81v-4.809c0-2.644-2.166-4.81-4.81-4.81v19.239h-9.619v-4.81h4.81v-4.81h-4.81c-2.643 0-4.81 2.167-4.81 4.81v4.81c0 2.643 2.167 4.809 4.81 4.809h14.429v-9.619h4.81v4.81c0 2.643 2.166 4.809 4.81 4.809v-9.619c.019-2.643-2.147-4.81-4.81-4.81Zm-52.927-4.829h4.81c0-2.644-2.166-4.81-4.81-4.81v4.81Z"
 		style="fill:#fff;fill-rule:nonzero" />

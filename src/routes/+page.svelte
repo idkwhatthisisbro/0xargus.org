@@ -5,10 +5,6 @@
 	import CustomLottiePlayer from '$lib/components/CustomLottiePlayer.svelte';
 	import Section from '$lib/layouts/Section.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
-	import Icon_1inch from '$lib/icons/1inch.svelte';
-	import Icon_metamask from '$lib/icons/metamask.svelte';
-	import Icon_uniswap from '$lib/icons/uniswap.svelte';
-	import Icon_safepal from '$lib/icons/safepal.svelte';
 	import WavyBackground from '$lib/components/ui/WavyBackground/WavyBackground.svelte';
 	import GridAndDotBackgroundsSmallGrid from '$lib/components/ui/GridAndDotBackgrounds/GridAndDotBackgroundsSmallGrid.svelte';
 	import TracingBeam from '$lib/components/ui/TracingBeam/TracingBeam.svelte';
@@ -20,25 +16,12 @@
 	import { cn } from '$lib/utils/cn.js';
 	import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
 	import '@xyflow/svelte/dist/style.css';	
-	import { SvelteComponent } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { MetaTags } from 'svelte-meta-tags';
 	import type { PageData } from './$types.js';
 	
 	export let data: PageData;
 	
-
-	const iconComponents: { [key: string]: typeof SvelteComponent } = {
-		// @ts-ignore
-		'1inch': Icon_1inch,
-		// @ts-ignore
-		metamask: Icon_metamask,
-		// @ts-ignore
-		uniswap: Icon_uniswap,
-		// @ts-ignore
-		safepal: Icon_safepal
-	};
-
 	const howItWorkCards = [
 		{
 			title: 'Liquidity Withdrawals',
@@ -349,13 +332,10 @@
 				Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence.
 			</p>
 
-			<!-- TODO: FIX Over complicating a simple solution -->
 			<div class="mt-12 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-neutral-400 sm:mt-24">
 				{#each ['1inch', 'metamask', 'uniswap', 'safepal'] as icon}
 					<div class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 px-2 py-8 sm:p-12">
-						{#if iconComponents[icon]}
-							<svelte:component this={iconComponents[icon]} height="30" classes="saturate-0" />
-						{/if}
+						<img src="{icon}.svg" alt="icon-{icon}" class="h-[30px] saturate-0">
 					</div>
 				{/each}
 			</div>
