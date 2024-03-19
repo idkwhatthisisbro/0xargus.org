@@ -19,14 +19,10 @@ export const actions: Actions = {
 		const form = await superValidate(request, zod(whitelistSchema));
 		if (!form.valid) return fail(400, { form });
 
-		console.log('1');
-
 		try {
 			// check if user exists
 			const { data: user, error: userError } = await supabaseAdmin.from('users').select('*').eq('email', form.data.email).single();
 			if (userError && !(userError?.code === 'PGRST116')) return fail(500, { form, error: 'Error fetching user' });
-
-			console.log('2', user);
 
 			// if user does not exist or user hasn't verified, sign up
 			if (!user || !user.email_confirmed_at) {
@@ -34,14 +30,12 @@ export const actions: Actions = {
 				if (!newUser.user || signUpError) return fail(500, { form, error: 'Error during sign up' });
 
 				form.data.id = newUser.user.id;
-
-				console.log('3', newUser);
 			}
 
 			// notify frontend that user is signed up and needs to confirm email
 			if (user) {
 				form.data.id = user.id;
-				console.log('4', user);
+				form.data.email_confirmed_at = user.email_confirmed_at;
 			}
 
 			return { form };

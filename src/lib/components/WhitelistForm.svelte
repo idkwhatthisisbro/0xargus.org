@@ -18,12 +18,11 @@
 
 	const { open } = getContext<Context>('simple-modal');
 
+	// reopen modal if a user navigated to page from email link	
 	$: if ($page.url.searchParams.has('type')) {
 		const typeCheck = $page.url.searchParams.get('type');
 
-		if (typeCheck === 'verify_email' || typeCheck === 'confirmed_email') {
-			open(Popup, { typeCheck });
-		}
+		if (typeCheck === 'verify_email' || typeCheck === 'confirmed_email') open(Popup, { type: typeCheck });
 	}
 
 	const { form, errors, constraints, delayed, submitting, message, enhance } = superForm(data, {
@@ -34,14 +33,11 @@
 		onUpdate: async ({ form: formData }) => {
 			const user = formData.data;
 			// OPEN VERIFICATION MODAL
-			open(Popup, { form });
-
-			console.log('onUpdate');
+			open(Popup, { data: form });
 		},
 		onUpdated: async ({ form: formData }) => {
 			const user = formData.data;
 
-			console.log('onUpdated-start');
 
 			if (!user.email_confirmed_at) {
 				await new Promise<void>((resolve) => {
@@ -60,19 +56,22 @@
 									{ taint: false }
 								);
 
-								console.log('onUpdated-end');
-
+								
 								supabase.removeChannel(channel);
 								resolve();
 							}
 						})
 						.subscribe();
-				});
-			}
+					});
+				}
 		}
 	});
 
 	$: console.log($form);
+	// TODO: reset form on successful submission
+	// TODO: handle verify_email
+			// 1. add verify_email to url once form submitted and modal open awaiting email confirmation
+			// 2. if user navigates to the modal directly from url type=verify_email without having submitted form, enable email input to register or check if user exists
 </script>
 
 {#if debug}
