@@ -441,11 +441,11 @@
 </GridAndDotBackgroundsSmallGrid>
 <!-- Product Summary + Features End -->
 <Section class="relative pb-0">
-	<!-- <div class="absolute -top-64 z-50">
-		<img alt="gradient" src="/blur.png" />
-	</div> -->
+	<img src="/test3.png" class="absolute inset-x-0 top-32 h-32 w-full blur-md sm:top-64" alt="gradient" />
+	<img class="absolute -bottom-96 -right-[20rem] z-[55] opacity-40 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" />
+	<img class="absolute -left-[15rem] top-[45rem] z-[55] opacity-75 sm:-bottom-16 sm:-left-[35rem] sm:top-auto" alt="gradient" src="/blur.svg" />
 
-	<Spotlight fill="#a855f7" className="absolute z-[51]" />
+	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
 	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
@@ -488,19 +488,20 @@
 	</div>
 </Section>
 
-<Section>
+<Section class="relative">
 	<SectionHeader class="" title="2024 Is the Year For Crypto" subtitle="Be the first to join the revolution for a scam free market" />
 	<div class="flex flex-col flex-wrap items-center justify-center text-white">
 		{#each howItWorkCards as card}
 			<!-- Card -->
 			<div
 				class={cn(
-					'mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-2 shadow-2xl md:w-auto md:flex-row md:p-24 dark:border-white/[0.2]',
-					'gap-y-12 rounded-xl bg-neutral-900/75 py-12 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 md:gap-x-12 md:gap-y-0 md:rounded-3xl md:p-10 md:even:flex-row-reverse',
-					'container'
+					'mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-2 shadow-lg md:w-auto  md:flex-row md:p-24 dark:border-white/[0.2]',
+					'gap-y-12 rounded-xl bg-indigo-950/10 py-12 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 md:gap-x-12 md:gap-y-0 md:rounded-3xl md:p-10 md:even:flex-row-reverse',
+					'group container backdrop-blur-3xl backdrop-filter'
 				)}>
 				<!-- BG Blur -->
-				<div class="absolute -bottom-[20rem] -right-[20rem] left-auto z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl sm:-top-[20rem]" />
+				<div
+					class="absolute -bottom-[20rem] z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:-right-[20rem] group-odd:left-auto group-even:-left-[20rem] group-even:right-auto sm:-top-[20rem]" />
 				<!-- Image -->
 				{#if card.img}
 					<div class="min-w-[28rem] md:p-4">
