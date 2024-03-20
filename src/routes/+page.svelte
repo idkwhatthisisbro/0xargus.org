@@ -64,7 +64,8 @@
 			position: { x: 0, y: 0 },
 
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
+			class: 'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-500 items-center justify-center rounded-xl',
 			// @ts-ignore
 			sourcePosition: 'bottom',
 			// @ts-ignore
@@ -76,6 +77,7 @@
 			type: 'default',
 			data: { label: 'ArgusAI Scans for Fraudulent Activities' },
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
+			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
 			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
 			position: { x: 0, y: 175 },
@@ -88,6 +90,7 @@
 		{
 			id: 'A-1',
 			data: { label: 'Front-Run Transaction - Returning the funds back to your wallet' },
+			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
 			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
@@ -100,6 +103,8 @@
 		{
 			id: 'A-2',
 			expandParent: false,
+			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
+
 			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
 			data: { label: 'Continue Monitoring' },
 			position: { x: 200, y: 250 },
@@ -118,7 +123,8 @@
 			position: { x: 0, y: 0 },
 
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit ring-indigo-500 items-center justify-center rounded-xl',
+			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			// @ts-ignore
 			sourcePosition: 'bottom',
 			// @ts-ignore
@@ -132,6 +138,7 @@
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 
 			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			position: { x: 0, y: 175 },
 			// @ts-ignore
 			sourcePosition: 'bottom',
@@ -143,6 +150,7 @@
 			id: 'A-1',
 			data: { label: 'Front-Run Transaction - Returning the funds back to your wallet' },
 
+			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			position: { x: 0, y: 250 },
@@ -160,8 +168,8 @@
 			type: 'default',
 			source: '1',
 			target: 'A',
-			labelStyle: 'stroke: {blue};',
 			animated: true,
+			labelStyle: 'color: #ffffff; background-color: transparent; z-index: 53; border-radius: 30px; padding: 3px 10px; background-color: rgb(79 70 229 / var(--tw-bg-opacity));',
 			label: 'Perm2 Stored Approval'
 			// class: 'rounded-xl bg-blue-500 '
 		},
@@ -172,6 +180,7 @@
 			source: '3',
 			target: '5',
 			animated: true,
+			labelStyle: 'color: #ffffff; background-color: transparent; z-index: 53; border-radius: 30px; padding: 3px 10px; background-color: rgb(79 70 229 / var(--tw-bg-opacity));',
 			label: 'Argus Sentinal Activates'
 		},
 		// { id: 'a1-a2', source: 'A-1', target: 'A-2' },
@@ -183,7 +192,7 @@
 			target: 'A-1',
 			label: 'Detected',
 			class: 'rounded-xl bg-red-500',
-			labelStyle: 'background-color: {red};',
+			labelStyle: 'color: #ffffff; background-color: transparent; z-index: 53; border-radius: 30px; padding: 3px 10px; background-color: rgb(79 70 229 / var(--tw-bg-opacity));',
 			animated: true
 		},
 		{
@@ -192,6 +201,7 @@
 			source: 'A',
 			target: 'A-2',
 			label: 'Undetected',
+			labelStyle: 'color: #ffffff; background-color: transparent; z-index: 53; border-radius: 30px; padding: 3px 10px; background-color: rgb(79 70 229 / var(--tw-bg-opacity));',
 			animated: true
 		}
 	]);
@@ -201,18 +211,18 @@
 			type: 'default',
 			source: '1',
 			target: 'A',
-			labelStyle: 'stroke: {blue};',
 			animated: true,
+			labelStyle: 'color: #ffffff; background-color: transparent; z-index: 53; border-radius: 30px; padding: 3px 10px; background-color: rgb(79 70 229 / var(--tw-bg-opacity));',
 			label: 'Perm2 Stored Approval'
 			// class: 'rounded-xl bg-blue-500 '
 		},
-
 		{
 			id: '3-5',
 			type: 'default',
 			source: '3',
 			target: '5',
 			animated: true,
+			labelStyle: 'color: #ffffff; background-color: transparent; z-index: 53; border-radius: 30px; padding: 3px 10px; background-color: rgb(79 70 229 / var(--tw-bg-opacity));',
 			label: 'Argus Sentinal Activates'
 		},
 		// { id: 'a1-a2', source: 'A-1', target: 'A-2' },
@@ -224,7 +234,7 @@
 			target: 'A-1',
 			label: 'Detected',
 			class: 'rounded-xl bg-red-500',
-			labelStyle: 'background-color: {red};',
+			labelStyle: 'color: #ffffff; background-color: transparent; z-index: 53; border-radius: 30px; padding: 3px 10px; background-color: rgb(79 70 229 / var(--tw-bg-opacity));',
 			animated: true
 		},
 		{
@@ -233,6 +243,7 @@
 			source: 'A',
 			target: 'A-2',
 			label: 'Undetected',
+			labelStyle: 'color: #ffffff; background-color: transparent; z-index: 53; border-radius: 30px; padding: 3px 10px; background-color: rgb(79 70 229 / var(--tw-bg-opacity));',
 			animated: true
 		}
 	]);
@@ -432,7 +443,7 @@
 		<img alt="gradient" src="/blur.png" />
 	</div> -->
 
-	<Spotlight fill="#a855f7" className="absolute  z-[51]" />
+	<Spotlight fill="#a855f7" className="absolute z-[51]" />
 
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
 	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
@@ -476,20 +487,21 @@
 </Section>
 
 <Section>
-	<div class="flex flex-col flex-wrap items-center justify-center text-white sm:mt-48 sm:odd:child:flex-row-reverse">
+	<div class="-sm:odd:child:flex-row-reverse flex flex-col flex-wrap items-center justify-center text-white sm:mt-48">
 		{#each howItWorkCards as card}
 			<!-- Card -->
 			<div
 				class={cn(
-					'mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-2 shadow-2xl sm:w-auto sm:flex-row sm:p-24 dark:border-white/[0.2]',
-					'relative flex max-h-[800px] w-full flex-col gap-y-12 overflow-hidden rounded-xl border border-[#d33df529] bg-neutral-900/50 p-4 py-12 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:gap-x-12 sm:gap-y-0 md:rounded-3xl md:p-10'
+					'mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-2 shadow-2xl md:w-auto md:flex-row md:p-24 dark:border-white/[0.2]',
+					'gap-y-12 rounded-xl bg-neutral-900/25 p-4 py-12 transition hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] md:gap-x-12 md:gap-y-0 md:rounded-3xl md:p-10',
+					'container'
 				)}>
 				<!-- BG Blur -->
 				<div class="absolute -bottom-[20rem] -right-[20rem] left-auto z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl sm:-top-[20rem]" />
 				<!-- Image -->
 				{#if card.img}
-					<div class="-m-4 -mt-12 h-96 max-w-96 sm:m-0">
-						<img alt="s" src={card.img} class="w- h-full rounded-xl shadow-2xl" />
+					<div class="-m-4 min-w-[28rem]">
+						<div class="-mt-12 h-96 w-full overflow-hidden rounded-xl bg-cover bg-center shadow-2xl md:m-0" style={`background-image: url(${card.img})`}></div>
 					</div>
 				{:else}
 					<div class="h-96 max-w-96 rounded-xl drop-shadow-2xl">
@@ -528,7 +540,6 @@
 			<div class="sm:flex sm:items-center sm:justify-between">
 				<a href="https://0xargus.org" class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">
 					<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
-
 					<span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">0xArgus</span>
 				</a>
 				<ul class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-500 children:cursor-pointer sm:mb-0 dark:text-gray-400">
