@@ -526,43 +526,44 @@
 </Section>
 
 <!-- FOOTER START -->
-<section class="relative z-50 mt-12 flex h-[30rem] w-full flex-col items-center justify-center bg-neutral-950 pt-32 font-outfit -antialiased">
-	<div class="mx-auto max-w-2xl p-4">
-		<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-center font-sans text-3xl font-bold text-transparent sm:to-neutral-600 sm:text-7xl">
-			Join the waitlist
-		</h1>
+<section class="relative z-50 mt-12 flex h-[40rem] w-full flex-col items-center justify-center bg-neutral-950 pt-32 font-outfit -antialiased">
+	<div class="w-full">
+		<div class="mx-auto max-w-2xl p-4">
+			<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-center font-sans text-4xl font-bold text-transparent sm:to-neutral-600 sm:text-7xl">
+				Join the waitlist
+			</h1>
 
-		<p class="relative z-10 mx-auto my-2 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
-			Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
-		</p>
-		<WhitelistForm data={data.form} id="whitelist-footer" />
-	</div>
-
-	<div class="mt-24"></div>
-	<footer class="z-50 w-full rounded-lg bg-white shadow dark:bg-neutral-950">
-		<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
-			<div class="sm:flex sm:items-center sm:justify-between">
-				<a href="https://0xargus.org" class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">
-					<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
-					<span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">0xArgus</span>
-				</a>
-				<ul class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-500 children:cursor-pointer sm:mb-0 dark:text-gray-400">
-					<li>
-						<a href="/privacy" class="me-4 cursor-pointer hover:underline md:me-6">Privacy Policy</a>
-					</li>
-					<li>
-						<a href="/presale" class="me-4 hover:underline md:me-6">Investors</a>
-					</li>
-					<li>
-						<email class="text-purple-500 hover:underline">team@0xargus.org</email>
-					</li>
-				</ul>
-			</div>
-			<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
-			<span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://0xargus.org" class="hover:underline">0xArgus</a>. All Rights Reserved.</span>
+			<p class="relative z-10 mx-auto my-4 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
+				Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
+			</p>
+			<WhitelistForm data={data.form} id="whitelist-footer" />
 		</div>
-	</footer>
+		<div class="mt-24"></div>
+		<footer class="z-50 w-full rounded-lg bg-white shadow dark:bg-neutral-950">
+			<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
+				<div class="sm:flex sm:items-center sm:justify-between">
+					<a href="https://0xargus.org" class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">
+						<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
+						<span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">0xArgus</span>
+					</a>
+					<ul class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-500 children:cursor-pointer sm:mb-0 dark:text-gray-400">
+						<li>
+							<a href="/privacy" class="me-4 cursor-pointer hover:underline md:me-6">Privacy Policy</a>
+						</li>
+						<li>
+							<a href="/presale" class="me-4 hover:underline md:me-6">Investors</a>
+						</li>
+						<li>
+							<email class="text-purple-500 hover:underline">team@0xargus.org</email>
+						</li>
+					</ul>
+				</div>
+				<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
+				<span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://0xargus.org" class="hover:underline">0xArgus</a>. All Rights Reserved.</span>
+			</div>
+		</footer>
 
-	<BackgroundBeams />
+		<BackgroundBeams />
+	</div>
 </section>
 <!-- WAITLIST END -->
