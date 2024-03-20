@@ -18,11 +18,11 @@
 
 	const { open } = getContext<Context>('simple-modal');
 
-	// reopen modal if a user navigated to page from email link	
+	// reopen modal if a user navigated to page from email link
 	$: if ($page.url.searchParams.has('type')) {
 		const typeCheck = $page.url.searchParams.get('type');
 
-		if (typeCheck === 'verify_email' || typeCheck === 'confirmed_email') open(Popup, { type: typeCheck });
+		if (typeCheck === 'confirmed_email') open(Popup, { type: typeCheck });
 	}
 
 	const { form, errors, constraints, delayed, submitting, message, enhance } = superForm(data, {
@@ -37,7 +37,6 @@
 		},
 		onUpdated: async ({ form: formData }) => {
 			const user = formData.data;
-
 
 			if (!user.email_confirmed_at) {
 				await new Promise<void>((resolve) => {
@@ -56,22 +55,20 @@
 									{ taint: false }
 								);
 
-								
 								supabase.removeChannel(channel);
 								resolve();
 							}
 						})
 						.subscribe();
-					});
-				}
+				});
+			}
 		}
 	});
 
 	$: console.log($form);
 	// TODO: reset form on successful submission
-	// TODO: handle verify_email
-			// 1. add verify_email to url once form submitted and modal open awaiting email confirmation
-			// 2. if user navigates to the modal directly from url type=verify_email without having submitted form, enable email input to register or check if user exists
+	// 1. add verify_email to url once form submitted and modal open awaiting email confirmation
+	// 2. if user navigates to the modal directly from url type=verify_email without having submitted form, enable email input to register or check if user exists
 </script>
 
 {#if debug}
@@ -151,7 +148,7 @@
 				// Focus/Hover
 				'hover:scale-105 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500'
 			],
-				// Additional classes for whitelist-footer forms
+			// Additional classes for whitelist-footer forms
 			id === 'whitelist-footer' && [
 				// Global
 				'z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-neutral-700 p-2 text-neutral-500 transition duration-300 ease-in-out',

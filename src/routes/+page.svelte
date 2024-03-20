@@ -18,23 +18,11 @@
 	import '@xyflow/svelte/dist/style.css';
 
 	// import { Circle } from 'svelte-loading-spinners';
-	import { SvelteComponent } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { MetaTags } from 'svelte-meta-tags';
 	import type { PageData } from './$types.js';
 
 	export let data: PageData;
-
-	const iconComponents: { [key: string]: typeof SvelteComponent } = {
-		// @ts-ignore
-		'1inch': Icon_1inch,
-		// @ts-ignore
-		metamask: Icon_metamask,
-		// @ts-ignore
-		uniswap: Icon_uniswap,
-		// @ts-ignore
-		safepal: Icon_safepal
-	};
 
 	const howItWorkCards = [
 		{
@@ -447,9 +435,9 @@
 	<Spotlight fill="#a855f7" className="absolute  z-[51]" />
 
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
-	<div class="relative right-0 z-[52] flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
+	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
 		<SvelteFlow
-			class="z-[52]"
+			style="background-color: #00000000; z-index: 52;"
 			attributionPosition="bottom-right"
 			nodes={nodesMobile}
 			fitView
@@ -458,23 +446,32 @@
 			nodesDraggable={false}
 			nodesConnectable={false}
 			elementsSelectable={false}>
-			<Background patternColor="#0a0a0a" bgColor="#0a0a0a" />
+			<Background patternColor="#0a0a0a" bgColor="#00000000" />
 		</SvelteFlow>
 
 		<!-- Hide Attribution -->
-		<div class="absolute bottom-0 right-0 h-12 w-20 bg-neutral-950" />
+		<div class="absolute bottom-0 right-0 z-[53] h-12 w-20 bg-neutral-950" />
 		<!-- Overlay to prevent moving -->
-		<div class="absolute inset-0" />
+		<div class="absolute inset-0 z-[53]" />
 	</div>
 	<div class={'svelte-flow-container relative hidden w-full items-center justify-center overflow-hidden sm:flex sm:h-[1000px]'}>
-		<SvelteFlow class="z-[52]" attributionPosition="bottom-right" {nodes} fitView fitViewOptions={{ duration: 2 }} {edges} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false}>
-			<Background patternColor="#0a0a0a" bgColor="#0a0a0a" />
+		<SvelteFlow
+			style="background-color: #00000000; z-index: 52;"
+			attributionPosition="bottom-right"
+			{nodes}
+			fitView
+			fitViewOptions={{ duration: 2 }}
+			{edges}
+			nodesDraggable={false}
+			nodesConnectable={false}
+			elementsSelectable={false}>
+			<!-- <Background bgColor="#00000000" /> -->
 		</SvelteFlow>
 
 		<!-- Hide Attribution -->
-		<div class="absolute bottom-0 right-0 h-12 w-20 bg-neutral-950" />
+		<div class="absolute bottom-0 right-0 z-[53] h-12 w-20 bg-neutral-950" />
 		<!-- Overlay to prevent moving -->
-		<div class="absolute inset-0" />
+		<div class="absolute inset-0 z-[53]" />
 	</div>
 </Section>
 

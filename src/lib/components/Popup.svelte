@@ -4,9 +4,8 @@
 	import type { WhitelistSchema } from '$lib/schema';
 	import type { Infer } from 'sveltekit-superforms';
 
-	export let data: Writable<Infer<WhitelistSchema>> | undefined
-	export let type: 'verify_email' | 'confirmed_email' | undefined;
-
+	export let data: Writable<Infer<WhitelistSchema>> | undefined;
+	export let type: 'confirmed_email' | undefined;
 
 	const text = {
 		verify_email: {
