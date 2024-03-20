@@ -9,6 +9,22 @@ const config = {
 
 	theme: {
 		extend: {
+
+			colors: {
+				neutral: {
+					50: '#F9FAFB',
+					100: '#F4F6F8',
+					200: '#DFE3E8',
+					300: '#C4CDD5',
+					400: '#919EAB',
+					500: '#637381',
+					600: '#454F5E',
+					700: '#212B36',
+					800: '#161C24',
+					900: '#0D1117',
+					950: '#0a0317',
+				},
+			},
 			fontFamily: {
 				citerne: ['Citerne', 'sans-serif'],
 				outfit: ['Outfit', 'sans-serif'],

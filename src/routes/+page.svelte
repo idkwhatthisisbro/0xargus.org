@@ -442,8 +442,8 @@
 <!-- Product Summary + Features End -->
 <Section class="relative pb-0">
 	<img src="/test3.png" class="absolute inset-x-0 top-32 h-32 w-full blur-md sm:top-64" alt="gradient" />
-	<img class="absolute -bottom-96 -right-[20rem] z-[55] opacity-40 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" />
-	<img class="absolute -left-[15rem] top-[45rem] z-[55] opacity-75 sm:-bottom-16 sm:-left-[35rem] sm:top-auto" alt="gradient" src="/blur.svg" />
+	<img class="absolute -bottom-96 -right-[20rem] z-[55] opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" />
+	<img class="absolute -left-[15rem] top-[45rem] z-[55] opacity-40 sm:-bottom-16 sm:-left-[35rem] sm:top-auto" alt="gradient" src="/blur2.svg" />
 
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
