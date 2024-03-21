@@ -13,7 +13,7 @@
 	import { page } from '$app/stores';
 
 	export let data: SuperValidated<Infer<WhitelistSchema>>;
-	export let id: 'whitelist-hero' | 'whitelist-footer';
+	export let id: 'whitelist-hero' | 'whitelist-footer' | 'whitelist-webapp';
 	export let debug = false;
 
 	const { open } = getContext<Context>('simple-modal');
