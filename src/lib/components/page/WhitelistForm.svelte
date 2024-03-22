@@ -66,9 +66,6 @@
 	});
 
 	$: console.log($form);
-	// TODO: reset form on successful submission
-	// 1. add verify_email to url once form submitted and modal open awaiting email confirmation
-	// 2. if user navigates to the modal directly from url type=verify_email without having submitted form, enable email input to register or check if user exists
 </script>
 
 {#if debug}

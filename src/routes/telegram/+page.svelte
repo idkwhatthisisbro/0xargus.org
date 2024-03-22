@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import WhitelistForm from '$lib/components/WhitelistForm.svelte';
+	import WhitelistForm from '$lib/components/page/WhitelistForm.svelte';
 	import type { PageData } from '../$types';
 	import BackgroundBeams from '$lib/components/ui/BackgroundBeams/BackgroundBeams.svelte';
    import { supabase } from '$lib/supabase';
@@ -23,6 +23,7 @@
 
 		} catch (error) {}
 	});
+   import Stars from '$lib/components/Stars.svelte';
 </script>
 
 <svelte:head>
@@ -35,7 +36,12 @@
    <WhitelistForm data={data.form} id='whitelist-webapp' />
 </div> -->
 
-<nav class="absolute top-0 z-50 flex w-full items-center justify-start px-4 py-4">
+<div class="relative h-[500px] border-2 border-red-950 flex items-center justify-center">
+	<h1 class="z-50 text-2xl text-white">Hello</h1>
+	<Stars numStars={30} />
+</div>
+
+<!-- <nav class="absolute top-0 z-50 flex w-full items-center justify-start px-4 py-4">
 	<img class="h-8 w-8" src="/logo-rounded.svg" alt="logo" />
 </nav>
 
@@ -52,4 +58,4 @@
 		<WhitelistForm data={data.form} id="whitelist-footer" />
 	</div>
 	<BackgroundBeams />
-</div>
+</div> -->

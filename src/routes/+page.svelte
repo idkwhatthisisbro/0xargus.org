@@ -1,7 +1,11 @@
 <script lang="ts">
+	import JoinTheWhitelist from '$lib/components/page/JoinTheWhitelist.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+	// import ProductSummaryAndFeatures from '$lib/components/page/ProductSummaryAndFeatures.svelte';
+	
 	import Banner from '$lib/components/Banner.svelte';
 	import AnimatedHeroText from '$lib/components/AnimatedHeroText.svelte';
-	import WhitelistForm from '$lib/components/WhitelistForm.svelte';
+	import WhitelistForm from '$lib/components/page/WhitelistForm.svelte';
 	import CustomLottiePlayer from '$lib/components/CustomLottiePlayer.svelte';
 	import Section from '$lib/layouts/Section.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
@@ -16,6 +20,7 @@
 	import { cn } from '$lib/utils/cn.js';
 	import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
 	import '@xyflow/svelte/dist/style.css';
+	import Stars from '$lib/components/Stars.svelte';
 
 	// import { Circle } from 'svelte-loading-spinners';
 	import { writable } from 'svelte/store';
@@ -281,6 +286,11 @@
 		imageAlt: 'Twitter image alt'
 	}} />
 
+<div class="relative h-[500px] border-4 border-red-950 flex items-center justify-center">
+	<h1 class="z-50 text-2xl text-white">Hello</h1>
+	<Stars numStars={30} />
+</div>
+
 <main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
 	<div class="absolute top-0 flex w-full flex-col items-center gap-5">
@@ -332,6 +342,8 @@
 
 <!-- Prevent the background of the wave from clipping -->
 <div class="sm:mt-32" />
+
+<!-- <ProductSummaryAndFeatures featureData={featureCards} /> -->
 
 <!-- Product Summary + Features Start -->
 <GridAndDotBackgroundsSmallGrid>
@@ -440,6 +452,7 @@
 	</TracingBeam>
 </GridAndDotBackgroundsSmallGrid>
 <!-- Product Summary + Features End -->
+
 <Section class="relative pb-0">
 	<img src="/test3.png" class="absolute inset-x-0 top-32 h-32 w-full blur-md sm:top-64" alt="gradient" />
 	<img class="absolute -bottom-96 -right-[20rem] z-[55] opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" />
@@ -525,45 +538,7 @@
 	</div>
 </Section>
 
-<!-- FOOTER START -->
-<section class="relative z-50 mt-12 flex h-[40rem] w-full flex-col items-center justify-center bg-neutral-950 pt-32 font-outfit -antialiased">
-	<div class="w-full">
-		<div class="mx-auto max-w-2xl p-4">
-			<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-center font-sans text-4xl font-bold text-transparent sm:to-neutral-600 sm:text-7xl">
-				Join the waitlist
-			</h1>
+<JoinTheWhitelist data={data.form}>
+	<Footer />
+</JoinTheWhitelist>
 
-			<p class="relative z-10 mx-auto my-4 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
-				Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
-			</p>
-			<WhitelistForm data={data.form} id="whitelist-footer" />
-		</div>
-		<div class="mt-24"></div>
-		<footer class="z-50 w-full rounded-lg bg-white shadow dark:bg-neutral-950">
-			<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
-				<div class="sm:flex sm:items-center sm:justify-between">
-					<a href="https://0xargus.org" class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">
-						<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
-						<span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">0xArgus</span>
-					</a>
-					<ul class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-500 children:cursor-pointer sm:mb-0 dark:text-gray-400">
-						<li>
-							<a href="/privacy" class="me-4 cursor-pointer hover:underline md:me-6">Privacy Policy</a>
-						</li>
-						<li>
-							<a href="/presale" class="me-4 hover:underline md:me-6">Investors</a>
-						</li>
-						<li>
-							<email class="text-purple-500 hover:underline">team@0xargus.org</email>
-						</li>
-					</ul>
-				</div>
-				<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
-				<span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://0xargus.org" class="hover:underline">0xArgus</a>. All Rights Reserved.</span>
-			</div>
-		</footer>
-
-		<BackgroundBeams />
-	</div>
-</section>
-<!-- WAITLIST END -->
