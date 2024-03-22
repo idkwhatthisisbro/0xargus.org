@@ -8,7 +8,7 @@
       brightness: (Math.random() * 0.5 - 0 + 0.5).toFixed(2)
 	})
    
-   let numStars = 30;
+   export let numStars = 30;
    let stars = Array(numStars).fill(null).map(starProperties);
 </script>
 
