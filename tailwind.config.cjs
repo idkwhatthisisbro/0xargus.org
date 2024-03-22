@@ -32,7 +32,7 @@ const config = {
 			},
 			animation: {
 				// ...other animations
-				spotlight: 'spotlight 1s ease .25s 1 forwards'
+				spotlight: 'spotlight 1s ease .25s 1 forwards',
 			},
 			keyframes: {
 				// ... other keyframes
