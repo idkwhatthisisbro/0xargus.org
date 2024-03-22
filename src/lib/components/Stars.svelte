@@ -16,12 +16,12 @@
 	{#each stars as star, i (star.id)}
 		{@const position = starProperties()}
 		<span
-			class="absolute origin-center animate-spin"
+			class="absolute animate-spin"
 			style="left: {position.x}%; top: {position.y}%; animation-duration: {position.duration}s; animation-delay: {position.delay}ms;"
          on:animationend={() => stars[i] = starProperties()}
          >
 			<svg
-				class="animate-scale-in-out block origin-center"
+				class="animate-scale-in-out block"
 				style="animation-duration: {position.duration}s;"
 				width="20"
 				height="20"
@@ -60,10 +60,12 @@
 
 	.animate-scale-in-out {
 		animation: scaleInOutAnimation ease-in-out both;
-      animation-fill-mode: backwads;
+      animation-fill-mode: backwards;
+      transform-origin: center;
 	}
 	.animate-spin {
 		animation: spin linear both;
       animation-fill-mode: backwards;
+      transform-origin: center;
 	}
 </style>
