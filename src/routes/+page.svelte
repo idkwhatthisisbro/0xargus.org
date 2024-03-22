@@ -288,7 +288,7 @@
 
 <div class="relative h-[500px] border-4 border-red-950 flex items-center justify-center">
 	<h1 class="z-50 text-2xl text-white">Hello</h1>
-	<Stars numStars={30} />
+	<Stars numStars={30} bgColour="bg-neutral-950" />
 </div>
 
 <main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>

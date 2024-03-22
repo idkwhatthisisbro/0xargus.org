@@ -9,10 +9,11 @@
 	})
    
    export let numStars = 30;
+	export let bgColour = 'bg-neutral-950';
    let stars = Array(numStars).fill(null).map(starProperties);
 </script>
 
-<div class="absolute h-full w-full overflow-hidden bg-neutral-950">
+<div class="absolute h-full w-full overflow-hidden {bgColour}">
 	{#each stars as star, i (star.id)}
 		{@const position = starProperties()}
 		<span
