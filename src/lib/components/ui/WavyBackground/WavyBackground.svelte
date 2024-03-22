@@ -3,7 +3,7 @@
 	import { createNoise3D } from 'simplex-noise';
 
 	export let colors = ['#a855f7', '#818cf8', '#c084fc', '#6366f1', '#a855f7'];
-	export let backgroundFill = '#0A0A0A';
+	export let backgroundFill = '#06000f';
 	export let blur = 10;
 	export let speed = 'fast';
 	export let waveWidth = 75;

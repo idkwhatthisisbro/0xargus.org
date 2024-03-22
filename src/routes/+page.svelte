@@ -2,7 +2,7 @@
 	import JoinTheWhitelist from '$lib/components/page/JoinTheWhitelist.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	// import ProductSummaryAndFeatures from '$lib/components/page/ProductSummaryAndFeatures.svelte';
-	
+
 	import Banner from '$lib/components/Banner.svelte';
 	import AnimatedHeroText from '$lib/components/AnimatedHeroText.svelte';
 	import WhitelistForm from '$lib/components/page/WhitelistForm.svelte';
@@ -26,6 +26,8 @@
 	import { writable } from 'svelte/store';
 	import { MetaTags } from 'svelte-meta-tags';
 	import type { PageData } from './$types.js';
+
+	// TODO: Add localization
 
 	export let data: PageData;
 
@@ -286,18 +288,17 @@
 		imageAlt: 'Twitter image alt'
 	}} />
 
-<div class="relative h-[500px] border-4 border-red-950 flex items-center justify-center">
-	<h1 class="z-50 text-2xl text-white">Hello</h1>
-	<Stars numStars={30} bgColour="bg-neutral-950" />
-</div>
-
 <main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
+	<Stars numStars={5} />
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
 	<div class="absolute top-0 flex w-full flex-col items-center gap-5">
 		<Banner />
 
 		<nav class="z-30 flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
 			<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
+			<div class="rounded-full shadow-xl">
+				<div />
+			</div>
 			<button
 				on:click={() => window.open('https://docs.0xargus.org', '_blank')}
 				class="relative inline-flex h-12 w-12 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white sm:w-auto">
@@ -503,6 +504,7 @@
 
 <Section class="relative">
 	<SectionHeader class="" title="2024 Is the Year For Crypto" subtitle="Be the first to join the revolution for a scam free market" />
+	<Stars numStars={30} />
 	<div class="flex flex-col flex-wrap items-center justify-center text-white">
 		{#each howItWorkCards as card}
 			<!-- Card -->
@@ -541,4 +543,3 @@
 <JoinTheWhitelist data={data.form}>
 	<Footer />
 </JoinTheWhitelist>
-

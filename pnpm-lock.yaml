@@ -20,6 +20,9 @@ dependencies:
   '@tma.js/init-data-node':
     specifier: ^1.1.10
     version: 1.1.10
+  '@tolgee/svelte':
+    specifier: ^5.22.0
+    version: 5.22.0(svelte@4.2.12)
   '@xyflow/svelte':
     specifier: ^0.0.38
     version: 0.0.38(svelte@4.2.12)
@@ -799,6 +802,25 @@ packages:
 
   /@tma.js/sdk@1.4.9:
     resolution: {integrity: sha512-QtDSJmyxiqoZoCFf+a7rr3dzoUJ1gYQoyOHwIxF2K6qWLSJ5zROh2QAnOXU3+HlKlM0mJ2a22iRVTVOzdnRW1g==}
+    dev: false
+
+  /@tolgee/core@5.22.0:
+    resolution: {integrity: sha512-R3JQ3JGrF3Ioa6hGsm6WXFdXZDa3qzqdir18trQvSm97LIwvpod4o5Y583TxRJOGKSdUDfe2rejDePgV1X+0vQ==}
+    dev: false
+
+  /@tolgee/svelte@5.22.0(svelte@4.2.12):
+    resolution: {integrity: sha512-au9a4nnpieTWALPo0wmWjVM3jaDUUstgW8U6mJhALSGJVy9hklWPbut4wLTxKLMkOjL2iBTTUuQtvfxLdQ3gzw==}
+    peerDependencies:
+      svelte: ^3.29.0 || ^4.0.0
+    dependencies:
+      '@tolgee/web': 5.22.0
+      svelte: 4.2.12
+    dev: false
+
+  /@tolgee/web@5.22.0:
+    resolution: {integrity: sha512-NWDeHr/cY/83UVitke0p8MGyElWa1HAWFs3LfmAiuo8y+lA638+y3kgcPYWb12/bhhIspXLcAEvebKAN/Ysv4g==}
+    dependencies:
+      '@tolgee/core': 5.22.0
     dev: false
 
   /@types/cookie@0.6.0:
@@ -3307,6 +3329,23 @@ packages:
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
       svelte: 3.x || 4.x || >=5.0.0-next.51
+    peerDependenciesMeta:
+      '@sinclair/typebox':
+        optional: true
+      '@vinejs/vine':
+        optional: true
+      arktype:
+        optional: true
+      joi:
+        optional: true
+      superstruct:
+        optional: true
+      valibot:
+        optional: true
+      yup:
+        optional: true
+      zod:
+        optional: true
     dependencies:
       '@sveltejs/kit': 2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.5)
       devalue: 4.3.2

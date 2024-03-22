@@ -46,6 +46,7 @@
 		"@supabase/supabase-js": "^2.39.7",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tma.js/init-data-node": "^1.1.10",
+		"@tolgee/svelte": "^5.22.0",
 		"@xyflow/svelte": "^0.0.38",
 		"clsx": "^2.1.0",
 		"flattenColorPalette": "link:tailwindcss/lib/util/flattenColorPalette",
