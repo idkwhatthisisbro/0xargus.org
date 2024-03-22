@@ -341,6 +341,10 @@
 </main>
 <!-- HERO END -->
 
+
+<!-- Prevent the background of the wave from clipping -->
+<div class="sm:mt-32" />
+
 <!-- Prevent the background of the wave from clipping -->
 <div class="sm:mt-32" />
 
@@ -454,7 +458,7 @@
 </GridAndDotBackgroundsSmallGrid>
 <!-- Product Summary + Features End -->
 
-<Section class="relative pb-0">
+<Section className="relative pb-0 overflow-hidden">
 	<img src="/test3.png" class="absolute inset-x-0 top-32 h-32 w-full blur-md sm:top-64" alt="gradient" />
 	<img class="absolute -bottom-96 -right-[20rem] z-[55] opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" />
 	<img class="absolute -left-[15rem] top-[45rem] z-[55] opacity-40 sm:-bottom-16 sm:-left-[35rem] sm:top-auto" alt="gradient" src="/blur2.svg" />
@@ -462,6 +466,7 @@
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
 	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
+
 	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
 		<SvelteFlow
 			style="background-color: #00000000; z-index: 52;"
@@ -481,6 +486,7 @@
 		<!-- Overlay to prevent moving -->
 		<div class="absolute inset-0 z-[53]" />
 	</div>
+
 	<div class={'svelte-flow-container relative hidden w-full items-center justify-center overflow-hidden sm:flex sm:h-[1000px]'}>
 		<SvelteFlow
 			style="background-color: #00000000; z-index: 52;"
@@ -502,10 +508,11 @@
 	</div>
 </Section>
 
-<Section class="relative">
-	<SectionHeader class="" title="2024 Is the Year For Crypto" subtitle="Be the first to join the revolution for a scam free market" />
-	<Stars numStars={30} />
-	<div class="flex flex-col flex-wrap items-center justify-center text-white">
+
+<Section className="relative">
+	<SectionHeader class="z-30" title="2024 Is the Year For Crypto" subtitle="Be the first to join the revolution for a scam free market" />
+
+	<div class="z-30 flex flex-col flex-wrap items-center justify-center text-white">
 		{#each howItWorkCards as card}
 			<!-- Card -->
 			<div
@@ -538,6 +545,8 @@
 			</div>
 		{/each}
 	</div>
+
+	<Stars numStars={30} slot="background"/>
 </Section>
 
 <JoinTheWhitelist data={data.form}>

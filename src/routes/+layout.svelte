@@ -23,13 +23,11 @@
 		});
 </script>
 
-<!-- <TolgeeProvider {tolgee}>
-	<div slot="fallback">Loading...</div> -->
 <Modal {styleWindow} {styleCloseButton} classWindow="p-2 bg-neutral-950 rounded-3xl">
-	<slot />
+	<div class="relative overflow-hidden bg-neutral-950 font-outfit">
+		<slot />
+	</div>
 </Modal>
-
-<!-- </TolgeeProvider> -->
 
 <style>
 	::selection {
