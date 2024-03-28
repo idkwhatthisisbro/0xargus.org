@@ -536,7 +536,7 @@
 	</section>
 
 	<!-- <Stars numStars={30} /> -->
-	<div class="flex flex-grow items-center justify-center space-x-12 text-white">
+	<div class="flex flex-grow flex-col items-center justify-center text-white lg:flex-row lg:space-x-12">
 		{#each howItWorkCards as card, index}
 			<!-- Card -->
 			<div
