@@ -461,7 +461,7 @@
 <Section className="relative pb-0 overflow-hidden">
 	<Stars numStars={20} slot="background" />
 	<img src="/test3.png" class="absolute inset-0 top-20 h-8 w-full blur-md" alt="gradient" />
-	<img class="absolute -bottom-96 -right-[20rem] z-[99] h-1/2 bg-contain opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" />
+	<!-- <img class="absolute -bottom-96 -right-[20rem] z-[99] h-1/2 bg-contain opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" /> -->
 	<img class="absolute -left-[15rem] top-[45rem] z-[55] opacity-40 sm:-bottom-16 sm:-left-[35rem] sm:top-auto" alt="gradient" src="/blur2.svg" />
 
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
@@ -536,7 +536,7 @@
 	</section>
 
 	<!-- <Stars numStars={30} /> -->
-	<div class="flex flex-grow flex-col items-center justify-center text-white lg:flex-row lg:space-x-12">
+	<div class="flex flex-grow flex-col items-center justify-center text-white lg:flex-row lg:gap-x-12">
 		{#each howItWorkCards as card, index}
 			<!-- Card -->
 			<div
@@ -568,14 +568,14 @@
 							</div>
 						</div>
 					{/if}
-					<p class="text-center text-3xl font-semibold md:text-left">{card.title}</p>
-					<div class="max-w-lg text-center leading-relaxed md:text-left">
+					<p class="text-3xl font-semibold">{card.title}</p>
+					<div class="max-w-lg leading-relaxed">
 						{card.desc}
 					</div>
 				</div>
 				{#if card.imgMain}
-					<div class="h-96 w-96">
-						<div class="h-96 w-full overflow-hidden rounded-xl bg-contain bg-no-repeat object-cover drop-shadow-xl" style={`background-image: url(${card.imgMain})`}></div>
+					<div class="h-96 w-full sm:w-96">
+						<div class="h-96 overflow-hidden rounded-xl bg-contain bg-no-repeat object-cover drop-shadow-xl" style={`background-image: url(${card.imgMain})`}></div>
 					</div>
 				{/if}
 			</div>
