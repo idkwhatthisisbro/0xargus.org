@@ -16,7 +16,7 @@
 	import { GlowingStarsBackgroundCard, GlowingStarsDescription, GlowingStarsTitle } from '$lib/components/ui/GlowingStars/';
 	import BackgroundBeams from '$lib/components/ui/BackgroundBeams/BackgroundBeams.svelte';
 	import Spotlight from '$lib/components/ui/SpotLight/Spotlight.svelte';
-	import { BanIcon, BotIcon, Boxes, CandlestickChartIcon, EyeIcon } from 'lucide-svelte';
+	import { ArrowDown, ArrowRightIcon, BanIcon, BotIcon, Boxes, CandlestickChartIcon, EyeIcon } from 'lucide-svelte';
 	import { cn } from '$lib/utils/cn.js';
 	import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
 	import '@xyflow/svelte/dist/style.css';
@@ -374,7 +374,7 @@
 
 		<!-- FEATURES SECTION-->
 		<Section class="">
-			<SectionHeader title="Features" subtitle="The first ever safety layer middleware" />
+			<SectionHeader title="Bringing Security into the Mainstream" subtitle="The first ever safety layer middleware. Productivity is unique to everyone. Personalization is key" />
 
 			<!-- FEATURES BENTO -->
 			<div class="flex flex-col gap-4 gap-y-8 sm:gap-8">
@@ -459,13 +459,14 @@
 <!-- Product Summary + Features End -->
 
 <Section className="relative pb-0 overflow-hidden">
-	<img src="/test3.png" class="absolute inset-x-0 top-[22rem] h-8 w-full blur-md" alt="gradient" />
+	<Stars numStars={20} slot="background" />
+	<img src="/test3.png" class="absolute inset-0 top-20 h-8 w-full blur-md" alt="gradient" />
 	<img class="absolute -bottom-96 -right-[20rem] z-[99] h-1/2 bg-contain opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" />
 	<img class="absolute -left-[15rem] top-[45rem] z-[55] opacity-40 sm:-bottom-16 sm:-left-[35rem] sm:top-auto" alt="gradient" src="/blur2.svg" />
 
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
-	<SectionHeader title="How It Works" subtitle="A basic overview of the technicals" />
+	<SectionHeader title="Used by Thousands of People" subtitle="From solo open-source developers, to companies like Stripe and Typeform, We’ve seen the library used for data processing" />
 
 	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
 		<SvelteFlow
@@ -509,17 +510,28 @@
 </Section>
 
 <Section class="relative">
-	<section class={cn('z-[51] mt-20 flex w-full items-center justify-center sm:py-32')}>
+	<section class={cn('z-[51] mt-20 flex w-full items-center justify-center sm:py-36')}>
 		<div class="grid items-center justify-center text-center">
-			<h3 class="bg-gradient-to-tr from-purple-500 via-purple-600 to-indigo-500 bg-clip-text font-outfit text-6xl font-bold text-transparent">
+			<h3 class="bg-gradientt-tr from-purple-500 via-purple-600 to-indigo-500 bg-clip-text font-outfit text-6xl font-bold text-transparent text-white">
 				<span
 					style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
 					class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
 					>2024
 				</span>
-				Is the Year For Crypto
+				is the
+				<span
+					style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
+					class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
+					>Year
+				</span>
+
+				of Crypto
 			</h3>
-			<p class="mt-8 max-w-4xl text-center text-3xl text-neutral-300">Turn Pro by harnessing the power of AI, add Argus to your arsenal with support for over 8 chains.</p>
+			<p class="mx-auto mt-8 max-w-4xl text-center text-3xl text-neutral-300">Turn Pro by harnessing the power of AI, add Argus to your arsenal with support for over 8 chains.</p>
+			<a
+				class="group m-auto mt-8 flex w-48 items-center justify-center rounded-full border border-purple-700/30 px-3 py-2 text-sm text-white shadow-md duration-200 ease-in-out"
+				style="background: linear-gradient(90.33deg,rgba(40,36,160,.25),hsla(0,12%,67%,.25)); white-space: nowrap;"
+				href="#presale">Explore The Presale <ArrowRightIcon class="ml-2 h-4 transform-gpu transition duration-300 group-hover:translate-x-0.5" /></a>
 		</div>
 	</section>
 
@@ -537,14 +549,12 @@
 				<div
 					class={`group-[:nth-of-type({3})_&]:-right-[10rem] group-[:nth-of-type({3})_&]:-left-[10rem] group-2:-left-[20rem] group-2:right-auto group-2:-right-[20rem] absolute -bottom-[20rem] z-0 aspect-1  h-auto  w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:left-auto sm:-bottom-[10rem]`} />
 
-				<div></div>
-
 				<!-- Text -->
-				<div class=" shadow-3xl z-50 flex w-full flex-col justify-start space-y-4 p-4 text-neutral-300">
+				<div class="shadow-3xl z-50 flex w-full flex-col justify-start space-y-4 p-4 text-neutral-300">
 					<!-- Image -->
 					{#if card.imgIcon}
 						<div class="mb-4">
-							<div class="bg-gradient-radial flex h-20 w-20 items-center justify-center rounded-xl from-neutral-800 to-neutral-900/50 p-4 shadow-xl">
+							<div class="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-radial from-neutral-800 to-neutral-900/50 p-4 shadow-xl">
 								{#if card.imgIcon === '3d-2.png'}
 									<!-- content here -->
 									<BotIcon class="h-10 w-full text-purple-600" />
