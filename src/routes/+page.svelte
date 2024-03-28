@@ -36,18 +36,20 @@
 			title: 'Liquidity Withdrawals',
 			desc: "Our system is designed  sm:p-4to detect any large-scale liquidity withdrawals. These are often a red flag for rug pulls, where token creators remove their liquidity from a market, causing the token's value to plummet. If such activity is detected, Argus will immediately execute a transaction to secure your holdings.",
 			// img: 'https://www.dissentmagazine.org/wp-content/files_mf/1659985189666_GettyImages1241318592.jpeg'
-			img: '/3d-1.png'
+			imgIcon: '/3d-4.png',
+			imgMain: 'https://cursor.sh/landing/features/card-examples/generate.png'
 		},
 		{
 			title: 'Manipulating Token Functionalities',
 			desc: 'We constantly monitor for any changes to the token contract. This includes unauthorized minting of new tokens, changes to transaction fees, or any other modifications that could potentially harm token holders. Our system will react to any such changes by securing your assets.',
-			img: '3d-2.png'
+			imgIcon: '3d-2.png',
+			imgMain: 'https://cursor.sh/landing/features/card-examples/edit4.png'
 		},
 		{
 			title: 'AI Algorithms',
 			desc: 'Our AI algorithms are at the core of our platform. They continuously scan and learn from the entire Ethereum network, identifying patterns and behaviors associated with fraudulent activities. This allows us to constantly improve our detection capabilities and provide better protection for your assets. sm:p-4',
-			img: '/3d-3.png'
-			// lottie: 'ai.json'
+			imgIcon: '/3d-3.png',
+			imgMain: 'https://cursor.sh/landing/features/card-examples/ask.png'
 		}
 	];
 	const featureCards = [
@@ -289,7 +291,7 @@
 	}} />
 
 <main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
-	<Stars numStars={5} />
+	<!-- <Stars numStars={5} /> -->
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
 	<div class="absolute top-0 flex w-full flex-col items-center gap-5">
 		<Banner />
@@ -377,16 +379,16 @@
 				<!-- FEATURE CARDS -->
 				<div class="grid grid-cols-1 gap-4 gap-y-8 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{#each featureCards as { circle, desc, tag }}
-						<div class="relative flex h-[30rem] w-full flex-col items-start border border-black/[0.2] p-4 dark:border-white/[0.2]">
-							<Icon class="absolute -left-3 -top-3 h-6 w-6 text-black dark:text-white" />
-							<Icon class="absolute -bottom-3 -left-3 h-6 w-6 text-black dark:text-white" />
-							<Icon class="absolute -right-3 -top-3 h-6 w-6 text-black dark:text-white" />
-							<Icon class="absolute -bottom-3 -right-3 h-6 w-6 text-black dark:text-white" />
+						<div class="relative flex h-[30rem] w-full flex-col items-start border border-white/[0.2] p-4">
+							<Icon class="absolute -left-3 -top-3 h-6 w-6 text-white" />
+							<Icon class="absolute -bottom-3 -left-3 h-6 w-6 text-white" />
+							<Icon class="absolute -right-3 -top-3 h-6 w-6 text-white" />
+							<Icon class="absolute -bottom-3 -right-3 h-6 w-6 text-white" />
 
 							<EvervaultCard text={circle} />
 
-							<h2 class="mt-4 text-base font-light text-black dark:text-white">{desc}</h2>
-							<p class="mt-4 rounded-full border border-black/[0.2] px-2 py-0.5 text-sm font-light text-black dark:border-white/[0.2] dark:text-white">{tag}</p>
+							<h2 class="mt-4 text-base font-light text-white">{desc}</h2>
+							<p class="mt-4 rounded-full border border-white/[0.2] px-2 py-0.5 text-sm font-light text-white">{tag}</p>
 						</div>
 					{/each}
 					<div class="group hidden md:block lg:hidden">
@@ -503,38 +505,54 @@
 </Section>
 
 <Section class="relative">
-	<SectionHeader class="" title="2024 Is the Year For Crypto" subtitle="Be the first to join the revolution for a scam free market" />
-	<Stars numStars={30} />
-	<div class="flex flex-col flex-wrap items-center justify-center text-white">
+	<section class={cn('z-[51] mt-20 flex w-full items-center justify-center sm:py-32')}>
+		<div class="grid items-center justify-center text-center">
+			<h3 class="bg-gradient-to-tr from-purple-500 via-purple-600 to-indigo-500 bg-clip-text font-outfit text-6xl font-bold text-transparent">
+				<span
+					style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
+					class="xp-3 rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
+					>2024
+				</span>
+				Is the Year For Crypto
+			</h3>
+			<p class="mt-8 max-w-4xl text-center text-3xl text-neutral-300">Turn Pro to harness the power of AI, make Raycast your own with custom themes, keep your Macs in sync and more.</p>
+		</div>
+	</section>
+
+	<!-- <Stars numStars={30} /> -->
+	<div class="flex flex-grow items-center justify-center space-x-12 text-white">
 		{#each howItWorkCards as card}
 			<!-- Card -->
 			<div
 				class={cn(
-					'mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-2 shadow-lg md:w-auto  md:flex-row md:p-24 dark:border-white/[0.2]',
-					'gap-y-12 rounded-xl bg-indigo-950/10 py-12 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 md:gap-x-12 md:gap-y-0 md:rounded-3xl md:p-10 md:even:flex-row-reverse',
+					'-border-2 mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-white/[0.2] shadow-lg  md:w-auto md:p-24',
+					'gap-y-12 rounded-xl bg-indigo-950/10 py-12 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 md:rounded-3xl md:p-10',
 					'group container backdrop-blur-3xl backdrop-filter'
 				)}>
 				<!-- BG Blur -->
 				<div
 					class="absolute -bottom-[20rem] z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:-right-[20rem] group-odd:left-auto group-even:-left-[20rem] group-even:right-auto sm:-top-[20rem]" />
-				<!-- Image -->
-				{#if card.img}
-					<div class="min-w-[28rem] md:p-4">
-						<div class="-mt-12 h-96 w-full overflow-hidden rounded-xl bg-contain bg-center bg-repeat-y drop-shadow-xl sm:m-0" style={`background-image: url(${card.img})`}></div>
-					</div>
-				{:else}
-					<div class="h-96 max-w-96 rounded-xl p-4 drop-shadow-2xl">
-						<CustomLottiePlayer src="ai.json" />
-					</div>
-				{/if}
+
+				<div></div>
 
 				<!-- Text -->
-				<div class="z-50 space-y-4 p-4 text-neutral-300">
+				<div class=" shadow-3xl z-50 flex w-full flex-col justify-start space-y-4 p-4 text-neutral-300">
+					<!-- Image -->
+					{#if card.imgIcon}
+						<div class="mb-4 bg-red-500">
+							<div class="h-20 overflow-hidden rounded-xl bg-blue-500 bg-contain bg-left bg-no-repeat drop-shadow-xl" style={`background-image: url(${card.imgIcon})`}></div>
+						</div>
+					{/if}
 					<p class="text-center text-3xl font-semibold md:text-left">{card.title}</p>
 					<div class="max-w-lg text-center leading-relaxed md:text-left">
 						{card.desc}
 					</div>
 				</div>
+				{#if card.imgMain}
+					<div class="h-96 w-96">
+						<div class="h-96 w-full overflow-hidden rounded-xl bg-contain bg-no-repeat object-cover drop-shadow-xl" style={`background-image: url(${card.imgMain})`}></div>
+					</div>
+				{/if}
 			</div>
 		{/each}
 	</div>
