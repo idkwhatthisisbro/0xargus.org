@@ -9,7 +9,7 @@
 	role="presentation"
 	on:mouseenter={() => (mouseEnter = true)}
 	on:mouseleave={() => (mouseEnter = false)}
-	class={cn('h-full w-full rounded-xl border border-neutral-300 p-4 dark:border-white/[0.2]', className)}>
+	class={cn('h-full w-full rounded-xl border border-neutral-300 border-white/[0.2] p-4', className)}>
 	<div class="flex items-center justify-center">
 		<Illustration {mouseEnter} />
 	</div>
