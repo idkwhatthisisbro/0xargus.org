@@ -49,9 +49,9 @@
 
 		<div class="relative z-10 flex items-center justify-center">
 			<div class="relative flex h-44 w-44 items-center justify-center rounded-full text-4xl font-bold text-white">
-				<div class="absolute h-full w-full rounded-full bg-white/[0.8] blur-sm dark:bg-black/[0.8]" />
+				<div class="absolute h-full w-full rounded-full bg-black/[0.8] blur-sm" />
 				{#if text}
-					<span class="z-20 text-6xl text-black dark:text-white">{text}</span>
+					<span class="z-20 text-6xl text-white">{text}</span>
 				{/if}
 			</div>
 		</div>
