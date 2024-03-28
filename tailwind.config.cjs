@@ -9,7 +9,6 @@ const config = {
 
 	theme: {
 		extend: {
-
 			colors: {
 				neutral: {
 					50: '#F9FAFB',
@@ -24,6 +23,9 @@ const config = {
 					900: '#0D1117',
 					950: '#06000f',
 				},
+			},
+			backgroundImage: {
+			        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 			},
 			fontFamily: {
 				citerne: ['Citerne', 'sans-serif'],

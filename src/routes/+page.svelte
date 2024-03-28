@@ -519,7 +519,7 @@
 				</span>
 				Is the Year For Crypto
 			</h3>
-			<p class="mt-8 max-w-4xl text-center text-3xl text-neutral-300">Turn Pro to harness the power of AI, make Raycast your own with custom themes, keep your Macs in sync and more.</p>
+			<p class="mt-8 max-w-4xl text-center text-3xl text-neutral-300">Turn Pro by harnessing the power of AI, add Argus to your arsenal with support for over 8 chains.</p>
 		</div>
 	</section>
 
@@ -544,16 +544,16 @@
 					<!-- Image -->
 					{#if card.imgIcon}
 						<div class="mb-4">
-							<div class="bg-grad flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-700 p-4 shadow-xl">
+							<div class="bg-gradient-radial flex h-20 w-20 items-center justify-center rounded-xl from-neutral-800 to-neutral-900/50 p-4 shadow-xl">
 								{#if card.imgIcon === '3d-2.png'}
 									<!-- content here -->
-									<BotIcon class="h-10 w-full text-neutral-50" />
+									<BotIcon class="h-10 w-full text-purple-600" />
 								{:else if card.imgIcon === '/3d-3.png'}
 									<!-- else if content here -->
-									<EyeIcon class="h-10 w-full text-neutral-50" />
+									<EyeIcon class="h-10 w-full text-purple-600" />
 								{:else if card.imgIcon === '/3d-4.png'}
 									<!-- else if content here -->
-									<CandlestickChartIcon class="h-10 w-full text-neutral-50" />
+									<CandlestickChartIcon class="h-10 w-full text-purple-600" />
 								{/if}
 							</div>
 						</div>
