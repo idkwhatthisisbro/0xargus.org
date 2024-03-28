@@ -3,7 +3,6 @@
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 
-
 	let svgHeight = 0;
 	let scrollYProgress = 0;
 	let lastScrollY = 0;
@@ -17,13 +16,13 @@
 		svgHeight = contentRef.offsetHeight;
 
 		const handleScroll = () => {
-			const currentScrollY = window.scrollY * 2;
+			const currentScrollY = window.scrollY * 1;
 			const scrollDelta = currentScrollY - lastScrollY;
 			lastScrollY = currentScrollY;
 
 			scrollYProgress = currentScrollY / (document.body.offsetHeight - window.innerHeight);
 
-			const velo = Math.min(1, Math.abs(scrollDelta / 10));
+			const velo = Math.min(1, Math.abs(scrollDelta / 150));
 			let dynamicLength = Math.max(1, scrollYProgress * svgHeight * 0.5);
 			dynamicLength = Math.min(dynamicLength, svgHeight * 0.2);
 
@@ -41,8 +40,8 @@
 
 <svelte:window />
 
-<div class="relative mx-auto mt-20 h-full w-full max-w-7xl">
-	<div class="absolute -right-32 top-3 mt-64 hidden sm:block">
+<div class="relative mx-auto h-full w-full max-w-7xl">
+	<div class="absolute -right-52 top-7 hidden sm:block">
 		<div
 			class="ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border border-neutral-200 shadow-sm"
 			style="box-shadow: {scrollYProgress > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
@@ -70,4 +69,3 @@
 		<slot />
 	</div>
 </div>
-
