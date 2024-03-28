@@ -16,7 +16,7 @@
 	import { GlowingStarsBackgroundCard, GlowingStarsDescription, GlowingStarsTitle } from '$lib/components/ui/GlowingStars/';
 	import BackgroundBeams from '$lib/components/ui/BackgroundBeams/BackgroundBeams.svelte';
 	import Spotlight from '$lib/components/ui/SpotLight/Spotlight.svelte';
-	import { Boxes } from 'lucide-svelte';
+	import { BanIcon, BotIcon, Boxes, CandlestickChartIcon, EyeIcon } from 'lucide-svelte';
 	import { cn } from '$lib/utils/cn.js';
 	import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
 	import '@xyflow/svelte/dist/style.css';
@@ -290,13 +290,12 @@
 		imageAlt: 'Twitter image alt'
 	}} />
 
-<main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
-	<!-- <Stars numStars={5} /> -->
+<main class={cn('relative z-[30] flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
 	<div class="absolute top-0 flex w-full flex-col items-center gap-5">
 		<Banner />
 
-		<nav class="z-30 flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
+		<nav class="z-[99] flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
 			<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
 			<div class="rounded-full shadow-xl">
 				<div />
@@ -313,7 +312,7 @@
 		</nav>
 	</div>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR END -->
-
+	<Stars numStars={5} />
 	<div class="w-full max-w-7xl">
 		<div class="flex w-full flex-col items-center justify-center px-4 sm:px-0">
 			<!-- HERO TITLE -->
@@ -342,7 +341,6 @@
 	<WavyBackground />
 </main>
 <!-- HERO END -->
-
 
 <!-- Prevent the background of the wave from clipping -->
 <div class="sm:mt-32" />
@@ -461,8 +459,8 @@
 <!-- Product Summary + Features End -->
 
 <Section className="relative pb-0 overflow-hidden">
-	<img src="/test3.png" class="absolute inset-x-0 top-32 h-32 w-full blur-md sm:top-64" alt="gradient" />
-	<img class="absolute -bottom-96 -right-[20rem] z-[55] opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" />
+	<img src="/test3.png" class="absolute inset-x-0 top-[22rem] h-8 w-full blur-md" alt="gradient" />
+	<img class="absolute -bottom-96 -right-[20rem] z-[99] h-1/2 bg-contain opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" />
 	<img class="absolute -left-[15rem] top-[45rem] z-[55] opacity-40 sm:-bottom-16 sm:-left-[35rem] sm:top-auto" alt="gradient" src="/blur2.svg" />
 
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
@@ -510,14 +508,13 @@
 	</div>
 </Section>
 
-<<<<<<< HEAD
 <Section class="relative">
 	<section class={cn('z-[51] mt-20 flex w-full items-center justify-center sm:py-32')}>
 		<div class="grid items-center justify-center text-center">
 			<h3 class="bg-gradient-to-tr from-purple-500 via-purple-600 to-indigo-500 bg-clip-text font-outfit text-6xl font-bold text-transparent">
 				<span
 					style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
-					class="xp-3 rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
+					class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
 					>2024
 				</span>
 				Is the Year For Crypto
@@ -528,24 +525,17 @@
 
 	<!-- <Stars numStars={30} /> -->
 	<div class="flex flex-grow items-center justify-center space-x-12 text-white">
-=======
-
-<Section className="relative">
-	<SectionHeader class="z-30" title="2024 Is the Year For Crypto" subtitle="Be the first to join the revolution for a scam free market" />
-
-	<div class="z-30 flex flex-col flex-wrap items-center justify-center text-white">
->>>>>>> f1b3d16402d82009782dc1ac069f9a1dae54fa91
-		{#each howItWorkCards as card}
+		{#each howItWorkCards as card, index}
 			<!-- Card -->
 			<div
 				class={cn(
-					'-border-2 mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-white/[0.2] shadow-lg  md:w-auto md:p-24',
+					'-border-2 z-[55] mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-white/[0.2] shadow-lg  md:w-auto md:p-24',
 					'gap-y-12 rounded-xl bg-indigo-950/10 py-12 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 md:rounded-3xl md:p-10',
 					'group container backdrop-blur-3xl backdrop-filter'
 				)}>
 				<!-- BG Blur -->
 				<div
-					class="absolute -bottom-[20rem] z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:-right-[20rem] group-odd:left-auto group-even:-left-[20rem] group-even:right-auto sm:-top-[20rem]" />
+					class={`group-[:nth-of-type({3})_&]:-right-[10rem] group-[:nth-of-type({3})_&]:-left-[10rem] group-2:-left-[20rem] group-2:right-auto group-2:-right-[20rem] absolute -bottom-[20rem] z-0 aspect-1  h-auto  w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:left-auto sm:-bottom-[10rem]`} />
 
 				<div></div>
 
@@ -553,8 +543,19 @@
 				<div class=" shadow-3xl z-50 flex w-full flex-col justify-start space-y-4 p-4 text-neutral-300">
 					<!-- Image -->
 					{#if card.imgIcon}
-						<div class="mb-4 bg-red-500">
-							<div class="h-20 overflow-hidden rounded-xl bg-blue-500 bg-contain bg-left bg-no-repeat drop-shadow-xl" style={`background-image: url(${card.imgIcon})`}></div>
+						<div class="mb-4">
+							<div class="bg-grad flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-700 p-4 shadow-xl">
+								{#if card.imgIcon === '3d-2.png'}
+									<!-- content here -->
+									<BotIcon class="h-10 w-full text-neutral-50" />
+								{:else if card.imgIcon === '/3d-3.png'}
+									<!-- else if content here -->
+									<EyeIcon class="h-10 w-full text-neutral-50" />
+								{:else if card.imgIcon === '/3d-4.png'}
+									<!-- else if content here -->
+									<CandlestickChartIcon class="h-10 w-full text-neutral-50" />
+								{/if}
+							</div>
 						</div>
 					{/if}
 					<p class="text-center text-3xl font-semibold md:text-left">{card.title}</p>
@@ -571,7 +572,7 @@
 		{/each}
 	</div>
 
-	<Stars numStars={30} slot="background"/>
+	<Stars numStars={20} slot="background" />
 </Section>
 
 <JoinTheWhitelist data={data.form}>

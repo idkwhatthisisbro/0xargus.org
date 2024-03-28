@@ -10,7 +10,7 @@
 </script>
 
 <!-- banner-wrapper -->
-<div class="w-full overflow-hidden" id="banner-wrapper">
+<div class="z-[99] w-full overflow-hidden" id="banner-wrapper">
 	<div
 		class="-border-neutral-700 -border-b flex w-full transform items-center justify-center bg-gradient-to-tr from-indigo-700/50 via-indigo-700/55 to-indigo-600/50 font-outfit shadow backdrop-filter transition-transform duration-300"
 		class:-translate-y-full={!showBanner}
