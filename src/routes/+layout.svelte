@@ -2,11 +2,13 @@
 	import '../app.pcss';
 	import Modal from 'svelte-simple-modal';
 
-	let styleWindow = { backgroundColor: '#0a0a0a' };
-	let styleCloseButton = { backgroundColor: '#a855f7', color: '#ffffff', stroke: '#ffffff', opacity: '0.4' };
+	const styles = {
+		styleWindow: { backgroundColor: '#06000f', 'border-radius': '1rem', padding: '1rem' },
+		styleCloseButton: { backgroundColor: '#fff !important', color: '#fff !important', stroke: '#ffffff !important', opacity: '0.4' }
+	};
 </script>
 
-<Modal {styleWindow} {styleCloseButton} classWindow="p-2 bg-neutral-950 rounded-3xl">
+<Modal {...styles} classWindow="p-2 bg-neutral-950 rounded-3xl">
 	<div class="relative overflow-hidden bg-neutral-950 font-outfit">
 		<slot />
 	</div>

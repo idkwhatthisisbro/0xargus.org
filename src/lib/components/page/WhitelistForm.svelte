@@ -5,12 +5,14 @@
 	import { whitelistSchema, type WhitelistSchema } from '$lib/schema.js';
 	import { cn } from '$lib/utils/cn';
 	import Popup from '$lib/components/Popup.svelte';
-	import { ChevronRight, Circle, MailPlus, Clock, AlertCircle, ArrowRight } from 'lucide-svelte';
+	import { ChevronRight, MailPlus, Clock, AlertCircle, ArrowRight } from 'lucide-svelte';
 	import { getContext } from 'svelte';
 	import type { Context } from 'svelte-simple-modal';
 	import { supabase } from '$lib/supabase';
 	import type { RealtimeChannel } from '@supabase/supabase-js';
 	import { page } from '$app/stores';
+
+	import { Circle } from 'svelte-loading-spinners';
 
 	export let data: SuperValidated<Infer<WhitelistSchema>>;
 	export let id: 'whitelist-hero' | 'whitelist-footer' | 'whitelist-webapp';
@@ -128,6 +130,7 @@
 		)} />
 
 	<button
+		disabled={$submitting}
 		type="submit"
 		class={cn(
 			// classes for both forms
@@ -143,7 +146,8 @@
 				// Animations
 				'transition duration-300 ease-in-out',
 				// Focus/Hover
-				'hover:scale-105 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500'
+				'hover:scale-105 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500',
+				'disabled:cursor-not-allowed disabled:border-transparent disabled:bg-neutral-700 disabled:text-neutral-500 disabled:opacity-50 disabled:shadow-none disabled:hover:scale-100 dark:disabled:cursor-not-allowed dark:disabled:border-transparent dark:disabled:bg-neutral-800 dark:disabled:text-neutral-400 dark:disabled:opacity-50 dark:disabled:shadow-none'
 			],
 			// Additional classes for whitelist-footer forms
 			id === 'whitelist-footer' && [
@@ -158,8 +162,8 @@
 		)}>
 		{#if id === 'whitelist-hero'}
 			<p class="hidden tracking-widest sm:block">JOIN THE WHITELIST</p>
-			{#if $delayed}
-				<Circle color="white" />
+			{#if $submitting}
+				<Circle size="16" color="#fff" unit="px" duration="1s" />
 			{:else}
 				<div class="hidden rounded-full bg-neutral-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-neutral-600 sm:block">
 					<MailPlus class="m-auto h-4 w-4 rounded-full text-xs" />

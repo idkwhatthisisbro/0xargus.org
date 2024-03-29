@@ -86,7 +86,7 @@
 		{
 			id: 'A',
 			type: 'default',
-			data: { label: 'ArgusAI Scans for Fraudulent Activities' },
+			data: { label: 'ArgusAI Scans for Fraudulent Activities 24/7' },
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
@@ -145,7 +145,7 @@
 		{
 			id: 'A',
 			type: 'default',
-			data: { label: 'ArgusAI Scans for Fraudulent Activities' },
+			data: { label: 'ArgusAI Scans for Fraudulent Activities 24/7' },
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 
 			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
@@ -376,7 +376,7 @@
 		<Section class="">
 			<SectionHeader
 				title="Bringing Security into the Mainstream"
-				subtitle="The first ever safety layer middleware. Productivity is unique to everyone. Personalization is key"
+				subtitle="The first ever safety layer middleware. Giving you the ultimate protection for your DeFi investments"
 				image={'/head-lock-4.png'} />
 
 			<!-- FEATURES BENTO -->
@@ -469,10 +469,7 @@
 
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
-	<SectionHeader
-		title="Used by Thousands of People"
-		subtitle="From solo open-source developers, to companies like Stripe and Typeform, We’ve seen the library used for data processing"
-		image="/head-cog-1.png" />
+	<SectionHeader title="How It Works" subtitle="Discover the steps involved in safeguarding your digital assets with our cutting-edge technology" image="/head-cog-1.png" />
 
 	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
 		<SvelteFlow
@@ -541,7 +538,7 @@
 		</div>
 	</section>
 	<!-- <Stars numStars={30} /> -->
-	<div class="group flex flex-1 flex-col items-center justify-center text-white sm:-mx-12 lg:flex-row 2xl:gap-x-12">
+	<div class="group flex flex-1 flex-col items-center justify-center text-white sm:-mx-12 lg:flex-row 2xl:mx-0 2xl:gap-x-12">
 		{#each howItWorkCards as card, index}
 			<!-- Card -->
 
