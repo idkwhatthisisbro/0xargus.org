@@ -354,7 +354,7 @@
 <GridAndDotBackgroundsSmallGrid>
 	<TracingBeam>
 		<!-- PRODUCT SUMMARY SECTION -->
-		<Section class="mt-12 pb-12">
+		<Section class="mt-12">
 			<h2 class="bg-gradient-to-t from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-center font-outfit text-4xl font-bold text-transparent sm:text-6xl">
 				Your Guardian in the DeFi Universe
 			</h2>
@@ -370,10 +370,16 @@
 					</div>
 				{/each}
 			</div>
+
+			<!-- <img class="mx-auto mt-24 h-[700px] w-[1000px] rounded-xl shadow-lg" alt="s" src="/t1.png" /> -->
+			<video class="mx-auto mt-24 h-[700px] w-[1000px] rounded-xl shadow-lg" autoplay loop muted>
+				<source src="/ai.webm" type="video/webm" />
+				Your browser does not support the video tag.
+			</video>
 		</Section>
 
 		<!-- FEATURES SECTION-->
-		<Section class="">
+		<Section class="-mt-52">
 			<SectionHeader
 				title="Bringing Security into the Mainstream"
 				subtitle="The first ever safety layer middleware. Giving you the ultimate protection for your DeFi investments"
@@ -461,6 +467,7 @@
 </GridAndDotBackgroundsSmallGrid>
 <!-- Product Summary + Features End -->
 
+<div class="mb-12 mt-24" />
 <Section className="relative pb-0 overflow-hidden">
 	<Stars numStars={20} slot="background" />
 	<img src="/test3.png" class="absolute inset-0 top-20 h-8 w-full blur-md" alt="gradient" />
@@ -527,6 +534,7 @@
 					class="hidden rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl sm:inline-block"
 					>Year
 				</span>
+				<span class="sm:hidden">Year </span>
 
 				of Crypto
 			</h3>
@@ -545,12 +553,12 @@
 			<div
 				class={cn(
 					'z-[55] mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border border-white/[0.2] shadow-lg  md:w-auto md:p-24',
-					'gap-y-12 rounded-xl bg-indigo-950/10 py-12 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 md:rounded-3xl md:p-10',
-					'group-1:rounded-r container backdrop-blur-3xl backdrop-filter even:border-[6px] even:border-purple-500/50 even:py-16'
+					'gap-y-12 rounded-xl bg-indigo-950/10 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 sm:py-12 md:rounded-3xl md:p-10',
+					'group-1:rounded-r container p-4 backdrop-blur-3xl backdrop-filter even:py-16 sm:even:border-[6px] sm:even:border-purple-500/50'
 				)}>
 				<!-- BG Blur -->
 				<div
-					class={`group-[:nth-of-type({3})_&]:-right-[10rem] group-[:nth-of-type({3})_&]:-left-[10rem] group-2:-left-[20rem] group-2:right-auto group-2:-right-[20rem] absolute -bottom-[20rem] z-0 aspect-1  h-auto  w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:left-auto sm:-bottom-[10rem]`} />
+					class={`group-[:nth-of-type({3})_&]:-right-[10rem] group-[:nth-of-type({3})_&]:-left-[10rem] group-2:-left-[20rem] group-2:right-auto group-2:-right-[20rem] absolute -bottom-[20rem] z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:left-auto sm:-bottom-[10rem]`} />
 
 				<!-- Text -->
 				<div class="shadow-3xl z-50 flex w-full flex-col justify-start space-y-4 p-4 text-neutral-300">
@@ -577,9 +585,7 @@
 					</div>
 				</div>
 				{#if card.imgMain}
-					<div class="h-96 w-full sm:w-96">
-						<div class="h-96 overflow-hidden rounded-xl bg-contain bg-no-repeat object-cover drop-shadow-xl" style={`background-image: url(${card.imgMain})`}></div>
-					</div>
+					<img class="z-[50] h-96 rounded-xl" src={card.imgMain} alt="img" />
 				{/if}
 			</div>
 		{/each}
