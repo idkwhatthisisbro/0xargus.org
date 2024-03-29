@@ -290,12 +290,12 @@
 		imageAlt: 'Twitter image alt'
 	}} />
 
-<main class={cn('relative z-[30] flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
+<main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
 	<div class="absolute top-0 flex w-full flex-col items-center gap-5">
 		<Banner />
 
-		<nav class="z-[99] flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
+		<nav class="z-30 flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
 			<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
 			<div class="rounded-full shadow-xl">
 				<div />
@@ -354,7 +354,7 @@
 <GridAndDotBackgroundsSmallGrid>
 	<TracingBeam>
 		<!-- PRODUCT SUMMARY SECTION -->
-		<Section class="pb-12">
+		<Section class="mt-12 pb-12">
 			<h2 class="bg-gradient-to-t from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-center font-outfit text-4xl font-bold text-transparent sm:text-6xl">
 				Your Guardian in the DeFi Universe
 			</h2>
@@ -374,7 +374,10 @@
 
 		<!-- FEATURES SECTION-->
 		<Section class="">
-			<SectionHeader title="Bringing Security into the Mainstream" subtitle="The first ever safety layer middleware. Productivity is unique to everyone. Personalization is key" />
+			<SectionHeader
+				title="Bringing Security into the Mainstream"
+				subtitle="The first ever safety layer middleware. Productivity is unique to everyone. Personalization is key"
+				image={'/head-lock-4.png'} />
 
 			<!-- FEATURES BENTO -->
 			<div class="flex flex-col gap-4 gap-y-8 sm:gap-8">
@@ -466,7 +469,10 @@
 
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
-	<SectionHeader title="Used by Thousands of People" subtitle="From solo open-source developers, to companies like Stripe and Typeform, We’ve seen the library used for data processing" />
+	<SectionHeader
+		title="Used by Thousands of People"
+		subtitle="From solo open-source developers, to companies like Stripe and Typeform, We’ve seen the library used for data processing"
+		image="/head-cog-1.png" />
 
 	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
 		<SvelteFlow
@@ -509,7 +515,7 @@
 	</div>
 </Section>
 
-<Section class="relative">
+<Section maxWidth="full" class="relative">
 	<section class={cn('z-[51] mt-20 flex w-full items-center justify-center sm:py-36')}>
 		<div class="grid items-center justify-center text-center">
 			<h3 class="bg-gradientt-tr from-purple-500 via-purple-600 to-indigo-500 bg-clip-text font-outfit text-6xl font-bold text-transparent text-white">
@@ -521,7 +527,7 @@
 				is the
 				<span
 					style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
-					class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
+					class="hidden rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl sm:inline-block"
 					>Year
 				</span>
 
@@ -534,16 +540,16 @@
 				href="#presale">Explore The Presale <ArrowRightIcon class="ml-2 h-4 transform-gpu transition duration-300 group-hover:translate-x-0.5" /></a>
 		</div>
 	</section>
-
 	<!-- <Stars numStars={30} /> -->
-	<div class="flex flex-grow flex-col items-center justify-center text-white lg:flex-row lg:gap-x-12">
+	<div class="group flex flex-1 flex-col items-center justify-center text-white sm:-mx-12 lg:flex-row 2xl:gap-x-12">
 		{#each howItWorkCards as card, index}
 			<!-- Card -->
+
 			<div
 				class={cn(
-					'-border-2 z-[55] mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border-white/[0.2] shadow-lg  md:w-auto md:p-24',
+					'z-[55] mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border border-white/[0.2] shadow-lg  md:w-auto md:p-24',
 					'gap-y-12 rounded-xl bg-indigo-950/10 py-12 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 md:rounded-3xl md:p-10',
-					'group container backdrop-blur-3xl backdrop-filter'
+					'group-1:rounded-r container backdrop-blur-3xl backdrop-filter even:border-[6px] even:border-purple-500/50 even:py-16'
 				)}>
 				<!-- BG Blur -->
 				<div
