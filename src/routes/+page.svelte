@@ -359,11 +359,11 @@
 				Your Guardian in the DeFi Universe
 			</h2>
 
-			<p class="mx-auto mt-6 max-w-3xl text-center text-xl font-normal text-white sm:mt-16 sm:text-3xl">
+			<p class="mx-auto mt-6 max-w-3xl text-center text-xl font-normal text-neutral-300 sm:mt-16 sm:text-3xl">
 				Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence.
 			</p>
 
-			<div class="mt-12 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-neutral-400 sm:mt-24">
+			<div class="mt-12 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-white/[0.2] sm:mt-24">
 				{#each ['1inch', 'metamask', 'uniswap', 'safepal'] as icon}
 					<div class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 px-2 py-8 sm:p-12">
 						<img src="{icon}.svg" alt="icon-{icon}" class="h-[30px] saturate-0" />
