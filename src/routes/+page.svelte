@@ -355,8 +355,11 @@
 	<TracingBeam>
 		<!-- PRODUCT SUMMARY SECTION -->
 		<Section class="mt-12">
-			<h2 class="bg-gradient-to-t from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-center font-outfit text-4xl font-bold text-transparent sm:text-6xl">
-				Your Guardian in the DeFi Universe
+			<h2 class="text-center font-outfit text-4xl font-bold text-transparent text-white sm:text-6xl">
+				Your
+
+				<span class="text-purple-600"> Guardian </span>
+				in the DeFi Universe
 			</h2>
 
 			<p class="mx-auto mt-6 max-w-3xl text-center text-xl font-normal text-neutral-300 sm:mt-16 sm:text-3xl">
@@ -375,8 +378,8 @@
 				<source src="/ai.webm" type="video/webm" />
 				Your browser does not support the video tag.
 			</video> -->
-			<video class="absolute inset-0 mx-auto mt-[450px] w-full rounded-xl shadow-lg sm:mt-[650px]" autoplay loop muted>
-				<source src="/ai2.webm" type="video/webm" />
+			<video class="-max-h-[900px] absolute inset-0 mx-auto mt-[450px] max-h-[800px] w-full rounded-xl shadow-lg sm:mt-[650px]" autoplay muted>
+				<source src="/c1.webm" type="video/webm" />
 				Your browser does not support the video tag.
 			</video>
 			<!-- <video class="absolute inset-0 mx-auto mt-[650px] w-full rounded-xl shadow-lg" autoplay loop muted>
