@@ -370,16 +370,24 @@
 					</div>
 				{/each}
 			</div>
-
 			<!-- <img class="mx-auto mt-24 h-[700px] w-[1000px] rounded-xl shadow-lg" alt="s" src="/t1.png" /> -->
-			<video class="mx-auto mt-24 h-[700px] w-[1000px] rounded-xl shadow-lg" autoplay loop muted>
+			<!-- <video class="mx-auto mt-24 h-[700px] w-[1000px] rounded-xl shadow-lg" autoplay loop muted>
 				<source src="/ai.webm" type="video/webm" />
 				Your browser does not support the video tag.
+			</video> -->
+			<video class="absolute inset-0 mx-auto mt-[450px] w-full rounded-xl shadow-lg sm:mt-[650px]" autoplay loop muted>
+				<source src="/ai2.webm" type="video/webm" />
+				Your browser does not support the video tag.
 			</video>
+			<!-- <video class="absolute inset-0 mx-auto mt-[650px] w-full rounded-xl shadow-lg" autoplay loop muted>
+				<source src="/ai2.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video> -->
 		</Section>
 
 		<!-- FEATURES SECTION-->
-		<Section class="-mt-52">
+		<!-- <Section class="-mt-52"> -->
+		<Section class="mt-[200px] sm:mt-[750px]">
 			<SectionHeader
 				title="Bringing Security into the Mainstream"
 				subtitle="The first ever safety layer middleware. Giving you the ultimate protection for your DeFi investments"
