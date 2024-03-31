@@ -562,7 +562,7 @@
 				class={cn(
 					'z-[55] mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border border-white/[0.2] shadow-lg  md:w-auto md:p-24',
 					'gap-y-12 rounded-xl bg-indigo-950/10 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 sm:py-12 md:rounded-3xl md:p-10',
-					'group-1:rounded-r container relative h-full p-4 backdrop-blur-3xl backdrop-filter odd:-my-16 sm:even:border-[6px] sm:even:border-purple-500/50'
+					'group-1:rounded-r container relative h-full p-4 backdrop-blur-3xl backdrop-filter sm:even:border-[6px] sm:even:border-purple-500/50 lg:odd:-mb-16'
 				)}>
 				<!-- BG Blur -->
 				<div
