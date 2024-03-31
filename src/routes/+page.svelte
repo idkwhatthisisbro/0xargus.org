@@ -29,23 +29,23 @@
 
 	const howItWorkCards = [
 		{
-			title: 'AI Algorithms',
+			title: 'Advanced Algorithms',
 			desc: 'Our AI algorithms are at the core of our platform. They continuously scan and learn from multiple chains, identifying patterns and behaviors associated with fraudulent activities. This allows us to constantly improve our detection capabilities and provide better protection for your assets.',
-			imgIcon: '/3d-3.png',
+			imgIcon: '/3d-2.png',
 			imgMain: '/image 1.png'
 			// imgMain: 'https://cursor.sh/landing/features/card-examples/ask.png'
 		},
 		{
 			title: 'Liquidity Withdrawals',
-			desc: "Our system is designed to detect any large-scale liquidity withdrawals. These are often a red flag for rug pulls, where token creators remove their liquidity from a market, causing the token's value to plummet. If such activity is detected, Argus will immediately execute a transaction to secure your holdings.",
+			desc: 'Our system is designed to detect any large liquidity withdrawals, and any malicious changes to the contract, including: unauthorized minting of new tokens, changes to transaction fees.  If such activity is detected, Argus will immediately execute a transaction to secure your holdings.',
 			// img: 'https://www.dissentmagazine.org/wp-content/files_mf/1659985189666_GettyImages1241318592.jpeg'
 			imgIcon: '/3d-4.png',
 			imgMain: '/Rectangle 8.png'
 		},
 		{
-			title: 'Manipulating Token Functionalities',
-			desc: 'We constantly monitor for any changes to the token contract. This includes unauthorized minting of new tokens, changes to transaction fees, or any other modifications that could potentially harm token holders. Our system will react to any such changes by securing your assets.',
-			imgIcon: '3d-2.png',
+			title: 'Real-Time Monitoring',
+			desc: 'Argus SentryAI is constantly monitoring for any malicious transactions in real time. With Auto-Protect, you can effortlessly safeguard your entire portfolio with a single click. So, get peace of mind, knowing your guardian Argus is always on the watch!',
+			imgIcon: '/3d-3.png',
 			imgMain: 'Component 2.png'
 		}
 	];
@@ -569,12 +569,12 @@
 					class={`group-[:nth-of-type({3})_&]:-right-[10rem] group-[:nth-of-type({3})_&]:-left-[10rem] group-2:-left-[20rem] group-2:right-auto group-2:-right-[20rem] absolute -bottom-[20rem] z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:left-auto sm:-bottom-[10rem]`} />
 
 				<!-- Text -->
-				<div class="shadow-3xl z-50 flex w-full flex-col justify-start space-y-4 p-4 text-neutral-300">
+				<div class="shadow-3xl z-50 flex w-full flex-col space-y-4 p-4 text-neutral-300">
 					<!-- Image -->
 					{#if card.imgIcon}
 						<div class="mb-4">
 							<div class="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-radial from-neutral-800 to-neutral-900/50 p-4 shadow-xl">
-								{#if card.imgIcon === '3d-2.png'}
+								{#if card.imgIcon === '/3d-2.png'}
 									<!-- content here -->
 									<BotIcon class="h-10 w-full text-purple-600" />
 								{:else if card.imgIcon === '/3d-3.png'}
