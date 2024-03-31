@@ -36,7 +36,7 @@
 			// imgMain: 'https://cursor.sh/landing/features/card-examples/ask.png'
 		},
 		{
-			title: 'Liquidity Withdrawals',
+			title: 'Rug Pull Protection',
 			desc: 'Our system is designed to detect any large liquidity withdrawals, and any malicious changes to the contract, including: unauthorized minting of new tokens, changes to transaction fees.  If such activity is detected, Argus will immediately execute a transaction to secure your holdings.',
 			// img: 'https://www.dissentmagazine.org/wp-content/files_mf/1659985189666_GettyImages1241318592.jpeg'
 			imgIcon: '/3d-4.png',
@@ -46,7 +46,7 @@
 			title: 'Real-Time Monitoring',
 			desc: 'Argus SentryAI is constantly monitoring for any malicious transactions in real time. With Auto-Protect, you can effortlessly safeguard your entire portfolio with a single click. So, get peace of mind, knowing your guardian Argus is always on the watch!',
 			imgIcon: '/3d-3.png',
-			imgMain: 'Component 2.png'
+			imgMain: 'Component 22.png'
 		}
 	];
 	const featureCards = [
