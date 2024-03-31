@@ -30,7 +30,7 @@
 	const howItWorkCards = [
 		{
 			title: 'Liquidity Withdrawals',
-			desc: "Our system is designed  sm:p-4to detect any large-scale liquidity withdrawals. These are often a red flag for rug pulls, where token creators remove their liquidity from a market, causing the token's value to plummet. If such activity is detected, Argus will immediately execute a transaction to secure your holdings.",
+			desc: "Our system is designed to detect any large-scale liquidity withdrawals. These are often a red flag for rug pulls, where token creators remove their liquidity from a market, causing the token's value to plummet. If such activity is detected, Argus will immediately execute a transaction to secure your holdings.",
 			// img: 'https://www.dissentmagazine.org/wp-content/files_mf/1659985189666_GettyImages1241318592.jpeg'
 			imgIcon: '/3d-4.png',
 			imgMain: 'https://cursor.sh/landing/features/card-examples/generate.png'
@@ -43,7 +43,7 @@
 		},
 		{
 			title: 'AI Algorithms',
-			desc: 'Our AI algorithms are at the core of our platform. They continuously scan and learn from the entire Ethereum network, identifying patterns and behaviors associated with fraudulent activities. This allows us to constantly improve our detection capabilities and provide better protection for your assets. sm:p-4',
+			desc: 'Our AI algorithms are at the core of our platform. They continuously scan and learn from the entire Ethereum network, identifying patterns and behaviors associated with fraudulent activities. This allows us to constantly improve our detection capabilities and provide better protection for your assets.',
 			imgIcon: '/3d-3.png',
 			imgMain: 'https://cursor.sh/landing/features/card-examples/ask.png'
 		}
