@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { LucideAlarmClock, X } from 'lucide-svelte';
+	import { LucideBadgeInfo, X } from 'lucide-svelte';
 	import { onMount } from 'svelte';
 
 	let showBanner = false;
@@ -17,7 +17,7 @@
 		<!-- text wrapper -->
 		<div class="flex w-full max-w-7xl items-center justify-center gap-2 p-2 text-sm text-white sm:text-lg">
 			<!-- <Megaphone color="white" /> -->
-			<LucideAlarmClock class="text-indigo-50" />
+			<LucideBadgeInfo class="text-indigo-50" />
 			<p class="flex font-medium tracking-wide">Whitelist Signups are now Live!</p>
 		</div>
 		<button class="absolute right-2 flex h-1 items-center text-indigo-200" on:click={close}>
