@@ -1,7 +1,6 @@
 <script lang="ts">
+	import { LucideAlarmClock, X } from 'lucide-svelte';
 	import { onMount } from 'svelte';
-	import { Megaphone, X } from 'lucide-svelte';
-	import CustomLottiePlayer from './CustomLottiePlayer.svelte';
 
 	let showBanner = false;
 	const close = () => (showBanner = false);
@@ -16,12 +15,10 @@
 		class:-translate-y-full={!showBanner}
 		id="banner">
 		<!-- text wrapper -->
-		<div class="flex w-full max-w-7xl items-center justify-center gap-1 p-2">
+		<div class="flex w-full max-w-7xl items-center justify-center gap-2 p-2 text-sm text-white sm:text-lg">
 			<!-- <Megaphone color="white" /> -->
-			<div class="h-8 w-8 rounded-xl shadow-2xl">
-				<CustomLottiePlayer src="ai.json" />
-			</div>
-			<p class="flex text-sm font-medium tracking-wide text-white sm:text-lg">Whitelist Signups are now Live!</p>
+			<LucideAlarmClock class="text-indigo-50" />
+			<p class="flex font-medium tracking-wide">Whitelist Signups are now Live!</p>
 		</div>
 		<button class="absolute right-2 flex h-1 items-center text-indigo-200" on:click={close}>
 			<X height="8px" />

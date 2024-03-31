@@ -29,6 +29,13 @@
 
 	const howItWorkCards = [
 		{
+			title: 'AI Algorithms',
+			desc: 'Our AI algorithms are at the core of our platform. They continuously scan and learn from multiple chains, identifying patterns and behaviors associated with fraudulent activities. This allows us to constantly improve our detection capabilities and provide better protection for your assets.',
+			imgIcon: '/3d-3.png',
+			imgMain: '/image 1.png'
+			// imgMain: 'https://cursor.sh/landing/features/card-examples/ask.png'
+		},
+		{
 			title: 'Liquidity Withdrawals',
 			desc: "Our system is designed to detect any large-scale liquidity withdrawals. These are often a red flag for rug pulls, where token creators remove their liquidity from a market, causing the token's value to plummet. If such activity is detected, Argus will immediately execute a transaction to secure your holdings.",
 			// img: 'https://www.dissentmagazine.org/wp-content/files_mf/1659985189666_GettyImages1241318592.jpeg'
@@ -40,13 +47,6 @@
 			desc: 'We constantly monitor for any changes to the token contract. This includes unauthorized minting of new tokens, changes to transaction fees, or any other modifications that could potentially harm token holders. Our system will react to any such changes by securing your assets.',
 			imgIcon: '3d-2.png',
 			imgMain: 'Component 2.png'
-		},
-		{
-			title: 'AI Algorithms',
-			desc: 'Our AI algorithms are at the core of our platform. They continuously scan and learn from the entire Ethereum network, identifying patterns and behaviors associated with fraudulent activities. This allows us to constantly improve our detection capabilities and provide better protection for your assets.',
-			imgIcon: '/3d-3.png',
-			imgMain: '/image 1.png'
-			// imgMain: 'https://cursor.sh/landing/features/card-examples/ask.png'
 		}
 	];
 	const featureCards = [
@@ -562,7 +562,7 @@
 				class={cn(
 					'z-[55] mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border border-white/[0.2] shadow-lg  md:w-auto md:p-24',
 					'gap-y-12 rounded-xl bg-indigo-950/10 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 sm:py-12 md:rounded-3xl md:p-10',
-					'group-1:rounded-r container relative p-4 backdrop-blur-3xl backdrop-filter even:py-16 sm:even:border-[6px] sm:even:border-purple-500/50'
+					'group-1:rounded-r container relative h-full p-4 backdrop-blur-3xl backdrop-filter odd:-my-16 sm:even:border-[6px] sm:even:border-purple-500/50'
 				)}>
 				<!-- BG Blur -->
 				<div
@@ -593,7 +593,7 @@
 					</div>
 				</div>
 				{#if card.imgMain}
-					{#if index === 2}
+					{#if index === 0}
 						<div class="h-96 w-[30rem]" />
 						<img class="-w-[30rem] absolute bottom-0 z-[50] h-96 rounded-xl" src={card.imgMain} alt="img" />
 					{:else}
