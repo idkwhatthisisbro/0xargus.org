@@ -7,7 +7,7 @@
 </script>
 
 <section class={cn('mt-20 grid items-center justify-center gap-6 py-8 sm:py-32' + className)}>
-	<img class="m-auto h-24 w-24" src={image} alt="header" />
+	<!-- <img class="m-auto h-24 w-24" src={image} alt="header" /> -->
 	<div class="grid items-center justify-center text-center">
 		<h3 class="z-[98] m-auto max-w-xl bg-gradient-to-br from-purple-500 via-purple-600 to-purple-800 bg-clip-text font-outfit text-4xl font-bold leading-snug text-transparent sm:text-6xl">
 			<!-- <h3 class="z-[98] m-auto max-w-xl bg-gradient-to-b from-indigo-600 via-indigo-700 to-indigo-800 bg-clip-text font-outfit text-4xl font-bold leading-snug text-transparent sm:text-6xl"> -->

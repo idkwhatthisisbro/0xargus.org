@@ -1,30 +1,26 @@
 <script lang="ts">
-	import JoinTheWhitelist from '$lib/components/page/JoinTheWhitelist.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import JoinTheWhitelist from '$lib/components/page/JoinTheWhitelist.svelte';
 	// import ProductSummaryAndFeatures from '$lib/components/page/ProductSummaryAndFeatures.svelte';
 
-	import Banner from '$lib/components/Banner.svelte';
 	import AnimatedHeroText from '$lib/components/AnimatedHeroText.svelte';
-	import WhitelistForm from '$lib/components/page/WhitelistForm.svelte';
-	import CustomLottiePlayer from '$lib/components/CustomLottiePlayer.svelte';
-	import Section from '$lib/layouts/Section.svelte';
+	import Banner from '$lib/components/Banner.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
-	import WavyBackground from '$lib/components/ui/WavyBackground/WavyBackground.svelte';
-	import GridAndDotBackgroundsSmallGrid from '$lib/components/ui/GridAndDotBackgrounds/GridAndDotBackgroundsSmallGrid.svelte';
-	import TracingBeam from '$lib/components/ui/TracingBeam/TracingBeam.svelte';
+	import Stars from '$lib/components/Stars.svelte';
+	import WhitelistForm from '$lib/components/page/WhitelistForm.svelte';
 	import { EvervaultCard, Icon } from '$lib/components/ui/EvervaultCard/';
 	import { GlowingStarsBackgroundCard, GlowingStarsDescription, GlowingStarsTitle } from '$lib/components/ui/GlowingStars/';
-	import BackgroundBeams from '$lib/components/ui/BackgroundBeams/BackgroundBeams.svelte';
-	import Spotlight from '$lib/components/ui/SpotLight/Spotlight.svelte';
-	import { ArrowDown, ArrowRightIcon, BanIcon, BotIcon, Boxes, CandlestickChartIcon, EyeIcon } from 'lucide-svelte';
+	import GridAndDotBackgroundsSmallGrid from '$lib/components/ui/GridAndDotBackgrounds/GridAndDotBackgroundsSmallGrid.svelte';
+	import TracingBeam from '$lib/components/ui/TracingBeam/TracingBeam.svelte';
+	import WavyBackground from '$lib/components/ui/WavyBackground/WavyBackground.svelte';
+	import Section from '$lib/layouts/Section.svelte';
 	import { cn } from '$lib/utils/cn.js';
-	import { SvelteFlow, Background, type Node } from '@xyflow/svelte';
+	import { Background, SvelteFlow, type Node } from '@xyflow/svelte';
 	import '@xyflow/svelte/dist/style.css';
-	import Stars from '$lib/components/Stars.svelte';
-
+	import { ArrowRightIcon, BotIcon, Boxes, CandlestickChartIcon, EyeIcon } from 'lucide-svelte';
 	// import { Circle } from 'svelte-loading-spinners';
-	import { writable } from 'svelte/store';
 	import { MetaTags } from 'svelte-meta-tags';
+	import { writable } from 'svelte/store';
 	import type { PageData } from './$types.js';
 
 	// TODO: Add localization
@@ -378,7 +374,7 @@
 				<source src="/ai.webm" type="video/webm" />
 				Your browser does not support the video tag.
 			</video> -->
-			<video class="-max-h-[900px] absolute inset-0 mx-auto mt-[450px] max-h-[800px] w-full rounded-xl shadow-lg sm:mt-[650px]" autoplay muted>
+			<video class="-max-h-[900px] absolute inset-0 mx-auto mt-[450px] max-h-[800px] w-full sm:mt-[650px]" autoplay muted>
 				<source src="/c1.webm" type="video/webm" />
 				Your browser does not support the video tag.
 			</video>
@@ -390,7 +386,7 @@
 
 		<!-- FEATURES SECTION-->
 		<!-- <Section class="-mt-52"> -->
-		<Section class="mt-[200px] sm:mt-[750px]">
+		<Section class="mt-[250px] sm:mt-[500px] md:mt-[750px]">
 			<SectionHeader
 				title="Bringing Security into the Mainstream"
 				subtitle="The first ever safety layer middleware. Giving you the ultimate protection for your DeFi investments"
