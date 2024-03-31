@@ -53,7 +53,7 @@
 		{ circle: 'No', desc: 'Argus sees the drain before it happens – safeguarding your tokens from vanishing liquidity.', tag: 'Liquidity Pulls' },
 		{
 			circle: 'More',
-			desc: "Don't let hidden changes erode your investment. Argus shields your tokens from malicious modifications.",
+			desc: "Don't let hidden changes wipe your investment. Argus shields your tokens from malicious modifications.",
 			tag: 'Contracts'
 		},
 		{
@@ -484,7 +484,7 @@
 
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
-	<SectionHeader title="Crypto Security: The Argus Approach" subtitle="Discover the steps involved in safeguarding your digital assets with our cutting-edge technology" image="/head-cog-1.png" />
+	<SectionHeader title="Crypto Safeguards: The Argus Approach" subtitle="Discover the steps involved in safeguarding your digital assets with our cutting-edge technology" image="/head-cog-1.png" />
 
 	<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
 		<SvelteFlow
