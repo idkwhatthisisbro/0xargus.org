@@ -375,7 +375,7 @@
 				<source src="/ai.webm" type="video/webm" />
 				Your browser does not support the video tag.
 			</video> -->
-			<video class="-max-h-[900px] absolute inset-0 mx-auto mt-[450px] max-h-[800px] w-full sm:mt-[650px]" autoplay muted loop>
+			<video class="absolute inset-0 z-[1000] mx-auto mt-[450px] max-h-[800px] w-full sm:mt-[650px]" autoplay muted loop>
 				<source src="/c1.webm" type="video/webm" />
 				Your browser does not support the video tag.
 			</video>
@@ -497,7 +497,7 @@
 			nodesDraggable={false}
 			nodesConnectable={false}
 			elementsSelectable={false}>
-			<Background patternColor="#0a0a0a" bgColor="#00000000" />
+			<!-- <Background patternColor="#0a0a0a" bgColor="#00000000" /> -->
 		</SvelteFlow>
 
 		<!-- Hide Attribution -->
@@ -597,7 +597,7 @@
 						<div class="h-96 w-[30rem]" />
 						<img class="-w-[30rem] absolute bottom-0 z-[50] h-96 rounded-xl" src={card.imgMain} alt="img" />
 					{:else}
-						<img class="z-[50] h-96 w-[30rem] rounded-xl" src={card.imgMain} alt="img" />
+						<img class="z-[50] h-96 w-full rounded-xl sm:w-[30rem]" src={card.imgMain} alt="img" />
 					{/if}
 				{/if}
 			</div>
