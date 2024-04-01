@@ -376,7 +376,7 @@
 				Your browser does not support the video tag.
 			</video> -->
 			<video class="absolute inset-0 z-[1000] mx-auto mt-[450px] max-h-[800px] w-full sm:mt-[650px]" autoplay muted loop>
-				<source src="/c1.webm" type="video/webm" />
+				<source src="/c1.mp4" type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
 			<!-- <video class="absolute inset-0 mx-auto mt-[650px] w-full rounded-xl shadow-lg" autoplay loop muted>
