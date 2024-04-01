@@ -594,10 +594,10 @@
 				</div>
 				{#if card.imgMain}
 					{#if index === 0}
-						<div class="h-96 w-[30rem]" />
-						<img class="-w-[30rem] absolute bottom-0 z-[50] h-96 rounded-xl" src={card.imgMain} alt="img" />
+						<div class="h-64 w-full sm:h-96 sm:w-[30rem]" />
+						<img class="absolute bottom-0 z-[50] h-64 rounded-xl sm:h-96" src={card.imgMain} alt="img" />
 					{:else}
-						<img class="z-[50] h-96 w-full rounded-xl sm:w-[30rem]" src={card.imgMain} alt="img" />
+						<img class="z-[50] h-64 w-full rounded-xl sm:h-96 sm:w-[30rem]" src={card.imgMain} alt="img" />
 					{/if}
 				{/if}
 			</div>
