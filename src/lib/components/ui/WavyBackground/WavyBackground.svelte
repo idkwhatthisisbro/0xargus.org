@@ -1,4 +1,5 @@
 <script lang="ts">
+	import 'context-filter-polyfill';
 	import { onMount } from 'svelte';
 	import { createNoise3D } from 'simplex-noise';
 
