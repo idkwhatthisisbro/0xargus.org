@@ -375,7 +375,13 @@
 				<source src="/ai.webm" type="video/webm" />
 				Your browser does not support the video tag.
 			</video> -->
-			<video class="absolute inset-0 z-[1000] mx-auto mt-[450px] max-h-[800px] w-full sm:mt-[650px]" autoplay muted loop>
+			<style>
+				video::-webkit-media-controls-start-playback-button {
+					display: none;
+				}
+			</style>
+
+			<video class="absolute inset-0 z-[1000] mx-auto mt-[450px] max-h-[800px] w-full sm:mt-[650px]" autoplay controls={false} muted loop playsinline>
 				<source src="/c1.mov" type="video/quicktime" />
 				<source src="/c1.webm" type="video/webm" />
 				Your browser does not support the video tag.

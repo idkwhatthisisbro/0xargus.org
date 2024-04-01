@@ -1,5 +1,4 @@
 <script lang="ts">
-	import 'context-filter-polyfill';
 	import { onMount } from 'svelte';
 	import { createNoise3D } from 'simplex-noise';
 
@@ -10,6 +9,15 @@
 	export let waveWidth = 75;
 	export let waveOpacity = 0.5;
 
+	let isSafari = false;
+
+	onMount(() => {
+		// I'm sorry but i have got to support it on safari.
+
+		isSafari = typeof window !== 'undefined' && navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome');
+		import 'context-filter-polyfill';
+	});
+
 	const noise = createNoise3D();
 	let w: number,
 		h: number,
@@ -19,16 +27,6 @@
 	const speedMap = { slow: 1e-3, fast: 2e-3 };
 
 	const getSpeed = (): number => speedMap[speed] || 1e-3;
-	const debounce = (func, delay) => {
-		let debounceTimer;
-		return function () {
-			const context = this;
-			const args = arguments;
-			clearTimeout(debounceTimer);
-			debounceTimer = setTimeout(() => func.apply(context, args), delay);
-		};
-	};
-
 	const resizeCanvas = () => {
 		w = ctx.canvas.width = window.innerWidth;
 		h = ctx.canvas.height = window.innerHeight;
@@ -75,4 +73,7 @@
 	});
 </script>
 
+<!-- style={{
+		...(isSafari ? { filter: `blur(${blur}px)` } : {})
+	}} -->
 <canvas class="absolute inset-x-0 -bottom-60 z-0 h-[500px] w-full" bind:this={canvasRef} id="canvas"></canvas>
