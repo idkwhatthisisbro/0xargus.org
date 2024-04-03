@@ -129,7 +129,6 @@
 			type: 'input',
 			data: { label: 'User subscribes contract via 0xArgus extension or Dapp' },
 			position: { x: 0, y: 0 },
-
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
 			class: 'flex ring-2 font-outfit ring-indigo-900 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
@@ -485,7 +484,7 @@
 <div class="mb-12 mt-24" />
 <Section className="relative pb-0 overflow-hidden">
 	<Stars numStars={20} slot="background" />
-	<img src="/test3.png" class="absolute inset-0 top-20 h-8 w-full blur-md" alt="gradient" />
+	<img src="/test3.png" class="absolute inset-0 top-20 h-36 w-full blur-md" alt="gradient" />
 	<!-- <img class="absolute -bottom-96 -right-[20rem] z-[99] h-1/2 bg-contain opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" /> -->
 	<img class="absolute -left-[15rem] top-[45rem] z-[55] opacity-40 sm:-bottom-16 sm:-left-[35rem] sm:top-auto" alt="gradient" src="/blur2.svg" />
 
@@ -611,7 +610,7 @@
 		{/each}
 	</div>
 
-	<Stars numStars={20} slot="background" />
+	<!-- <Stars numStars={20} slot="background" /> -->
 </Section>
 
 <JoinTheWhitelist data={data.form}>

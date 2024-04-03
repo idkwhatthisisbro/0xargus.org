@@ -83,7 +83,7 @@
 		// Additional classes for whitelist-hero form
 		id === 'whitelist-hero' && [
 			// Global
-			'relative z-50 flex h-16 w-full justify-end rounded-3xl bg-neutral-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px]'
+			'relative z-50 flex h-16 w-full justify-end rounded-3xl bg-zinc-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px]'
 			// Desktop
 			// Mobile
 			// Focus/Hover
@@ -120,7 +120,7 @@
 			// Additional classes for whitelist-footer form
 			id === 'whitelist-footer' && [
 				// Global
-				'relative z-20 w-full rounded-l-lg border border-neutral-700 bg-neutral-950 p-2 text-white duration-300 ease-in-out placeholder:text-neutral-400 sm:placeholder:text-neutral-700',
+				'relative z-20 w-full rounded-l-lg border border-zinc-700 bg-zinc-950 p-2 text-white duration-300 ease-in-out placeholder:text-neutral-400 sm:placeholder:text-zinc-700',
 				// Desktop
 				// Mobile
 				// Animations
@@ -138,7 +138,7 @@
 			// Additional classes for whitelist-hero form
 			id === 'whitelist-hero' && [
 				// Global
-				'absolute inset-y-0 right-0 flex items-center justify-center border-white bg-transparent bg-gradient-to-tr from-neutral-700 via-neutral-800 to-neutral-900 text-white shadow-2xl dark:border-neutral-400  dark:text-white',
+				'absolute inset-y-0 right-0 flex items-center justify-center border-white bg-transparent bg-gradient-to-tr from-zinc-700 via-zinc-800 to-zinc-900 text-white shadow-2xl dark:border-zinc-400  dark:text-white',
 				// Desktop
 				'-sm:rounded-l-none group transform font-bold tracking-wide sm:m-0 sm:h-full sm:w-auto sm:space-x-2 sm:rounded-3xl sm:border-0 sm:px-6 sm:py-2',
 				// Mobile
@@ -147,12 +147,12 @@
 				'transition duration-300 ease-in-out',
 				// Focus/Hover
 				'hover:scale-105 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500',
-				'disabled:cursor-not-allowed disabled:border-transparent disabled:bg-neutral-700 disabled:text-neutral-500 disabled:opacity-50 disabled:shadow-none disabled:hover:scale-100 dark:disabled:cursor-not-allowed dark:disabled:border-transparent dark:disabled:bg-neutral-800 dark:disabled:text-neutral-400 dark:disabled:opacity-50 dark:disabled:shadow-none'
+				'disabled:cursor-not-allowed disabled:border-transparent disabled:bg-zinc-700 disabled:text-zinc-500 disabled:opacity-50 disabled:shadow-none disabled:hover:scale-100'
 			],
 			// Additional classes for whitelist-footer forms
 			id === 'whitelist-footer' && [
 				// Global
-				'z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-neutral-700 p-2 text-neutral-500 transition duration-300 ease-in-out',
+				'z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-zinc-700 p-2 text-zinc-500 transition duration-300 ease-in-out',
 				// Desktop
 				// Mobile
 				// Animations
