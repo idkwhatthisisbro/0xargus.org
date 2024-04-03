@@ -48,6 +48,7 @@
 		"@tma.js/init-data-node": "^1.1.10",
 		"@tolgee/svelte": "^5.22.0",
 		"@xyflow/svelte": "^0.0.38",
+		"bits-ui": "^0.21.2",
 		"clsx": "^2.1.0",
 		"context-filter-polyfill": "^0.3.13",
 		"flattenColorPalette": "link:tailwindcss/lib/util/flattenColorPalette",
