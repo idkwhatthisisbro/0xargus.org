@@ -22,7 +22,7 @@
 	import { MetaTags } from 'svelte-meta-tags';
 	import { writable } from 'svelte/store';
 	import type { PageData } from './$types.js';
-	import * as Accordion from '$lib/components/ui/accordion/index.ts';
+	import * as Accordion from '$lib/components/ui/accordion';
 
 	// TODO: Add localization
 
@@ -231,7 +231,7 @@
 			target: '5',
 			animated: true,
 			labelStyle: 'color: #ffffff; background-color: transparent; z-index: 53; border-radius: 30px; padding: 3px 10px; background-color: rgb(79 70 229 / var(--tw-bg-opacity));',
-			label: 'Argus Sentinel Activates'
+			label: 'Argus Sentinal Activates'
 		},
 		// { id: 'a1-a2', source: 'A-1', target: 'A-2' },
 
