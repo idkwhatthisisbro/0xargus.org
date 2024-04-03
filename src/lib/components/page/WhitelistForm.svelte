@@ -120,7 +120,7 @@
 			// Additional classes for whitelist-footer form
 			id === 'whitelist-footer' && [
 				// Global
-				'relative z-20 w-full rounded-l-lg border border-zinc-700 bg-zinc-950 p-2 text-white duration-300 ease-in-out placeholder:text-neutral-400 sm:placeholder:text-zinc-700',
+				'relative z-20 w-full rounded-l-lg border border-zinc-700 bg-zinc-950 p-2 text-white duration-300 ease-in-out placeholder:text-zinc-400 sm:placeholder:text-zinc-700',
 				// Desktop
 				// Mobile
 				// Animations
@@ -165,12 +165,12 @@
 			{#if $submitting}
 				<Circle size="16" color="#fff" unit="px" duration="1s" />
 			{:else}
-				<div class="hidden rounded-full bg-neutral-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-neutral-600 sm:block">
+				<div class="hidden rounded-full bg-zinc-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-zinc-600 sm:block">
 					<MailPlus class="m-auto h-4 w-4 rounded-full text-xs" />
 				</div>
 
 				<!-- Mobile -->
-				<ChevronRight class="h-5 w-5 text-neutral-300 sm:hidden" />
+				<ChevronRight class="h-5 w-5 text-zinc-300 sm:hidden" />
 			{/if}
 		{/if}
 
@@ -188,7 +188,7 @@
 	{:else if $errors.email}
 		<p class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-red-500"><AlertCircle /> {$errors.email.join('/n')}</p>
 	{:else}
-		<div class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-neutral-600">
+		<div class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-zinc-600">
 			<Clock class="hidden w-5 sm:block" />
 			<p>
 				<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible genesis founder slots remaining.
