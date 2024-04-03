@@ -502,11 +502,12 @@
 <!-- Product Summary + Features End -->
 
 <div class="mb-12 mt-24" />
-<Section className="relative pb-0 overflow-hidden">
-	<Stars numStars={20} slot="background" />
-	<img src="/test3.png" class="absolute inset-0 top-20 h-36 w-full blur-md" alt="gradient" />
+<Section className="relative pb-0">
+	<!-- <Stars numStars={10} slot="background" /> -->
+	<img src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" />
 	<!-- <img class="absolute -bottom-96 -right-[20rem] z-[99] h-1/2 bg-contain opacity-75 sm:-right-[40rem]" alt="gradient" src="/blur2.svg" /> -->
-	<img class="absolute -left-[15rem] top-[45rem] z-[55] opacity-40 sm:-bottom-16 sm:-left-[35rem] sm:top-auto" alt="gradient" src="/blur2.svg" />
+	<img class="absolute -right-[15rem] top-[25rem] z-[55] hidden opacity-40 sm:-right-[35rem] sm:bottom-32 sm:top-auto sm:block" alt="gradient" src="/blur2.svg" />
+	<img class="absolute -left-[15rem] top-[25rem] z-[55] opacity-40 sm:-left-[35rem] sm:bottom-32 sm:top-auto" alt="gradient" src="/blur2.svg" />
 
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
@@ -630,7 +631,7 @@
 		{/each}
 	</div>
 
-	<!-- <Stars numStars={20} slot="background" /> -->
+	<Stars numStars={10} slot="background" />
 </Section>
 
 <!-- FAQ -->
