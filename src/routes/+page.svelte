@@ -22,7 +22,7 @@
 	import { MetaTags } from 'svelte-meta-tags';
 	import { writable } from 'svelte/store';
 	import type { PageData } from './$types.js';
-	import * as Accordion from '$lib/components/ui/accordion/index.ts';
+	import * as AccordionL from '$lib/components/ui/AccordionL/index.js';
 
 	// TODO: Add localization
 
@@ -638,35 +638,35 @@
 <Section>
 	<SectionHeader title="Frequently Asked Questions" subtitle="Get answers to the most common questions about 0xArgus" />
 	<div class="flex items-center justify-center text-white">
-		<Accordion.Root class="w-full sm:max-w-[50%]">
-			<Accordion.Item value="item-1">
-				<Accordion.Trigger>What is Argus SentryAI?</Accordion.Trigger>
-				<Accordion.Content
-					>Argus SentryAI is our state-of-the-art monitoring system that scans for fraudulent activities across multiple chains, providing real-time protection for your digital assets.</Accordion.Content>
-			</Accordion.Item>
-			<Accordion.Item value="item-2">
-				<Accordion.Trigger>How does Argus protect against rug pulls?</Accordion.Trigger>
-				<Accordion.Content
-					>Our system detects large liquidity withdrawals and unauthorized contract changes. In the event of such activities, Argus executes protective transactions to secure your holdings.</Accordion.Content>
-			</Accordion.Item>
-			<Accordion.Item value="item-3">
-				<Accordion.Trigger>Can I trust Argus with my portfolio?</Accordion.Trigger>
-				<Accordion.Content
-					>Yes, with Argus Auto-Protect, you can safeguard your entire portfolio effortlessly. Our AI is constantly adapting to new threats, ensuring your investments are protected around the clock.</Accordion.Content>
-			</Accordion.Item>
-			<Accordion.Item value="item-4">
-				<Accordion.Trigger>How do I participate in the Argus presale?</Accordion.Trigger>
-				<Accordion.Content
+		<AccordionL.Root class="w-full sm:max-w-[50%]">
+			<AccordionL.Item value="item-1">
+				<AccordionL.Trigger>What is Argus SentryAI?</AccordionL.Trigger>
+				<AccordionL.Content
+					>Argus SentryAI is our state-of-the-art monitoring system that scans for fraudulent activities across multiple chains, providing real-time protection for your digital assets.</AccordionL.Content>
+			</AccordionL.Item>
+			<AccordionL.Item value="item-2">
+				<AccordionL.Trigger>How does Argus protect against rug pulls?</AccordionL.Trigger>
+				<AccordionL.Content
+					>Our system detects large liquidity withdrawals and unauthorized contract changes. In the event of such activities, Argus executes protective transactions to secure your holdings.</AccordionL.Content>
+			</AccordionL.Item>
+			<AccordionL.Item value="item-3">
+				<AccordionL.Trigger>Can I trust Argus with my portfolio?</AccordionL.Trigger>
+				<AccordionL.Content
+					>Yes, with Argus Auto-Protect, you can safeguard your entire portfolio effortlessly. Our AI is constantly adapting to new threats, ensuring your investments are protected around the clock.</AccordionL.Content>
+			</AccordionL.Item>
+			<AccordionL.Item value="item-4">
+				<AccordionL.Trigger>How do I participate in the Argus presale?</AccordionL.Trigger>
+				<AccordionL.Content
 					>Joining the Argus presale is simple. Register on our platform, complete the necessary KYC verification, and you'll be eligible to participate in the presale event. Stay tuned for more
-					details on dates and allocation sizes.</Accordion.Content>
-			</Accordion.Item>
-			<Accordion.Item value="item-5">
-				<Accordion.Trigger>What does Argus whitelisting mean?</Accordion.Trigger>
-				<Accordion.Content
+					details on dates and allocation sizes.</AccordionL.Content>
+			</AccordionL.Item>
+			<AccordionL.Item value="item-5">
+				<AccordionL.Trigger>What does Argus whitelisting mean?</AccordionL.Trigger>
+				<AccordionL.Content
 					>Argus whitelisting refers to the process of adding your wallet address to a list of approved participants for our services. This ensures that you have exclusive access to certain features
-					and offerings, such as early investment opportunities or special transactions within the Argus ecosystem.</Accordion.Content>
-			</Accordion.Item>
-		</Accordion.Root>
+					and offerings, such as early investment opportunities or special transactions within the Argus ecosystem.</AccordionL.Content>
+			</AccordionL.Item>
+		</AccordionL.Root>
 	</div>
 </Section>
 <JoinTheWhitelist data={data.form}>
