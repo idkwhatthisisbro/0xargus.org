@@ -29,6 +29,9 @@ dependencies:
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
+  context-filter-polyfill:
+    specifier: ^0.3.13
+    version: 0.3.13
   flattenColorPalette:
     specifier: link:tailwindcss/lib/util/flattenColorPalette
     version: link:tailwindcss/lib/util/flattenColorPalette
@@ -1521,6 +1524,10 @@ packages:
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
+
+  /context-filter-polyfill@0.3.13:
+    resolution: {integrity: sha512-oUD7u6JI2M9vZlY9J/4Buu5t7Y1GX8HcGSkQEvDQlGP3t/X5mfBurGp28bAbGAoHX8hBDErTM5cWu19J4s7GuA==}
+    dev: false
 
   /cookie@0.6.0:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}

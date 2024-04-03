@@ -73,7 +73,7 @@
 
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
-			class: 'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-500 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
 			// @ts-ignore
 			sourcePosition: 'bottom',
 			// @ts-ignore
@@ -87,7 +87,7 @@
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
 			position: { x: 0, y: 175 },
 			// @ts-ignore
 			sourcePosition: 'bottom',
@@ -100,7 +100,7 @@
 			data: { label: 'Front-Run Transaction - Returning the funds back to your wallet' },
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			position: { x: -200, y: 250 },
 			parentNode: 'A',
@@ -113,7 +113,7 @@
 			expandParent: false,
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
 			data: { label: 'Continue Monitoring' },
 			position: { x: 200, y: 250 },
 			parentNode: 'A',
@@ -131,7 +131,7 @@
 			position: { x: 0, y: 0 },
 
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
-			class: 'flex ring-2 font-outfit ring-indigo-500 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit ring-indigo-900 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			// @ts-ignore
 			sourcePosition: 'bottom',
@@ -145,7 +145,7 @@
 			data: { label: 'ArgusAI Scans for Fraudulent Activities 24/7' },
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			position: { x: 0, y: 175 },
 			// @ts-ignore
@@ -159,7 +159,7 @@
 			data: { label: 'Front-Run Transaction - Returning the funds back to your wallet' },
 
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-500 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			position: { x: 0, y: 250 },
 			parentNode: 'A',

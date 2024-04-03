@@ -9,14 +9,14 @@
 	export let waveWidth = 75;
 	export let waveOpacity = 0.5;
 
-	let isSafari = false;
+	// let isSafari = false;
 
-	onMount(() => {
-		// I'm sorry but i have got to support it on safari.
+	// onMount(() => {
+	// 	// I'm sorry but i have got to support it on safari.
 
-		isSafari = typeof window !== 'undefined' && navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome');
-		import 'context-filter-polyfill';
-	});
+	// 	import 'context-filter-polyfill';
+	// 	// isSafari = typeof window !== 'undefined' && navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome');
+	// });
 
 	const noise = createNoise3D();
 	let w: number,
