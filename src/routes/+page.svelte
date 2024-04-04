@@ -74,7 +74,7 @@
 
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			// @ts-ignore
 			sourcePosition: 'bottom',
 			// @ts-ignore
@@ -88,7 +88,7 @@
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			position: { x: 0, y: 175 },
 			// @ts-ignore
 			sourcePosition: 'bottom',
@@ -101,7 +101,7 @@
 			data: { label: 'Front-Run Transaction - Returning the funds back to your wallet' },
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			position: { x: -200, y: 250 },
 			parentNode: 'A',
@@ -114,7 +114,7 @@
 			expandParent: false,
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			data: { label: 'Continue Monitoring' },
 			position: { x: 200, y: 250 },
 			parentNode: 'A',
@@ -145,7 +145,7 @@
 			data: { label: 'ArgusAI Scans for Fraudulent Activities 24/7' },
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			position: { x: 0, y: 175 },
 			// @ts-ignore
@@ -159,7 +159,7 @@
 			data: { label: 'Front-Run Transaction - Returning the funds back to your wallet' },
 
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
-			class: 'flex ring-2 font-outfit shadow-2xl bg-neutral-950 text-white ring-indigo-900 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			position: { x: 0, y: 250 },
 			parentNode: 'A',
@@ -287,7 +287,7 @@
 		imageAlt: 'Twitter image alt'
 	}} />
 
-<main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center bg-neutral-950 py-48 sm:h-screen sm:py-64')}>
+<main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center py-48 sm:h-screen sm:py-64')}>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
 	<div class="absolute top-0 flex w-full flex-col items-center gap-5">
 		<Banner />
@@ -300,14 +300,14 @@
 
 			<div class="flex gap-x-12">
 				<div class="flex items-center gap-x-8">
-					<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" href="https://x.com/0xArgusOrg">
+					<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://t.me/argusorg">
 						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50">
 							<path
 								d="M25,2c12.703,0,23,10.297,23,23S37.703,48,25,48S2,37.703,2,25S12.297,2,25,2z M32.934,34.375	c0.423-1.298,2.405-14.234,2.65-16.783c0.074-0.772-0.17-1.285-0.648-1.514c-0.578-0.278-1.434-0.139-2.427,0.219	c-1.362,0.491-18.774,7.884-19.78,8.312c-0.954,0.405-1.856,0.847-1.856,1.487c0,0.45,0.267,0.703,1.003,0.966	c0.766,0.273,2.695,0.858,3.834,1.172c1.097,0.303,2.346,0.04,3.046-0.395c0.742-0.461,9.305-6.191,9.92-6.693	c0.614-0.502,1.104,0.141,0.602,0.644c-0.502,0.502-6.38,6.207-7.155,6.997c-0.941,0.959-0.273,1.953,0.358,2.351	c0.721,0.454,5.906,3.932,6.687,4.49c0.781,0.558,1.573,0.811,2.298,0.811C32.191,36.439,32.573,35.484,32.934,34.375z"
 							></path>
 						</svg>
 					</a>
-					<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" href="https://x.com/0xArgusOrg">
+					<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://x.com/0xArgusOrg">
 						<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50">
 							<path
 								d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z"
@@ -357,9 +357,6 @@
 	<WavyBackground />
 </main>
 <!-- HERO END -->
-
-<!-- Prevent the background of the wave from clipping -->
-<div class="sm:mt-32" />
 
 <!-- Prevent the background of the wave from clipping -->
 <div class="sm:mt-32" />
@@ -502,6 +499,7 @@
 <!-- Product Summary + Features End -->
 
 <div class="mb-12 mt-24" />
+
 <Section className="relative pb-0">
 	<!-- <Stars numStars={10} slot="background" /> -->
 	<img src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" />
@@ -669,6 +667,7 @@
 		</AccordionL.Root>
 	</div>
 </Section>
+
 <JoinTheWhitelist data={data.form}>
 	<Footer />
 </JoinTheWhitelist>

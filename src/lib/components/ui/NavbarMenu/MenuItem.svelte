@@ -16,7 +16,7 @@
 
 <div on:mouseenter={() => (active = item)} on:mouseleave={() => (active = null)} class="relative">
 	<Motion let:motion transition={{ duration: 0.3 }}>
-		<p use:motion class="cursor-pointer text-black hover:opacity-[0.9] dark:text-white">
+		<p use:motion class="cursor-pointer text-black text-white hover:opacity-[0.9]">
 			{item}
 		</p>
 	</Motion>
@@ -26,7 +26,7 @@
 				{#if active === item}
 					<div class="absolute left-1/2 -translate-x-1/2 transform pt-4">
 						<Motion let:motion {transition} layoutId="active">
-							<div use:motion class="overflow-hidden rounded-2xl border border-black/[0.2] bg-white shadow-xl backdrop-blur-sm dark:border-white/[0.2] dark:bg-black">
+							<div use:motion class="overflow-hidden rounded-2xl border border-black/[0.2] border-white/[0.2] bg-black bg-white shadow-xl backdrop-blur-sm">
 								<Motion let:motion layout>
 									<div use:motion class="h-full w-max p-4">
 										<slot />

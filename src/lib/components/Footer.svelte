@@ -1,4 +1,4 @@
-<footer class="w-full rounded-lg bg-neutral-950 shadow">
+<footer class="w-full rounded-lg shadow">
 	<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
 		<div class="sm:flex sm:items-center sm:justify-between">
 			<a href="https://0xargus.org" class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">

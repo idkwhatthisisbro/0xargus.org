@@ -8,8 +8,8 @@
 	};
 </script>
 
-<Modal {...styles} classWindow="p-2 bg-neutral-950 rounded-3xl">
-	<div class="relative overflow-hidden bg-neutral-950 font-outfit">
+<Modal {...styles} classWindow="p-2 bg-bgPrimary rounded-3xl">
+	<div class="relative overflow-hidden font-outfit">
 		<slot />
 	</div>
 </Modal>
