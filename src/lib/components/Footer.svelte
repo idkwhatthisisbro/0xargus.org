@@ -5,6 +5,7 @@
 				<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
 				<span class="self-center whitespace-nowrap text-2xl font-semibold text-white">0xArgus</span>
 			</a>
+
 			<ul class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-400 children:cursor-pointer sm:mb-0">
 				<li>
 					<a href="/privacy" class="me-4 cursor-pointer hover:underline md:me-6">Privacy Policy</a>
@@ -17,7 +18,9 @@
 				</li>
 			</ul>
 		</div>
+
 		<hr class="my-6 border-gray-700 sm:mx-auto lg:my-8" />
+
 		<span class="block text-sm text-gray-400 sm:text-center">© 2024 <a href="https://0xargus.org" class="hover:underline">0xArgus</a>. All Rights Reserved.</span>
 	</div>
 </footer>
