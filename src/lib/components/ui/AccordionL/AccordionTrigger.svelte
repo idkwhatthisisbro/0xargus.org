@@ -13,7 +13,7 @@
 
 <AccordionPrimitive.Header {level} class="flex">
 	<AccordionPrimitive.Trigger
-		class={cn('flex flex-1 items-center justify-between py-4 text-2xl font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180', className)}
+		class={cn('flex flex-1 items-center justify-between py-4 text-lg font-medium transition-all hover:underline sm:text-2xl [&[data-state=open]>svg]:rotate-180', className)}
 		{...$$restProps}
 		on:click>
 		<slot />
