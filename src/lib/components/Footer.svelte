@@ -1,8 +1,12 @@
+<script>
+	import Logo from '$lib/assets/logo.svg?component';
+</script>
+
 <footer class="w-full rounded-lg shadow">
 	<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
 		<div class="sm:flex sm:items-center sm:justify-between">
 			<a href="https://0xargus.org" class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">
-				<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
+				<Logo class="h-10 w-10" />
 				<span class="self-center whitespace-nowrap text-2xl font-semibold text-white">0xArgus</span>
 			</a>
 

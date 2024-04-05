@@ -138,7 +138,7 @@
 			// Additional classes for whitelist-hero form
 			id === 'whitelist-hero' && [
 				// Global
-				'absolute inset-y-0 right-0 flex items-center justify-center border-white border-zinc-400 bg-transparent bg-gradient-to-tr from-zinc-700 via-zinc-800 to-zinc-900 text-white text-white  shadow-2xl',
+				'absolute inset-y-0 right-0 flex items-center justify-center border-white bg-transparent bg-gradient-to-tr from-zinc-700 via-zinc-800 to-zinc-900 text-white shadow-2xl',
 				// Desktop
 				'-sm:rounded-l-none group transform font-bold tracking-wide sm:m-0 sm:h-full sm:w-auto sm:space-x-2 sm:rounded-3xl sm:border-0 sm:px-6 sm:py-2',
 				// Mobile
@@ -157,7 +157,7 @@
 				// Mobile
 				// Animations
 				// Focus/Hover
-				'hover:z-50 hover:scale-110 hover:bg-purple-500 hover:bg-purple-500 hover:text-white focus:z-50 focus:scale-105 focus:border-l focus:border-purple-500 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-2 focus:ring-purple-500 focus:ring-purple-500'
+				'hover:z-50 hover:scale-110 hover:bg-purple-500 hover:text-white focus:z-50 focus:scale-105 focus:border-l focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500'
 			]
 		)}>
 		{#if id === 'whitelist-hero'}

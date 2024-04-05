@@ -1,13 +1,12 @@
 <script lang="ts">
+	import Navbar from '$lib/components/Navbar.svelte';
 	import Countdown from '$lib/components/Countdown.svelte';
-	import { PRESALE_DATE } from '../../constants';
-	import { ChevronRight, MailPlus, Boxes, Clock, AlertCircle, ArrowRight } from 'lucide-svelte';
-	import { cn } from '$lib/utils/cn';
 	import Footer from '$lib/components/Footer.svelte';
+	import { PRESALE_DATE } from '../../constants';
+	import { ChevronRight, MailPlus } from 'lucide-svelte';
+	import { cn } from '$lib/utils/cn';
 	import BentoGrid from '$lib/components/ui/BentoGrid/BentoGrid.svelte';
 	import BentoGridItem from '$lib/components/ui/BentoGrid/BentoGridItem.svelte';
-	import IconTelegram from '$lib/assets/telegram.svg?component';
-	import IconX from '$lib/assets/x.svg?component';
 
 	let isPresaleLive = false;
 
@@ -40,32 +39,7 @@
 </script>
 
 <div class="flex min-h-screen flex-col gap-20">
-	<nav class="mx-auto flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
-		<div class="flex items-center gap-4 font-outfit text-3xl text-white">
-			<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
-			0xArgus
-		</div>
-
-		<div class="flex gap-x-12">
-			<div class="flex items-center gap-x-8">
-				<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://t.me/argusorg">
-					<IconTelegram />
-				</a>
-				<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://x.com/0xArgusOrg">
-					<IconX />
-				</a>
-			</div>
-			<button
-				on:click={() => window.open('https://docs.0xargus.org', '_blank')}
-				class="relative inline-flex h-12 w-12 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white sm:w-auto">
-				<span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#6366f1_0%,#a855f7_50%,#6366f1_100%)]" />
-				<span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 p-2 text-sm font-medium text-white backdrop-blur-3xl sm:px-3 sm:py-1">
-					<Boxes class="text-xs sm:mr-2" />
-					<p class="hidden sm:block">Documentation</p>
-				</span>
-			</button>
-		</div>
-	</nav>
+	<Navbar showName={true} />
 
 	<main class="mx-auto flex w-full max-w-7xl grow flex-col items-center justify-center gap-10 px-[30px] font-outfit">
 		<div class="flex w-full flex-col gap-10">

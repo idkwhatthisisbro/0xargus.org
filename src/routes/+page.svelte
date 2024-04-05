@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import JoinTheWhitelist from '$lib/components/page/JoinTheWhitelist.svelte';
 	// import ProductSummaryAndFeatures from '$lib/components/page/ProductSummaryAndFeatures.svelte';
@@ -24,8 +25,6 @@
 	import * as AccordionL from '$lib/components/ui/AccordionL/index.js';
 	// ICONS
 	import { ArrowRightIcon, BotIcon, Boxes, CandlestickChartIcon, EyeIcon, PlaneIcon, Send } from 'lucide-svelte';
-	import IconTelegram from '$lib/assets/telegram.svg?component';
-	import IconX from '$lib/assets/x.svg?component';
 	import IconMetamask from '$lib/assets/metamask.svg?component';
 	import IconUniswap from '$lib/assets/uniswap.svg?component';
 	import IconSafePal from '$lib/assets/safepal.svg?component';
@@ -299,30 +298,7 @@
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
 	<div class="absolute top-0 flex w-full flex-col items-center gap-5">
 		<Banner />
-
-		<nav class="z-30 flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
-			<img class="h-10 w-10" src="/logo-rounded.svg" alt="logo" />
-
-			<div class="flex gap-x-12">
-				<div class="flex items-center gap-x-8">
-					<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://t.me/argusorg">
-						<IconTelegram />
-					</a>
-					<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://x.com/0xArgusOrg">
-						<IconX />
-					</a>
-				</div>
-				<button
-					on:click={() => window.open('https://docs.0xargus.org', '_blank')}
-					class="relative inline-flex h-12 w-12 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white sm:w-auto">
-					<span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#6366f1_0%,#a855f7_50%,#6366f1_100%)]" />
-					<span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 p-2 text-sm font-medium text-white backdrop-blur-3xl sm:px-3 sm:py-1">
-						<Boxes class="text-xs sm:mr-2" />
-						<p class="hidden sm:block">Documentation</p>
-					</span>
-				</button>
-			</div>
-		</nav>
+		<Navbar />
 	</div>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR END -->
 	<Stars numStars={5} />
