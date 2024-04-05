@@ -10,7 +10,7 @@
 
 	let isPresaleLive = false;
 
-	const items = [
+	const itemș = [
 		{
 			title: 'The Dawn of Innovation',
 			description: 'Explore the birth of groundbreaking ideas and inventions.',

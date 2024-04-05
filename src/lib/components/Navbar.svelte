@@ -7,7 +7,7 @@
 	export let showName = false;
 </script>
 
-<nav class="z-30 flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
+<nav class="z-30 mx-auto flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
 	<a href="https://0xargus.org" class="flex items-center gap-4">
 		<Logo class="h-10 w-10" />
 		{#if showName}

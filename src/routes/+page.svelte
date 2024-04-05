@@ -460,8 +460,8 @@
 <Section className="relative pb-0">
 	<!-- <Stars numStars={10} slot="background" /> -->
 	<img src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" />
-	<SvgBlur class="absolute -right-[15rem] top-[25rem] z-[55] hidden opacity-40 sm:-right-[35rem] sm:bottom-32 sm:top-auto sm:block" />
-	<SvgBlur class="absolute -left-[15rem] top-[25rem] z-[55] opacity-40 sm:-left-[35rem] sm:bottom-32 sm:top-auto" />
+	<SvgBlur height="916" width="1001" class="absolute -right-[15rem] top-[25rem] z-[55] hidden opacity-40 sm:-right-[35rem] sm:bottom-32 sm:top-auto sm:block" />
+	<SvgBlur height="916" width="1001" class="absolute -left-[15rem] top-[25rem] z-[55] opacity-40 sm:-left-[35rem] sm:bottom-32 sm:top-auto" />
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
 	<SectionHeader title="Crypto Safeguards: The Argus Approach" subtitle="Discover the steps involved in safeguarding your digital assets with our cutting-edge technology" image="/head-cog-1.png" />
