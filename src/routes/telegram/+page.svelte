@@ -3,27 +3,26 @@
 	import WhitelistForm from '$lib/components/page/WhitelistForm.svelte';
 	import type { PageData } from '../$types';
 	import BackgroundBeams from '$lib/components/ui/BackgroundBeams/BackgroundBeams.svelte';
-   import { supabase } from '$lib/supabase';
+	import { supabase } from '$lib/supabase';
 
 	export let data: PageData;
 
 	let user: WebAppInitData['user'];
 	let viewportHeight: number;
-   let registeredStatus = false;
+	let registeredStatus = false;
 
 	onMount(async () => {
 		viewportHeight = window.Telegram.WebApp.viewportHeight;
 		user = window.Telegram.WebApp.initDataUnsafe.user;
-      if (!user) return
+		if (!user) return;
 
-      try {
+		try {
 			// check if user exists
 			const { data, error } = await supabase.from('users').select('*').eq('tg_id', user?.id).single();
-         data ? registeredStatus = true : registeredStatus = false;
-
+			data ? (registeredStatus = true) : (registeredStatus = false);
 		} catch (error) {}
 	});
-   import Stars from '$lib/components/Stars.svelte';
+	import Stars from '$lib/components/Stars.svelte';
 </script>
 
 <svelte:head>
@@ -36,7 +35,7 @@
    <WhitelistForm data={data.form} id='whitelist-webapp' />
 </div> -->
 
-<div class="relative h-[500px] border-2 border-red-950 flex items-center justify-center">
+<div class="relative flex h-[500px] items-center justify-center border-2 border-red-950">
 	<h1 class="z-50 text-2xl text-white">Hello</h1>
 	<Stars numStars={30} />
 </div>
@@ -45,7 +44,7 @@
 	<img class="h-8 w-8" src="/logo-rounded.svg" alt="logo" />
 </nav>
 
-<div style="height: {viewportHeight}px;" class="relative flex w-full flex-col items-center justify-center bg-neutral-950 pt-32 font-outfit -antialiased">
+<div style="height: {viewportHeight}px;" class="relative flex w-full flex-col items-center justify-center pt-32 font-outfit -antialiased">
 	<div class="mx-auto p-4">
 		<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-center font-sans text-3xl font-bold text-transparent sm:to-neutral-600 sm:text-7xl">
 			Join the waitlist

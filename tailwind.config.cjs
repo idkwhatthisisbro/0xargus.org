@@ -10,6 +10,14 @@ const config = {
 	theme: {
 		extend: {
 			colors: {
+				brand: {
+					bgPrimary: '#06000f',
+					ethereum: '#a855f7',
+					solana: '#6366f1',
+					arbitrum: '#3b82f6',
+	
+
+				},
 				neutral: {
 					50: '#F9FAFB',
 					100: '#F4F6F8',
@@ -25,7 +33,7 @@ const config = {
 				},
 			},
 			backgroundImage: {
-			        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 			},
 			fontFamily: {
 				citerne: ['Citerne', 'sans-serif'],

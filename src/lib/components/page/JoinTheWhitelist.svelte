@@ -7,7 +7,7 @@
 	export let data: SuperValidated<Infer<WhitelistSchema>>;
 </script>
 
-<section id="join-whitelist" class="relative mt-12 flex h-[40rem] w-full flex-col items-center justify-center gap-24 bg-neutral-950 pt-32 font-outfit -antialiased">
+<section id="join-whitelist" class="relative mt-12 flex h-[40rem] w-full flex-col items-center justify-center gap-24 pt-32 font-outfit -antialiased">
 	<div class="mx-auto max-w-2xl p-4">
 		<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-center font-sans text-4xl font-bold text-transparent sm:to-neutral-600 sm:text-7xl">
 			Join the waitlist

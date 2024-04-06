@@ -33,9 +33,9 @@
 						out:fly={{ y: -20, duration: 500 }}
 						bind:clientWidth={width}
 						class="absolute z-[100] h-32 font-outfit font-semibold"
-						class:text-purple-500={words[currentIndex] === 'Ethereum'}
-						class:text-indigo-500={words[currentIndex] === 'Solana'}
-						class:text-blue-500={words[currentIndex] === 'Arbitrum'}>
+						class:text-brand-ethereum={words[currentIndex] === 'Ethereum'}
+						class:text-brand-solana={words[currentIndex] === 'Solana'}
+						class:text-brand-arbitrum={words[currentIndex] === 'Arbitrum'}>
 						{words[currentIndex]}
 					</div>
 				{/key}
