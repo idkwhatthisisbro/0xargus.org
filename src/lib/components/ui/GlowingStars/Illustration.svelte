@@ -20,7 +20,7 @@
 	});
 </script>
 
-<div class="h-48 w-full p-1 md:h-64 lg:h-48" style={`display: grid; grid-template-columns: repeat(${columns}, 1fr); gap: 1px;`}>
+<div class="h-48 w-full p-1 md:h-64 lg:min-h-48" style={`display: grid; grid-template-columns: repeat(${columns}, 1fr); gap: 1px;`}>
 	{#each [...Array(stars)] as star, starIdx (`matrix-col-${starIdx}}`)}
 		{@const isGlowing = glowingStars.includes(starIdx)}
 		{@const delay = (starIdx % 10) * 0.1}

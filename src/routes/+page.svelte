@@ -390,11 +390,12 @@
 							<p class="mt-4 rounded-full border border-white/[0.2] px-2 py-0.5 text-sm font-light text-white">{tag}</p>
 						</div>
 					{/each}
+					<!-- M DESKTOP SUBROW -->
 					<div class="group hidden md:block lg:hidden">
 						<GlowingStarsBackgroundCard>
 							<GlowingStarsTitle>Invest Fearlessly</GlowingStarsTitle>
 							<div class="flex items-end justify-between">
-								<GlowingStarsDescription>Feel safe investing in small coins. Seemlessly intergrate rugpull protection into all your favourite exchanges.</GlowingStarsDescription>
+								<GlowingStarsDescription>Feel safe investing in small coins. Seamlessly integrate rugpull protection into all your favorite exchanges.</GlowingStarsDescription>
 								<div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-red-500 bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 stroke-2 text-white">
 										<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
@@ -406,19 +407,20 @@
 				</div>
 
 				<!-- GLOWING STARS CARD -->
-				<a href="https://docs.0xargus.org" class="group block cursor-pointer md:hidden lg:block">
+				<!-- MOBILE, TABLET AND LARGE DEVICES -->
+				<a href="https://docs.0xargus.org" class="group block min-h-96 cursor-pointer md:hidden lg:block">
 					<GlowingStarsBackgroundCard>
 						<GlowingStarsTitle>Invest Fearlessly</GlowingStarsTitle>
 						<div class="flex items-end justify-between">
-							<GlowingStarsDescription>Feel safe investing in small coins. Seemlessly intergrate rugpull protection into all your favourite exchanges.</GlowingStarsDescription>
+							<GlowingStarsDescription>Feel safe investing in small coins. Seamlessly integrate rugpull protection into all your favorite exchanges.</GlowingStarsDescription>
 							<div class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
 								<a
 									role="button"
 									tabindex="0"
 									aria-label="GLOWING to documentation"
-									on:click={() => window.open('https://docs.0xargus.org', '_blank')}
+									on:click={() => window.open('https://docs.0xargus.org/presale', '_blank')}
 									on:keydown={(event) => {
-										if (event.key === 'Enter') window.open('https://docs.0xargus.org', '_blank');
+										if (event.key === 'Enter') window.open('https://0xargus.org/presale', '_blank');
 									}}
 									href="https://docs.0xargus.org"
 									target="_blank"
@@ -447,6 +449,29 @@
 						</div>
 					</GlowingStarsBackgroundCard>
 				</a>
+
+				<div
+					class="-border-white/[0.2] -border relative grid min-h-96 w-full grid-cols-2 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600/50 via-indigo-600/60 to-indigo-600/40 p-4 py-24 shadow-xl">
+					<img class="absolute" src="/circles@2x.png" alt="bg radial" />
+					<div class="z-20 space-y-6 px-12 text-white">
+						<p class="text-2xl font-semibold">Here, whenever - wherever</p>
+
+						<p class="text-xl leading-normal text-indigo-50">
+							Access Argus anywhere, from our webapp across all devices. With browser extensions for every major browser, and bots for telegram and discord. Argus is always with you.
+
+							<br />
+							<br />
+
+							Get started with the Argus Beta today. Access our documentation to learn more about how Argus can protect your assets.
+						</p>
+
+						<a href="docs.0xargus.org" class="flex h-14 w-36 items-center justify-center rounded-xl bg-neutral-950/[0.25] text-indigo-50 duration-200 ease-in-out hover:bg-neutral-950/30">
+							<p class="text-lg font-medium">Learn more</p>
+						</a>
+					</div>
+
+					<img src="/support2.png" class="rounded-xl opacity-90 shadow-lg" alt="support" />
+				</div>
 			</div>
 			<div />
 		</Section>
