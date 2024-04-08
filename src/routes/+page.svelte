@@ -29,7 +29,6 @@
 	import IconUniswap from '$lib/assets/uniswap.svg?component';
 	import IconSafePal from '$lib/assets/safepal.svg?component';
 	import Icon1inch from '$lib/assets/1inch.svg?component';
-	import SvgBlur from '$lib/assets/blur.svg?component';
 
 	// TODO: Add localization
 
@@ -460,8 +459,50 @@
 <Section className="relative pb-0">
 	<!-- <Stars numStars={10} slot="background" /> -->
 	<img src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" />
-	<SvgBlur height="916" width="1001" class="absolute -right-[15rem] top-[25rem] z-[55] hidden opacity-40 sm:-right-[35rem] sm:bottom-32 sm:top-auto sm:block" />
-	<SvgBlur height="916" width="1001" class="absolute -left-[15rem] top-[25rem] z-[55] opacity-40 sm:-left-[35rem] sm:bottom-32 sm:top-auto" />
+	<svg
+		width="916"
+		height="1001"
+		viewBox="0 0 916 1001"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		class="absolute -right-[15rem] top-[25rem] z-[55] hidden opacity-40 sm:-right-[35rem] sm:bottom-32 sm:top-auto sm:block">
+		<g filter="url(#filter0_f_549_57)">
+			<rect x="300" y="300" width="316" height="401" fill="url(#paint0_linear_549_57)" />
+		</g>
+		<defs>
+			<filter id="filter0_f_549_57" x="0" y="0" width="916" height="1001" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+				<feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_549_57" />
+			</filter>
+			<linearGradient id="paint0_linear_549_57" x1="431" y1="1328" x2="458.523" y2="300" gradientUnits="userSpaceOnUse">
+				<stop stop-color="#4F46E5" />
+				<stop offset="1" stop-color="#472187" />
+			</linearGradient>
+		</defs>
+	</svg>
+	<svg
+		width="916"
+		height="1001"
+		viewBox="0 0 916 1001"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+		class="absolute -left-[15rem] top-[25rem] z-[55] opacity-40 sm:-left-[35rem] sm:bottom-32 sm:top-auto">
+		<g filter="url(#filter0_f_549_57)">
+			<rect x="300" y="300" width="316" height="401" fill="url(#paint0_linear_549_57)" />
+		</g>
+		<defs>
+			<filter id="filter0_f_549_57" x="0" y="0" width="916" height="1001" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix" />
+				<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+				<feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_549_57" />
+			</filter>
+			<linearGradient id="paint0_linear_549_57" x1="431" y1="1328" x2="458.523" y2="300" gradientUnits="userSpaceOnUse">
+				<stop stop-color="#4F46E5" />
+				<stop offset="1" stop-color="#472187" />
+			</linearGradient>
+		</defs>
+	</svg>
 	<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
 
 	<SectionHeader title="Crypto Safeguards: The Argus Approach" subtitle="Discover the steps involved in safeguarding your digital assets with our cutting-edge technology" image="/head-cog-1.png" />
