@@ -7,7 +7,8 @@
 	import { cn } from '$lib/utils/cn';
 	import BentoGrid from '$lib/components/ui/BentoGrid/BentoGrid.svelte';
 	import BentoGridItem from '$lib/components/ui/BentoGrid/BentoGridItem.svelte';
-	import Blur from '$lib/assets/blur.svg?src';
+	import BlurComponent from '$lib/assets/blur.svg?component';
+	import BlurSrc from '$lib/assets/blur.svg?src';
 
 	let isPresaleLive = false;
 
@@ -41,6 +42,7 @@
 
 <div class="flex min-h-screen flex-col gap-20">
 	<Navbar showName={true} />
+
 	<main class="mx-auto flex w-full max-w-7xl grow flex-col items-center justify-center gap-10 px-[30px] font-outfit">
 		<div class="flex w-full flex-col gap-10">
 			<h1 class="text-5xl tracking-widest text-white">{!isPresaleLive ? 'Time to presale' : '0xArgus is on presale.'}</h1>

@@ -12,10 +12,10 @@ const config = {
 			colors: {
 				brand: {
 					bgPrimary: '#06000f',
+					pill: '#4338CA',
 					ethereum: '#a855f7',
 					solana: '#6366f1',
 					arbitrum: '#3b82f6',
-	
 
 				},
 				neutral: {
