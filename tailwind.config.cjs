@@ -62,6 +62,10 @@ const config = {
 
 	plugins: [
 		require('tailwind-children'),
+		require('@tailwindcss/forms', {
+			    strategy: 'class', // only generate classes
+			}),
+
 		aspectRatio, 
 		addVariablesForColors,
 		function ({ matchUtilities, theme }: any) {

@@ -5,7 +5,7 @@
 </script>
 
 <section class={cn(`flex w-full items-center justify-center px-4 py-16 sm:px-12 ${className}`)}>
-	<div class={cn(`-max-w-${maxWidth} grid w-full`)}>
+	<div class={cn(`max-w-${maxWidth} grid w-full`)}>
 		<slot />
 	</div>
 

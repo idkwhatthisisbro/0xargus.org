@@ -12,13 +12,11 @@
 	import { EvervaultCard, Icon } from '$lib/components/ui/EvervaultCard/';
 	import { GlowingStarsBackgroundCard, GlowingStarsDescription, GlowingStarsTitle } from '$lib/components/ui/GlowingStars/';
 	import GridAndDotBackgroundsSmallGrid from '$lib/components/ui/GridAndDotBackgrounds/GridAndDotBackgroundsSmallGrid.svelte';
-	import TracingBeam from '$lib/components/ui/TracingBeam/TracingBeam.svelte';
 	import WavyBackground from '$lib/components/ui/WavyBackground/WavyBackground.svelte';
 	import Section from '$lib/layouts/Section.svelte';
 	import { cn } from '$lib/utils/cn.js';
-	import { Background, SvelteFlow, type Node } from '@xyflow/svelte';
+	import { SvelteFlow, type Node } from '@xyflow/svelte';
 	import '@xyflow/svelte/dist/style.css';
-	// import { Circle } from 'svelte-loading-spinners';
 	import { MetaTags } from 'svelte-meta-tags';
 	import { writable } from 'svelte/store';
 	import type { PageData } from './$types.js';
@@ -338,145 +336,142 @@
 
 <!-- Product Summary + Features Start -->
 <GridAndDotBackgroundsSmallGrid>
-	<TracingBeam>
-		<!-- PRODUCT SUMMARY SECTION -->
-		<Section class="mt-12">
-			<h2 class="text-center font-outfit text-4xl font-bold text-transparent text-white sm:text-6xl">
-				Your
+	<!-- PRODUCT SUMMARY SECTION -->
+	<Section class="mt-12">
+		<h2 class="text-center font-outfit text-4xl font-bold text-transparent text-white sm:text-6xl">
+			Your
 
-				<span class="text-purple-600"> Guardian </span>
-				in the DeFi Universe
-			</h2>
+			<span class="text-purple-600"> Guardian </span>
+			in the DeFi Universe
+		</h2>
 
-			<p class="mx-auto mt-6 max-w-3xl text-center text-xl font-normal text-neutral-300 sm:mt-16 sm:text-3xl">
-				Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence.
-			</p>
+		<p class="mx-auto mt-6 max-w-3xl text-center text-xl font-normal text-neutral-300 sm:mt-16 sm:text-3xl">
+			Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence.
+		</p>
 
-			<div class="mt-12 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-white/[0.2] sm:mt-24">
-				{#each [Icon1inch, IconMetamask, IconUniswap, IconSafePal] as icon}
-					<div class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 px-2 py-8 sm:p-12">
-						<svelte:component this={icon} class="h-[30px] saturate-0" />
-					</div>
-				{/each}
-			</div>
+		<div class="mt-12 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-white/[0.2] sm:mt-24">
+			{#each [Icon1inch, IconMetamask, IconUniswap, IconSafePal] as icon}
+				<div class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 px-2 py-8 sm:p-12">
+					<svelte:component this={icon} class="h-[30px] saturate-0" />
+				</div>
+			{/each}
+		</div>
 
-			<video class="absolute inset-0 z-[1000] mx-auto mt-[450px] max-h-[800px] w-full sm:mt-[650px]" autoplay controls={false} muted loop playsinline>
-				<source src="/c1.mov" type="video/quicktime" />
-				<source src="/c1.webm" type="video/webm" />
-				Your browser does not support the video tag.
-			</video>
-		</Section>
+		<video class="-sm:mt-[650px] 0mt-[450px] inset-0 z-[1000] mx-auto mt-40 max-h-[800px] w-full" autoplay controls={false} muted loop playsinline>
+			<source src="/c1.mov" type="video/quicktime" />
+			<source src="/c1.webm" type="video/webm" />
+			Your browser does not support the video tag.
+		</video>
 
 		<!-- FEATURES SECTION-->
-		<Section class="mt-[250px] sm:mt-[500px] md:mt-[750px]">
-			<SectionHeader
-				title="Bringing Security into the Mainstream"
-				subtitle="The first ever safety layer middleware. Giving you the ultimate protection for your DeFi investments"
-				image={'/head-lock-4.png'} />
+		<!-- <div class="mt-[250px] sm:mt-[500px] md:mt-[750px]" /> -->
+		<SectionHeader
+			title="Bringing Security into the Mainstream"
+			subtitle="The first ever safety layer middleware. Giving you the ultimate protection for your DeFi investments"
+			image={'/head-lock-4.png'} />
 
-			<!-- FEATURES BENTO -->
-			<div class="flex flex-col gap-4 gap-y-8 sm:gap-8">
-				<!-- FEATURE CARDS -->
-				<div class="grid grid-cols-1 gap-4 gap-y-8 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-					{#each featureCards as { circle, desc, tag }}
-						<div class="relative flex h-[30rem] w-full flex-col items-start border border-white/[0.2] p-4">
-							<Icon class="absolute -left-3 -top-3 h-6 w-6 text-white" />
-							<Icon class="absolute -bottom-3 -left-3 h-6 w-6 text-white" />
-							<Icon class="absolute -right-3 -top-3 h-6 w-6 text-white" />
-							<Icon class="absolute -bottom-3 -right-3 h-6 w-6 text-white" />
+		<!-- FEATURES BENTO -->
+		<div class="flex flex-col gap-4 gap-y-8 sm:gap-8">
+			<!-- FEATURE CARDS -->
+			<div class="grid grid-cols-1 gap-4 gap-y-8 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+				{#each featureCards as { circle, desc, tag }}
+					<div class="relative flex h-[30rem] w-full flex-col items-start border border-white/[0.2] p-4">
+						<Icon class="absolute -left-3 -top-3 h-6 w-6 text-white" />
+						<Icon class="absolute -bottom-3 -left-3 h-6 w-6 text-white" />
+						<Icon class="absolute -right-3 -top-3 h-6 w-6 text-white" />
+						<Icon class="absolute -bottom-3 -right-3 h-6 w-6 text-white" />
 
-							<EvervaultCard text={circle} />
+						<EvervaultCard text={circle} />
 
-							<h2 class="mt-4 text-base font-light text-white">{desc}</h2>
-							<p class="mt-4 rounded-full border border-white/[0.2] px-2 py-0.5 text-sm font-light text-white">{tag}</p>
-						</div>
-					{/each}
-					<!-- M DESKTOP SUBROW -->
-					<div class="group hidden md:block lg:hidden">
-						<GlowingStarsBackgroundCard>
-							<GlowingStarsTitle>Invest Fearlessly</GlowingStarsTitle>
-							<div class="flex items-end justify-between">
-								<GlowingStarsDescription>Feel safe investing in small coins. Seamlessly integrate rugpull protection into all your favorite exchanges.</GlowingStarsDescription>
-								<div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-red-500 bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 stroke-2 text-white">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-									</svg>
-								</div>
-							</div>
-						</GlowingStarsBackgroundCard>
+						<h2 class="mt-4 text-base font-light text-white">{desc}</h2>
+						<p class="mt-4 rounded-full border border-white/[0.2] px-2 py-0.5 text-sm font-light text-white">{tag}</p>
 					</div>
-				</div>
-
-				<!-- GLOWING STARS CARD -->
-				<!-- MOBILE, TABLET AND LARGE DEVICES -->
-				<a href="https://docs.0xargus.org" class="group block min-h-96 cursor-pointer md:hidden lg:block">
+				{/each}
+				<!-- M DESKTOP SUBROW -->
+				<div class="group hidden md:block lg:hidden">
 					<GlowingStarsBackgroundCard>
 						<GlowingStarsTitle>Invest Fearlessly</GlowingStarsTitle>
 						<div class="flex items-end justify-between">
 							<GlowingStarsDescription>Feel safe investing in small coins. Seamlessly integrate rugpull protection into all your favorite exchanges.</GlowingStarsDescription>
-							<div class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
-								<a
-									role="button"
-									tabindex="0"
-									aria-label="GLOWING to documentation"
-									on:click={() => window.open('https://docs.0xargus.org/presale', '_blank')}
-									on:keydown={(event) => {
-										if (event.key === 'Enter') window.open('https://0xargus.org/presale', '_blank');
-									}}
-									href="https://docs.0xargus.org"
-									target="_blank"
-									class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:translate-x-0.5"
-										aria-hidden="true">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-									</svg>
-								</a>
+							<div class="flex h-8 w-8 items-center justify-center rounded-full border-2 border-red-500 bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 stroke-2 text-white">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+								</svg>
+							</div>
+						</div>
+					</GlowingStarsBackgroundCard>
+				</div>
+			</div>
+
+			<!-- GLOWING STARS CARD -->
+			<!-- MOBILE, TABLET AND LARGE DEVICES -->
+			<a href="https://docs.0xargus.org" class="group block min-h-96 cursor-pointer md:hidden lg:block">
+				<GlowingStarsBackgroundCard>
+					<GlowingStarsTitle>Invest Fearlessly</GlowingStarsTitle>
+					<div class="flex items-end justify-between">
+						<GlowingStarsDescription>Feel safe investing in small coins. Seamlessly integrate rugpull protection into all your favorite exchanges.</GlowingStarsDescription>
+						<div class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
+							<a
+								role="button"
+								tabindex="0"
+								aria-label="GLOWING to documentation"
+								on:click={() => window.open('https://docs.0xargus.org/presale', '_blank')}
+								on:keydown={(event) => {
+									if (event.key === 'Enter') window.open('https://0xargus.org/presale', '_blank');
+								}}
+								href="https://docs.0xargus.org"
+								target="_blank"
+								class="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-800 p-2 duration-200 ease-in-out group-hover:bg-neutral-900">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
 									viewBox="0 0 24 24"
 									stroke-width="1.5"
 									stroke="currentColor"
-									class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:translate-x-0.5">
+									class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:translate-x-0.5"
+									aria-hidden="true">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
 								</svg>
-							</div>
+							</a>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="h-4 w-4 stroke-2 text-white transition duration-200 group-hover:translate-x-0.5">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+							</svg>
 						</div>
-					</GlowingStarsBackgroundCard>
-				</a>
-
-				<div
-					class="-border-white/[0.2] -border relative grid min-h-96 w-full grid-cols-2 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600/50 via-indigo-600/60 to-indigo-600/40 p-4 py-24 shadow-xl">
-					<img class="absolute" src="/circles@2x.png" alt="bg radial" />
-					<div class="z-20 space-y-6 px-12 text-white">
-						<p class="text-2xl font-semibold">Here, whenever - wherever</p>
-
-						<p class="text-xl leading-normal text-indigo-50">
-							Access Argus anywhere, from our webapp across all devices. With browser extensions for every major browser, and bots for telegram and discord. Argus is always with you.
-
-							<br />
-							<br />
-
-							Get started with the Argus Beta today. Access our documentation to learn more about how Argus can protect your assets.
-						</p>
-
-						<a href="docs.0xargus.org" class="flex h-14 w-36 items-center justify-center rounded-xl bg-neutral-950/[0.25] text-indigo-50 duration-200 ease-in-out hover:bg-neutral-950/30">
-							<p class="text-lg font-medium">Learn more</p>
-						</a>
 					</div>
+				</GlowingStarsBackgroundCard>
+			</a>
 
-					<img src="/support2.png" class="rounded-xl opacity-90 shadow-lg" alt="support" />
+			<div
+				class="-border-white/[0.2] -border relative grid min-h-96 w-full grid-cols-2 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600/50 via-indigo-600/60 to-indigo-600/40 p-4 py-24 shadow-xl">
+				<img class="absolute" src="/circles@2x.png" alt="bg radial" />
+				<div class="z-20 space-y-6 px-12 text-white">
+					<p class="text-2xl font-semibold">Here, whenever - wherever</p>
+
+					<p class="text-xl leading-normal text-indigo-50">
+						Access Argus anywhere, from our webapp across all devices. With browser extensions for every major browser, and bots for telegram and discord. Argus is always with you.
+
+						<br />
+						<br />
+
+						Get started with the Argus Beta today. Access our documentation to learn more about how Argus can protect your assets.
+					</p>
+
+					<a href="docs.0xargus.org" class="flex h-14 w-36 items-center justify-center rounded-xl bg-neutral-950/[0.25] text-indigo-50 duration-200 ease-in-out hover:bg-neutral-950/30">
+						<p class="text-lg font-medium">Learn more</p>
+					</a>
 				</div>
+
+				<img src="/support2.png" class="rounded-xl opacity-90 shadow-lg" alt="support" />
 			</div>
-			<div />
-		</Section>
-	</TracingBeam>
+		</div>
+		<div />
+	</Section>
 </GridAndDotBackgroundsSmallGrid>
 <!-- Product Summary + Features End -->
 

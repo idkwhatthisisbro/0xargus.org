@@ -1,10 +1,16 @@
 import { z } from 'zod';
 
 export const whitelistSchema = z.object({
-	email: z.string().email(),
-	password: z.string().default('teCghv7xWMryQMAxCxfC'),
 	id: z.string(),
-	email_confirmed_at: z.string().nullable()
+	email: z.string().email(),
+	name: z.string().nullable(),
+	phone: z.object({
+		countryCode: z.string().nullable(),
+		number: z.string().nullable(),
+		otp: z.string().nullable()
+	}),
+
+	_step: z.number().default(0)
 });
 
 export type WhitelistSchema = typeof whitelistSchema;

@@ -1,10 +1,6 @@
 <script lang="ts">
 	import BackgroundBeams from '$lib/components/ui/BackgroundBeams/BackgroundBeams.svelte';
 	import WhitelistForm from '$lib/components/page/WhitelistForm.svelte';
-	import type { SuperValidated, Infer } from 'sveltekit-superforms';
-	import type { WhitelistSchema } from '$lib/schema';
-
-	export let data: SuperValidated<Infer<WhitelistSchema>>;
 </script>
 
 <section id="join-whitelist" class="relative mt-12 flex h-[40rem] w-full flex-col items-center justify-center gap-24 pt-32 font-outfit -antialiased">
@@ -16,7 +12,7 @@
 		<p class="relative z-10 mx-auto my-4 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
 			Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
 		</p>
-		<WhitelistForm {data} id="whitelist-footer" />
+		<WhitelistForm />
 	</div>
 
 	<!-- FOOTER SLOT -->
