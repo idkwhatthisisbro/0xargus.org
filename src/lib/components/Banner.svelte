@@ -55,7 +55,7 @@
 							</span>
 						{/if}
 
-						<p class="font-outfit font-bold tracking-wide md:hidden">$ARGUS PRESALE IN:</p>
+						<p class="font-outfit text-sm font-bold tracking-wide md:hidden">$ARGUS PRESALE IN:</p>
 					</div>
 
 					<div
@@ -93,12 +93,12 @@
 
 									<span class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
 										<span class="text-xl font-bold text-white lg:text-2xl">{remaining.minutes}</span>
-										Minutes
+										Mins
 									</span>
 
 									<span class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
 										<span class="text-xl font-bold text-white lg:text-2xl">{remaining.seconds}</span>
-										Seconds
+										Secs
 									</span>
 								{:else}
 									<h2>The time has come!</h2>
