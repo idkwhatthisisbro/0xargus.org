@@ -21,7 +21,7 @@
 	onDestroy(() => clearInterval(interval));
 </script>
 
-<div class="relative mb-24 h-full text-center font-outfit text-4xl text-white sm:mt-8">
+<div class="relative mb-24 h-full text-center font-outfit text-4xl text-white sm:mt-6">
 	<h1 class="bg-gradient-to-r from-neutral-50/80 via-neutral-200 to-neutral-50 bg-clip-text font-outfit text-4xl font-medium text-transparent">
 		Introducing RugPull Prevention Middleware for
 

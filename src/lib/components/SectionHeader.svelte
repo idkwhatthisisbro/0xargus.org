@@ -15,13 +15,13 @@
 	const y = 'text-neutral-300';
 </script>
 
-<section class={cn('mt-20 grid items-center justify-center gap-4 py-8 sm:py-32' + className)}>
+<section class={cn('mt-4 grid items-center justify-center gap-4 py-8 sm:mt-12 sm:py-16' + className)}>
 	<!-- <img class="m-auto h-24 w-24" src={image} alt="header" /> -->
 	<div class="grid items-center justify-center text-center">
 		<h3 class={cn('z-[198] m-auto max-w-xl py-2 font-outfit text-4xl font-bold leading-snug sm:text-6xl', x)}>
 			{titleWhite}
 			<span class={y}>{titlePurple}</span>
 		</h3>
-		<p class="m-auto mt-8 max-w-4xl text-xl text-neutral-300 sm:text-3xl">{subtitle}.</p>
+		<p class="m-auto mt-4 max-w-4xl text-xl text-neutral-300 sm:mt-8 sm:text-3xl">{subtitle}.</p>
 	</div>
 </section>

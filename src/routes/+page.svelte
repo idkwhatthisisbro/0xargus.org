@@ -28,6 +28,7 @@
 	import IconSafePal from '$lib/assets/safepal.svg?component';
 	import Icon1inch from '$lib/assets/1inch.svg?component';
 	import SvgBlur from '$lib/assets/blur.svg?component';
+	import { BASE_URL } from '../constants.js';
 
 	// TODO: Add localization
 
@@ -291,9 +292,9 @@
 		image: 'https://0xargus.org/Banner.png',
 		imageAlt: 'Twitter image alt'
 	}} />
-<main class={cn('relative z-30 flex min-h-screen w-full flex-col items-center justify-center py-48 sm:h-screen sm:py-64')}>
+<main class={cn('b-red-500 relative z-30 flex min-h-screen w-full flex-col items-center')}>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
-	<div class="absolute top-0 flex w-full flex-col items-center gap-5">
+	<div class="b-blue-500 grid w-full gap-5">
 		<Banner />
 		<Navbar />
 	</div>
@@ -304,7 +305,7 @@
 		<div class="flex w-full flex-col items-center justify-center px-4 sm:px-0">
 			<!-- HERO TITLE -->
 			<div>
-				<h1 class="relative z-[31] text-center font-saira text-6xl font-black text-neutral-50 md:text-7xl lg:text-9xl">0xArgus</h1>
+				<h1 class="relative z-[31] mt-12 text-center font-saira text-6xl font-black text-neutral-50 md:mt-32 md:text-7xl lg:text-9xl">0xArgus</h1>
 				<div class="relative z-30 h-20 w-[40rem]">
 					<div class="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm" />
 					<div class="absolute inset-x-20 top-0 h-px w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
@@ -319,7 +320,7 @@
 			<!-- HERO TEXT END -->
 
 			<!-- WHITELIST BUTTON -->
-			<WhitelistForm data={data.form} id="whitelist-hero" />
+			<WhitelistForm id="whitelist-hero" />
 			<!-- WHITELIST BUTTON END -->
 		</div>
 	</div>
@@ -415,9 +416,9 @@
 								role="button"
 								tabindex="0"
 								aria-label="GLOWING to documentation"
-								on:click={() => window.open('https://docs.0xargus.org/presale', '_blank')}
+								on:click={() => window.open(BASE_URL + '/presale', '_blank')}
 								on:keydown={(event) => {
-									if (event.key === 'Enter') window.open('https://0xargus.org/presale', '_blank');
+									if (event.key === 'Enter') window.open(BASE_URL + '/presale', '_blank');
 								}}
 								href="https://docs.0xargus.org"
 								target="_blank"
@@ -448,7 +449,7 @@
 			</a>
 
 			<div
-				class="-border-white/[0.2] -border relative grid min-h-96 w-full grid-cols-2 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600/50 via-indigo-600/60 to-indigo-600/40 p-4 py-24 shadow-xl">
+				class="-border-white/[0.2] -border relative grid min-h-96 w-full grid-rows-2 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600/50 via-indigo-600/60 to-indigo-600/40 p-4 py-24 shadow-xl md:grid-cols-2 md:grid-rows-1">
 				<img class="absolute" src="/circles@2x.png" alt="bg radial" />
 				<div class="z-20 space-y-6 px-12 text-white">
 					<p class="text-2xl font-semibold">Here, whenever - wherever</p>
@@ -475,11 +476,11 @@
 </GridAndDotBackgroundsSmallGrid>
 <!-- Product Summary + Features End -->
 
-<div class="mb-12 mt-24" />
+<!-- <div class="mb-12 mt-24" /> -->
 
 <Section className="relative pb-0">
 	<!-- <Stars numStars={10} slot="background" /> -->
-	<img src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" />
+	<!-- <img src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" /> -->
 
 	<SvgBlur class="absolute -right-[15rem] top-[25rem] z-[55] hidden opacity-40 sm:-right-[35rem] sm:bottom-32 sm:top-auto sm:block" />
 	<SvgBlur class="absolute -left-[15rem] top-[25rem] z-[55] opacity-40 sm:-left-[35rem] sm:bottom-32 sm:top-auto" />
@@ -599,7 +600,7 @@
 						<div class="h-64 w-full sm:h-96 sm:w-[30rem]" />
 						<img class="absolute bottom-0 z-[50] h-64 rounded-xl sm:h-96" src={card.imgMain} alt="img" />
 					{:else}
-						<img class="z-[50] h-64 w-full rounded-xl sm:h-96 sm:w-[30rem]" src={card.imgMain} alt="img" />
+						<div style="background-image: url('{card.imgMain}');" class="z-[50] m-auto h-64 w-full rounded-xl bg-contain bg-center bg-no-repeat sm:h-96 sm:max-w-[30rem]" />
 					{/if}
 				{/if}
 			</div>
@@ -612,8 +613,8 @@
 <!-- FAQ -->
 <Section>
 	<SectionHeader title="Frequently Asked Questions" subtitle="Get answers to the most common questions about 0xArgus" />
-	<div class="flex items-center justify-center text-white">
-		<AccordionL.Root class="w-full sm:max-w-[50%]">
+	<div class="flex items-center justify-center px-12 text-white sm:px-0">
+		<AccordionL.Root class="w-full lg:max-w-[80%]">
 			<AccordionL.Item value="item-1">
 				<AccordionL.Trigger>What is Argus SentryAI?</AccordionL.Trigger>
 				<AccordionL.Content

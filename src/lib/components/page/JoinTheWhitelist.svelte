@@ -12,7 +12,7 @@
 		<p class="relative z-10 mx-auto my-4 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
 			Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
 		</p>
-		<WhitelistForm />
+		<WhitelistForm id="whitelist-footer" />
 	</div>
 
 	<!-- FOOTER SLOT -->

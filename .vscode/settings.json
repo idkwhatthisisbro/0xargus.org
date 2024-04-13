@@ -1,0 +1,12 @@
+{
+	"files.exclude": {
+		"**/.DS_Store": true,
+		"**/node_modules": true,
+		"build": true,
+		".svelte-kit": true,
+		"package": true,
+		"**/vite.config.js.timestamp-*": true,
+		"**/vite.config.ts.timestamp-*": true,
+		"**/pnpm-lock.yaml": true
+	}
+}

@@ -6,8 +6,7 @@
 	export let clickOutside = true;
 	export let closeOnClick = true;
 	export let disabled = false;
-	export let detailedValue = null;
-	export let value = '+442071838750';
+	export let value = '';
 	export let searchPlaceholder = 'Search';
 
 	let searchText = '';
@@ -16,7 +15,7 @@
 	export let valid = true;
 	export let options = { invalidateOnCountryChange: true };
 
-	$: selectedCountryDialCode = normalizedCountries.find((el) => el.iso2 === selectedCountry)?.dialCode || null;
+	$: selectedCountryDialCode = normalizedCountries.find((el) => el.iso2 === selectedCountry)?.dialCode || '';
 
 	const toggleDropDown = (e) => {
 		e?.preventDefault();
@@ -85,12 +84,12 @@
 	};
 </script>
 
-<div class="relative flex rounded-lg {valid ? `` : ` ring-1 ring-purple-500 focus-within:ring-1 focus-within:ring-offset-1 focus-within:ring-offset-purple-500/50`}">
+<div class="relative flex rounded-lg duration-200 ease-in-out {!valid ? `ring-2 ring-red-500 focus-within:ring-offset-red-500/50 focus:outline-none ` : ``}">
 	<div class="flex" use:clickOutsideAction={closeOnClickOutside}>
 		<button
 			id="states-button"
 			data-dropdown-toggle="dropdown-states"
-			class="relative z-10 inline-flex flex-shrink-0 items-center overflow-hidden whitespace-nowrap rounded-l-lg border border-neutral-300 bg-neutral-100 px-4 py-2.5 text-center text-sm font-medium text-neutral-500 hover:bg-neutral-200 focus:outline-none"
+			class="-border relative z-10 inline-flex flex-shrink-0 items-center overflow-hidden whitespace-nowrap rounded-l-lg border-r border-neutral-900/30 bg-neutral-700 px-4 py-2.5 text-center text-lg font-medium text-neutral-100 duration-200 ease-in-out hover:bg-neutral-600 focus:outline-none"
 			type="button"
 			role="combobox"
 			aria-controls="dropdown-countries"
@@ -100,7 +99,7 @@
 			{#if selectedCountry && selectedCountry !== null}
 				<div class="inline-flex items-center text-left">
 					<span class="flag flag-{selectedCountry.toLowerCase()} mr-3 flex-shrink-0" />
-					<span class="text-neutral-600">+{selectedCountryDialCode}</span>
+					<span class="text-neutral-300">+{selectedCountryDialCode}</span>
 				</div>
 			{:else}
 				Please select
@@ -112,31 +111,36 @@
 		{#if isOpen}
 			<div
 				id="dropdown-countries"
-				class="absolute z-10 max-w-fit translate-y-11 divide-y divide-neutral-100 overflow-hidden rounded bg-white shadow"
+				class="absolute z-10 max-w-fit translate-y-11 divide-y divide-neutral-100 overflow-hidden rounded bg-neutral-800 shadow"
 				data-popper-reference-hidden=""
 				data-popper-escaped=""
 				data-popper-placement="bottom"
 				aria-orientation="vertical"
 				aria-labelledby="country-button"
 				tabindex="-1">
-				<div class="max-h-48 overflow-y-auto text-sm text-neutral-700" aria-labelledby="countries-button" role="listbox">
-					<input aria-autocomplete="list" type="text" class="sticky top-0 w-full px-4 py-4 text-neutral-900 focus:outline-none" bind:value={searchText} placeholder={searchPlaceholder} />
+				<div class="max-h-48 overflow-y-auto text-lg text-neutral-300" aria-labelledby="countries-button" role="listbox">
+					<input
+						aria-autocomplete="list"
+						type="text"
+						class="text-neutral-30 0 sticky top-0 w-full bg-neutral-800 px-4 py-4 placeholder-neutral-300 focus:outline-none"
+						bind:value={searchText}
+						placeholder={searchPlaceholder} />
 					{#each sortCountries(normalizedCountries, searchText) as country (country.id)}
 						{@const isActive = isSelected(country.iso2, selectedCountry)}
 						<div id="country-{country.iso2}" role="option" aria-selected={isActive}>
 							<button
 								value={country.iso2}
 								type="button"
-								class="inline-flex w-full overflow-hidden px-4 py-2 text-sm
-                             hover:bg-neutral-600 active:bg-neutral-100
-                            {isActive ? 'bg-neutral-600 text-white' : 'text-neutral-400 hover:text-white'}"
+								class="inline-flex w-full overflow-hidden px-4 py-2 text-lg
+                             hover:bg-neutral-600 active:bg-neutral-600
+                            {isActive ? 'bg-neutral-600 text-neutral-200' : 'text-neutral-300 hover:text-white'}"
 								on:click={(e) => {
 									handleSelect(country.iso2, e);
 								}}>
 								<div class="inline-flex items-center text-left">
 									<span class="flag flag-{country.iso2.toLowerCase()} mr-3 flex-shrink-0" />
 									<span class="mr-2">{country.name}</span>
-									<span class="text-neutral-500">+{country.dialCode}</span>
+									<span class="text-neutral-400">+{country.dialCode}</span>
 								</div>
 							</button>
 						</div>
@@ -149,11 +153,10 @@
 	<TelInput
 		id="tel-input"
 		bind:country={selectedCountry}
-		bind:detailedValue
 		bind:value
 		bind:valid
 		{options}
 		required={true}
-		class="s form-input block w-full rounded-r-lg border  border-neutral-600 border-l-white/[0.2] bg-white p-4 text-sm text-white
+		class="s  -border-neutral-600 -border-l-white/[0.2] block w-full rounded-r-lg bg-neutral-700 p-6 text-lg text-neutral-300
         placeholder-neutral-400 outline-none focus:outline-none" />
 </div>

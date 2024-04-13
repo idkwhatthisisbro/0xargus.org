@@ -9,6 +9,7 @@ const config = {
 
 	theme: {
 		extend: {
+			
 			colors: {
 				brand: {
 					bgPrimary: '#06000f',
@@ -62,8 +63,9 @@ const config = {
 
 	plugins: [
 		require('tailwind-children'),
-		require('@tailwindcss/forms', {
-			    strategy: 'class', // only generate classes
+		require('@tailwindcss/forms')({
+				strategy: 'class', // only generate classes
+
 			}),
 
 		aspectRatio, 

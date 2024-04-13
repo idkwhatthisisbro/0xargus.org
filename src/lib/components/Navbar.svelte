@@ -3,29 +3,34 @@
 	import IconTelegram from '$lib/assets/telegram.svg?component';
 	import IconX from '$lib/assets/x.svg?component';
 	import { Boxes } from 'lucide-svelte';
+	import { BASE_URL } from '../../constants';
+	import NavbarMenu from './ui/NavbarMenu/NavbarMenu.svelte';
+
+	import { Menu } from 'lucide-svelte';
 
 	export let showName = false;
 </script>
 
 <nav class="z-30 mx-auto flex h-[72px] w-full max-w-7xl items-center justify-between px-[30px]">
-	<a href="https://0xargus.org" class="flex items-center gap-4">
+	<a href={BASE_URL} class="flex items-center gap-4">
 		<Logo class="h-10 w-10" />
 		{#if showName}
 			<span class="self-center whitespace-nowrap font-outfit text-3xl font-semibold text-white">0xArgus</span>
 		{/if}
 	</a>
 
-	<div class="flex w-full items-center justify-center gap-x-12">
-		<a href="#about" class="font-outfit text-lg font-medium text-white duration-200 ease-in-out hover:text-neutral-300">About</a>
-		<a href="#features" class="font-outfit text-lg font-medium text-white duration-200 ease-in-out hover:text-neutral-300">Features</a>
-		<a href="#howitworks" class="font-outfit text-lg font-medium text-white duration-200 ease-in-out hover:text-neutral-300">How it works</a>
-		<a href="#faq" class="font-outfit text-lg font-medium text-white duration-200 ease-in-out hover:text-neutral-300">FAQ</a>
+	<div class="hidden w-full items-center justify-center gap-x-12 lg:flex">
+		<a href={BASE_URL + '#about'} class="font-outfit text-lg font-medium text-white duration-200 ease-in-out hover:text-neutral-300">About</a>
+		<a href={BASE_URL + '#features'} class="font-outfit text-lg font-medium text-white duration-200 ease-in-out hover:text-neutral-300">Features</a>
+		<a href={BASE_URL + '#howitworks'} class="font-outfit text-lg font-medium text-white duration-200 ease-in-out hover:text-neutral-300">How it works</a>
+		<a href={BASE_URL + '#faq'} class="font-outfit text-lg font-medium text-white duration-200 ease-in-out hover:text-neutral-300">FAQ</a>
 		<a
-			href="/presale"
+			href={BASE_URL + '/presale'}
 			class="font-outfit text-lg font-medium text-white underline decoration-indigo-500 decoration-2 underline-offset-[8px] duration-200 ease-in-out hover:text-neutral-300 hover:decoration-indigo-600"
 			>Presale</a>
 	</div>
-	<div class="flex items-center gap-x-12">
+
+	<div class="hidden items-center gap-x-12 sm:flex">
 		<div class="flex items-center gap-x-8">
 			<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://t.me/argusorg">
 				<IconTelegram />
@@ -44,5 +49,9 @@
 				<p class="hidden sm:block">Documentation</p>
 			</span>
 		</button>
+	</div>
+
+	<div class="flex items-center justify-center sm:hidden">
+		<NavbarMenu><Menu class="h-8 w-8 text-white" /></NavbarMenu>
 	</div>
 </nav>
