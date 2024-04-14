@@ -334,8 +334,8 @@
 									<MoveRight class="ml-2 text-purple-200" />
 								{/if}
 							</button>
-							{$errors._errors}
-							{$submitting}
+							<!-- {$errors._errors}
+							{$submitting} -->
 							<!-- {/if} -->
 						</div>
 					</form>
