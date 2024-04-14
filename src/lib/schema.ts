@@ -25,8 +25,8 @@ const number = z.string().transform((arg, ctx) => {
 });
 
 export const whitelistSchema = z.object({
-	name: z.string().min(6).default('aaaaaa'),
-	email: z.string().email().default('s@s.com'),
+	name: z.string().min(6).default(''),
+	email: z.string().email().default(''),
 	phone: z.object({
 		number,
 		otp: z.string()

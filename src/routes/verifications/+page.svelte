@@ -19,7 +19,7 @@
 	import { Circle } from 'svelte-loading-spinners';
 	import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
 	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 	import { goto } from '$app/navigation';
 
 	export let data;
@@ -169,7 +169,9 @@
 	// }
 </script>
 
-<SuperDebug data={$form} />
+{#if dev}
+	<SuperDebug data={$form} />
+{/if}
 
 <div class="mt-8">
 	<Navbar />
