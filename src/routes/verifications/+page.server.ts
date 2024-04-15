@@ -1,5 +1,5 @@
 import { fail } from '@sveltejs/kit';
-import { message, superValidate } from 'sveltekit-superforms/server';
+import { message, setError, superValidate } from 'sveltekit-superforms/server';
 import { zod } from 'sveltekit-superforms/adapters';
 import { whitelistSchema } from '$lib/schema';
 import { supabaseAdmin } from '$lib/server/supabase';
@@ -29,7 +29,8 @@ export const actions: Actions = {
 	default: async (request) => {
 		console.log('running');
 		const form = await superValidate(request, zod(whitelistSchema));
-		message(form, 'Invalid form', { status: 403 });
+
+		// message(form, 'Invalid form', { status: 403 });
 		let phone;
 		if (!form.valid) return fail(403, { form });
 
@@ -48,11 +49,14 @@ export const actions: Actions = {
 					} else {
 						// @ts-ignore
 						form.data.step = user.step;
+						// @ts-ignore
+						form.data.phone = user.step ? { number: '', otp: '' } : null;
 					}
 
 					break; // Missing break statement added
 				// User is on next step, verify phone number
 				case 1:
+					// If somehow user is on step 1 without a phone number or email
 					if (!form.data.phone || !user?.email) {
 						message(form, 'Phone number is required', { status: 401 });
 						return fail(401, { form, error: 'Phone number is required' });
@@ -60,26 +64,36 @@ export const actions: Actions = {
 
 					phone = form.data.phone.number;
 					// Verification logic for phone number
-					// if (form.data.phone.otp.length === 6) {
-					// 	console.log(form.data.phone.otp);
-					// 	const response = await supabaseAdmin.auth.verifyOtp({ phone, token: form.data.phone.otp, type: 'sms' });
+					if (form.data.phone.otp.length === 6) {
+						console.log(form.data.phone.otp);
+						const response = await supabaseAdmin.auth.verifyOtp({ phone, token: form.data.phone.otp, type: 'phone_change' });
 
-					// 	if (response.error) {
-					// 		form.data.phone.otp = '';
-					// 		message(form, 'Invalid Code', {
-					// 			status: 401
-					// 		});
-					// 		return fail(500, { form, error: 'Error verifying phone number' });
-					// 	}
-					// }
+						if (response.error) {
+							form.data.phone.otp = '';
+							message(form, 'Invalid Code', {
+								status: 401
+							});
+							return fail(500, { form, error: 'Error verifying phone number' });
+						}
+					}
 					// Sign in as its required to add users phone number to flow.
-					await supabase.auth.signInWithPassword({ email: user?.email as string, password: P });
-					// Update phone
-					const { error } = await supabase.auth.updateUser({
+					const auth = await supabase.auth.signInWithPassword({ email: user?.email as string, password: P });
+
+					// Calls if session is null, should never happen
+					if (auth.error) {
+						return setError(form, 'phone.number', 'Unknown Error | Please try again later or contact support support@0xargus.org', { status: 500 });
+					}
+
+					// Logic to update phone/send otp code
+					const updateUser = await supabase.auth.updateUser({
 						phone
 					});
 
-					message(form, error?.message);
+					// Called When User reused phone number on multiple accounts
+					if (updateUser.error) {
+						return setError(form, 'phone.number', updateUser.error?.message, { overwrite: true, status: 403 });
+					}
+
 					break;
 			}
 

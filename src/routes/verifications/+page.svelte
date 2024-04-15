@@ -9,10 +9,10 @@
 	import SvelteOtp from '$lib/components/SvelteOtp/SvelteOtp.svelte';
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
 	import { supabase } from '$lib/supabase';
-	import SuperDebug, { superForm } from 'sveltekit-superforms';
-	import { whitelistSchema } from '$lib/schema';
-	import { zod } from 'sveltekit-superforms/adapters';
-	import { onMount } from 'svelte';
+	import SuperDebug, { superForm, type SuperValidated } from 'sveltekit-superforms';
+	import { whitelistSchema, type WhitelistSchema } from '$lib/schema';
+	import { zod, type Infer } from 'sveltekit-superforms/adapters';
+	import { onDestroy, onMount } from 'svelte';
 	import { cn } from '$lib/utils/cn';
 	import CustomLottiePlayer from '$lib/components/CustomLottiePlayer.svelte';
 	import type { Database } from '$lib/types/supabase.js';
@@ -21,38 +21,47 @@
 	import { page } from '$app/stores';
 	import { browser, dev } from '$app/environment';
 	import { goto } from '$app/navigation';
+	import { rest } from 'lodash-es';
 
-	export let data;
+	export let data: SuperValidated<Infer<WhitelistSchema>>;
 
 	// Assuming 'registeredOn' is a JavaScript Date object
 	const registeredOn = new Date().toISOString();
 	let formattedDate = format(registeredOn, 'dd-MM-yyyy');
 
-	const presaleDate = new Date('2024-05-23T00:00:00Z');
-	let formattedPresaleDate = format(presaleDate, 'dd-MM-yyyy');
+	const presaleDate = new Date('2024-05-04T00:00:00Z');
+	presaleDate.setDate(presaleDate.getDate() + 4); // Adding 4 days to make it the 8th of May
+	let formattedPresaleDate = format(presaleDate, 'dd MMMM yyyy'); // Should result in "08 May 2024"
 
-	let name = 'John Doe';
+	const lastInvestmentDay = new Date(presaleDate.getTime());
+	lastInvestmentDay.setDate(lastInvestmentDay.getDate() + 3); // Adding 3 days to the presale date
+	let formattedLastInvestmentDay = format(lastInvestmentDay, 'dd MMMM yyyy'); // Should result in "11 May 2024"
+
+	const tokenReleaseDate = new Date(presaleDate.getTime());
+	tokenReleaseDate.setDate(tokenReleaseDate.getDate() + 14); // Adding 14 days to the presale date for token release
+	let formattedTokenReleaseDate = format(tokenReleaseDate, 'dd MMMM yyyy'); // Should result in "22 May 2024"
+
 	let loading = true;
 	let verifications = {
 		email: false,
 		phone: false
 	};
 
-	// Function to update form with data that matches the Zod schema
-	const releventSupabaseData = (data: Database['public']['Tables']['users']['Row']) => {
+	// Util Function to update form with data that matches the Zod schema
+	const releventSupabaseData = (respData: Database['public']['Tables']['users']['Row']) => {
 		const schemaKeys = Object.keys(whitelistSchema.shape);
 		console.log(schemaKeys);
 		let newForm = {};
 
 		schemaKeys.forEach((key) => {
-			if (key in data) {
+			if (key in respData) {
 				if (key == 'phone') {
 					// @ts-ignore
-					newForm['phone'] = { number: data[key] || '', otp: '' };
+					newForm['phone'] = respData['step'] > 0 ? { number: respData['phone'] || '', otp: '' } : respData['phone'];
 					return;
 				}
 				// @ts-ignore
-				newForm[key] = data[key];
+				newForm[key] = respData[key];
 			}
 		});
 
@@ -60,31 +69,31 @@
 	};
 
 	onMount(async () => {
-		// TODO: Fetch user data from the server on first load
-		// const { data } = await supabase.from('users').select('*').eq('email', $form.email).single();
-
-		// const handleStep = async (step: number) => {
-		// 	await supabase
-		// 		.from('users')
-		// 		// @ts-ignore
-		// 		.update({ step })
-		// 		.eq('email', $form.email)
-		// 		.single();
-		// };
-
-		// if (data) {
-		// 	form.update(
-		// 		(form) => {
-		// 			// @ts-ignore
-		// 			form = releventSupabaseData(data);
-		// 			// console.log(releventSupabaseData(data));
-		// 			return form;
-		// 		},
-		// 		{ taint: false }
-		// 	);
-		// }
+		// Run in client to display skeleton loader
+		try {
+			const { data } = await supabase.from('users').select('*').eq('email', $form.email).maybeSingle();
+			console.log(data);
+			data &&
+				form.update(
+					(form) => {
+						// @ts-ignore
+						form = releventSupabaseData(data);
+						// console.log(releventSupabaseData(data));
+						return form;
+					},
+					{ taint: false }
+				);
+		} catch (error) {}
 		loading = false;
 
+		const handleStep = async (step: number) => {
+			await supabase
+				.from('users')
+				// @ts-ignore
+				.update({ step })
+				.eq('email', $form.email)
+				.single();
+		};
 		// Supabase auto cleansup after client disconnects
 		supabase
 			.channel('schema-db-changes')
@@ -100,8 +109,10 @@
 					newStep = 2;
 					handleStep(2);
 				} else if (payload.new.email_confirmed_at) {
+					console.log('ran');
 					verifications.email = false;
 					newStep = 1;
+					$form.phone = { number: '', otp: '' };
 					handleStep(1);
 				} else {
 					return;
@@ -118,10 +129,43 @@
 			.subscribe();
 	});
 
-	$: {
-		if ($form.phone.otp && $form.phone.otp.length === 6) {
-			submit();
+	let time = 0;
+	let interval: ReturnType<typeof setInterval> | null;
+
+	function startCountdown(): void {
+		clearInterval(interval as NodeJS.Timeout); // Ensure any existing interval is cleared
+		time = 30; // Reset the time to 30 seconds
+		interval = setInterval(() => {
+			if (time > 0) {
+				time--;
+			} else {
+				clearInterval(interval as NodeJS.Timeout);
+				interval = null; // Ensure the interval is cleaned up
+			}
+		}, 1000);
+	}
+
+	function restartCountdown(): void {
+		if (verifications.phone) {
+			// Ensure that we can only restart if the phone was verified
+			clearInterval(interval as NodeJS.Timeout);
+			interval = null;
+			startCountdown(); // Restart the countdown
 		}
+	}
+
+	onDestroy(() => {
+		if (interval) clearInterval(interval);
+	});
+	$: if (verifications.phone) {
+		startCountdown();
+	}
+
+	let prevOtp = '';
+	$: if ($form.phone?.otp && $form.phone.otp.length === 6 && prevOtp !== $form.phone.otp) {
+		prevOtp = $form.phone.otp;
+		console.log('running');
+		submit();
 	}
 
 	const text = [
@@ -153,20 +197,20 @@
 		errorSelector: '[aria-invalid="true"],[data-invalid]',
 		resetForm: false,
 		onUpdated: (event) => {
-			event.form.valid && ((step === 0 && (verifications.email = true)) || (step === 1 && $message != 'Error sending phone change otp' && (verifications.phone = true)));
+			console.log($errors);
+			event.form.valid && (($form.step === 0 && (verifications.email = true)) || ($form.step === 1 && $message != 'Error sending phone change otp' && (verifications.phone = true)));
 		}
 	});
 
-	$: step = $form.step;
-	$: currentHeaderText = (verifications.email && text[1]) || (verifications.phone && text[3]) || (step == 1 && text[2]) || (step == 2 && text[4]) || text[step];
+	$: currentHeaderText = (verifications.email && text[1]) || (verifications.phone && text[3]) || ($form.step == 1 && text[2]) || ($form.step == 2 && text[4]) || text[$form.step];
 
-	// $: {
-	// 	if ($form.email && browser) {
-	// 		const url = new URL(window.location.href);
-	// 		url.searchParams.set('e', $form.email);
-	// 		history.pushState({}, '', url);
-	// 	}
-	// }
+	$: {
+		if ($form.email && browser) {
+			const url = new URL(window.location.href);
+			url.searchParams.set('e', $form.email);
+			history.pushState({}, '', url);
+		}
+	}
 </script>
 
 {#if dev}
@@ -188,7 +232,7 @@
 					{#each Array(3) as _, i}
 						<!-- <div class="relative flex items-center justify-center rounded-full border border-white/[0.3] p-1"> -->
 						<div
-							class={`inset-0 h-12 w-12 transform-gpu rounded-full transition duration-200 ease-in-out ${step >= i ? 'bg-gradient-radial from-green-400 to-green-800' : 'bg-neutral-300'} shadow-xl`}>
+							class={`inset-0 h-12 w-12 transform-gpu rounded-full transition duration-200 ease-in-out ${$form.step >= i ? 'bg-gradient-radial from-green-400 to-green-800' : 'bg-neutral-300'} shadow-xl`}>
 						</div>
 						<!-- </div> -->
 						{#if i !== 2}
@@ -206,9 +250,9 @@
 				</div>
 
 				<!-- FORM START -->
-				{#if step < 2}
+				{#if $form.step < 2}
 					<form use:enhance method="POST" action="/verifications" class="mt-4 space-y-8">
-						{#if step === 0 && !verifications.email}
+						{#if $form.step === 0 && !verifications.email}
 							<!-- Full Name -->
 							<div class="grid gap-2">
 								<label for="name">Full Legal Name*</label>
@@ -216,10 +260,10 @@
 									aria-invalid={$errors.name ? 'true' : undefined}
 									type="text"
 									bind:value={$form.name}
-									disabled={step > 1}
+									disabled={$form.step > 1}
 									class={cn(
 										'form-input rounded-xl border-0 bg-neutral-700 px-6 py-6 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500',
-										step > 0 && 'border-green-500 ring-green-500 '
+										$form.step > 0 && 'border-green-500 ring-green-500 '
 									)}
 									id="name"
 									placeholder="John Doe"
@@ -240,7 +284,7 @@
 							</div>
 						{/if}
 						<!-- Verify Email -->
-						{#if step === 0 && verifications.email}
+						{#if $form.step === 0 && verifications.email}
 							<div class="flex h-[400px] flex-col items-center gap-4 rounded-xl bg-neutral-800 p-12 font-outfit text-neutral-100">
 								<div class="w-32 rounded-lg">
 									<CustomLottiePlayer loop={true} src={'/mail2.json'} />
@@ -250,12 +294,11 @@
 							</div>
 						{/if}
 						<!-- Phone -->
-						<!-- {#if step === 1 && !verifications.phone && $form.phone} -->
-						{#if step === 1 && $form.phone}
+						{#if $form.step === 1 && !verifications.phone && $form.phone}
 							<div class="grid gap-2">
 								<label for="phone">Phone</label>
 								<PhoneInput bind:value={$form.phone.number} />
-								<p class="{$errors.phone?.number || 'invisible'} text-sm text-red-500">{$errors.phone?.number || '.'}</p>
+								<p class="{$errors.phone?.number || 'invisible'} text-sm text-red-500">{$errors.phone?.number || ''}</p>
 
 								{#if $message}
 									<span class="text-red-500"> {$message} - Please contact support at support@0xArgus.org to finish verification.</span>
@@ -283,12 +326,21 @@
 									{:else}
 										Sent to mobile {$form.phone.number} -
 									{/if}
-									<span class="text-blue-600 underline underline-offset-2">resend in 30</span>
+									<button
+										on:click={() => {
+											if (!time) {
+												$form.phone.otp = '';
+												restartCountdown();
+												submit();
+											}
+										}}
+										class="text-blue-600 underline underline-offset-2 duration-200 ease-in-out {time ? 'cursor-default text-neutral-500' : 'text-blue-600 hover:text-blue-700'}"
+										>{time ? `resend in ${time}` : 'Resend Code'}</button>
 								</p>
 							</div>
 						{/if}
 						<!-- Info -->
-						{#if step == 0 && !verifications.email}
+						{#if $form.step == 0 && !verifications.email}
 							<br />
 							<div class="flex items-center justify-center gap-x-4 rounded-xl border border-white/[0.1] px-8 py-6 text-base text-neutral-500 shadow-xl lg:items-start">
 								<ShieldEllipsis class="bg-gradient-tr min-h-6 min-w-6 text-blue-600 lg:h-8 lg:w-8" />
@@ -311,61 +363,66 @@
 									on:click={() => (verifications.phone = false)}
 									type="button"
 									class={cn('mt-12 h-full w-full flex-grow rounded-lg bg-neutral-700 px-8 py-6 shadow-xl duration-200 ease-in-out hover:bg-neutral-700')}>Go Back</button>
-								<!-- {:else} -->
+							{:else}
+								<!-- {/if} -->
+								<!-- disabled={$submitting || ($form.step == 0 && ($errors.email || $errors.name) && true) || ($form.step == 1 && $errors.phone?.number && true) || (verifications.phone && $errors.phone?.otp && true)} -->
+								{@const disabled =
+									// ($form.step == 0 && ($errors.email || $errors.name) && true) ||
+									// ($form.step == 1 && $errors.phone?.number && true) ||
+									(verifications.phone && $errors.phone?.otp && true) || $submitting}
+								<button
+									{disabled}
+									class={cn(
+										disabled ? 'cursor-not-allowed bg-neutral-700' : 'bg-gradient-radial from-purple-500/80 to-purple-700/80 hover:bg-purple-600',
+										'flex-grow-2 mx-auto mt-12 w-full rounded-lg',
+										'px-8 py-6 shadow-xl duration-300 ease-in-out',
+										'disabled:border-white[0.2]  disabled:cursor-not-allowed disabled:border disabled:bg-neutral-500 disabled:text-neutral-200',
+										'flex h-full items-center justify-center py-6 text-lg font-bold uppercase tracking-wider text-purple-50 backdrop-blur-xl transition-all '
+									)}
+									type="submit">
+									{#if !disabled && $submitting}
+										<Circle color="white" size="32" unit="px" />
+									{:else}
+										Continue
+										<MoveRight class="ml-2 text-purple-200" />
+									{/if}
+								</button>
 							{/if}
-							<button
-								disabled={$submitting || (step == 0 && ($errors.email || $errors.name) && true) || (step == 1 && $errors.phone?.number && true) || (verifications.phone && $errors.phone?.otp && true)}
-								class={cn(
-									(step == 0 && ($errors.email || $errors.name) && true) ||
-										(step == 1 && $errors.phone?.number && true) ||
-										(verifications.phone && $errors.phone?.otp && true) ||
-										$submitting ||
-										'bg-gradient-radial from-purple-500/80 to-purple-700/80',
-									'flex-grow-2 mx-auto mt-12 w-full rounded-lg',
-									'px-8 py-6 shadow-xl duration-300 ease-in-out',
-									'disabled:cursor-not-allowed  disabled:bg-neutral-500 disabled:text-neutral-200',
-									'flex h-full items-center justify-center py-6 text-lg font-bold uppercase tracking-wider text-purple-50 backdrop-blur-xl transition-all hover:bg-purple-600'
-								)}
-								type="submit">
-								{#if $submitting}
-									<Circle color="white" size="32" unit="px" />
-								{:else}
-									Continue
-									<MoveRight class="ml-2 text-purple-200" />
-								{/if}
-							</button>
-							<!-- {$errors._errors}
-							{$submitting} -->
-							<!-- {/if} -->
 						</div>
 					</form>
 				{:else}
 					<!-- Success Receipt -->
-					<h3 class="mt-8 font-bold">REGISTRATION DETAILS</h3>
-					<hr />
-					<div class="mt-4 flex justify-around">
-						<div class="gap grid text-center">
-							<p class="font-medium tracking-wide text-neutral-500">REGISTERED AS</p>
-							<p>{name}</p>
+					<div class="rounded-xl bg-gradient-radial from-white/95 via-neutral-200 to-neutral-100/95 px-12 py-12 shadow-xl backdrop-blur-3xl backdrop-filter">
+						<h3 class="mt-8 text-2xl font-medium text-neutral-700">Registration Details</h3>
+						<hr class="mt-2 border-neutral-700" />
+						<div class="mt-4 flex justify-around">
+							<div class="gap grid text-center">
+								<p class="font-bold tracking-wide text-neutral-500">REGISTERED AS</p>
+								<p class="text-neutral-700">
+									{$form.name}
+								</p>
+							</div>
+							<div class="gap grid text-center">
+								<p class="font-bold tracking-wide text-neutral-500">REGISTERED ON</p>
+								<p class="text-neutral-700">
+									{formattedDate}
+								</p>
+							</div>
 						</div>
-						<div class="gap grid text-center">
-							<p class="font-medium tracking-wide text-neutral-500">REGISTERED ON</p>
-							<p>
-								{formattedDate}
-							</p>
-						</div>
+
+						<h3 class="mt-8 text-2xl font-medium text-neutral-700">Additional Information</h3>
+						<hr class="mt-2 border-neutral-700" />
+
+						<p class="mt-6 font-bold tracking-wide text-neutral-500">ABOUT DEPOSITS</p>
+						<p class="leading-normal text-neutral-900">
+							Your purchase will be confirmed when your deposit clears. If your deposit doesn’t clear immediately, that’s fine – you have until {formattedLastInvestmentDay} to finalize your purchase. If
+							you secure an allocation and do not fund your allocation by the deadline, you will be unable to secure future allocations in 0xArgus sales.
+						</p>
+						<p class="mt-6 font-bold tracking-wide text-neutral-500">WHEN WILL I RECEIVE TOKENS?</p>
+						<p class="leading-normal text-neutral-700">
+							The Argus team will be distributing tokens 6 days from the close of the sale ({formattedTokenReleaseDate}).
+						</p>
 					</div>
-
-					<h3 class="mt-8 font-bold">ADDITIONAL INFORMATION</h3>
-					<hr />
-
-					<p class="mt-6 font-medium text-neutral-50">ABOUT DEPOSITS</p>
-					<p>
-						Your purchase will be confirmed when your deposit clears. If your deposit doesn’t clear immediately, that’s fine – you have until December 26, 00:00 UTC to finalize your purchase. If you
-						secure an allocation and do not fund your allocation by the deadline, you will be unable to secure future allocations in SafeTitan sales.
-					</p>
-					<p class="mt-6 font-medium text-white">WHEN WILL I RECEIVE TOKENS?</p>
-					<p>The Argus team will be distributing tokens 6 days from the close of the sale (29 May, 2024).</p>
 				{/if}
 			</div>
 		{:else}

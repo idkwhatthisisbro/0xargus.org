@@ -338,7 +338,7 @@
 <!-- Product Summary + Features Start -->
 <GridAndDotBackgroundsSmallGrid>
 	<!-- PRODUCT SUMMARY SECTION -->
-	<Section class="mt-12">
+	<Section id="about" class="mt-12">
 		<h2 class="text-center font-outfit text-4xl font-bold text-transparent text-white sm:text-6xl">
 			Your
 
@@ -367,6 +367,7 @@
 		<!-- FEATURES SECTION-->
 		<!-- <div class="mt-[250px] sm:mt-[500px] md:mt-[750px]" /> -->
 		<SectionHeader
+			id="features"
 			title="Bringing Security into the Mainstream"
 			subtitle="The first ever safety layer middleware. Giving you the ultimate protection for your DeFi investments"
 			image={'/head-lock-4.png'} />
@@ -478,7 +479,7 @@
 
 <!-- <div class="mb-12 mt-24" /> -->
 
-<Section className="relative pb-0">
+<Section id="howitworks" className="relative pb-0">
 	<!-- <Stars numStars={10} slot="background" /> -->
 	<!-- <img src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" /> -->
 
@@ -611,7 +612,7 @@
 </Section>
 
 <!-- FAQ -->
-<Section>
+<Section id="faq">
 	<SectionHeader title="Frequently Asked Questions" subtitle="Get answers to the most common questions about 0xArgus" />
 	<div class="flex items-center justify-center px-12 text-white sm:px-0">
 		<AccordionL.Root class="w-full lg:max-w-[80%]">
