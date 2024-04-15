@@ -163,6 +163,9 @@ devDependencies:
   vite:
     specifier: ^5.0.3
     version: 5.1.5
+  vite-plugin-remove-console:
+    specifier: ^2.2.0
+    version: 2.2.0
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -3844,6 +3847,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /vite-plugin-remove-console@2.2.0:
+    resolution: {integrity: sha512-qgjh5pz75MdE9Kzs8J0kBwaCfifHV0ezRbB9rpGsIOxam+ilcGV7WOk91vFJXquzRmiKrFh3Hxlh0JJWAmXTbQ==}
+    dev: true
 
   /vite@5.1.5:
     resolution: {integrity: sha512-BdN1xh0Of/oQafhU+FvopafUp6WaYenLU/NFoL5WyJL++GxkNfieKzBhM24H3HVsPQrlAqB7iJYTHabzaRed5Q==}
