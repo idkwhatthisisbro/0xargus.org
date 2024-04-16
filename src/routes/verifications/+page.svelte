@@ -21,9 +21,8 @@
 	import { page } from '$app/stores';
 	import { browser, dev } from '$app/environment';
 	import { goto } from '$app/navigation';
-	import { rest } from 'lodash-es';
 
-	export let data: SuperValidated<Infer<WhitelistSchema>>;
+	export let data;
 
 	// Assuming 'registeredOn' is a JavaScript Date object
 	const registeredOn = new Date().toISOString();
@@ -69,7 +68,6 @@
 	};
 
 	onMount(async () => {
-		// Run in client to display skeleton loader
 		try {
 			const { data } = await supabase.from('users').select('*').eq('email', $form.email).maybeSingle();
 			console.log(data);
@@ -85,7 +83,9 @@
 				);
 		} catch (error) {}
 		loading = false;
+	});
 
+	onMount(async () => {
 		const handleStep = async (step: number) => {
 			await supabase
 				.from('users')
@@ -94,26 +94,25 @@
 				.eq('email', $form.email)
 				.single();
 		};
+		// Run in client to display skeleton loader
 		// Supabase auto cleansup after client disconnects
-		supabase
+		const channel = supabase
 			.channel('schema-db-changes')
-			.on('postgres_changes', { event: 'UPDATE', schema: 'public' }, (payload) => {
-				if (!(payload.new.email === $form.email)) {
-					return;
-				}
-
+			.on('postgres_changes', { event: 'UPDATE', schema: 'public', filter: `email=eq.${$form.email}` }, (payload) => {
 				let newStep: number;
 
 				if (payload.new.phone_confirmed_at) {
-					verifications.email = false;
-					newStep = 2;
-					handleStep(2);
-				} else if (payload.new.email_confirmed_at) {
 					console.log('ran');
+					verifications.phone = false;
+					newStep = 2;
+
+					payload.new.step != 2 && handleStep(2);
+				} else if (payload.new.email_confirmed_at) {
 					verifications.email = false;
 					newStep = 1;
+					// Turns phone from null to object if user confirms email
 					$form.phone = { number: '', otp: '' };
-					handleStep(1);
+					payload.new.step != 1 && handleStep(1);
 				} else {
 					return;
 				}
@@ -127,6 +126,9 @@
 				);
 			})
 			.subscribe();
+
+		// TODO: FIX
+		// return async () => channel.unsubscribe();
 	});
 
 	let time = 0;
@@ -164,7 +166,7 @@
 	let prevOtp = '';
 	$: if ($form.phone?.otp && $form.phone.otp.length === 6 && prevOtp !== $form.phone.otp) {
 		prevOtp = $form.phone.otp;
-		console.log('running');
+		console.log('runningxxx');
 		submit();
 	}
 
@@ -213,15 +215,15 @@
 	}
 </script>
 
-{#if dev}
+<!-- {#if dev}
 	<SuperDebug data={$form} />
-{/if}
+{/if} -->
 
 <div class="mt-8">
 	<Navbar />
 </div>
 
-<div class="flex min-h-screen flex-col items-center justify-center">
+<div class="mt-8 flex flex-col items-center justify-center sm:mt-24">
 	<Section maxWidth="4xl" class="w-full text-white">
 		{#if !loading}
 			<div class="relative min-h-[900px] rounded-xl border border-white/[0.2] bg-neutral-900 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
@@ -435,27 +437,3 @@
 <div class="">
 	<Footer />
 </div>
-
-<style>
-	.wrapper :global(.basic-tel-input) {
-		height: 32px;
-		padding-left: 12px;
-		padding-right: 12px;
-		border-radius: 6px;
-		border: 1px solid;
-		outline: none;
-	}
-
-	.wrapper :global(.country-select) {
-		height: 36px;
-		padding-left: 12px;
-		padding-right: 12px;
-		border-radius: 6px;
-		border: 1px solid;
-		outline: none;
-	}
-
-	.wrapper :global(.invalid) {
-		border-color: red;
-	}
-</style>
