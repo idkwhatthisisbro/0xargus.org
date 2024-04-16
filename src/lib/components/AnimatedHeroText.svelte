@@ -25,7 +25,7 @@
 	<h1 class="bg-gradient-to-r from-neutral-50/80 via-neutral-200 to-neutral-50 bg-clip-text font-outfit text-4xl font-medium text-transparent">
 		Introducing RugPull Prevention Middleware for
 
-		<div class="relative z-50 inline-block h-full">
+		<div class="relative z-40 inline-block h-full">
 			<div class="relative z-[51]">
 				{#key currentIndex}
 					<div

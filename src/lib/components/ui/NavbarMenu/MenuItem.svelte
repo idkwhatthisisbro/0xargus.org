@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Menu } from 'lucide-svelte';
 	import { Motion } from 'svelte-motion';
 
 	const transition = {
@@ -14,10 +15,11 @@
 	export let item: string;
 </script>
 
-<div on:mouseenter={() => (active = item)} on:mouseleave={() => (active = null)} class="relative">
+<div on:mouseenter={() => (active = item)} on:mouseleave={() => (active = null)} class="relative z-50 text-white">
 	<Motion let:motion transition={{ duration: 0.3 }}>
-		<p use:motion class="cursor-pointer text-black text-white hover:opacity-[0.9]">
-			{item}
+		<p use:motion class="cursor-pointer text-white hover:opacity-[0.9]">
+			<Menu class="min-h-12 min-w-12 rounded-full p-2 text-neutral-100 duration-500  ease-in-out hover:bg-white/30 hover:text-indigo-500" />
+			<!-- {item} -->
 		</p>
 	</Motion>
 	{#if active !== null}
@@ -26,7 +28,7 @@
 				{#if active === item}
 					<div class="absolute left-1/2 -translate-x-1/2 transform pt-4">
 						<Motion let:motion {transition} layoutId="active">
-							<div use:motion class="overflow-hidden rounded-2xl border border-black/[0.2] border-white/[0.2] bg-black bg-white shadow-xl backdrop-blur-sm">
+							<div use:motion class="overflow-hidden rounded-2xl border border-white/[0.2] bg-neutral-900 shadow-xl backdrop-blur-sm">
 								<Motion let:motion layout>
 									<div use:motion class="h-full w-max p-4">
 										<slot />
