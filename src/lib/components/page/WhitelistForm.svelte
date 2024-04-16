@@ -129,7 +129,7 @@
 </form>
 
 {#if id === 'whitelist-hero'}
-	<div class="z-50 mt-8 flex items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-zinc-600">
+	<div class="z-50 mt-8 hidden items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-zinc-600 sm:flex">
 		<Clock class="hidden w-5 sm:block" />
 		<p>
 			<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible genesis founder slots remaining.
