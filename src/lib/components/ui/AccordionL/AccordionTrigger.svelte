@@ -6,8 +6,8 @@
 	type $$Props = AccordionPrimitive.TriggerProps;
 	type $$Events = AccordionPrimitive.TriggerEvents;
 
-	let className: $$Props['class'] = undefined;
 	export let level: AccordionPrimitive.HeaderProps['level'] = 3;
+	let className: $$Props['class'] = undefined;
 	export { className as class };
 </script>
 

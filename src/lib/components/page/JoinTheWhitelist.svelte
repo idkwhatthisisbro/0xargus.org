@@ -16,7 +16,7 @@
 	</div>
 
 	<!-- FOOTER SLOT -->
-	<slot />
+	<slot name="footer" />
 
 	<BackgroundBeams />
 </section>

@@ -3,70 +3,47 @@
 	import Countdown from '$lib/components/Countdown.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { PRESALE_DATE } from '../../constants';
-	import { ChevronRight, MailPlus } from 'lucide-svelte';
+	import { ArrowRightCircleIcon, AlertCircleIcon } from 'lucide-svelte';
 	import { cn } from '$lib/utils/cn';
 	import BentoGrid from '$lib/components/ui/BentoGrid/BentoGrid.svelte';
 	import BentoGridItem from '$lib/components/ui/BentoGrid/BentoGridItem.svelte';
-	import BlurComponent from '$lib/assets/blur.svg?component';
-	import BlurSrc from '$lib/assets/blur.svg?src';
-
-	let isPresaleLive = false;
-
-	const itemș = [
-		{
-			title: 'The Dawn of Innovation',
-			description: 'Explore the birth of groundbreaking ideas and inventions.',
-			className: 'md:col-span-2'
-			// icon:
-		},
-		{
-			title: 'The Digital Revolution',
-			description: 'Dive into the transformative power of technology.',
-			className: 'md:col-span-1'
-			// icon:
-		},
-		{
-			title: 'The Art of Design',
-			description: 'Discover the beauty of thoughtful and functional design.',
-			className: 'md:col-span-1'
-			// icon:
-		},
-		{
-			title: 'The Power of Communication',
-			description: 'Understand the impact of effective communication in our lives.',
-			className: 'md:col-span-2'
-			// icon:
-		}
-	];
 </script>
 
 <div class="flex min-h-screen flex-col gap-20">
-	<Navbar showName={true} />
+	<Navbar />
 
-	<main class="mx-auto flex w-full max-w-7xl grow flex-col items-center justify-center gap-10 px-[30px] font-outfit">
-		<div class="flex w-full flex-col gap-10">
-			<h1 class="text-5xl tracking-widest text-white">{!isPresaleLive ? 'Time to presale' : '0xArgus is on presale.'}</h1>
+	<main class="mx-auto flex w-full max-w-7xl grow flex-col items-center justify-center gap-40 px-[30px] font-outfit">
+		<!-- <img src="/presale-hero.png" class="absolute top-0 -z-10 w-full" /> -->
+		<!-- WHITELIST CTA FORM -->
+		<div class="flex flex-col items-center gap-14">
+			<div class="flex flex-col items-center gap-4">
+				<h1 class="font-regular text-6xl text-white">Genesis Founders Presale</h1>
+				<h2 class="text-2xl font-light text-gray-100">MAY 04, 2024 3PM UTC</h2>
+			</div>
+
+			<img src="/cardanoCoin.png" class="h-44" />
 
 			<Countdown from={PRESALE_DATE} dateFormat="YYYY-MM-DD H:m:s" zone="Etc/Universal" let:remaining>
 				<div class="flex gap-10 text-2xl text-white">
 					{#if remaining.done === false}
 						<span class="flex flex-col items-center justify-center gap-2">
-							<span class="text-6xl">{remaining.totalDays}</span>
-							Days
+							<span class="text-6xl font-bold text-violet-200">{remaining.totalDays}</span>
+							<span class="font-regular text-2xl text-gray-500">Days</span>
 						</span>
 
 						<span class="flex flex-col items-center justify-center gap-2">
-							<span class="text-6xl">{remaining.hours}</span>
-							Hours
+							<span class="text-6xl font-bold text-violet-200">{remaining.hours}</span>
+							<span class="font-regular text-2xl text-gray-500">Hours</span>
 						</span>
 
 						<span class="flex flex-col items-center justify-center gap-2">
-							<span class="text-6xl">{remaining.minutes}</span>
-							Minutes
+							<span class="text-6xl font-bold text-violet-200">{remaining.minutes}</span>
+							<span class="font-regular text-2xl text-gray-500">Minutes</span>
 						</span>
+
 						<span class="flex flex-col items-center justify-center gap-2">
-							<span class="text-6xl">{remaining.seconds}</span>
-							Seconds
+							<span class="text-6xl font-bold text-violet-200">{remaining.seconds}</span>
+							<span class="font-regular text-2xl text-gray-500">Seconds</span>
 						</span>
 					{:else}
 						<h2>The time has come!</h2>
@@ -74,63 +51,79 @@
 				</div>
 			</Countdown>
 
-			<button
-				type="submit"
-				class={cn([
-					// Global
-					'hidden w-max items-center justify-center gap-2 border-zinc-400 bg-transparent bg-gradient-to-tr from-zinc-700 via-zinc-800 to-zinc-900 text-white shadow-2xl',
-					// Desktop
-					'group transform rounded-full border-2 px-4 py-2',
-					// Mobile
-					// '-sm:rounded-l-none font-bold tracking-wide sm:m-0 sm:h-full sm:w-auto sm:space-x-2 sm:rounded-3xl sm:border-0 sm:px-6 sm:py-2',
-					// Animations
-					'transition duration-300 ease-in-out',
-					// Focus/Hover
-					'hover:scale-105 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500'
-					// 'disabled:cursor-not-allowed disabled:border-transparent disabled:bg-zinc-700 disabled:text-zinc-500 disabled:opacity-50 disabled:shadow-none disabled:hover:scale-100'
-				])}>
-				<p class="hidden tracking-widest sm:block">JOIN THE WHITELIST</p>
-
-				<div class="hidden rounded-full bg-zinc-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-zinc-600 sm:block">
-					<MailPlus class="m-auto h-4 w-4 rounded-full text-xs" />
-				</div>
-
-				<!-- Mobile -->
-				<ChevronRight class="h-5 w-5 text-zinc-300 sm:hidden" />
-			</button>
-
-			<button class="flex w-max items-center justify-center bg-white px-4 py-2 text-xl text-brand-bgPrimary">Join The Whitelist</button>
+			<a href="https://verifications.0xargus.org" class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-900 to-purple-500 px-8 py-4 text-xl font-bold text-white">
+				JOIN THE WHITELIST
+				<ArrowRightCircleIcon class="h-8 w-8 text-purple-200" />
+			</a>
 		</div>
 
-		<div class="w-full font-outfit">
-			<h2 class="text-2xl text-white">Terms of sale:</h2>
-			<ul class="text-white/80">
-				<li>Purchase minimum: $100</li>
-				<li>Purchase maximum: $2000</li>
-				<li>Hard-cap: $1,000,000</li>
-			</ul>
-		</div>
-
-		<div class="w-3/4 self-start">
-			<h2 class="text-2xl text-white">About the token launch:</h2>
-			<p class="text-white/80">
-				Users registered for the token sale will receive an email with a unique link to enter the queue prior to the start of the sale. After the sale starts, users who are already in the waiting room
-				will be given a random place in line, ahead of those who arrive after the sale starts. Users arriving after the sale starts get a first-come, first-served place in line after those in the
-				waiting room.
-			</p>
-		</div>
-
-		<!-- <BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
-			{#each items as item, i (i)}
-				<BentoGridItem title={item.title} description={item.description} className={item.className}>
-					<div
-						slot="header"
-						class="flex h-full min-h-[6rem] w-full flex-1 rounded-xl border border-transparent bg-neutral-100 bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] dark:border-white/[0.2] dark:bg-black dark:bg-dot-white/[0.2]">
+		<div class="relative grid w-full auto-rows-auto grid-cols-3 gap-4 px-8">
+			<div class="relative col-span-1 flex items-center justify-center overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
+				<div class="flex flex-col gap-3">
+					<div class="flex items-center gap-2">
+						<AlertCircleIcon class="text-violet-500" />
+						<h2 class="text-2xl font-semibold text-white">Terms of Sale:</h2>
 					</div>
-					<svelte:component this={item.icon} slot="icon" class="h-4 w-4 text-neutral-500" />
-				</BentoGridItem>
-			{/each}
-		</BentoGrid> -->
+					<div>
+						<ul class="text-white/80">
+							<li>Purchase minimum: $100</li>
+							<li>Purchase maximum: $2000</li>
+							<li>Hard-cap: $100,000</li>
+						</ul>
+					</div>
+				</div>
+				<span class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[100px]" />
+			</div>
+
+			<div class="relative col-span-2 flex items-center justify-center overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
+				<div class="flex flex-col gap-3">
+					<div class="flex items-center gap-2">
+						<AlertCircleIcon class="text-violet-500" />
+						<h2 class="text-2xl font-semibold text-white">About The Token Launch</h2>
+					</div>
+					<p class="text-white/80">
+						Users registered for the token sale will receive an email with a unique link to enter the queue prior to the start of the sale. After the sale starts, users who are already in the waiting
+						room will be given a random place in line, ahead of those who arrive after the sale starts. Users arriving after the sale starts get a first-come, first-served place in line after those in
+						the waiting room.
+					</p>
+				</div>
+				<span class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[100px]" />
+			</div>
+
+			<div class="relative col-span-full flex flex-col items-center justify-center gap-16 overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
+				<div class="flex flex-col items-center gap-3">
+					<h1 class="text-4xl font-semibold text-white">
+						WHAT DOES
+						<span
+							style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
+							class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
+							>$ARGUS
+						</span>
+						DO?
+					</h1>
+					<p class="text-center text-2xl text-white/80">Depending on your, holding Argus yields you. No transaction fees <br /> when using the product, to revenue share and DAO votes.</p>
+				</div>
+				<img src="/tg-welcomeBanner.gif" class="w-[560px] rounded-md" alt="" />
+				<span class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[400px]" />
+			</div>
+		</div>
+
+		<!-- TOKENOMICS -->
+		<div>
+			<h1 class="text-6xl font-bold text-white">TOKENOMICS</h1>
+
+			<div>
+				<div>
+					<p>Total Supply</p>
+					<p>1,000,000,000 tokens</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- ROADMAP -->
+		<div>
+			<h1 class="text-6xl font-bold text-white">ROADMAP</h1>
+		</div>
 	</main>
 
 	<Footer />

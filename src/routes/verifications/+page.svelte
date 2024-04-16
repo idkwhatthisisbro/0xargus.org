@@ -91,6 +91,7 @@
 				.eq('email', $form.email)
 				.single();
 		};
+		// Run in client to display skeleton loader
 		// Supabase auto cleansup after client disconnects
 		const channel = supabase
 			.channel('schema-db-changes')
@@ -214,9 +215,9 @@
 	}
 </script>
 
-{#if dev}
+<!-- {#if dev}
 	<SuperDebug data={$form} />
-{/if}
+{/if} -->
 
 <div class="mt-8">
 	<Navbar />
@@ -372,7 +373,7 @@
 								<button
 									{disabled}
 									class={cn(
-										disabled ? 'cursor-not-allowed bg-neutral-700' : 'bg-gradient-radial from-purple-500/80 to-purple-700/80 hover:bg-purple-600',
+										disabled ? 'cursor-not-allowed bg-neutral-700' : 'bg-gradient-radial from-indigo-500/80 to-indigo-700/80 hover:bg-purple-600',
 										'flex-grow-2 mx-auto mt-12 w-full rounded-lg',
 										'px-8 py-6 shadow-xl duration-300 ease-in-out',
 										'disabled:border-white[0.2]  disabled:cursor-not-allowed disabled:border disabled:bg-neutral-500 disabled:text-neutral-200',
