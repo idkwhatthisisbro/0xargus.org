@@ -18,28 +18,24 @@
 	import type { Database } from '$lib/types/supabase.js';
 	import { Circle } from 'svelte-loading-spinners';
 	import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
-	import { page } from '$app/stores';
 	import { browser, dev } from '$app/environment';
-	import { goto } from '$app/navigation';
-	import { rest } from 'lodash-es';
 
-	export let data: SuperValidated<Infer<WhitelistSchema>>;
+	export let data;
 
-	// Assuming 'registeredOn' is a JavaScript Date object
+	// Static Dates
 	const registeredOn = new Date().toISOString();
-	let formattedDate = format(registeredOn, 'dd-MM-yyyy');
+	const formattedDate = format(registeredOn, 'dd-MM-yyyy');
 
 	const presaleDate = new Date('2024-05-04T00:00:00Z');
 	presaleDate.setDate(presaleDate.getDate() + 4); // Adding 4 days to make it the 8th of May
-	let formattedPresaleDate = format(presaleDate, 'dd MMMM yyyy'); // Should result in "08 May 2024"
 
 	const lastInvestmentDay = new Date(presaleDate.getTime());
 	lastInvestmentDay.setDate(lastInvestmentDay.getDate() + 3); // Adding 3 days to the presale date
-	let formattedLastInvestmentDay = format(lastInvestmentDay, 'dd MMMM yyyy'); // Should result in "11 May 2024"
+	const formattedLastInvestmentDay = format(lastInvestmentDay, 'dd MMMM yyyy'); // Should result in "11 May 2024"
 
 	const tokenReleaseDate = new Date(presaleDate.getTime());
 	tokenReleaseDate.setDate(tokenReleaseDate.getDate() + 14); // Adding 14 days to the presale date for token release
-	let formattedTokenReleaseDate = format(tokenReleaseDate, 'dd MMMM yyyy'); // Should result in "22 May 2024"
+	const formattedTokenReleaseDate = format(tokenReleaseDate, 'dd MMMM yyyy'); // Should result in "22 May 2024"
 
 	let loading = true;
 	let verifications = {
@@ -68,8 +64,8 @@
 		return newForm;
 	};
 
+	// Run in client to display skeleton loader
 	onMount(async () => {
-		// Run in client to display skeleton loader
 		try {
 			const { data } = await supabase.from('users').select('*').eq('email', $form.email).maybeSingle();
 			console.log(data);
@@ -78,14 +74,15 @@
 					(form) => {
 						// @ts-ignore
 						form = releventSupabaseData(data);
-						// console.log(releventSupabaseData(data));
 						return form;
 					},
 					{ taint: false }
 				);
 		} catch (error) {}
 		loading = false;
+	});
 
+	onMount(async () => {
 		const handleStep = async (step: number) => {
 			await supabase
 				.from('users')
@@ -95,25 +92,28 @@
 				.single();
 		};
 		// Supabase auto cleansup after client disconnects
-		supabase
+		const channel = supabase
 			.channel('schema-db-changes')
-			.on('postgres_changes', { event: 'UPDATE', schema: 'public' }, (payload) => {
-				if (!(payload.new.email === $form.email)) {
+			// TODO: Filter isn't working
+			.on('postgres_changes', { event: 'UPDATE', schema: 'public', filter: `email=eq.${$form.email}` }, (payload) => {
+				let newStep: number;
+
+				if (!(payload.new.email == $form.email)) {
 					return;
 				}
 
-				let newStep: number;
-
 				if (payload.new.phone_confirmed_at) {
-					verifications.email = false;
-					newStep = 2;
-					handleStep(2);
-				} else if (payload.new.email_confirmed_at) {
 					console.log('ran');
+					verifications.phone = false;
+					newStep = 2;
+
+					payload.new.step != 2 && handleStep(2);
+				} else if (payload.new.email_confirmed_at) {
 					verifications.email = false;
 					newStep = 1;
+					// Turns phone from null to object if user confirms email
 					$form.phone = { number: '', otp: '' };
-					handleStep(1);
+					payload.new.step != 1 && handleStep(1);
 				} else {
 					return;
 				}
@@ -127,6 +127,9 @@
 				);
 			})
 			.subscribe();
+
+		// TODO: fix cleanup on supabase subscription
+		// return async () => channel.unsubscribe();
 	});
 
 	let time = 0;
@@ -157,14 +160,12 @@
 	onDestroy(() => {
 		if (interval) clearInterval(interval);
 	});
+
 	$: if (verifications.phone) {
 		startCountdown();
 	}
 
-	let prevOtp = '';
-	$: if ($form.phone?.otp && $form.phone.otp.length === 6 && prevOtp !== $form.phone.otp) {
-		prevOtp = $form.phone.otp;
-		console.log('running');
+	$: if ($form.phone?.otp && $form.phone.otp.length === 6) {
 		submit();
 	}
 
@@ -221,7 +222,7 @@
 	<Navbar />
 </div>
 
-<div class="flex min-h-screen flex-col items-center justify-center">
+<div class="mt-8 flex flex-col items-center justify-center sm:mt-24">
 	<Section maxWidth="4xl" class="w-full text-white">
 		{#if !loading}
 			<div class="relative min-h-[900px] rounded-xl border border-white/[0.2] bg-neutral-900 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
@@ -230,13 +231,10 @@
 				</div>
 				<div class="group flex w-full items-center justify-center gap-x-4">
 					{#each Array(3) as _, i}
-						<!-- <div class="relative flex items-center justify-center rounded-full border border-white/[0.3] p-1"> -->
 						<div
 							class={`inset-0 h-12 w-12 transform-gpu rounded-full transition duration-200 ease-in-out ${$form.step >= i ? 'bg-gradient-radial from-green-400 to-green-800' : 'bg-neutral-300'} shadow-xl`}>
 						</div>
-						<!-- </div> -->
 						{#if i !== 2}
-							<!-- content here -->
 							<hr class="w-12 border-white/[0.2]" />
 						{/if}
 					{/each}
@@ -329,6 +327,7 @@
 									<button
 										on:click={() => {
 											if (!time) {
+												// @ts-ignore
 												$form.phone.otp = '';
 												restartCountdown();
 												submit();
@@ -377,10 +376,10 @@
 										'flex-grow-2 mx-auto mt-12 w-full rounded-lg',
 										'px-8 py-6 shadow-xl duration-300 ease-in-out',
 										'disabled:border-white[0.2]  disabled:cursor-not-allowed disabled:border disabled:bg-neutral-500 disabled:text-neutral-200',
-										'flex h-full items-center justify-center py-6 text-lg font-bold uppercase tracking-wider text-purple-50 backdrop-blur-xl transition-all '
+										'focus:ring-offset-purple flex h-full items-center justify-center py-6 text-lg font-bold uppercase tracking-wider text-purple-50 backdrop-blur-xl transition-all focus:border-purple-500 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2'
 									)}
 									type="submit">
-									{#if !disabled && $submitting}
+									{#if $submitting}
 										<Circle color="white" size="32" unit="px" />
 									{:else}
 										Continue
@@ -426,7 +425,6 @@
 				{/if}
 			</div>
 		{:else}
-			<!-- <Circle color="white" /> -->
 			<SkeletonLoader />
 		{/if}
 	</Section>
@@ -435,27 +433,3 @@
 <div class="">
 	<Footer />
 </div>
-
-<style>
-	.wrapper :global(.basic-tel-input) {
-		height: 32px;
-		padding-left: 12px;
-		padding-right: 12px;
-		border-radius: 6px;
-		border: 1px solid;
-		outline: none;
-	}
-
-	.wrapper :global(.country-select) {
-		height: 36px;
-		padding-left: 12px;
-		padding-right: 12px;
-		border-radius: 6px;
-		border: 1px solid;
-		outline: none;
-	}
-
-	.wrapper :global(.invalid) {
-		border-color: red;
-	}
-</style>
