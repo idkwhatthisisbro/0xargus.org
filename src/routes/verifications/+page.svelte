@@ -192,7 +192,7 @@
 			subheader: 'You have successfully verified your identity.'
 		}
 	];
-	const { form, message, enhance, errors, submitting, constraints, submit } = superForm(data.form, {
+	const { tainted, allErrors, form, message, enhance, errors, submitting, constraints, submit, isTainted, validateForm, validate } = superForm(data.form, {
 		validators: zod(whitelistSchema),
 		dataType: 'json',
 		id: 'verification',
@@ -315,7 +315,7 @@
 									inputStyle="width: 72px; height: 72px; font-size: 25px;"
 									separatorClass="text-white"
 									bind:value={$form.phone.otp}
-									inputClass="rounded-xl text-xl text-white bg-neutral-800 border-white/[0.2] focus:ring-2 focus:ring-purple-500/50  focus:ring-offset-purple-500 -border focus:outline-none shadow-xl"
+									inputClass="rounded-xl text-xl text-white bg-neutral-800 border-white/[0.2] focus:ring-2 focus:ring-blue-500/50  focus:ring-offset-blue-500 -border focus:outline-none shadow-xl"
 									numOfInputs={6} />
 
 								<!-- Error -->
@@ -364,20 +364,15 @@
 									type="button"
 									class={cn('mt-12 h-full w-full flex-grow rounded-lg bg-neutral-700 px-8 py-6 shadow-xl duration-200 ease-in-out hover:bg-neutral-700')}>Go Back</button>
 							{:else}
-								<!-- {/if} -->
-								<!-- disabled={$submitting || ($form.step == 0 && ($errors.email || $errors.name) && true) || ($form.step == 1 && $errors.phone?.number && true) || (verifications.phone && $errors.phone?.otp && true)} -->
-								{@const disabled =
-									// ($form.step == 0 && ($errors.email || $errors.name) && true) ||
-									// ($form.step == 1 && $errors.phone?.number && true) ||
-									(verifications.phone && $errors.phone?.otp && true) || $submitting}
+								{@const disabled = !!$allErrors.length || $submitting}
 								<button
 									{disabled}
 									class={cn(
-										disabled ? 'cursor-not-allowed bg-neutral-700' : 'bg-gradient-radial from-indigo-500/80 to-indigo-700/80 hover:bg-purple-600',
+										disabled ? 'cursor-not-allowed bg-neutral-700' : 'bg-gradient-radial from-indigo-500/80 to-indigo-700/80 hover:bg-indigo-600',
 										'flex-grow-2 mx-auto mt-12 w-full rounded-lg',
-										'px-8 py-6 shadow-xl duration-300 ease-in-out',
-										'disabled:border-white[0.2]  disabled:cursor-not-allowed disabled:border disabled:bg-neutral-500 disabled:text-neutral-200',
-										'focus:ring-offset-purple flex h-full items-center justify-center py-6 text-lg font-bold uppercase tracking-wider text-purple-50 backdrop-blur-xl transition-all focus:border-purple-500 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2'
+										'px-8 py-6 shadow-xl outline-none duration-300 ease-in-out',
+										'-disabled:border -disabled:border-white/[0.2] disabled:cursor-not-allowed disabled:bg-neutral-500 disabled:text-neutral-200',
+										'flex h-full items-center justify-center py-6 text-lg font-bold uppercase tracking-wider text-purple-50 backdrop-blur-xl transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-500'
 									)}
 									type="submit">
 									{#if $submitting}
