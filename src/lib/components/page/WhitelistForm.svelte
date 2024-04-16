@@ -20,7 +20,7 @@
 		// Simulate a 750ms loading state
 		await new Promise((resolve) => setTimeout(resolve, 750));
 		// Redirect to the verification page with the email as a query parameter
-		goto(`/verifications?e=${encodeURIComponent(emailValue)}`);
+		goto(`/verification?e=${encodeURIComponent(emailValue)}`);
 	}
 </script>
 
