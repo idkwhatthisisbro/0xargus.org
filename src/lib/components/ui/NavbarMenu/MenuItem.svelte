@@ -17,9 +17,8 @@
 
 <div on:mouseenter={() => (active = item)} on:mouseleave={() => (active = null)} class="relative z-50 text-white">
 	<Motion let:motion transition={{ duration: 0.3 }}>
-		<p use:motion class="cursor-pointer text-white hover:opacity-[0.9]">
+		<p use:motion class="text-whte cursor-pointer hover:opacity-[0.9]">
 			<Menu class="min-h-12 min-w-12 rounded-full p-2 text-neutral-100 duration-500  ease-in-out hover:bg-white/10 hover:text-indigo-500" />
-			<!-- {item} -->
 		</p>
 	</Motion>
 	{#if active !== null}

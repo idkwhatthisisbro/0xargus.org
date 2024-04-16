@@ -215,9 +215,9 @@
 	}
 </script>
 
-<!-- {#if dev}
+{#if dev}
 	<SuperDebug data={$form} />
-{/if} -->
+{/if}
 
 <div class="mt-8">
 	<Navbar />
@@ -308,15 +308,19 @@
 						<!-- OTP Verification -->
 						{#if verifications.phone && $form.phone}
 							<div class="grid h-32 w-full items-center justify-center space-y-4 text-center">
-								<label class="font-sembold text-left text-lg" for="otp">Enter code</label>
-								<SvelteOtp
-									{...$constraints.phone?.otp}
-									numberOnly
-									inputStyle="width: 72px; height: 72px; font-size: 25px;"
-									separatorClass="text-white"
-									bind:value={$form.phone.otp}
-									inputClass="rounded-xl text-xl text-white bg-neutral-800 border-white/[0.2] focus:ring-2 focus:ring-blue-500/50  focus:ring-offset-blue-500 -border focus:outline-none shadow-xl"
-									numOfInputs={6} />
+								{#if $submitting}
+									<Circle color="white" size="32" unit="px" />
+								{:else}
+									<label class="font-sembold text-left text-lg" for="otp">Enter code</label>
+									<SvelteOtp
+										{...$constraints.phone?.otp}
+										numberOnly
+										inputStyle="width: 72px; height: 72px; font-size: 25px;"
+										separatorClass="text-white"
+										bind:value={$form.phone.otp}
+										inputClass="rounded-xl text-xl text-white bg-neutral-800 border-white/[0.2] focus:ring-2 focus:ring-blue-500/50  focus:ring-offset-blue-500 -border focus:outline-none shadow-xl"
+										numOfInputs={6} />
+								{/if}
 
 								<!-- Error -->
 								<p class="text-xl text-neutral-300">

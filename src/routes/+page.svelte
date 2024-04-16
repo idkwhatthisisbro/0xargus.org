@@ -431,7 +431,7 @@
 			</a>
 
 			<div
-				class="-border-white/[0.2] -border relative grid min-h-96 w-full grid-rows-2 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600/50 via-indigo-600/60 to-indigo-600/40 p-4 py-24 shadow-xl md:grid-cols-2 md:grid-rows-1">
+				class="-border-white/[0.2] -border relative grid min-h-64 w-full grid-rows-2 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600/50 via-indigo-600/60 to-indigo-600/40 p-4 py-8 shadow-xl sm:min-h-96 md:grid-cols-2 md:grid-rows-1 md:py-24">
 				<img class="absolute" src="/circles@2x.png" alt="bg radial" />
 				<div class="z-20 space-y-6 px-12 text-white">
 					<p class="text-2xl font-semibold">Here, whenever - wherever</p>
