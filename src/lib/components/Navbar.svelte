@@ -68,15 +68,12 @@
 	</div>
 </nav>
 
-<nav class="z-50 flex h-[74px] w-full items-center sm:hidden">
+<nav class="z-50 flex h-[74px] w-full items-center px-8 sm:hidden">
 	<div class="z-50 flex w-full items-center justify-between sm:hidden">
 		<a href={BASE_URL} class="flex items-center gap-4">
 			<Logo class="h-10 w-10" />
-			{#if showName}
-				<span class="self-center whitespace-nowrap font-outfit text-3xl font-semibold text-white">0xArgus</span>
-			{/if}
 		</a>
-		<div class="z-50 flex items-center px-4">
+		<div class="z-50 flex items-center gap-4">
 			<a
 				href={BASE_URL + '/presale'}
 				class="relative rounded-lg bg-white/10 px-4 py-1 font-outfit text-lg font-medium text-indigo-500 backdrop-blur-3xl backdrop-filter duration-200 ease-in-out hover:text-neutral-300"
@@ -90,34 +87,34 @@
 				</div>
 			</a>
 
-			<NavbarMenu>
-				<MenuItem {active} item="mob">
-					<div class="flex flex-col space-y-4 text-sm">
-						<button
-							on:click={() => window.open('https://docs.0xargus.org', '_blank')}
-							class="relative inline-flex w-auto overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white">
-							<span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#6366f1_0%,#a855f7_50%,#6366f1_100%)]" />
-							<span
-								class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 p-2 text-sm font-medium text-white backdrop-blur-3xl duration-200 ease-in-out hover:bg-slate-900 sm:px-3 sm:py-1">
-								<Boxes class="text-xs sm:mr-2" />
-								<p class="hidden sm:block">Documentation</p>
-							</span>
-						</button>
-						<HoveredLink href="#about">About</HoveredLink>
-						<HoveredLink href="#features">Features</HoveredLink>
-						<HoveredLink href="#howitworks">How It Works</HoveredLink>
-						<HoveredLink href="#faq">FAQ</HoveredLink>
-						<div class="flex items-center gap-x-4">
-							<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://t.me/argusorg">
-								<IconTelegram />
-							</a>
-							<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://x.com/0xArgusOrg">
-								<IconX />
-							</a>
-						</div>
+			<!-- <NavbarMenu> -->
+			<MenuItem {active} item="mob">
+				<div class="flex flex-col space-y-4 text-sm">
+					<button
+						on:click={() => window.open('https://docs.0xargus.org', '_blank')}
+						class="relative inline-flex w-auto overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white">
+						<span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#6366f1_0%,#a855f7_50%,#6366f1_100%)]" />
+						<span
+							class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 p-2 text-sm font-medium text-white backdrop-blur-3xl duration-200 ease-in-out hover:bg-slate-900 sm:px-3 sm:py-1">
+							<Boxes class="text-xs sm:mr-2" />
+							<p class="hidden sm:block">Documentation</p>
+						</span>
+					</button>
+					<HoveredLink href="#about">About</HoveredLink>
+					<HoveredLink href="#features">Features</HoveredLink>
+					<HoveredLink href="#howitworks">How It Works</HoveredLink>
+					<HoveredLink href="#faq">FAQ</HoveredLink>
+					<div class="flex items-center gap-x-4">
+						<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://t.me/argusorg">
+							<IconTelegram />
+						</a>
+						<a class="h-8 w-8 fill-neutral-300 duration-200 ease-in-out hover:fill-neutral-400" target="_blank" href="https://x.com/0xArgusOrg">
+							<IconX />
+						</a>
 					</div>
-				</MenuItem>
-			</NavbarMenu>
+				</div>
+			</MenuItem>
+			<!-- </NavbarMenu> -->
 		</div>
 	</div>
 </nav>
