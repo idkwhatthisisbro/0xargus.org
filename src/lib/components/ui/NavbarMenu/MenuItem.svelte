@@ -22,7 +22,7 @@
 		<!-- <p use:motion class="text-whte cursor-pointer hover:opacity-[0.9]">
 			<Menu class="min-h-12 min-w-12 rounded-full p-2 text-neutral-100 duration-500  ease-in-out hover:bg-white/10 hover:text-indigo-500" />
 		</p> -->
-		<Hamburger bind:open={active} />
+		<Hamburger class="min-h-12 min-w-12 cursor-pointer rounded-full p-2 text-neutral-100 duration-500  ease-in-out hover:bg-white/10 hover:text-indigo-500" bind:open={active} />
 	</Motion>
 	{#if active !== null}
 		<Motion let:motion initial={{ opacity: 0, scale: 0.85, y: 0 }} animate={{ opacity: 1, scale: 1, y: 0 }} {transition}>

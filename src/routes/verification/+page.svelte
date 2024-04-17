@@ -250,7 +250,7 @@
 
 				<!-- FORM START -->
 				{#if $form.step < 2}
-					<form use:enhance method="POST" action="/verifications" class="mt-4 space-y-8">
+					<form use:enhance method="POST" action="/verification" class="mt-4 space-y-8">
 						{#if $form.step === 0 && !verifications.email}
 							<!-- Full Name -->
 							<div class="grid gap-2">
