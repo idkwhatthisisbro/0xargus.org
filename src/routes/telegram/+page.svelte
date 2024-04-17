@@ -41,7 +41,7 @@
 </div>
 
 <!-- <nav class="absolute top-0 z-50 flex w-full items-center justify-start px-4 py-4">
-	<img class="h-8 w-8" src="/logo-rounded.svg" alt="logo" />
+	<img class="h-8 w-8" src="/logo.png" alt="logo" />
 </nav>
 
 <div style="height: {viewportHeight}px;" class="relative flex w-full flex-col items-center justify-center pt-32 font-outfit -antialiased">

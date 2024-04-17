@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Logo from '$lib/assets/logo.svg?component';
 	import IconTelegram from '$lib/assets/telegram.svg?component';
 	import IconX from '$lib/assets/x.svg?component';
 	import { Boxes } from 'lucide-svelte';
@@ -10,23 +9,16 @@
 	import MenuItem from './ui/NavbarMenu/MenuItem.svelte';
 	import HoveredLink from './ui/NavbarMenu/HoveredLink.svelte';
 
-	export let showName = false;
-
 	// function scrollToElement() {
 	// 	myElement.scrollIntoView({ behavior: 'smooth' });
 	// }
 
 	let active: string | null = null;
-
-	import Hamburger from './Hamburger.svelte';
 </script>
 
 <nav class="z-30 mx-auto hidden h-[72px] w-full max-w-7xl items-center justify-between px-[30px] md:flex">
-	<a href={BASE_URL} class="flex items-center gap-4">
-		<Logo class="h-10 w-10" />
-		{#if showName}
-			<span class="self-center whitespace-nowrap font-outfit text-3xl font-semibold text-white">0xArgus</span>
-		{/if}
+	<a href={BASE_URL} class="flex w-16 items-center gap-4">
+		<img src="/logo.png" alt="logo" class="h-full w-full" />
 	</a>
 
 	<div class="hidden w-full items-center justify-center gap-x-12 md:flex">
@@ -34,10 +26,9 @@
 			href={BASE_URL + '/presale'}
 			class="text-gray relative rounded-lg bg-white/10 px-4 py-1 font-outfit text-lg font-medium text-indigo-500 backdrop-blur-3xl backdrop-filter duration-200 ease-in-out hover:text-neutral-300"
 			>Presale
-			<div class="absolute -right-0 -top-3 z-10 rounded bg-gradient-radial from-emerald-500 via-emerald-400 to-emerald-600 px-1 text-xs tracking-wider text-white">
+			<div class="absolute -bottom-3 -right-0 z-10 rounded bg-gradient-radial from-emerald-500 via-emerald-400 to-emerald-600 px-1 text-xs tracking-wider text-white">
 				<div class="relative z-10 w-full px-1">
-					<span class="absolute inset-0 z-0 inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/75 duration-1000"></span>
-
+					<span class="animate-slowerPing absolute inset-0 z-0 inline-flex h-full w-full rounded-full bg-emerald-400/75"></span>
 					live
 				</div>
 			</div>
@@ -72,8 +63,8 @@
 
 <nav class="z-50 flex h-[74px] w-full items-center px-8 md:hidden">
 	<div class="z-50 flex w-full items-center justify-between">
-		<a href={BASE_URL} class="flex items-center gap-4">
-			<Logo class="h-10 w-10" />
+		<a href={BASE_URL} class="flex w-10 items-center gap-4">
+			<img src="/logo.png" alt="logo" class="h-full w-full" />
 		</a>
 		<div class="z-50 flex flex-row-reverse items-center gap-4 px-4">
 			<a
@@ -82,8 +73,7 @@
 				>Presale
 				<div class="absolute -right-0 -top-3 z-10 rounded bg-gradient-radial from-emerald-500 via-emerald-400 to-emerald-600 px-1 text-xs tracking-wider text-white">
 					<div class="relative z-10 w-full px-1">
-						<span class="absolute inset-0 z-0 inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/75 duration-1000"></span>
-
+						<span class="animate-slowerPing absolute inset-0 z-0 inline-flex h-full w-full rounded-full bg-emerald-400/75"></span>
 						live
 					</div>
 				</div>

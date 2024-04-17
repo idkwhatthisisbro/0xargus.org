@@ -44,6 +44,7 @@ const config = {
 			animation: {
 				// ...other animations
 				spotlight: 'spotlight 1s ease .25s 1 forwards',
+				slowerPing: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;'
 			},
 			keyframes: {
 				// ... other keyframes
