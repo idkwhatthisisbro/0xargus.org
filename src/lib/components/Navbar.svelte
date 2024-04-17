@@ -17,6 +17,8 @@
 	// }
 
 	let active: string | null = null;
+
+	import Hamburger from './Hamburger.svelte';
 </script>
 
 <nav class="z-30 mx-auto hidden h-[72px] w-full max-w-7xl items-center justify-between px-[30px] md:flex">
