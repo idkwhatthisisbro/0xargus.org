@@ -20,6 +20,8 @@
 	import { browser, dev } from '$app/environment';
 	import { derived } from 'svelte/store';
 	import { isSubscribed } from '$lib/stores/form.js';
+	import { MetaTags } from 'svelte-meta-tags';
+	import { focusOnMount } from '$lib/utils/focus.js';
 
 	export let data;
 
@@ -119,9 +121,9 @@
 					verifications.phone = false;
 					newStep = 2;
 
-					payload.new.step != 2 && handleStep(2);
 					// Set subscribe store to true, if step is 2 [1/2]
 					isSubscribed.set({ subscribed: true, email: payload.new.email });
+					payload.new.step != 2 && handleStep(2);
 				} else if (payload.new.email_confirmed_at) {
 					verifications.email = false;
 					newStep = 1;
@@ -245,12 +247,40 @@
 {#if dev}
 	<SuperDebug data={$form} />
 {/if}
+<MetaTags
+	title="Presale Identity Verification"
+	titleTemplate="%s - 0xArgus"
+	description="0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum."
+	canonical="https://0xargus.org/verification"
+	openGraph={{
+		url: 'https://www.0xargus.org/verification',
+		title: '0xArgus',
+		description: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
+		images: [
+			{
+				url: 'https://0xargus.org/Banner.png',
+				width: 840,
+				height: 469,
+				alt: 'Og Image Alt'
+			}
+		],
+		siteName: '0xArgus'
+	}}
+	twitter={{
+		handle: '@0xargusorg',
+		site: '0xargus.org',
+		cardType: 'summary_large_image',
+		title: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
+		description: '',
+		image: 'https://0xargus.org/Banner.png',
+		imageAlt: 'Twitter image alt'
+	}} />
 
 <div class="mt-8">
 	<Navbar />
 </div>
 
-<div class="mt-8 flex flex-col items-center justify-center sm:mt-24">
+<div class="mt-8 flex flex-col items-center justify-center sm:mt-12">
 	<Section maxWidth="4xl" class="w-full text-white">
 		{#if !loading}
 			<div class="relative min-h-[900px] rounded-xl border border-white/[0.2] bg-neutral-900 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
@@ -276,13 +306,14 @@
 				</div>
 
 				<!-- FORM START -->
-				{#if $form.step < 2}
+				{#if !$isSubscribed.subscribed || $form.step < 2}
 					<form use:enhance method="POST" action="/verification" class="mt-4 space-y-8">
 						{#if $form.step === 0 && !verifications.email}
 							<!-- Full Name -->
 							<div class="grid gap-2">
 								<label for="name">Full Legal Name*</label>
 								<input
+									use:focusOnMount
 									aria-invalid={$errors.name ? 'true' : undefined}
 									type="text"
 									bind:value={$form.name}

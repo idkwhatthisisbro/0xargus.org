@@ -321,7 +321,7 @@
 			<!-- HERO TEXT END -->
 
 			<!-- WHITELIST BUTTON -->
-			{#if $isSubscribed.subscribed}
+			{#if !$isSubscribed.subscribed}
 				<WhitelistForm id="whitelist-hero" />
 			{:else}
 				<div class="hover:bg-indigo-600' z-[1000] mt-12 flex flex-col items-center justify-center rounded-xl bg-gradient-radial from-neutral-800 to-neutral-900 p-4 shadow-xl sm:px-8">

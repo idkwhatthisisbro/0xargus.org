@@ -13,7 +13,7 @@
 		<p class="relative z-10 mx-auto my-4 max-w-lg text-center text-sm text-neutral-300 sm:text-neutral-500">
 			Join the 0xArgus waitlist now to become a genesis founding member. Getting a chance to participate in the presale, and beta programs.
 		</p>
-		{#if $isSubscribed.subscribed}
+		{#if !$isSubscribed.subscribed}
 			<WhitelistForm id="whitelist-footer" />
 		{:else}
 			<div class="mt-12 flex flex-col items-center justify-center rounded-xl border border-white/[0.2] p-4 shadow-xl sm:px-8">
