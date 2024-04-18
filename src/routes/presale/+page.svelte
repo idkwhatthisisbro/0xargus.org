@@ -4,9 +4,8 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import { PRESALE_DATE } from '../../constants';
 	import { ArrowRightCircleIcon, AlertCircleIcon } from 'lucide-svelte';
-	import { cn } from '$lib/utils/cn';
-	import BentoGrid from '$lib/components/ui/BentoGrid/BentoGrid.svelte';
-	import BentoGridItem from '$lib/components/ui/BentoGrid/BentoGridItem.svelte';
+	import CirulationSchedule from '/static/tokenomics/circulation-schedule.svg?component';
+	import DistOverview from '/static/tokenomics/dist-overview.svg?component';
 </script>
 
 <div class="flex min-h-screen flex-col gap-20">
@@ -109,13 +108,115 @@
 		</div>
 
 		<!-- TOKENOMICS -->
-		<div>
+		<div class="flex flex-col gap-10">
 			<h1 class="text-6xl font-bold text-white">TOKENOMICS</h1>
 
 			<div>
-				<div>
-					<p>Total Supply</p>
-					<p>1,000,000,000 tokens</p>
+				<h2 class="text-2xl text-white">Highlights</h2>
+				<ul class="list-disc text-white">
+					<li>$ARGUS is a deflationary currency with a 1B supply cap. This cap fosters scarcity and value appreciation over time.</li>
+					<li>
+						All token holders can stake to receive their proportional fraction of the platform’s revenue, with no lockup or bonding required to do so. This model grants freedom and liquidity, allowing
+						all participants to benefit from the ecosystem’s success proportionally to their token holdings.
+					</li>
+					<li>The initial distribution at launch is 1,000,000,000 $ARGUS tokens, subject to various lockup schedules.</li>
+				</ul>
+			</div>
+
+			<div class="flex flex-col gap-36">
+				<!-- EXPECTED ALLOCATION OF INITIAL DISTRIBUTION -->
+				<div class="flex flex-col gap-8">
+					<div class="text-center">
+						<h1 class="text-xl text-white">Expected Allocation of Initial Distribution</h1>
+						<h2 class="text-white">(1 Billion ARGUS Tokens)</h2>
+					</div>
+
+					<DistOverview class="w-full" />
+
+					<p class="text-white">
+						This diagram provides a visual breakdown of the token distribution percentages. It helps stakeholders quickly grasp how tokens are divided and the proportion each category holds.
+					</p>
+				</div>
+
+				<!-- TOKEN LOCKUP PERIODS -->
+				<div class="flex flex-col gap-8">
+					<div class="text-center">
+						<h1 class="text-xl text-white">Token Lockup Periods</h1>
+					</div>
+
+					<table border="1" class="table-auto overflow-x-scroll whitespace-nowrap text-left text-white">
+						<thead class="border-y border-b-white">
+							<tr>
+								<th class="px-6 py-2">Type</th>
+								<th class="border-x border-dashed border-r-white px-6 py-2">Total Amount</th>
+								<th class="border-x border-dashed border-r-white px-6 py-2">Immediate Release (20%)</th>
+								<th class="border-x border-dashed border-r-white px-6 py-2">Remaining Amount</th>
+								<th class="border-r border-dashed border-r-white px-6 py-2">Lockup Period</th>
+								<th class="px-6 py-2">Distribution Frequency</th>
+							</tr>
+						</thead>
+						<tbody class="border-b border-b-white">
+							<tr class="border-b border-dashed">
+								<td class="px-6 py-2"><strong>Liquidity</strong></td>
+								<td class="px-6 py-2">340,000,000</td>
+								<td class="px-6 py-2">340,000,000</td>
+								<td class="px-6 py-2">0</td>
+								<td class="px-6 py-2">None</td>
+								<td class="px-6 py-2">N/A</td>
+							</tr>
+							<tr class="border-b border-dashed">
+								<td class="px-6 py-2"><strong>Genesis Presale</strong></td>
+								<td class="px-6 py-2">50,000,000</td>
+								<td class="px-6 py-2">10,000,000</td>
+								<td class="px-6 py-2">40,000,000</td>
+								<td class="px-6 py-2">None</td>
+								<td class="px-6 py-2">N/A</td>
+							</tr>
+							<tr class="border-b border-dashed">
+								<td class="px-6 py-2"><strong>Public Presale</strong></td>
+								<td class="px-6 py-2">450,000,000</td>
+								<td class="px-6 py-2">90,000,000</td>
+								<td class="px-6 py-2">360,000,000</td>
+								<td class="px-6 py-2">12 months</td>
+								<td class="px-6 py-2">Every 3 months</td>
+							</tr>
+							<tr class="border-b border-dashed">
+								<td class="px-6 py-2"><strong>Beta Tester Airdrop</strong></td>
+								<td class="px-6 py-2">10,000,000</td>
+								<td class="px-6 py-2">2,000,000</td>
+								<td class="px-6 py-2">8,000,000</td>
+								<td class="px-6 py-2">12 months</td>
+								<td class="px-6 py-2">Every 3 months</td>
+							</tr>
+							<tr>
+								<td class="px-6 py-2"><strong>Argus Foundation Endowment</strong></td>
+								<td class="px-6 py-2">150,000,000</td>
+								<td class="px-6 py-2">30,000,000</td>
+								<td class="px-6 py-2">120,000,000</td>
+								<td class="px-6 py-2">36 months</td>
+								<td class="px-6 py-2">Every 3 months</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<p class="text-white">
+						This table details the lockup periods and release schedules. This provides a concise reference for investors and stakeholders to understand when different portions of tokens will become
+						liquid and enter circulation, facilitating better investment and strategic decisions.
+					</p>
+				</div>
+
+				<!-- DISTRIBUTION SCHEDULE -->
+				<div class="flex flex-col gap-8">
+					<div class="text-center">
+						<h1 class="text-xl text-white">$ARGUS Token Circulation Schedule</h1>
+					</div>
+
+					<CirulationSchedule class="w-full" />
+
+					<p class="text-white">
+						This diagram depicts the cumulative circulating supply of tokens over time, from launch through to month 36. It tracks the increase in circulating tokens as they are released from lockup
+						periods, according to the schedules detailed in the Token Lockup Periods table.
+					</p>
 				</div>
 			</div>
 		</div>
