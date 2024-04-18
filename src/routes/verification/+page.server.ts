@@ -51,6 +51,8 @@ export const actions: Actions = {
 						form.data.step = user.step;
 						// @ts-ignore
 						form.data.phone = user.step ? { number: '', otp: '' } : null;
+
+						form.data._prevent_verification = true;
 					}
 
 					break; // Missing break statement added
@@ -77,20 +79,23 @@ export const actions: Actions = {
 						}
 					}
 					// Sign in as its required to add users phone number to flow.
+					console.log(user?.email);
 					const auth = await supabase.auth.signInWithPassword({ email: user?.email as string, password: P });
 
-					// Calls if session is null, should never happen
+					// Logic to update phone/send otp code
+					const updateUser = await supabase.auth.updateUser({ phone });
+
+					// let x = await supabase.auth.getSession();
+					// console.log(x);
+
+					// // Calls if session is null, should never happen
 					if (auth.error) {
+						console.log(auth.error?.message);
 						return setError(form, 'phone.number', 'Unknown Error | Please try again later or contact support support@0xargus.org', { status: 500 });
 					}
-
-					// Logic to update phone/send otp code
-					const updateUser = await supabase.auth.updateUser({
-						phone
-					});
-
-					// Called When User reused phone number on multiple accounts
+					// Called When User reused phone number on multiple accounts, login failed
 					if (updateUser.error) {
+						console.log(updateUser.error?.message);
 						return setError(form, 'phone.number', updateUser.error?.message, { overwrite: true, status: 403 });
 					}
 

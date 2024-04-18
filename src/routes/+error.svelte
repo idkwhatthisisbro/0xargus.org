@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	import CustomLottiePlayer from '$lib/components/CustomLottiePlayer.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
@@ -12,7 +13,7 @@
 	});
 </script>
 
-{#if rendered}
+{#if rendered && $page.status === 404}
 	<div class="flex min-h-screen flex-col items-center justify-between p-4">
 		<Navbar />
 		<div class="-border flex min-h-[300px] max-w-[1000px] flex-col items-center justify-center rounded-2xl border-white/[0.2] p-4 py-8 text-center sm:p-12">

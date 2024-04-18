@@ -27,8 +27,8 @@ const number = z.string().superRefine((arg, ctx) => {
 });
 
 export const whitelistSchema = z.object({
-	name: z.string().min(6).default('sadsadasdasd'),
-	email: z.string().email().default('sssssss@s.com'),
+	name: z.string().min(6),
+	email: z.string().email(),
 	phone: z
 		.object({
 			number,
@@ -36,7 +36,8 @@ export const whitelistSchema = z.object({
 		})
 		.nullable(),
 
-	step: z.number().default(0)
+	step: z.number().default(0),
+	_prevent_verification: z.boolean().default(false)
 });
 
 export type WhitelistSchema = typeof whitelistSchema;

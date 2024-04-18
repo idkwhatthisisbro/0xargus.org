@@ -18,6 +18,10 @@
 	import { Circle } from 'svelte-loading-spinners';
 	import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
 	import { browser, dev } from '$app/environment';
+	import { derived } from 'svelte/store';
+	import { isSubscribed } from '$lib/stores/form.js';
+	import { MetaTags } from 'svelte-meta-tags';
+	import { focusOnMount } from '$lib/utils/focus.js';
 
 	export let data;
 
@@ -50,6 +54,12 @@
 
 		schemaKeys.forEach((key) => {
 			if (key in respData) {
+				// Set subscribe store to true, if step is 2 [1/2]
+				// @ts-ignore
+				if (key == 'step' && respData[key] === 2) {
+					isSubscribed.set({ subscribed: true, email: respData['email'] || '' });
+				}
+
 				if (key == 'phone') {
 					// @ts-ignore
 					newForm['phone'] = respData['step'] > 0 ? { number: respData['phone'] || '', otp: '' } : respData['phone'];
@@ -63,10 +73,14 @@
 		return newForm;
 	};
 
-	// Run in client to display skeleton loader
+	// Run in client to display skeleton loader (could use loading.svelte + serverside tho)
 	onMount(async () => {
 		try {
-			const { data } = await supabase.from('users').select('*').eq('email', $form.email).maybeSingle();
+			const { data } = await supabase
+				.from('users')
+				.select('*')
+				.eq('email', $isSubscribed.email || $form.email)
+				.maybeSingle();
 			console.log(data);
 			data &&
 				form.update(
@@ -107,6 +121,8 @@
 					verifications.phone = false;
 					newStep = 2;
 
+					// Set subscribe store to true, if step is 2 [1/2]
+					isSubscribed.set({ subscribed: true, email: payload.new.email });
 					payload.new.step != 2 && handleStep(2);
 				} else if (payload.new.email_confirmed_at) {
 					verifications.email = false;
@@ -191,7 +207,7 @@
 			subheader: 'You have successfully verified your identity.'
 		}
 	];
-	const { tainted, allErrors, form, message, enhance, errors, submitting, constraints, submit, isTainted, validateForm, validate } = superForm(data.form, {
+	const { allErrors, form, message, enhance, errors, submitting, constraints, submit, capture, restore } = superForm(data.form, {
 		validators: zod(whitelistSchema),
 		dataType: 'json',
 		id: 'verification',
@@ -199,9 +215,11 @@
 		resetForm: false,
 		onUpdated: (event) => {
 			console.log($errors);
-			event.form.valid && (($form.step === 0 && (verifications.email = true)) || ($form.step === 1 && $message != 'Error sending phone change otp' && (verifications.phone = true)));
+			event.form.valid &&
+				(($form.step === 0 && (verifications.email = true)) || ($form.step === 1 && $message != 'Error sending phone change otp' && !$form._prevent_verification && (verifications.phone = true)));
 		}
 	});
+	export const snapshot = { capture, restore };
 
 	$: currentHeaderText = (verifications.email && text[1]) || (verifications.phone && text[3]) || ($form.step == 1 && text[2]) || ($form.step == 2 && text[4]) || text[$form.step];
 
@@ -212,17 +230,57 @@
 			history.pushState({}, '', url);
 		}
 	}
+
+	export const derivedForm = derived(form, ($form) => {
+		// Perform any derived logic here based on the $form store
+		// For example, you might want to create a derived value that
+		// indicates if the form is valid or not, or if certain conditions are met
+		// This is just a placeholder logic, replace it with actual requirements
+		const isFormValid = $form.step !== undefined && $form.email !== undefined && $form.phone !== undefined;
+		return {
+			...$form,
+			isFormValid
+		};
+	});
 </script>
 
 {#if dev}
 	<SuperDebug data={$form} />
 {/if}
+<MetaTags
+	title="Presale Identity Verification"
+	titleTemplate="%s - 0xArgus"
+	description="0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum."
+	canonical="https://0xargus.org/verification"
+	openGraph={{
+		url: 'https://www.0xargus.org/verification',
+		title: '0xArgus',
+		description: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
+		images: [
+			{
+				url: 'https://0xargus.org/Banner.png',
+				width: 840,
+				height: 469,
+				alt: 'Og Image Alt'
+			}
+		],
+		siteName: '0xArgus'
+	}}
+	twitter={{
+		handle: '@0xargusorg',
+		site: '0xargus.org',
+		cardType: 'summary_large_image',
+		title: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
+		description: '',
+		image: 'https://0xargus.org/Banner.png',
+		imageAlt: 'Twitter image alt'
+	}} />
 
 <div class="mt-8">
 	<Navbar />
 </div>
 
-<div class="mt-8 flex flex-col items-center justify-center sm:mt-24">
+<div class="mt-8 flex flex-col items-center justify-center sm:mt-12">
 	<Section maxWidth="4xl" class="w-full text-white">
 		{#if !loading}
 			<div class="relative min-h-[900px] rounded-xl border border-white/[0.2] bg-neutral-900 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
@@ -248,13 +306,14 @@
 				</div>
 
 				<!-- FORM START -->
-				{#if $form.step < 2}
-					<form use:enhance method="POST" action="/verifications" class="mt-4 space-y-8">
+				{#if !$isSubscribed.subscribed || $form.step < 2}
+					<form use:enhance method="POST" action="/verification" class="mt-4 space-y-8">
 						{#if $form.step === 0 && !verifications.email}
 							<!-- Full Name -->
 							<div class="grid gap-2">
 								<label for="name">Full Legal Name*</label>
 								<input
+									use:focusOnMount
 									aria-invalid={$errors.name ? 'true' : undefined}
 									type="text"
 									bind:value={$form.name}
@@ -308,17 +367,21 @@
 						{#if verifications.phone && $form.phone}
 							<div class="grid h-32 w-full items-center justify-center space-y-4 text-center">
 								{#if $submitting}
-									<Circle color="white" size="32" unit="px" />
+									<div class="mx-auto my-8">
+										<Circle color="#adb5bd" size="40" unit="px" />
+									</div>
 								{:else}
 									<label class="font-sembold text-left text-lg" for="otp">Enter code</label>
-									<SvelteOtp
-										{...$constraints.phone?.otp}
-										numberOnly
-										inputStyle="width: 72px; height: 72px; font-size: 25px;"
-										separatorClass="text-white"
-										bind:value={$form.phone.otp}
-										inputClass="rounded-xl text-xl text-white bg-neutral-800 border-white/[0.2] focus:ring-2 focus:ring-blue-500/50  focus:ring-offset-blue-500 -border focus:outline-none shadow-xl"
-										numOfInputs={6} />
+									<div class="mx-auto">
+										<SvelteOtp
+											{...$constraints.phone?.otp}
+											numberOnly
+											inputStyle="width: 72px; height: 72px; font-size: 25px;"
+											separatorClass="text-white"
+											bind:value={$form.phone.otp}
+											inputClass="rounded-xl text-xl text-white bg-neutral-800 border-white/[0.2] focus:ring-2 focus:ring-blue-500/50  focus:ring-offset-blue-500 -border focus:outline-none shadow-xl"
+											numOfInputs={6} />
+									</div>
 								{/if}
 
 								<!-- Error -->
@@ -363,7 +426,9 @@
 									)}>Go Back</button>
 							{:else if verifications.phone}
 								<button
-									on:click={() => (verifications.phone = false)}
+									on:click={() => {
+										verifications.phone = false;
+									}}
 									type="button"
 									class={cn('mt-12 h-full w-full flex-grow rounded-lg bg-neutral-700 px-8 py-6 shadow-xl duration-200 ease-in-out hover:bg-neutral-700')}>Go Back</button>
 							{:else}
