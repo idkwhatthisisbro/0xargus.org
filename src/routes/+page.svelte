@@ -29,6 +29,7 @@
 	import Icon1inch from '$lib/assets/1inch.svg?component';
 	import SvgBlur from '$lib/assets/blur.svg?component';
 	import { BASE_URL } from '../constants.js';
+	import { isSubscribed } from '$lib/stores/form.js';
 
 	// TODO: Add localization
 
@@ -306,11 +307,11 @@
 			<!-- HERO TITLE -->
 			<div>
 				<h1 class="relative z-[31] mt-12 text-center font-saira text-6xl font-black text-neutral-50 md:mt-32 md:text-7xl lg:text-9xl">0xArgus</h1>
-				<div class="relative z-30 h-20 w-[40rem]">
-					<div class="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm" />
-					<div class="absolute inset-x-20 top-0 h-px w-3/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-					<div class="absolute inset-x-60 top-0 h-[5px] w-1/4 bg-gradient-to-r from-transparent via-purple-500 to-transparent blur-sm" />
-					<div class="absolute inset-x-60 top-0 h-px w-1/4 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+				<div class="relative z-30 flex h-20 w-[20rem] justify-center sm:w-[40rem]">
+					<div class="absolute inset-x-10 top-0 h-[2px] w-2/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm sm:inset-x-20 sm:w-3/4" />
+					<div class="absolute inset-x-10 top-0 h-px w-2/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent sm:inset-x-20 sm:w-3/4" />
+					<div class="inset-x-30 absolute top-0 h-[5px] w-2/4 bg-gradient-to-r from-transparent via-purple-500 to-transparent blur-sm sm:inset-x-60 sm:w-1/4" />
+					<div class="inset-x-30 absolute top-0 h-px w-2/4 bg-gradient-to-r from-transparent via-purple-500 to-transparent sm:inset-x-60 sm:w-1/4" />
 				</div>
 			</div>
 			<!-- HERO TITLE END -->
@@ -320,7 +321,14 @@
 			<!-- HERO TEXT END -->
 
 			<!-- WHITELIST BUTTON -->
-			<WhitelistForm id="whitelist-hero" />
+			{#if $isSubscribed.subscribed}
+				<WhitelistForm id="whitelist-hero" />
+			{:else}
+				<div class="hover:bg-indigo-600' z-[1000] mt-12 flex flex-col items-center justify-center rounded-xl bg-gradient-radial from-neutral-800 to-neutral-900 p-4 shadow-xl sm:px-8">
+					<p class="text-lg font-medium text-white">🎉 You are already subscribed to our whitelist.</p>
+					<p class="text-base font-medium text-indigo-200">Stay tuned for updates!</p>
+				</div>
+			{/if}
 			<!-- WHITELIST BUTTON END -->
 		</div>
 	</div>
@@ -338,7 +346,7 @@
 <!-- Product Summary + Features Start -->
 <GridAndDotBackgroundsSmallGrid>
 	<!-- PRODUCT SUMMARY SECTION -->
-	<Section id="about" class="mt-12">
+	<Section id="about" class="sm:mt-12">
 		<h2 class="text-center font-outfit text-4xl font-bold text-transparent text-white sm:text-6xl">
 			Your
 
@@ -450,7 +458,7 @@
 					</a>
 				</div>
 
-				<img src="/support2.png" class="rounded-xl opacity-90 shadow-lg" alt="support" />
+				<img src="/support2.png" class="mt-8 rounded-xl opacity-90 shadow-lg sm:mt-0" alt="support" />
 			</div>
 		</div>
 		<div />
@@ -628,6 +636,6 @@
 	</div>
 </Section>
 
-<JoinTheWhitelist data={data.form}>
+<JoinTheWhitelist>
 	<Footer slot="footer" />
 </JoinTheWhitelist>

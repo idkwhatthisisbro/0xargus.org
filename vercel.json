@@ -1,0 +1,8 @@
+{
+	"rewrites": [
+		{
+			"source": "/verification",
+			"destination": "https://verification.0xargus.org"
+		}
+	]
+}

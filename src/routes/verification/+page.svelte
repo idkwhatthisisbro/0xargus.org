@@ -19,6 +19,8 @@
 	import { Circle } from 'svelte-loading-spinners';
 	import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
 	import { browser, dev } from '$app/environment';
+	import { derived } from 'svelte/store';
+	import { isSubscribed } from '$lib/stores/form.js';
 
 	export let data;
 
@@ -51,6 +53,12 @@
 
 		schemaKeys.forEach((key) => {
 			if (key in respData) {
+				// Set subscribe store to true, if step is 2 [1/2]
+				// @ts-ignore
+				if (key == 'step' && respData[key] === 2) {
+					isSubscribed.set({ subscribed: true, email: respData['email'] || '' });
+				}
+
 				if (key == 'phone') {
 					// @ts-ignore
 					newForm['phone'] = respData['step'] > 0 ? { number: respData['phone'] || '', otp: '' } : respData['phone'];
@@ -64,10 +72,14 @@
 		return newForm;
 	};
 
-	// Run in client to display skeleton loader
+	// Run in client to display skeleton loader (could use loading.svelte + serverside tho)
 	onMount(async () => {
 		try {
-			const { data } = await supabase.from('users').select('*').eq('email', $form.email).maybeSingle();
+			const { data } = await supabase
+				.from('users')
+				.select('*')
+				.eq('email', $isSubscribed.email || $form.email)
+				.maybeSingle();
 			console.log(data);
 			data &&
 				form.update(
@@ -109,6 +121,8 @@
 					newStep = 2;
 
 					payload.new.step != 2 && handleStep(2);
+					// Set subscribe store to true, if step is 2 [1/2]
+					isSubscribed.set({ subscribed: true, email: payload.new.email });
 				} else if (payload.new.email_confirmed_at) {
 					verifications.email = false;
 					newStep = 1;
@@ -192,7 +206,7 @@
 			subheader: 'You have successfully verified your identity.'
 		}
 	];
-	const { tainted, allErrors, form, message, enhance, errors, submitting, constraints, submit, isTainted, validateForm, validate } = superForm(data.form, {
+	const { allErrors, form, message, enhance, errors, submitting, constraints, submit, capture, restore } = superForm(data.form, {
 		validators: zod(whitelistSchema),
 		dataType: 'json',
 		id: 'verification',
@@ -200,9 +214,11 @@
 		resetForm: false,
 		onUpdated: (event) => {
 			console.log($errors);
-			event.form.valid && (($form.step === 0 && (verifications.email = true)) || ($form.step === 1 && $message != 'Error sending phone change otp' && (verifications.phone = true)));
+			event.form.valid &&
+				(($form.step === 0 && (verifications.email = true)) || ($form.step === 1 && $message != 'Error sending phone change otp' && !$form._prevent_verification && (verifications.phone = true)));
 		}
 	});
+	export const snapshot = { capture, restore };
 
 	$: currentHeaderText = (verifications.email && text[1]) || (verifications.phone && text[3]) || ($form.step == 1 && text[2]) || ($form.step == 2 && text[4]) || text[$form.step];
 
@@ -213,6 +229,18 @@
 			history.pushState({}, '', url);
 		}
 	}
+
+	export const derivedForm = derived(form, ($form) => {
+		// Perform any derived logic here based on the $form store
+		// For example, you might want to create a derived value that
+		// indicates if the form is valid or not, or if certain conditions are met
+		// This is just a placeholder logic, replace it with actual requirements
+		const isFormValid = $form.step !== undefined && $form.email !== undefined && $form.phone !== undefined;
+		return {
+			...$form,
+			isFormValid
+		};
+	});
 </script>
 
 {#if dev}
@@ -364,7 +392,9 @@
 									)}>Go Back</button>
 							{:else if verifications.phone}
 								<button
-									on:click={() => (verifications.phone = false)}
+									on:click={() => {
+										verifications.phone = false;
+									}}
 									type="button"
 									class={cn('mt-12 h-full w-full flex-grow rounded-lg bg-neutral-700 px-8 py-6 shadow-xl duration-200 ease-in-out hover:bg-neutral-700')}>Go Back</button>
 							{:else}
