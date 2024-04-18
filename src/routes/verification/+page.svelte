@@ -4,7 +4,6 @@
 	import { MoveRight, ShieldEllipsis } from 'lucide-svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import Logo from '$lib/assets/logo.svg?component';
 	// import SvelteOtp from '@k4ung/svelte-otp';
 	import SvelteOtp from '$lib/components/SvelteOtp/SvelteOtp.svelte';
 	import PhoneInput from '$lib/components/PhoneInput.svelte';
@@ -256,7 +255,7 @@
 		{#if !loading}
 			<div class="relative min-h-[900px] rounded-xl border border-white/[0.2] bg-neutral-900 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
 				<div class="relative -top-12 mx-auto -mt-8 flex h-24 w-24 items-center justify-center rounded-full border-b-4 border-white/[0.2] bg-neutral-950 pb-4 sm:mb-12 md:-mt-16 lg:-mt-24">
-					<Logo class="absolute inset-0  p-6 drop-shadow-2xl sm:p-4" />
+					<img src="/logo.png" alt="logo" class="absolute inset-0 p-6 drop-shadow-2xl sm:p-4" />
 				</div>
 				<div class="group flex w-full items-center justify-center gap-x-4">
 					{#each Array(3) as _, i}
