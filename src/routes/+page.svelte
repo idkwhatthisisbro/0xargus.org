@@ -341,7 +341,7 @@
 <!-- HERO END -->
 
 <!-- Prevent the background of the wave from clipping -->
-<div class="sm:mt-32" />
+<div class="mt-20 sm:mt-32" />
 
 <!-- <ProductSummaryAndFeatures featureData={featureCards} /> -->
 
@@ -441,9 +441,9 @@
 			</a>
 
 			<div
-				class="-border-white/[0.2] -border relative grid min-h-64 w-full grid-rows-2 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600/50 via-indigo-600/60 to-indigo-600/40 p-4 py-8 shadow-xl sm:min-h-96 md:grid-cols-2 md:grid-rows-1 md:py-24">
+				class="-border-white/[0.2] -border relative grid min-h-64 w-full grid-rows-2 items-center justify-center gap-y-8 overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600/50 via-indigo-600/60 to-indigo-600/40 px-4 py-12 shadow-xl sm:min-h-96 md:grid-cols-2 md:grid-rows-1 md:py-24">
 				<img class="absolute" src="/circles@2x.png" alt="bg radial" />
-				<div class="z-20 space-y-6 px-12 text-white">
+				<div class="z-20 grid gap-y-6 px-4 text-white sm:px-12">
 					<p class="text-2xl font-semibold">Here, whenever - wherever</p>
 
 					<p class="text-xl leading-normal text-indigo-50">
@@ -460,7 +460,7 @@
 					</a>
 				</div>
 
-				<img src="/support2.png" class="mt-8 rounded-xl opacity-90 shadow-lg sm:mt-0" alt="support" />
+				<img src="/support2.png" class="rounded-xl opacity-90 shadow-lg sm:mt-0" alt="support" />
 			</div>
 		</div>
 		<div />

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { createNoise3D } from 'simplex-noise';
-
+	import 'context-filter-polyfill/dist/index.js';
 	export let colors = ['#a855f7', '#818cf8', '#c084fc', '#6366f1', '#a855f7'];
 	export let backgroundFill = '#06000f';
 	export let blur = 10;
@@ -76,4 +76,4 @@
 <!-- style={{
 		...(isSafari ? { filter: `blur(${blur}px)` } : {})
 	}} -->
-<canvas class="absolute inset-x-0 bottom-16 z-0 h-[450px] w-full sm:-bottom-60 sm:h-[500px]" bind:this={canvasRef} id="canvas"></canvas>
+<canvas class="absolute inset-x-0 -bottom-52 z-0 h-[450px] w-full sm:-bottom-60 sm:h-[500px]" bind:this={canvasRef} id="canvas"></canvas>
