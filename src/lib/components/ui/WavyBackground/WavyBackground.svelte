@@ -76,4 +76,4 @@
 <!-- style={{
 		...(isSafari ? { filter: `blur(${blur}px)` } : {})
 	}} -->
-<canvas class="absolute inset-x-0 bottom-16 z-0 h-[450px] w-full sm:-bottom-60 sm:h-[500px]" bind:this={canvasRef} id="canvas"></canvas>
+<canvas class="absolute inset-x-0 -bottom-52 z-0 h-[450px] w-full sm:-bottom-60 sm:h-[500px]" bind:this={canvasRef} id="canvas"></canvas>

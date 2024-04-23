@@ -8,6 +8,7 @@
 	import { Menu } from 'lucide-svelte';
 	import MenuItem from './ui/NavbarMenu/MenuItem.svelte';
 	import HoveredLink from './ui/NavbarMenu/HoveredLink.svelte';
+	import { goto } from '$app/navigation';
 
 	// function scrollToElement() {
 	// 	myElement.scrollIntoView({ behavior: 'smooth' });
@@ -26,9 +27,9 @@
 			href={BASE_URL + '/presale'}
 			class="text-gray relative rounded-lg bg-white/10 px-4 py-1 font-outfit text-lg font-medium text-indigo-500 backdrop-blur-3xl backdrop-filter duration-200 ease-in-out hover:text-neutral-300"
 			>Presale
-			<div class="absolute -bottom-3 -right-0 z-10 rounded bg-gradient-radial from-emerald-500 via-emerald-400 to-emerald-600 px-1 text-xs tracking-wider text-white">
+			<div class="absolute -right-0 -top-3 z-10 rounded bg-gradient-radial from-green-500 via-green-400 to-green-600 px-1 text-xs tracking-wider text-white">
 				<div class="relative z-10 w-full px-1">
-					<span class="animate-slowerPing absolute inset-0 z-0 inline-flex h-full w-full rounded-full bg-emerald-400/75"></span>
+					<span class="absolute inset-0 z-0 inline-flex h-full w-full animate-slowerPing rounded-full bg-green-400/75"></span>
 					live
 				</div>
 			</div>
@@ -50,7 +51,7 @@
 		</div>
 		<button
 			on:click={() => window.open('https://docs.0xargus.org', '_blank')}
-			class="relative inline-flex h-12 w-12 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:ring-offset-white md:w-auto">
+			class="relative inline-flex h-12 w-12 overflow-hidden rounded-full p-[3px] focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 focus:ring-offset-indigo-600 md:w-auto">
 			<span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#6366f1_0%,#a855f7_50%,#6366f1_100%)]" />
 			<span
 				class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 p-2 text-sm font-medium text-white backdrop-blur-3xl duration-200 ease-in-out hover:bg-slate-900 md:px-3 md:py-1">
@@ -71,9 +72,9 @@
 				href={BASE_URL + '/presale'}
 				class="relative rounded-lg bg-white/10 px-4 py-1 font-outfit text-lg font-medium text-indigo-500 backdrop-blur-3xl backdrop-filter duration-200 ease-in-out hover:text-neutral-300"
 				>Presale
-				<div class="absolute -right-0 -top-3 z-10 rounded bg-gradient-radial from-emerald-500 via-emerald-400 to-emerald-600 px-1 text-xs tracking-wider text-white">
+				<div class="absolute -right-0 -top-3 z-10 rounded bg-gradient-radial from-green-500 via-green-400 to-green-600 px-1 text-xs tracking-wider text-white">
 					<div class="relative z-10 w-full px-1">
-						<span class="animate-slowerPing absolute inset-0 z-0 inline-flex h-full w-full rounded-full bg-emerald-400/75"></span>
+						<span class="absolute inset-0 z-0 inline-flex h-full w-full animate-slowerPing rounded-full bg-green-400/75"></span>
 						live
 					</div>
 				</div>
