@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { createNoise3D } from 'simplex-noise';
-
+	import 'context-filter-polyfill/dist/index.js';
 	export let colors = ['#a855f7', '#818cf8', '#c084fc', '#6366f1', '#a855f7'];
 	export let backgroundFill = '#06000f';
 	export let blur = 10;
