@@ -293,15 +293,15 @@
 		image: 'https://0xargus.org/Banner.png',
 		imageAlt: 'Twitter image alt'
 	}} />
-<main class={cn('b-red-500 relative z-30 flex min-h-screen w-full flex-col items-center')}>
+
+<main class={cn('relative flex min-h-screen w-full flex-col items-center')}>
 	<!-- ANNOUNCEMENT BANNER & NAVBAR -->
-	<div class="b-blue-500 grid w-full gap-5">
+	<div class="z-[999] grid w-full gap-5 bg-brand-bgPrimary pb-2">
 		<Banner />
 		<Navbar />
 	</div>
-
 	<!-- ANNOUNCEMENT BANNER & NAVBAR END -->
-	<Stars numStars={5} />
+
 	<div class="w-full max-w-7xl">
 		<div class="flex w-full flex-col items-center justify-center px-4 sm:px-0">
 			<!-- HERO TITLE -->
@@ -332,6 +332,8 @@
 			<!-- WHITELIST BUTTON END -->
 		</div>
 	</div>
+
+	<Stars numStars={5} />
 
 	<!-- TODO: Make this effecient -->
 	<WavyBackground />
@@ -469,9 +471,6 @@
 <!-- <div class="mb-12 mt-24" /> -->
 
 <Section id="howitworks" className="relative pb-0">
-	<!-- <Stars numStars={10} slot="background" /> -->
-	<!-- <img src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" /> -->
-
 	<SvgBlur class="absolute -right-[15rem] top-[25rem] z-[55] hidden opacity-40 sm:-right-[35rem] sm:bottom-32 sm:top-auto sm:block" />
 	<SvgBlur class="absolute -left-[15rem] top-[25rem] z-[55] opacity-40 sm:-left-[35rem] sm:bottom-32 sm:top-auto" />
 

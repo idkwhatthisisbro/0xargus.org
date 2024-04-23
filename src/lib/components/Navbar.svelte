@@ -16,19 +16,30 @@
 	let active: string | null = null;
 </script>
 
-<nav class="z-30 mx-auto hidden h-[72px] w-full max-w-7xl items-center justify-between px-[30px] md:flex">
+<nav class="mx-auto hidden h-[72px] w-full max-w-7xl items-center justify-between bg-brand-bgPrimary px-[30px] md:flex">
 	<a href={BASE_URL} class="flex w-16 items-center gap-4">
-		<img src="/logo.png" alt="logo" class="h-full w-full" />
+		<!-- <img src="/logo.png" alt="logo" class="h-full w-full" /> -->
+		<!-- <img src="/logo2.png" alt="logo" class="h-full w-full" /> -->
+		<!-- <img src="/logo3.png" alt="logo" class="h-full w-full" /> -->
+		<!-- <img src="/logo4.png" alt="logo" class="h-full w-full" /> -->
+		<!-- <img src="/logo5.png" alt="logo" class="h-full w-full" /> -->
+		<img src="/logo6.png" alt="logo" class="h-full w-full" />
+		<!-- <img src="/logo6-white.png" alt="logo" class="h-full w-full" /> -->
+		<!-- <img src="/logo7.png" alt="logo" class="h-full w-full" /> -->
+		<!-- <img src="/logo8.png" alt="logo" class="h-full w-full" /> -->
+		<!-- <img src="/rune.png" alt="logo" class="h-full w-full" /> -->
+		<!-- <img src="/safe.png" alt="logo" class="h-full w-full" /> -->
+		<!-- <img src="/logo9.png" alt="logo" class="h-full w-full" /> -->
 	</a>
 
 	<div class="hidden w-full items-center justify-center gap-x-12 md:flex">
 		<a
 			href={BASE_URL + '/presale'}
-			class="text-gray relative rounded-lg bg-white/10 px-4 py-1 font-outfit text-lg font-medium text-indigo-500 backdrop-blur-3xl backdrop-filter duration-200 ease-in-out hover:text-neutral-300"
-			>Presale
-			<div class="absolute -bottom-3 -right-0 z-10 rounded bg-gradient-radial from-emerald-500 via-emerald-400 to-emerald-600 px-1 text-xs tracking-wider text-white">
+			class="text-gray relative rounded-lg bg-white/10 px-4 py-1 font-outfit text-lg font-medium text-indigo-500 backdrop-blur-3xl backdrop-filter duration-200 ease-in-out hover:text-neutral-300">
+			Presale
+			<div class="absolute -right-0 -top-3 z-10 rounded bg-gradient-radial from-emerald-500 via-emerald-400 to-emerald-600 px-1 text-xs tracking-wider text-white">
 				<div class="relative z-10 w-full px-1">
-					<span class="animate-slowerPing absolute inset-0 z-0 inline-flex h-full w-full rounded-full bg-emerald-400/75"></span>
+					<span class="absolute inset-0 inline-flex h-full w-full animate-slowerPing rounded-full bg-emerald-400/75"></span>
 					live
 				</div>
 			</div>
@@ -73,7 +84,7 @@
 				>Presale
 				<div class="absolute -right-0 -top-3 z-10 rounded bg-gradient-radial from-emerald-500 via-emerald-400 to-emerald-600 px-1 text-xs tracking-wider text-white">
 					<div class="relative z-10 w-full px-1">
-						<span class="animate-slowerPing absolute inset-0 z-0 inline-flex h-full w-full rounded-full bg-emerald-400/75"></span>
+						<span class="absolute inset-0 z-0 inline-flex h-full w-full animate-slowerPing rounded-full bg-emerald-400/75"></span>
 						live
 					</div>
 				</div>
