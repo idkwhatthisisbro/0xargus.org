@@ -19,7 +19,7 @@
 	let active: string | null = null;
 </script>
 
-<nav class="z-30 mx-auto hidden h-[72px] w-full max-w-7xl items-center justify-between px-[30px] md:flex">
+<nav class="mx-auto hidden h-[72px] w-full max-w-7xl items-center justify-between bg-brand-bgPrimary px-[30px] md:flex">
 	<a href={BASE_URL} class="flex w-16 items-center gap-4">
 		<enhanced:img class="h-12 w-16" src={Logo} alt="logo" />
 	</a>

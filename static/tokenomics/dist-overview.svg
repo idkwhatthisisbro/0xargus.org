@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 797 472" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,15.3785,-78.9047)">
+        <g id="unallocated" transform="matrix(7.44466e-17,-1.21581,1.21581,7.44466e-17,113.929,759.907)">
+            <path d="M180.051,170.667L258.276,196.083C255.608,204.292 254.25,212.869 254.25,221.5C254.25,266.895 291.105,303.75 336.5,303.75C343.4,303.75 350.272,302.882 356.955,301.166L377.409,380.832C364.044,384.264 350.299,386 336.5,386C245.71,386 172,312.29 172,221.5C172,204.238 174.717,187.084 180.051,170.667Z" style="fill:#ebebeb;"/>
+        </g>
+        <g id="argus-foundation-endowment" transform="matrix(7.44466e-17,-1.21581,1.21581,7.44466e-17,113.929,759.907)">
+            <path d="M377.409,380.832L356.955,301.166C382.456,294.618 403.282,276.258 412.974,251.778L489.448,282.056C470.064,331.016 428.412,367.737 377.409,380.832Z" style="fill:#ff8f8a;"/>
+        </g>
+        <g id="genesis-presale" transform="matrix(7.44466e-17,-1.21581,1.21581,7.44466e-17,113.929,759.907)">
+            <path d="M489.448,282.056L412.974,251.778C416.151,243.753 418.046,235.278 418.588,226.665L500.675,231.829C499.592,249.057 495.803,266.007 489.448,282.056Z" style="fill:#5563ae;"/>
+        </g>
+        <g id="beta-testers-airdrop" transform="matrix(7.44466e-17,-1.21581,1.21581,7.44466e-17,113.929,759.907)">
+            <path d="M500.675,231.829L418.588,226.665C418.696,224.945 418.75,223.223 418.75,221.5L501,221.5C501,224.946 500.892,228.39 500.675,231.829Z" style="fill:#b4458d;"/>
+        </g>
+        <g id="public-presale" transform="matrix(7.44466e-17,-1.21581,1.21581,7.44466e-17,113.929,759.907)">
+            <path d="M501,221.5L418.75,221.5C418.75,176.075 381.925,139.25 336.5,139.25C300.867,139.25 269.287,162.194 258.276,196.083L180.051,170.667C202.074,102.889 265.234,57 336.5,57C427.351,57 501,130.649 501,221.5Z" style="fill:#9fe4c9;"/>
+        </g>
+        <g id="logo.svg" transform="matrix(0.26,0,0,0.26,383.23,350.789)">
+            <g transform="matrix(1,0,0,1,-250,-250)">
+                <g transform="matrix(3.63784,-3.63716,3.63716,3.63784,-186.5,249.959)">
+                    <path d="M100,39.439C100,28.703 91.297,20 80.561,20L39.439,20C28.703,20 20,28.703 20,39.439L20,60.851C20,61.209 20.197,61.538 20.513,61.707C20.829,61.877 21.213,61.858 21.511,61.659C25.015,59.323 33.549,53.634 35.567,52.289C35.838,52.108 36,51.805 36,51.48L36,45.72C36,43.142 37.024,40.67 38.847,38.847C40.67,37.024 43.142,36 45.72,36L74.28,36C76.858,36 79.33,37.024 81.153,38.847C82.976,40.67 84,43.142 84,45.72L84,56.61C84,56.977 84.207,57.313 84.535,57.478C84.863,57.643 85.256,57.609 85.551,57.39C89.104,54.754 97.672,48.394 99.607,46.958C99.854,46.775 100,46.485 100,46.178L100,39.439Z" style="fill:url(#_Linear1);"/>
+                </g>
+                <g transform="matrix(-3.63784,3.63716,-3.63716,-3.63784,686.5,250.041)">
+                    <path d="M100,39.439C100,28.703 91.297,20 80.561,20L39.439,20C28.703,20 20,28.703 20,39.439L20,61.092C20,61.452 20.199,61.783 20.518,61.952C20.837,62.12 21.223,62.098 21.52,61.894C25.035,59.492 33.577,53.656 35.576,52.289C35.841,52.108 36,51.808 36,51.487L36,45.72C36,43.142 37.024,40.67 38.847,38.847C40.67,37.024 43.142,36 45.72,36L74.278,36C76.856,36 79.329,37.024 81.152,38.848C82.975,40.671 83.998,43.144 83.998,45.722C83.997,49.876 83.996,54.332 83.995,56.811C83.995,57.18 84.204,57.517 84.534,57.682C84.864,57.846 85.259,57.809 85.553,57.587C89.115,54.894 97.694,48.41 99.614,46.958C99.857,46.775 100,46.488 100,46.183L100,39.439Z" style="fill:url(#_Linear2);"/>
+                </g>
+                <g transform="matrix(0.970091,-0.969909,0.969909,0.970091,-45.8506,256.762)">
+                    <path d="M206,124C206,110.202 194.798,99 181,99L131,99C117.202,99 106,110.202 106,124L106,174C106,187.798 117.202,199 131,199L181,199C194.798,199 206,187.798 206,174L206,124Z" style="fill:#a855f7;"/>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,-19.8322,52.1748)">
+            <path d="M371.703,395.127L341.727,487.385" style="fill:none;stroke:#fff;stroke-width:3px;stroke-dasharray:0,6,0,0,0,0;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,-19.8322,52.1748)">
+            <path d="M501.31,273.388L595.366,249.239" style="fill:none;stroke:#fff;stroke-width:3px;stroke-dasharray:0,6,0,0,0,0;"/>
+        </g>
+        <g transform="matrix(1,1.88738e-15,1.88738e-15,1,-19.8322,52.1748)">
+            <path d="M440.411,204.281L476.138,114.046" style="fill:none;stroke:#fff;stroke-width:3px;stroke-linejoin:round;stroke-dasharray:0,6,0,0,0,0;"/>
+        </g>
+        <g transform="matrix(0.997055,0.00743796,0.00743796,0.981214,-50.7828,45.9318)">
+            <path d="M440.169,204.043L447.007,105.429" style="fill:none;stroke:#fff;stroke-width:3.01px;stroke-linejoin:round;stroke-dasharray:0,6.02,0,0,0,0;"/>
+        </g>
+        <g transform="matrix(0.997055,0.00743796,0.00743796,0.981214,-57.0274,45.9318)">
+            <path d="M440.036,204.044L440.773,105.17" style="fill:none;stroke:#fff;stroke-width:3.01px;stroke-linejoin:round;stroke-dasharray:0,6.02,0,0,0,0;"/>
+        </g>
+    </g>
+    <g id="genesis-founders-presale" transform="matrix(1.2077,0,0,1.2077,-59.7022,-150.868)">
+        <g transform="matrix(-1.18519,0,0,-1.18519,1155.86,478.133)">
+            <circle cx="625" cy="241" r="1" style="fill:#fff;stroke:#fff;stroke-width:0.35px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(1.52798,0,0,1.52798,-385.215,-239.656)">
+            <path d="M523.785,282.832L535.285,270L716,270" style="fill:none;stroke:#fff;stroke-width:0.27px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(0.828017,0,0,0.828017,71.6643,158.567)">
+            <g transform="matrix(12,0,0,12,769.663,30.0428)">
+            </g>
+            <text x="755.311px" y="30.043px" style="font-family:'Outfit-Thin_Bold', 'Outfit';font-weight:100;font-size:12px;fill:#fff;">5%</text>
+        </g>
+        <g id="BETA-TESTERS-AIRDROP" serif:id="BETA TESTERS AIRDROP" transform="matrix(1,0,0,1,539.926,-162.924)">
+            <g transform="matrix(8.28017,0,0,8.28017,169.229,332.641)">
+            </g>
+            <text x="55.716px" y="332.641px" style="font-family:'Outfit-Thin_Medium', 'Outfit';font-weight:100;font-size:8.28px;fill:#fff;">GENE<tspan x="77.418px 81.989px 83.777px " y="332.641px 332.641px 332.641px ">SIS</tspan> F<tspan x="94.798px " y="332.641px ">O</tspan>UNDER<tspan x="128.49px " y="332.641px ">S</tspan> PR<tspan x="145.1px 149.82px 154.192px " y="332.641px 332.641px 332.641px ">ESA</tspan>LE</text>
+        </g>
+    </g>
+    <g id="beta-testers-airdrop1" serif:id="beta-testers-airdrop" transform="matrix(1.2077,0,0,1.2077,-59.7022,-197.868)">
+        <g transform="matrix(-1.18519,0,0,-1.18519,1125.43,512.082)">
+            <circle cx="625" cy="241" r="1" style="fill:#fff;stroke:#fff;stroke-width:0.35px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(1.52798,0,0,1.52798,-385.215,-239.656)">
+            <path d="M503.872,305.05L535.285,270L716,270" style="fill:none;stroke:#fff;stroke-width:0.27px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(0.828017,0,0,0.828017,73.741,158.567)">
+            <g transform="matrix(12,0,0,12,767.155,30.0428)">
+            </g>
+            <text x="755.311px" y="30.043px" style="font-family:'Outfit-Thin_Bold', 'Outfit';font-weight:100;font-size:12px;fill:#fff;">1%</text>
+        </g>
+        <g id="BETA-TESTERS-AIRDROP1" serif:id="BETA TESTERS AIRDROP" transform="matrix(1,0,0,1,561.081,-162.924)">
+            <g transform="matrix(8.28017,0,0,8.28017,148.089,332.641)">
+            </g>
+            <text x="55.716px" y="332.641px" style="font-family:'Outfit-Thin_Medium', 'Outfit';font-weight:100;font-size:8.28px;fill:#fff;">BE<tspan x="65.511px 69.883px 75.265px 77.037px 82.37px 87.089px 91.329px " y="332.641px 332.641px 332.641px 332.641px 332.641px 332.641px 332.641px ">TA TEST</tspan>ER<tspan x="106.49px 111.06px 112.733px " y="332.641px 332.641px 332.641px ">S A</tspan>IR<tspan x="125.344px 131.454px 136.464px " y="332.641px 332.641px 332.641px ">DRO</tspan>P</text>
+        </g>
+    </g>
+    <g id="argus-foundation-endowment1" serif:id="argus-foundation-endowment" transform="matrix(1.2077,0,0,1.2077,-59.7022,-218.868)">
+        <g transform="matrix(-1.18519,0,0,-1.18519,1222.62,568.827)">
+            <circle cx="625" cy="241" r="1" style="fill:#fff;stroke:#fff;stroke-width:0.35px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(1.13667,0,0,1.13667,-104.622,-23.7041)">
+            <path d="M515.977,270L715.631,270" style="fill:none;stroke:#fff;stroke-width:0.36px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,638.17,-38.8347)">
+            <g transform="matrix(9.93621,0,0,9.93621,70.7889,332.641)">
+            </g>
+            <text x="55.716px" y="332.641px" style="font-family:'Outfit-Thin_Bold', 'Outfit';font-weight:100;font-size:9.936px;fill:#fff;">15%</text>
+        </g>
+        <g transform="matrix(1,0,0,1,516.377,-53.5662)">
+            <g transform="matrix(8.28017,0,0,8.28017,192.844,332.641)">
+            </g>
+            <text x="55.716px" y="332.641px" style="font-family:'Outfit-Thin_Medium', 'Outfit';font-weight:100;font-size:8.28px;fill:#fff;">AR<tspan x="66.273px " y="332.641px ">G</tspan>US F<tspan x="89.118px " y="332.641px ">O</tspan>UNDA<tspan x="117.635px " y="332.641px ">T</tspan>ION ENDO<tspan x="161.983px " y="332.641px ">W</tspan>MENT</text>
+        </g>
+    </g>
+    <g id="liquidity" transform="matrix(1.2077,0,0,1.2077,-59.7022,-218.868)">
+        <g transform="matrix(-1.18519,0,0,-1.18519,1206.57,821.972)">
+            <circle cx="625" cy="241" r="1" style="fill:#fff;stroke:#fff;stroke-width:0.35px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(1.13667,0,0,1.13667,-104.622,229.441)">
+            <path d="M501.86,270L715.631,270" style="fill:none;stroke:#fff;stroke-width:0.36px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,635.457,213.966)">
+            <g transform="matrix(9.93621,0,0,9.93621,73.5015,332.641)">
+            </g>
+            <text x="55.716px" y="332.641px" style="font-family:'Outfit-Thin_Bold', 'Outfit';font-weight:100;font-size:9.936px;fill:#fff;">34%</text>
+        </g>
+        <g transform="matrix(1,0,0,1,614.257,199.081)">
+            <g transform="matrix(8.28017,0,0,8.28017,94.5166,332.641)">
+            </g>
+            <text x="55.716px" y="332.641px" style="font-family:'Outfit-Thin_Medium', 'Outfit';font-weight:100;font-size:8.28px;fill:#fff;">LIQUIDIT<tspan x="89.176px " y="332.641px ">Y</tspan></text>
+        </g>
+    </g>
+    <g id="public-presale1" serif:id="public-presale" transform="matrix(1.2077,0,0,1.2077,-59.7022,-218.868)">
+        <g transform="matrix(-1.18519,0,0,-1.18519,964.902,654.262)">
+            <circle cx="625" cy="241" r="1" style="fill:#fff;stroke:#fff;stroke-width:0.35px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(-1.03254,0,0,-1.03254,788.943,647.42)">
+            <path d="M546.981,270L716,270" style="fill:none;stroke:#fff;stroke-width:0.4px;stroke-linejoin:round;"/>
+        </g>
+        <g transform="matrix(0.828017,0,0,0.828017,17.9492,149.305)">
+            <g transform="matrix(12,0,0,12,59.2682,277.619)">
+            </g>
+            <text x="38.052px" y="277.619px" style="font-family:'Outfit-Thin_Bold', 'Outfit';font-weight:100;font-size:12px;fill:#fff;">4<tspan x="44.916px " y="277.619px ">5</tspan>%</text>
+        </g>
+        <g transform="matrix(0.828017,0,0,0.828017,-5.82025,188.903)">
+            <g transform="matrix(10,0,0,10,143.791,213.354)">
+            </g>
+            <text x="66.201px" y="213.354px" style="font-family:'Outfit-Thin_Medium', 'Outfit';font-weight:100;font-size:10px;fill:#fff;">PUBLIC PR<tspan x="114.651px 120.351px 125.631px " y="213.354px 213.354px 213.354px ">ESA</tspan>LE</text>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(80,0,0,80,20,41.3333)"><stop offset="0" style="stop-color:#9333ea;stop-opacity:1"/><stop offset="0.67" style="stop-color:#9638ec;stop-opacity:1"/><stop offset="1" style="stop-color:#a855f7;stop-opacity:1"/></linearGradient>
+        <linearGradient id="_Linear2" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(80,0,0,80,20,41.4667)"><stop offset="0" style="stop-color:#9333ea;stop-opacity:1"/><stop offset="1" style="stop-color:#a855f7;stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>
