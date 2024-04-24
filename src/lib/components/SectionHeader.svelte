@@ -9,7 +9,6 @@
 
 	const [titleWhite, titlePurple] = [title.slice(0, splitIndex), title.slice(splitIndex)];
 	export let subtitle = '';
-	export let image = '/head-lock-4.png';
 	export let id = '';
 
 	const x = ' bg-gradient-to-bl from-purple-500 via-purple-600 to-purple-800 bg-clip-text text-transparent';

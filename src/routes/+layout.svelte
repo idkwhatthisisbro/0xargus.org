@@ -1,26 +1,30 @@
 <script>
 	import '../app.pcss';
-	import Modal from 'svelte-simple-modal';
-
-	const styles = {
-		styleWindow: { backgroundColor: '#06000f', 'border-radius': '1rem', padding: '1rem' },
-		styleCloseButton: { backgroundColor: '#fff !important', color: '#fff !important', stroke: '#ffffff !important', opacity: '0.4' }
-	};
+	import { partytownSnippet } from '@builder.io/partytown/integration';
 </script>
 
-<Modal {...styles} classWindow="p-2 bg-bgPrimary rounded-3xl">
-	<div class="relative overflow-hidden font-outfit">
-		<slot />
-	</div>
-</Modal>
+<div class="relative overflow-hidden font-outfit">
+	<slot />
+</div>
 
-<style>
-	::selection {
-		background: #ff4500; /* Or any other color */
-		color: white;
-	}
-	::-moz-selection {
-		background: #ff4500; /* Or any other color */
-		color: white;
-	}
-</style>
+<svelte:head>
+	<script>
+		// Forward the necessary functions to the web worker layer
+		partytown = {
+			forward: ['dataLayer.push', 'gtag']
+		};
+	</script>
+	{@html '<script>' + partytownSnippet() + '</script>'}
+
+	<!-- Google tag (gtag.js) -->
+	<script async type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-B50Z2KFPGJ"></script>
+	<script type="text/partytown">
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-B50Z2KFPGJ');
+	</script>
+</svelte:head>

@@ -17,7 +17,7 @@
 	<div class="flex min-h-screen flex-col items-center justify-between p-4">
 		<Navbar />
 		<div class="-border flex min-h-[300px] max-w-[1000px] flex-col items-center justify-center rounded-2xl border-white/[0.2] p-4 py-8 text-center sm:p-12">
-			<CustomLottiePlayer src="/4042.json" />
+			<CustomLottiePlayer src="/404.json" />
 			<h1 class="mt-8 text-5xl font-bold text-white">Page Not Found</h1>
 			<p class="mt-8 text-xl font-semibold text-neutral-300">Sorry, the page you were looking for could not be found.</p>
 		</div>

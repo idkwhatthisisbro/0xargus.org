@@ -10,6 +10,8 @@
 	import HoveredLink from './ui/NavbarMenu/HoveredLink.svelte';
 	import { goto } from '$app/navigation';
 
+	import Logo from '$lib/assets/logo.png?enhanced';
+
 	// function scrollToElement() {
 	// 	myElement.scrollIntoView({ behavior: 'smooth' });
 	// }
@@ -19,7 +21,7 @@
 
 <nav class="z-30 mx-auto hidden h-[72px] w-full max-w-7xl items-center justify-between px-[30px] md:flex">
 	<a href={BASE_URL} class="flex w-16 items-center gap-4">
-		<img src="/logo.png" alt="logo" class="h-full w-full" />
+		<enhanced:img class="h-12 w-16" src={Logo} alt="logo" />
 	</a>
 
 	<div class="hidden w-full items-center justify-center gap-x-12 md:flex">
@@ -65,7 +67,7 @@
 <nav class="z-50 flex h-[74px] w-full items-center px-8 md:hidden">
 	<div class="z-50 flex w-full items-center justify-between">
 		<a href={BASE_URL} class="flex w-10 items-center gap-4">
-			<img src="/logo.png" alt="logo" class="h-full w-full" />
+			<enhanced:img src={Logo} alt="logo" class="h-full w-full" />
 		</a>
 		<div class="z-50 flex flex-row-reverse items-center gap-4 px-4">
 			<a
