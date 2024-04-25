@@ -45,6 +45,8 @@
 	"type": "module",
 	"dependencies": {
 		"@builder.io/partytown": "^0.10.1",
+		"@fontsource-variable/outfit": "^5.0.13",
+		"@fontsource/saira-stencil-one": "^5.0.20",
 		"@lottiefiles/svelte-lottie-player": "^0.3.1",
 		"@macfja/svelte-persistent-store": "^2.4.1",
 		"@supabase/auth-helpers-sveltekit": "^0.12.0",

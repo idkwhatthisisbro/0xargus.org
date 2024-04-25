@@ -285,7 +285,9 @@
 		{#if !loading}
 			<div class="relative min-h-[900px] rounded-xl border border-white/[0.2] bg-neutral-900 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
 				<div class="relative -top-12 mx-auto -mt-8 flex h-24 w-24 items-center justify-center rounded-full border-b-4 border-white/[0.2] bg-neutral-950 pb-4 sm:mb-12 md:-mt-16 lg:-mt-24">
-					<img src="/logo.png" alt="logo" class="absolute inset-0 p-6 drop-shadow-2xl sm:p-4" />
+					<div class="absolute inset-0">
+						<enhanced:img src="$lib/assets/logo.png?enhanced" alt="logo" class="p-6 drop-shadow-2xl sm:p-4" />
+					</div>
 				</div>
 				<div class="group flex w-full items-center justify-center gap-x-4">
 					{#each Array(3) as _, i}

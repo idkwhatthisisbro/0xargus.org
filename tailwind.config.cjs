@@ -9,12 +9,11 @@ const config = {
 
 	theme: {
 		extend: {
-			
+
 			colors: {
 				brand: {
 					bgPrimary: '#06000f',
 					// bgPrimary: '#10002b',
-					pill: '#4338CA',
 					pill: '#4338CA',
 					ethereum: '#a855f7',
 					solana: '#6366f1',
@@ -48,14 +47,13 @@ const config = {
 				// 	950: '#06000f',
 				// },
 			},
-			
+
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 			},
 			fontFamily: {
-				citerne: ['Citerne', 'sans-serif'],
-				outfit: ['Outfit', 'sans-serif'],
-				saira: ['Saira Stencil One', 'sans-serif'],
+				outfit: ['Outfit', 'sans-seri'],
+				saira: ['Saira Stencil One', 'system-ui'],
 			},
 			animation: {
 				// ...other animations
@@ -85,7 +83,7 @@ const config = {
 
 			}),
 
-		aspectRatio, 
+		aspectRatio,
 		addVariablesForColors,
 		function ({ matchUtilities, theme }: any) {
 			matchUtilities(
@@ -124,7 +122,3 @@ function addVariablesForColors({ addBase, theme }: any) {
 }
 
 module.exports = config;
-
-
-
-

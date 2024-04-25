@@ -8,6 +8,12 @@ dependencies:
   '@builder.io/partytown':
     specifier: ^0.10.1
     version: 0.10.1
+  '@fontsource-variable/outfit':
+    specifier: ^5.0.13
+    version: 5.0.13
+  '@fontsource/saira-stencil-one':
+    specifier: ^5.0.20
+    version: 5.0.20
   '@lottiefiles/svelte-lottie-player':
     specifier: ^0.3.1
     version: 0.3.1
@@ -454,6 +460,14 @@ packages:
 
   /@floating-ui/utils@0.2.1:
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
+    dev: false
+
+  /@fontsource-variable/outfit@5.0.13:
+    resolution: {integrity: sha512-y5yl8YcLqoQghwLfPaM420PKxG0DMKmobryGptXmv7Q5CX8F1vg8h714qEptXdtyoS9rHIMwLl/hJYLzZgSE4w==}
+    dev: false
+
+  /@fontsource/saira-stencil-one@5.0.20:
+    resolution: {integrity: sha512-XxICtWDVncZIIP9V1BMo5LT6Kz48sliKNM8LBKTbpIpHF+lfbzKf4Q8I1LD0wbo4oxQuJsj3TwSMDCc00xRdnA==}
     dev: false
 
   /@gcornut/valibot-json-schema@0.0.25(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.19.12)(valibot@0.29.0):
@@ -3922,23 +3936,6 @@ packages:
     peerDependencies:
       '@sveltejs/kit': 1.x || 2.x
       svelte: 3.x || 4.x || >=5.0.0-next.51
-    peerDependenciesMeta:
-      '@sinclair/typebox':
-        optional: true
-      '@vinejs/vine':
-        optional: true
-      arktype:
-        optional: true
-      joi:
-        optional: true
-      superstruct:
-        optional: true
-      valibot:
-        optional: true
-      yup:
-        optional: true
-      zod:
-        optional: true
     dependencies:
       '@sveltejs/kit': 2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.5)
       devalue: 4.3.2
