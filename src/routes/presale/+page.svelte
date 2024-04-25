@@ -128,13 +128,15 @@
 		</div>
 
 		<div class="relative grid w-full auto-rows-auto grid-cols-3 gap-4 px-8">
-			<div class="relative col-span-full flex flex-col items-center justify-center gap-16 overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
+			<!-- PRESALE CARD -->
+			<div class="@container relative col-span-full flex flex-col items-center justify-center gap-16 overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
 				<div class="flex flex-col items-center gap-3">
 					<h1 class="text-4xl font-semibold text-white">PHASE 1: GENESIS FOUNDERS PRESALE</h1>
 				</div>
 				<span class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[400px]" />
 			</div>
 
+			<!-- WHAT DOES 0XARGUS DO CARD -->
 			<div class="relative col-span-full flex flex-col items-center justify-center gap-16 overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
 				<div class="flex flex-col items-center gap-3">
 					<h1 class="text-4xl font-semibold text-white">
@@ -152,6 +154,7 @@
 				<span class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[400px]" />
 			</div>
 
+			<!-- TERMS OF SALE CARD -->
 			<div class="relative col-span-1 flex items-center justify-center overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
 				<div class="flex flex-col gap-3">
 					<div class="flex items-center gap-2">
@@ -169,6 +172,7 @@
 				<span class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[100px]" />
 			</div>
 
+			<!-- ABOUT TOKEN LAUNCH CARD -->
 			<div class="relative col-span-2 flex items-center justify-center overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
 				<div class="flex flex-col gap-3">
 					<div class="flex items-center gap-2">

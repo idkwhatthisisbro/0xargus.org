@@ -1,8 +1,11 @@
 /** @type {import('tailwindcss').Config}*/
 
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
-import aspectRatio from '@tailwindcss/aspect-ratio';
+import tailwindAspectRatio from '@tailwindcss/aspect-ratio';
 import svgToDataUri from 'mini-svg-data-uri';
+import tailwindChildren from 'tailwind-children'
+import tailwindForms from '@tailwindcss/forms'
+import tailwindContainerQueries from '@tailwindcss/container-queries'
 
 const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
@@ -77,13 +80,10 @@ const config = {
 	},
 
 	plugins: [
-		require('tailwind-children'),
-		require('@tailwindcss/forms')({
-				strategy: 'class', // only generate classes
-
-			}),
-
-		aspectRatio,
+		tailwindChildren,
+		tailwindForms({strategy: 'class'}),
+		tailwindAspectRatio,
+    tailwindContainerQueries,
 		addVariablesForColors,
 		function ({ matchUtilities, theme }: any) {
 			matchUtilities(
