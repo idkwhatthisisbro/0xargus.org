@@ -79,6 +79,7 @@
 
 	<button
 		type="submit"
+		aria-label="submit"
 		disabled={$isSubmitting}
 		class={cn(
 			// classes for both forms

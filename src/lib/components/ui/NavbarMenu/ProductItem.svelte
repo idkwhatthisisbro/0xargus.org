@@ -5,7 +5,7 @@
 	export let src: string;
 </script>
 
-<a {href} class="flex space-x-2">
+<a aria-label="product-item" {href} class="flex space-x-2">
 	<img {src} width={140} height={70} alt={title} class="flex-shrink-0 rounded-md shadow-2xl" />
 	<div>
 		<h4 class="mb-1 text-xl font-bold text-black text-white">

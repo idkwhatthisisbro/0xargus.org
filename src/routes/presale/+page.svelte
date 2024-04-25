@@ -118,7 +118,10 @@
 				</div>
 			</Countdown>
 
-			<a href="https://verifications.0xargus.org" class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-900 to-purple-500 px-8 py-4 text-xl font-bold text-white">
+			<a
+				aria-label="join the whitelist"
+				href="https://verifications.0xargus.org"
+				class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-900 to-purple-500 px-8 py-4 text-xl font-bold text-white">
 				JOIN THE WHITELIST
 				<ArrowRightCircleIcon class="h-8 w-8 text-purple-200" />
 			</a>

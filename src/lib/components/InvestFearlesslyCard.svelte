@@ -7,7 +7,7 @@
 	export { className as class };
 </script>
 
-<a href="https://docs.0xargus.org" class="group cursor-pointer {className}">
+<a aria-label="presale" href="https://docs.0xargus.org" class="group cursor-pointer {className}">
 	<GlowingStarsBackgroundCard>
 		<GlowingStarsTitle>Invest Fearlessly</GlowingStarsTitle>
 		<div class="flex items-end justify-between">
@@ -16,7 +16,7 @@
 				<a
 					role="button"
 					tabindex="0"
-					aria-label="GLOWING to documentation"
+					aria-label="presale"
 					on:click={() => window.open(BASE_URL + '/presale', '_blank')}
 					on:keydown={(event) => {
 						if (event.key === 'Enter') window.open(BASE_URL + '/presale', '_blank');

@@ -24,7 +24,10 @@
 			Get started with the Argus Beta today. Access our documentation to learn more about how Argus can protect your assets.
 		</p>
 
-		<a href="docs.0xargus.org" class="flex h-14 w-36 items-center justify-center rounded-xl bg-neutral-950/[0.25] text-indigo-50 duration-200 ease-in-out hover:bg-neutral-950/30">
+		<a
+			aria-label="learn more"
+			href="docs.0xargus.org"
+			class="flex h-14 w-36 items-center justify-center rounded-xl bg-neutral-950/[0.25] text-indigo-50 duration-200 ease-in-out hover:bg-neutral-950/30">
 			<p class="text-lg font-medium">Learn more</p>
 		</a>
 	</div>

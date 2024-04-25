@@ -420,6 +420,7 @@
 						<div class="sticky inset-x-0 bottom-12 flex w-full items-center justify-center gap-x-6">
 							{#if verifications.email}
 								<button
+									aria-label="go back"
 									on:click={() => (verifications.email = false)}
 									type="button"
 									class={cn(
@@ -428,6 +429,7 @@
 									)}>Go Back</button>
 							{:else if verifications.phone}
 								<button
+									aria-label="go back"
 									on:click={() => {
 										verifications.phone = false;
 									}}
@@ -436,6 +438,7 @@
 							{:else}
 								{@const disabled = !!$allErrors.length || $submitting}
 								<button
+									aria-label="continue"
 									{disabled}
 									class={cn(
 										disabled ? 'cursor-not-allowed bg-neutral-700' : 'bg-gradient-radial from-indigo-500/80 to-indigo-700/80 hover:bg-indigo-600',

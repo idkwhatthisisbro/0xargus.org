@@ -101,6 +101,7 @@
 				class="-border relative z-10 inline-flex flex-shrink-0 items-center overflow-hidden whitespace-nowrap rounded-l-lg border-r border-neutral-900/30 bg-neutral-700 px-4 py-2.5 text-center text-lg font-medium text-neutral-100 duration-200 ease-in-out hover:bg-neutral-600 focus:outline-none"
 				type="button"
 				role="combobox"
+				aria-label="dropdown-countries"
 				aria-controls="dropdown-countries"
 				aria-expanded="false"
 				aria-haspopup="false"
@@ -138,6 +139,7 @@
 							{@const isActive = isSelected(country.iso2, selectedCountry)}
 							<div id="country-{country.iso2}" role="option" aria-selected={isActive}>
 								<button
+									aria-label="country"
 									value={country.iso2}
 									type="button"
 									class="inline-flex w-full overflow-hidden px-4 py-2 text-lg

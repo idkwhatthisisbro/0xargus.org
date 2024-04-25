@@ -113,6 +113,7 @@
 							</div>
 
 							<a
+								aria-label="join the whitelist"
 								href="https://verifications.0xargus.org"
 								class={cn([
 									// mobile
@@ -127,6 +128,7 @@
 				</Countdown>
 			{/if}
 			<a
+				aria-label="Join the whitelist"
 				href="https://verifications.0xargus.org"
 				class={cn([
 					// desktop
@@ -141,6 +143,7 @@
 		</div>
 
 		<button
+			aria-label="close"
 			class={cn([
 				// global
 				'text-indigo-200',
