@@ -52,7 +52,7 @@ const config = {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 			},
 			fontFamily: {
-				outfit: ['Outfit', 'sans-seri'],
+				outfit: ['Outfit', 'sans-serif'],
 				saira: ['Saira Stencil One', 'system-ui'],
 			},
 			animation: {
