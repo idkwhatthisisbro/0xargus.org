@@ -31,6 +31,8 @@
 	import FeatureCard1 from '$lib/assets/FeatureCard1.png?enhanced';
 	import FeatureCard2 from '$lib/assets/FeatureCard2.png?enhanced';
 	import FeatureCard3 from '$lib/assets/FeatureCard3.png?enhanced';
+	import { BotIcon, CandlestickChartIcon, EyeIcon, ArrowRightIcon } from 'lucide-svelte';
+	import SvgBlur from '$lib/assets/blur.svg?component';
 
 	const styles = {
 		styleWindow: { backgroundColor: '#06000f', 'border-radius': '1rem', padding: '1rem' },
@@ -373,6 +375,7 @@
 			<SectionHeader
 				id="about"
 				title="Your Guardian in the DeFi Universe"
+				titleMaxWidth="max-w-full"
 				coloredPart="Guardian"
 				subtitle="Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence." />
 
@@ -388,8 +391,9 @@
 			<SectionHeader
 				id="features"
 				title="Bringing Security into the Mainstream"
+				titleMaxWidth="max-w-xl"
 				coloredPart="Bringing Security"
-				subtitle="The first ever safety layer middleware. Giving you the ultimate protection for your DeFi investments" />
+				subtitle="The first ever safety layer middleware. Giving you the ultimate protection for your DeFi investments." />
 
 			<!-- FEATURES BENTO -->
 			<div class="grid grid-cols-1 gap-4 gap-y-8 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -414,6 +418,140 @@
 		</Section>
 	</GridAndDotBackgroundsSmallGrid>
 	<!-- Product Summary + Features End -->
+
+	<Section id="howitworks" className="relative pb-0">
+		<!-- <Stars numStars={10} slot="background" /> -->
+		<!-- <enhanced:img  src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" /> -->
+
+		<SvgBlur class="absolute -right-[15rem] top-[25rem] z-[55] hidden opacity-40 sm:-right-[35rem] sm:bottom-32 sm:top-auto sm:block" />
+		<SvgBlur class="absolute -left-[15rem] top-[25rem] z-[55] opacity-40 sm:-left-[35rem] sm:bottom-32 sm:top-auto" />
+
+		<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
+
+		<SectionHeader
+			title="Crypto Safeguards: The Argus Approach"
+			coloredPart="Crypto Safeguards:"
+			titleMaxWidth="max-w-xl"
+			subtitle="Discover the steps involved in safeguarding your digital assets with our cutting-edge technology." />
+
+		<div class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
+			<SvelteFlow
+				style="background-color: #00000000; z-index: 52;"
+				attributionPosition="bottom-right"
+				nodes={nodesMobile}
+				fitView
+				fitViewOptions={{ minZoom: 100, duration: 2 }}
+				edges={edgesMobile}
+				nodesDraggable={false}
+				nodesConnectable={false}
+				elementsSelectable={false}>
+				<!-- <Background patternColor="#0a0a0a" bgColor="#00000000" /> -->
+			</SvelteFlow>
+
+			<!-- Hide Attribution -->
+			<div class="absolute bottom-0 right-0 z-[53] h-12 w-20 bg-neutral-950" />
+			<!-- Overlay to prevent moving -->
+			<div class="absolute inset-0 z-[53]" />
+		</div>
+
+		<div class={'svelte-flow-container relative hidden w-full items-center justify-center overflow-hidden sm:flex sm:h-[1000px]'}>
+			<SvelteFlow
+				style="background-color: #00000000; z-index: 52;"
+				attributionPosition="bottom-right"
+				{nodes}
+				fitView
+				fitViewOptions={{ duration: 2 }}
+				{edges}
+				nodesDraggable={false}
+				nodesConnectable={false}
+				elementsSelectable={false}>
+				<!-- <Background bgColor="#00000000" /> -->
+			</SvelteFlow>
+
+			<!-- Hide Attribution -->
+			<div class="absolute bottom-0 right-0 z-[53] h-12 w-20 bg-neutral-950" />
+			<!-- Overlay to prevent moving -->
+			<div class="absolute inset-0 z-[53]" />
+		</div>
+	</Section>
+
+	<Section maxWidth="full" class="relative">
+		<section class={cn('z-[51] mt-20 flex w-full items-center justify-center sm:py-36')}>
+			<div class="grid items-center justify-center text-center">
+				<h3 class="bg-gradientt-tr from-purple-500 via-purple-600 to-indigo-500 bg-clip-text font-outfit text-6xl font-bold text-transparent text-white">
+					<span
+						style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
+						class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
+						>2024
+					</span>
+					is the
+					<span
+						style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
+						class="hidden rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl sm:inline-block"
+						>Year
+					</span>
+					<span class="sm:hidden">Year </span>
+
+					of Crypto
+				</h3>
+				<p class="mx-auto mt-8 max-w-4xl text-center text-3xl text-neutral-300">Turn Pro by harnessing the power of AI, add Argus to your arsenal with support for over 8 chains.</p>
+				<a
+					class="group m-auto mt-8 flex w-48 items-center justify-center rounded-full border border-purple-700/30 px-3 py-2 text-sm text-white shadow-md duration-200 ease-in-out"
+					style="background: linear-gradient(90.33deg,rgba(40,36,160,.25),hsla(0,12%,67%,.25)); white-space: nowrap;"
+					href="/presale">Explore The Presale <ArrowRightIcon class="ml-2 h-4 transform-gpu transition duration-300 group-hover:translate-x-0.5" /></a>
+			</div>
+		</section>
+
+		<div class="group flex flex-1 flex-col items-center justify-center text-white sm:-mx-12 lg:flex-row 2xl:mx-0 2xl:gap-x-12">
+			{#each howItWorkCards as { desc, img, title }, index}
+				<!-- Card -->
+				<div
+					class={cn(
+						'z-[55] mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border border-white/[0.2] shadow-lg  md:w-auto md:p-24',
+						'gap-y-12 rounded-xl bg-indigo-950/10 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 sm:py-12 md:rounded-3xl md:p-10',
+						'group-1:rounded-r container relative h-full p-4 backdrop-blur-3xl backdrop-filter sm:even:border-[6px] sm:even:border-purple-500/50 lg:odd:-mb-16'
+					)}>
+					<!-- Text -->
+					<div class="shadow-3xl z-50 flex w-full flex-col space-y-4 p-4 text-neutral-300">
+						<!-- Image -->
+						<div class="mb-4">
+							<div class="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-radial from-neutral-800 to-neutral-900/50 p-4 shadow-xl">
+								{#if index === 0}
+									<!-- content here -->
+									<BotIcon class="h-10 w-full text-purple-600" />
+								{:else if index === 1}
+									<!-- else if content here -->
+									<CandlestickChartIcon class="h-10 w-full text-purple-600" />
+								{:else if index === 2}
+									<!-- else if content here -->
+									<EyeIcon class="h-10 w-full text-purple-600" />
+								{/if}
+							</div>
+						</div>
+						<p class="text-3xl font-semibold">{title}</p>
+						<div class="max-w-lg leading-relaxed">
+							{desc}
+						</div>
+					</div>
+
+					<!-- BG Blur -->
+					<div
+						class={`group-[:nth-of-type({3})_&]:-right-[10rem] group-[:nth-of-type({3})_&]:-left-[10rem] group-2:-left-[20rem] group-2:right-auto group-2:-right-[20rem] absolute -bottom-[20rem] z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:left-auto sm:-bottom-[10rem]`} />
+
+					{#if index === 0}
+						<div style="bg" class="w-ful h-64 sm:h-96 sm:w-[30rem]" />
+						<enhanced:img src={img} alt="img" loading="lazy" class="absolute inset-x-0 bottom-0 z-[50] h-64 rounded-xl sm:h-96" />
+					{:else}
+						<div class="relative z-50 h-64 sm:h-96 sm:max-w-[30rem]">
+							<enhanced:img src={img} alt="img" loading="lazy" class="h-full w-full rounded-xl" />
+						</div>
+					{/if}
+				</div>
+			{/each}
+		</div>
+
+		<Stars numStars={10} slot="background" />
+	</Section>
 
 	<Faq data={FaqData} />
 

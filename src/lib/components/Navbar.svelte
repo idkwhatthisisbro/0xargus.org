@@ -25,8 +25,8 @@
 	</a>
 
 	<!-- DESKTOP MENU -->
-	<div class="hidden md:flex md:items-center md:gap-12">
-		<div class="flex items-center justify-center gap-8 text-nowrap font-outfit text-lg font-medium text-white">
+	<div class="hidden w-full md:flex md:items-center md:gap-4">
+		<div class="flex w-full items-center justify-center gap-8 text-nowrap font-outfit text-lg font-medium text-white">
 			<a
 				aria-label="presale"
 				href={BASE_URL + '/presale'}
@@ -39,8 +39,8 @@
 					</div>
 				</div>
 			</a>
-			<a aria-label="about" href={BASE_URL + '#about'} class="duration-200 ease-in-out hover:text-neutral-300">About</a>
-			<a aria-label="features" href={BASE_URL + '#features'} class="hover:text-neutral-300">Features</a>
+			<a aria-label="about" href={BASE_URL + '#about'} class="hidden duration-200 ease-in-out hover:text-neutral-300 lg:flex">About</a>
+			<a aria-label="features" href={BASE_URL + '#features'} class="hidden hover:text-neutral-300 lg:flex">Features</a>
 			<a aria-label="how it works" href={BASE_URL + '#howitworks'} class="hover:text-neutral-300">How it works</a>
 			<a aria-label="faq" href={BASE_URL + '#faq'} class="hover:text-neutral-300">FAQ</a>
 		</div>
