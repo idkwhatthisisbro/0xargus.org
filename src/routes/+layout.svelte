@@ -1,6 +1,8 @@
 <script>
 	import '../app.pcss';
 	import { partytownSnippet } from '@builder.io/partytown/integration';
+	import '@fontsource-variable/outfit';
+	import '@fontsource/saira-stencil-one';
 </script>
 
 <div class="relative overflow-hidden font-outfit">

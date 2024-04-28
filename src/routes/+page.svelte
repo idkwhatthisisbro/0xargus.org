@@ -71,6 +71,31 @@
 			tag: 'Evolution'
 		}
 	];
+	const FaqData = [
+		{
+			trigger: 'What is Argus SentryAI?',
+			content: 'Argus SentryAI is our state-of-the-art monitoring system that scans for fraudulent activities across multiple chains, providing real-time protection for your digital assets.'
+		},
+		{
+			trigger: 'How does Argus protect against rug pulls?',
+			content: 'Our system detects large liquidity withdrawals and unauthorized contract changes. In the event of such activities, Argus executes protective transactions to secure your holdings.'
+		},
+		{
+			trigger: 'Can I trust Argus with my portfolio?',
+			content:
+				'Yes, with Argus Auto-Protect, you can safeguard your entire portfolio effortlessly. Our AI is constantly adapting to new threats, ensuring your investments are protected around the clock.'
+		},
+		{
+			trigger: 'How do I participate in the Argus presale?',
+			content:
+				"Joining the Argus presale is simple. Register on our platform, complete the necessary KYC verification, and you'll be eligible to participate in the presale event. Stay tuned for more details on dates and allocation sizes."
+		},
+		{
+			trigger: 'What does Argus whitelisting mean?',
+			content:
+				'Argus whitelisting refers to the process of adding your wallet address to a list of approved participants for our services. This ensures that you have exclusive access to certain features and offerings, such as early investment opportunities or special transactions within the Argus ecosystem.'
+		}
+	];
 
 	// We are using writables for the nodes and edges to sync them easily. When a user drags a node for example, Svelte Flow updates its position.
 	let nodes = writable<Node[]>([
@@ -176,7 +201,6 @@
 			sourcePosition: 'top'
 		}
 	]);
-
 	// same for edges
 	const edges = writable([
 		{
@@ -264,35 +288,9 @@
 		}
 	]);
 
-	const FaqData = [
-		{
-			trigger: 'What is Argus SentryAI?',
-			content: 'Argus SentryAI is our state-of-the-art monitoring system that scans for fraudulent activities across multiple chains, providing real-time protection for your digital assets.'
-		},
-		{
-			trigger: 'How does Argus protect against rug pulls?',
-			content: 'Our system detects large liquidity withdrawals and unauthorized contract changes. In the event of such activities, Argus executes protective transactions to secure your holdings.'
-		},
-		{
-			trigger: 'Can I trust Argus with my portfolio?',
-			content:
-				'Yes, with Argus Auto-Protect, you can safeguard your entire portfolio effortlessly. Our AI is constantly adapting to new threats, ensuring your investments are protected around the clock.'
-		},
-		{
-			trigger: 'How do I participate in the Argus presale?',
-			content:
-				"Joining the Argus presale is simple. Register on our platform, complete the necessary KYC verification, and you'll be eligible to participate in the presale event. Stay tuned for more details on dates and allocation sizes."
-		},
-		{
-			trigger: 'What does Argus whitelisting mean?',
-			content:
-				'Argus whitelisting refers to the process of adding your wallet address to a list of approved participants for our services. This ensures that you have exclusive access to certain features and offerings, such as early investment opportunities or special transactions within the Argus ecosystem.'
-		}
-	];
 </script>
 
 <Modal {...styles} classWindow="p-2 bg-bgPrimary rounded-3xl">
-	<!-- HERO -->
 	<MetaTags
 		title="WhiteList Now Open"
 		titleTemplate="0xArgus - %s"
@@ -322,6 +320,7 @@
 			imageAlt: 'Twitter image alt'
 		}} />
 
+	<!-- HERO -->
 	<main class={cn('b-red-500 relative z-30 mb-20 flex min-h-screen w-full flex-col items-center sm:mb-32')}>
 		<!-- ANNOUNCEMENT BANNER & NAVBAR -->
 		<div class="b-blue-500 z-50 grid w-full gap-5">
@@ -329,9 +328,7 @@
 			<Navbar />
 		</div>
 
-		<!-- ANNOUNCEMENT BANNER & NAVBAR END -->
-		<Stars numStars={5} />
-
+		<!-- CONTENT -->
 		<div class="w-full max-w-7xl">
 			<div class="flex w-full flex-col items-center justify-center px-4 sm:px-0">
 				<!-- HERO TITLE -->
@@ -362,6 +359,8 @@
 				<!-- WHITELIST BUTTON END -->
 			</div>
 		</div>
+
+		<Stars numStars={5} />
 
 		<!-- TODO: Make this effecient -->
 		<WavyBackground />
@@ -539,7 +538,7 @@
 						class={`group-[:nth-of-type({3})_&]:-right-[10rem] group-[:nth-of-type({3})_&]:-left-[10rem] group-2:-left-[20rem] group-2:right-auto group-2:-right-[20rem] absolute -bottom-[20rem] z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:left-auto sm:-bottom-[10rem]`} />
 
 					{#if index === 0}
-						<div style="bg" class="w-ful h-64 sm:h-96 sm:w-[30rem]" />
+						<div style="bg" class="h-64 w-full sm:h-96 sm:w-[30rem]" />
 						<enhanced:img src={img} alt="img" loading="lazy" class="absolute inset-x-0 bottom-0 z-[50] h-64 rounded-xl sm:h-96" />
 					{:else}
 						<div class="relative z-50 h-64 sm:h-96 sm:max-w-[30rem]">

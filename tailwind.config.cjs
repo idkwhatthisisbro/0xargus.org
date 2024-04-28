@@ -50,7 +50,6 @@ const config = {
 				// 	950: '#06000f',
 				// },
 			},
-
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 			},
@@ -83,7 +82,7 @@ const config = {
 		tailwindChildren,
 		tailwindForms({strategy: 'class'}),
 		tailwindAspectRatio,
-    tailwindContainerQueries,
+		tailwindContainerQueries,
 		addVariablesForColors,
 		function ({ matchUtilities, theme }: any) {
 			matchUtilities(

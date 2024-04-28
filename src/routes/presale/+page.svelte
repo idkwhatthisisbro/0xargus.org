@@ -129,7 +129,7 @@
 
 		<div class="relative grid w-full auto-rows-auto grid-cols-3 gap-4 px-8">
 			<!-- PRESALE CARD -->
-			<div class="@container relative col-span-full flex flex-col items-center justify-center gap-16 overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
+			<div class="relative col-span-full flex flex-col items-center justify-center gap-16 overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl @container">
 				<div class="flex flex-col items-center gap-3">
 					<h1 class="text-4xl font-semibold text-white">PHASE 1: GENESIS FOUNDERS PRESALE</h1>
 				</div>
@@ -143,8 +143,8 @@
 						WHAT DOES
 						<span
 							style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
-							class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
-							>$ARGUS
+							class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl">
+							$ARGUS
 						</span>
 						DO?
 					</h1>
