@@ -18,7 +18,7 @@
 </script>
 
 <section {id} class={cn('mt-4 grid w-full items-center justify-center gap-4 py-8 sm:mt-12 sm:py-16')}>
-	<h2 class={cn('z-[198] mx-auto py-2 text-center font-outfit text-4xl font-bold leading-snug text-neutral-300 sm:text-6xl', `${titleMaxWidth}`)}>
+	<h2 class={cn('z-[198] mx-auto py-2 text-center font-outfit text-4xl font-bold leading-snug text-neutral-300 sm:text-6xl w-full', `${titleMaxWidth}`)}>
 		{@html colorizeTitle()}
 	</h2>
 
