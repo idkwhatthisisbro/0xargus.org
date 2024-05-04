@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { format } from 'date-fns';
 	import Section from '$lib/layouts/Section.svelte';
-	import { MoveRight, ShieldEllipsis } from 'lucide-svelte';
+	import { InfoIcon, Mail, MoveRight, PersonStanding, Scale, ShieldEllipsis } from 'lucide-svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	// import SvelteOtp from '@k4ung/svelte-otp';
@@ -22,6 +22,7 @@
 	import { isSubscribed } from '$lib/stores/form.js';
 	import { MetaTags } from 'svelte-meta-tags';
 	import { focusOnMount } from '$lib/utils/focus.js';
+	import Logo from '$lib/assets/logo.png?enhanced';
 
 	export let data;
 
@@ -313,33 +314,40 @@
 						{#if $form.step === 0 && !verifications.email}
 							<!-- Full Name -->
 							<div class="grid gap-2">
-								<label for="name">Full Legal Name*</label>
-								<input
-									use:focusOnMount
-									aria-invalid={$errors.name ? 'true' : undefined}
-									type="text"
-									bind:value={$form.name}
-									disabled={$form.step > 1}
-									class={cn(
-										'form-input rounded-xl border-0 bg-neutral-700 px-6 py-6 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500',
-										$form.step > 0 && 'border-green-500 ring-green-500 '
-									)}
-									id="name"
-									placeholder="John Doe"
-									{...$constraints.name} />
+								<label for="name">Full Legal Name <span class="text-red-400">*</span></label>
+								<div class="relative">
+									<Scale class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
+									<InfoIcon class="absolute right-0 top-1/2 mx-4 -translate-y-1/2 transform text-indigo-400/75 " />
+									<input
+										class={cn(
+											'form-input h-full w-full rounded-xl border-0 bg-neutral-700 px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500',
+											$form.step > 0 && 'border-green-500 ring-green-500 '
+										)}
+										use:focusOnMount
+										aria-invalid={$errors.name ? 'true' : undefined}
+										type="text"
+										bind:value={$form.name}
+										disabled={$form.step > 1}
+										id="name"
+										placeholder="John Doe"
+										{...$constraints.name} />
+								</div>
 							</div>
 
 							<!-- Email -->
 							<div class="grid gap-2">
 								<label for="email">Email*</label>
-								<input
-									aria-invalid={$errors.email ? 'true' : undefined}
-									bind:value={$form.email}
-									class="form-input rounded-xl border-0 bg-neutral-700 px-6 py-6 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500"
-									id="email"
-									type="email"
-									placeholder="hello@moon.com"
-									{...$constraints.email} />
+								<div class="relative">
+									<Mail class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
+									<input
+										aria-invalid={$errors.email ? 'true' : undefined}
+										bind:value={$form.email}
+										class="form-input h-full w-full rounded-xl border-0 bg-neutral-700 px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500"
+										id="email"
+										type="email"
+										placeholder="hello@moon.com"
+										{...$constraints.email} />
+								</div>
 							</div>
 						{/if}
 						<!-- Verify Email -->
@@ -410,8 +418,8 @@
 						<!-- Info -->
 						{#if $form.step == 0 && !verifications.email}
 							<br />
-							<div class="flex items-center justify-center gap-x-4 rounded-xl border border-white/[0.1] px-8 py-6 text-base text-neutral-500 shadow-xl lg:items-start">
-								<ShieldEllipsis class="bg-gradient-tr min-h-6 min-w-6 text-blue-600 lg:h-8 lg:w-8" />
+							<div class="flex items-center justify-center gap-x-4 rounded-xl border border-white/[0.2] px-4 py-6 text-xs text-neutral-500 shadow-md sm:px-8 sm:text-base lg:items-start">
+								<ShieldEllipsis class="bg-gradient-tr min-h-6 min-w-6 text-xl text-indigo-500 sm:text-sm lg:h-8 lg:w-8" />
 
 								<p>ID Verification may be triggered if your using a VPN, if you have one on, please turn it off.</p>
 							</div>
