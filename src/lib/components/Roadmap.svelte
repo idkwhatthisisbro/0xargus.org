@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="flex w-5 w-full max-w-full flex-col gap-16">
+	class="flex w-full max-w-full flex-col gap-16">
 	<div>
 		<h1 class="text-6xl font-bold text-white">
 			ROADMAP
@@ -60,3 +60,4 @@
 		{/each}
 	</div>
 </div>
+
