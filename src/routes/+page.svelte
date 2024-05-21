@@ -179,8 +179,7 @@
 			data: { label: 'User subscribes contract via 0xArgus extension or Dapp' },
 			position: { x: 0, y: 0 },
 			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
-			class:
-				'flex ring-2 font-outfit ring-indigo-900 items-center justify-center rounded-xl',
+			class: 'flex ring-2 font-outfit ring-indigo-900 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			// @ts-ignore
 			sourcePosition: 'bottom',
@@ -324,8 +323,7 @@
 		openGraph={{
 			url: 'https://www.0xargus.org',
 			title: '0xArgus',
-			description:
-				'0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
+			description: '0xArgus Rug Pull Prevention Middleware for Ethereum, Solana, Arbitrum.',
 			images: [
 				{
 					url: 'https://0xargus.org/Banner.png',
@@ -544,8 +542,8 @@
 					of Crypto
 				</h3>
 				<p class="mx-auto mt-8 max-w-4xl text-center text-3xl text-neutral-300">
-					Turn Pro by harnessing the power of AI, add Argus to your arsenal with support
-					for over 8 chains.
+					Turn Pro by harnessing the power of AI, add Argus to your arsenal with support for over 8
+					chains.
 				</p>
 				<a
 					class="group m-auto mt-8 flex w-48 items-center justify-center rounded-full border border-purple-700/30 px-3 py-2 text-sm text-white shadow-md duration-200 ease-in-out"
@@ -567,8 +565,7 @@
 						'group-1:rounded-r container relative h-full p-4 backdrop-blur-3xl backdrop-filter sm:even:border-[6px] sm:even:border-purple-500/50 lg:odd:-mb-16'
 					)}>
 					<!-- Text -->
-					<div
-						class="shadow-3xl z-50 flex w-full flex-col space-y-4 p-4 text-neutral-300">
+					<div class="shadow-3xl z-50 flex w-full flex-col space-y-4 p-4 text-neutral-300">
 						<!-- Image -->
 						<div class="mb-4">
 							<div
@@ -604,11 +601,7 @@
 							class="absolute inset-x-0 bottom-0 z-[50] h-64 rounded-xl sm:h-96" />
 					{:else}
 						<div class="relative z-50 h-64 sm:h-96 sm:max-w-[30rem]">
-							<enhanced:img
-								src={img}
-								alt="img"
-								loading="lazy"
-								class="h-full w-full rounded-xl" />
+							<enhanced:img src={img} alt="img" loading="lazy" class="h-full w-full rounded-xl" />
 						</div>
 					{/if}
 				</div>

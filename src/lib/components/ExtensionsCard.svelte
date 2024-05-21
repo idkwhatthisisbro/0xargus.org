@@ -16,12 +16,14 @@
 		<p class="text-2xl font-semibold">Here, whenever - wherever</p>
 
 		<p class="text-xl leading-normal text-indigo-50">
-			Access Argus anywhere, from our webapp across all devices. With browser extensions for every major browser, and bots for telegram and discord. Argus is always with you.
+			Access Argus anywhere, from our webapp across all devices. With browser extensions for every
+			major browser, and bots for telegram and discord. Argus is always with you.
 
 			<br />
 			<br />
 
-			Get started with the Argus Beta today. Access our documentation to learn more about how Argus can protect your assets.
+			Get started with the Argus Beta today. Access our documentation to learn more about how Argus
+			can protect your assets.
 		</p>
 
 		<a
@@ -32,5 +34,9 @@
 		</a>
 	</div>
 
-	<enhanced:img src={SupportCardImage} loading="lazy" class="rounded-xl opacity-90 shadow-lg" alt="support" />
+	<enhanced:img
+		src={SupportCardImage}
+		loading="lazy"
+		class="rounded-xl opacity-90 shadow-lg"
+		alt="support" />
 </div>

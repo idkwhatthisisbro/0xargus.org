@@ -62,7 +62,8 @@
 
 				if (key == 'phone') {
 					// @ts-ignore
-					newForm['phone'] = respData['step'] > 0 ? { number: respData['phone'] || '', otp: '' } : respData['phone'];
+					newForm['phone'] =
+						respData['step'] > 0 ? { number: respData['phone'] || '', otp: '' } : respData['phone'];
 					return;
 				}
 				// @ts-ignore
@@ -109,39 +110,43 @@
 		const channel = supabase
 			.channel('schema-db-changes')
 			// TODO: Filter isn't working
-			.on('postgres_changes', { event: 'UPDATE', schema: 'public', filter: `email=eq.${$form.email}` }, (payload) => {
-				let newStep: number;
+			.on(
+				'postgres_changes',
+				{ event: 'UPDATE', schema: 'public', filter: `email=eq.${$form.email}` },
+				(payload) => {
+					let newStep: number;
 
-				if (!(payload.new.email == $form.email)) {
-					return;
+					if (!(payload.new.email == $form.email)) {
+						return;
+					}
+
+					if (payload.new.phone_confirmed_at) {
+						console.log('ran');
+						verifications.phone = false;
+						newStep = 2;
+
+						// Set subscribe store to true, if step is 2 [1/2]
+						isSubscribed.set({ subscribed: true, email: payload.new.email });
+						payload.new.step != 2 && handleStep(2);
+					} else if (payload.new.email_confirmed_at) {
+						verifications.email = false;
+						newStep = 1;
+						// Turns phone from null to object if user confirms email
+						$form.phone = { number: '', otp: '' };
+						payload.new.step != 1 && handleStep(1);
+					} else {
+						return;
+					}
+
+					form.update(
+						(form) => {
+							form.step = newStep;
+							return form;
+						},
+						{ taint: false }
+					);
 				}
-
-				if (payload.new.phone_confirmed_at) {
-					console.log('ran');
-					verifications.phone = false;
-					newStep = 2;
-
-					// Set subscribe store to true, if step is 2 [1/2]
-					isSubscribed.set({ subscribed: true, email: payload.new.email });
-					payload.new.step != 2 && handleStep(2);
-				} else if (payload.new.email_confirmed_at) {
-					verifications.email = false;
-					newStep = 1;
-					// Turns phone from null to object if user confirms email
-					$form.phone = { number: '', otp: '' };
-					payload.new.step != 1 && handleStep(1);
-				} else {
-					return;
-				}
-
-				form.update(
-					(form) => {
-						form.step = newStep;
-						return form;
-					},
-					{ taint: false }
-				);
-			})
+			)
 			.subscribe();
 
 		// TODO: fix cleanup on supabase subscription
@@ -207,7 +212,18 @@
 			subheader: 'You have successfully verified your identity.'
 		}
 	];
-	const { allErrors, form, message, enhance, errors, submitting, constraints, submit, capture, restore } = superForm(data.form, {
+	const {
+		allErrors,
+		form,
+		message,
+		enhance,
+		errors,
+		submitting,
+		constraints,
+		submit,
+		capture,
+		restore
+	} = superForm(data.form, {
 		validators: zod(whitelistSchema),
 		dataType: 'json',
 		id: 'verification',
@@ -216,12 +232,21 @@
 		onUpdated: (event) => {
 			console.log($errors);
 			event.form.valid &&
-				(($form.step === 0 && (verifications.email = true)) || ($form.step === 1 && $message != 'Error sending phone change otp' && !$form._prevent_verification && (verifications.phone = true)));
+				(($form.step === 0 && (verifications.email = true)) ||
+					($form.step === 1 &&
+						$message != 'Error sending phone change otp' &&
+						!$form._prevent_verification &&
+						(verifications.phone = true)));
 		}
 	});
 	export const snapshot = { capture, restore };
 
-	$: currentHeaderText = (verifications.email && text[1]) || (verifications.phone && text[3]) || ($form.step == 1 && text[2]) || ($form.step == 2 && text[4]) || text[$form.step];
+	$: currentHeaderText =
+		(verifications.email && text[1]) ||
+		(verifications.phone && text[3]) ||
+		($form.step == 1 && text[2]) ||
+		($form.step == 2 && text[4]) ||
+		text[$form.step];
 
 	$: {
 		if ($form.email && browser) {
@@ -236,7 +261,8 @@
 		// For example, you might want to create a derived value that
 		// indicates if the form is valid or not, or if certain conditions are met
 		// This is just a placeholder logic, replace it with actual requirements
-		const isFormValid = $form.step !== undefined && $form.email !== undefined && $form.phone !== undefined;
+		const isFormValid =
+			$form.step !== undefined && $form.email !== undefined && $form.phone !== undefined;
 		return {
 			...$form,
 			isFormValid
@@ -283,10 +309,15 @@
 <div class="mt-8 flex flex-col items-center justify-center sm:mt-12">
 	<Section maxWidth="4xl" class="w-full text-white">
 		{#if !loading}
-			<div class="relative min-h-[900px] rounded-xl border border-white/[0.2] bg-neutral-900 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
-				<div class="relative -top-12 mx-auto -mt-8 flex h-24 w-24 items-center justify-center rounded-full border-b-4 border-white/[0.2] bg-neutral-950 pb-4 sm:mb-12 md:-mt-16 lg:-mt-24">
+			<div
+				class="relative min-h-[900px] rounded-xl border border-white/[0.2] bg-neutral-900 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
+				<div
+					class="relative -top-12 mx-auto -mt-8 flex h-24 w-24 items-center justify-center rounded-full border-b-4 border-white/[0.2] bg-neutral-950 pb-4 sm:mb-12 md:-mt-16 lg:-mt-24">
 					<div class="absolute inset-0">
-						<enhanced:img src="$lib/assets/logo.png?enhanced" alt="logo" class="p-6 drop-shadow-2xl sm:p-4" />
+						<enhanced:img
+							src="$lib/assets/logo.png?enhanced"
+							alt="logo"
+							class="p-6 drop-shadow-2xl sm:p-4" />
 					</div>
 				</div>
 				<div class="group flex w-full items-center justify-center gap-x-4">
@@ -344,12 +375,17 @@
 						{/if}
 						<!-- Verify Email -->
 						{#if $form.step === 0 && verifications.email}
-							<div class="flex h-[400px] flex-col items-center gap-4 rounded-xl bg-neutral-800 p-12 font-outfit text-neutral-100">
+							<div
+								class="flex h-[400px] flex-col items-center gap-4 rounded-xl bg-neutral-800 p-12 font-outfit text-neutral-100">
 								<div class="w-32 rounded-lg">
 									<CustomLottiePlayer loop={true} src={'/mail2.json'} />
 								</div>
-								<p class="text-center text-3xl font-bold leading-relaxed text-neutral-50">You're Almost There!</p>
-								<p class="text-center text-xl">Please verify your email {$form.email} to continue.</p>
+								<p class="text-center text-3xl font-bold leading-relaxed text-neutral-50">
+									You're Almost There!
+								</p>
+								<p class="text-center text-xl">
+									Please verify your email {$form.email} to continue.
+								</p>
 							</div>
 						{/if}
 						<!-- Phone -->
@@ -357,10 +393,13 @@
 							<div class="grid gap-2">
 								<label for="phone">Phone</label>
 								<PhoneInput bind:value={$form.phone.number} />
-								<p class="{$errors.phone?.number || 'invisible'} text-sm text-red-500">{$errors.phone?.number || ''}</p>
+								<p class="{$errors.phone?.number || 'invisible'} text-sm text-red-500">
+									{$errors.phone?.number || ''}
+								</p>
 
 								{#if $message}
-									<span class="text-red-500"> {$message} - Please contact support at support@0xArgus.org to finish verification.</span>
+									<span class="text-red-500">
+										{$message} - Please contact support at support@0xArgus.org to finish verification.</span>
 								{/if}
 							</div>
 						{/if}
@@ -389,7 +428,8 @@
 								<!-- Error -->
 								<p class="text-xl text-neutral-300">
 									{#if $message}
-										<span class="text-red-500"> {$message} - Please contact support at support@0xArgus.org to finish verification.</span>
+										<span class="text-red-500">
+											{$message} - Please contact support at support@0xArgus.org to finish verification.</span>
 									{:else}
 										Sent to mobile {$form.phone.number} -
 									{/if}
@@ -402,7 +442,9 @@
 												submit();
 											}
 										}}
-										class="text-blue-600 underline underline-offset-2 duration-200 ease-in-out {time ? 'cursor-default text-neutral-500' : 'text-blue-600 hover:text-blue-700'}"
+										class="text-blue-600 underline underline-offset-2 duration-200 ease-in-out {time
+											? 'cursor-default text-neutral-500'
+											: 'text-blue-600 hover:text-blue-700'}"
 										>{time ? `resend in ${time}` : 'Resend Code'}</button>
 								</p>
 							</div>
@@ -410,10 +452,15 @@
 						<!-- Info -->
 						{#if $form.step == 0 && !verifications.email}
 							<br />
-							<div class="flex items-center justify-center gap-x-4 rounded-xl border border-white/[0.1] px-8 py-6 text-base text-neutral-500 shadow-xl lg:items-start">
-								<ShieldEllipsis class="bg-gradient-tr min-h-6 min-w-6 text-blue-600 lg:h-8 lg:w-8" />
+							<div
+								class="flex items-center justify-center gap-x-4 rounded-xl border border-white/[0.1] px-8 py-6 text-base text-neutral-500 shadow-xl lg:items-start">
+								<ShieldEllipsis
+									class="bg-gradient-tr min-h-6 min-w-6 text-blue-600 lg:h-8 lg:w-8" />
 
-								<p>ID Verification may be triggered if your using a VPN, if you have one on, please turn it off.</p>
+								<p>
+									ID Verification may be triggered if your using a VPN, if you have one on, please
+									turn it off.
+								</p>
 							</div>
 						{/if}
 
@@ -434,14 +481,18 @@
 										verifications.phone = false;
 									}}
 									type="button"
-									class={cn('mt-12 h-full w-full flex-grow rounded-lg bg-neutral-700 px-8 py-6 shadow-xl duration-200 ease-in-out hover:bg-neutral-700')}>Go Back</button>
+									class={cn(
+										'mt-12 h-full w-full flex-grow rounded-lg bg-neutral-700 px-8 py-6 shadow-xl duration-200 ease-in-out hover:bg-neutral-700'
+									)}>Go Back</button>
 							{:else}
 								{@const disabled = !!$allErrors.length || $submitting}
 								<button
 									aria-label="continue"
 									{disabled}
 									class={cn(
-										disabled ? 'cursor-not-allowed bg-neutral-700' : 'bg-gradient-radial from-indigo-500/80 to-indigo-700/80 hover:bg-indigo-600',
+										disabled
+											? 'cursor-not-allowed bg-neutral-700'
+											: 'bg-gradient-radial from-indigo-500/80 to-indigo-700/80 hover:bg-indigo-600',
 										'flex-grow-2 mx-auto mt-12 w-full rounded-lg',
 										'px-8 py-6 shadow-xl outline-none duration-300 ease-in-out',
 										'-disabled:border -disabled:border-white/[0.2] disabled:cursor-not-allowed disabled:bg-neutral-500 disabled:text-neutral-200',
@@ -460,7 +511,8 @@
 					</form>
 				{:else}
 					<!-- Success Receipt -->
-					<div class="rounded-xl bg-gradient-radial from-white/95 via-neutral-200 to-neutral-100/95 px-12 py-12 shadow-xl backdrop-blur-3xl backdrop-filter">
+					<div
+						class="rounded-xl bg-gradient-radial from-white/95 via-neutral-200 to-neutral-100/95 px-12 py-12 shadow-xl backdrop-blur-3xl backdrop-filter">
 						<h3 class="mt-8 text-2xl font-medium text-neutral-700">Registration Details</h3>
 						<hr class="mt-2 border-neutral-700" />
 						<div class="mt-4 flex justify-around">
@@ -483,8 +535,10 @@
 
 						<p class="mt-6 font-bold tracking-wide text-neutral-500">ABOUT DEPOSITS</p>
 						<p class="leading-normal text-neutral-900">
-							Your purchase will be confirmed when your deposit clears. If your deposit doesn’t clear immediately, that’s fine – you have until {formattedLastInvestmentDay} to finalize your purchase. If
-							you secure an allocation and do not fund your allocation by the deadline, you will be unable to secure future allocations in 0xArgus sales.
+							Your purchase will be confirmed when your deposit clears. If your deposit doesn’t
+							clear immediately, that’s fine – you have until {formattedLastInvestmentDay} to finalize
+							your purchase. If you secure an allocation and do not fund your allocation by the deadline,
+							you will be unable to secure future allocations in 0xArgus sales.
 						</p>
 						<p class="mt-6 font-bold tracking-wide text-neutral-500">WHEN WILL I RECEIVE TOKENS?</p>
 						<p class="leading-normal text-neutral-700">

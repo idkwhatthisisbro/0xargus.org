@@ -52,10 +52,8 @@
 				aria-label="features"
 				href={BASE_URL + '#features'}
 				class="hidden hover:text-neutral-300 lg:flex">Features</a>
-			<a
-				aria-label="how it works"
-				href={BASE_URL + '#howitworks'}
-				class="hover:text-neutral-300">How it works</a>
+			<a aria-label="how it works" href={BASE_URL + '#howitworks'} class="hover:text-neutral-300"
+				>How it works</a>
 			<a aria-label="faq" href={BASE_URL + '#faq'} class="hover:text-neutral-300">FAQ</a>
 		</div>
 

@@ -23,7 +23,8 @@
 	export let valid = true;
 	export let options = { invalidateOnCountryChange: true };
 
-	$: selectedCountryDialCode = normalizedCountries.find((el) => el.iso2 === selectedCountry)?.dialCode || '';
+	$: selectedCountryDialCode =
+		normalizedCountries.find((el) => el.iso2 === selectedCountry)?.dialCode || '';
 
 	const toggleDropDown = (e) => {
 		e?.preventDefault();
@@ -75,7 +76,11 @@
 	const handleSelect = (val, e?) => {
 		if (disabled) return;
 		e?.preventDefault();
-		if (selectedCountry === undefined || selectedCountry === null || (typeof selectedCountry === typeof val && selectedCountry !== val)) {
+		if (
+			selectedCountry === undefined ||
+			selectedCountry === null ||
+			(typeof selectedCountry === typeof val && selectedCountry !== val)
+		) {
 			selectedCountry = val;
 			onChange(val);
 			selectClick();
@@ -93,7 +98,10 @@
 </script>
 
 {#if selectedCountry}
-	<div class="relative flex rounded-lg duration-200 ease-in-out {!valid ? `ring-2 ring-red-500 focus-within:ring-offset-red-500/50 focus:outline-none ` : ``}">
+	<div
+		class="relative flex rounded-lg duration-200 ease-in-out {!valid
+			? `ring-2 ring-red-500 focus-within:ring-offset-red-500/50 focus:outline-none `
+			: ``}">
 		<div class="flex" use:clickOutsideAction={closeOnClickOutside}>
 			<button
 				id="states-button"
@@ -114,8 +122,16 @@
 				{:else}
 					Please select
 				{/if}
-				<svg aria-hidden="true" class="ml-1 h-4 w-4 {isOpen ? 'rotate-180' : ''}" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-					<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+				<svg
+					aria-hidden="true"
+					class="ml-1 h-4 w-4 {isOpen ? 'rotate-180' : ''}"
+					fill="currentColor"
+					viewBox="0 0 20 20"
+					xmlns="http://www.w3.org/2000/svg">
+					<path
+						fill-rule="evenodd"
+						d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+						clip-rule="evenodd" />
 				</svg>
 			</button>
 			{#if isOpen}
@@ -128,7 +144,10 @@
 					aria-orientation="vertical"
 					aria-labelledby="country-button"
 					tabindex="-1">
-					<div class="max-h-48 overflow-y-auto text-lg text-neutral-300" aria-labelledby="countries-button" role="listbox">
+					<div
+						class="max-h-48 overflow-y-auto text-lg text-neutral-300"
+						aria-labelledby="countries-button"
+						role="listbox">
 						<input
 							aria-autocomplete="list"
 							type="text"
@@ -144,7 +163,9 @@
 									type="button"
 									class="inline-flex w-full overflow-hidden px-4 py-2 text-lg
                              hover:bg-neutral-600 active:bg-neutral-600
-                            {isActive ? 'bg-neutral-600 text-neutral-200' : 'text-neutral-300 hover:text-white'}"
+                            {isActive
+										? 'bg-neutral-600 text-neutral-200'
+										: 'text-neutral-300 hover:text-white'}"
 									on:click={(e) => {
 										handleSelect(country.iso2, e);
 									}}>

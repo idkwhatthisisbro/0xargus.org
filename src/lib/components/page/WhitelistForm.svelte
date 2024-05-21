@@ -114,7 +114,8 @@
 			{#if $isSubmitting}
 				<Circle size="16" color="#fff" unit="px" duration="1s" />
 			{:else}
-				<div class="hidden rounded-full bg-zinc-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-zinc-600 sm:block">
+				<div
+					class="hidden rounded-full bg-zinc-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-zinc-600 sm:block">
 					<MailPlus class="m-auto h-4 w-4 rounded-full text-xs" />
 				</div>
 
@@ -130,10 +131,12 @@
 </form>
 
 {#if id === 'whitelist-hero'}
-	<div class="z-50 mt-8 hidden items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-zinc-600 sm:flex">
+	<div
+		class="z-50 mt-8 hidden items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-zinc-600 sm:flex">
 		<Clock class="hidden w-5 sm:block" />
 		<p>
-			<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible genesis founder slots remaining.
+			<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible
+			genesis founder slots remaining.
 		</p>
 	</div>
 {/if}

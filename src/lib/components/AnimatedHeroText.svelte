@@ -29,13 +29,16 @@
 </script>
 
 <div class="relative mb-24 h-full text-center font-outfit text-4xl text-white sm:mt-6">
-	<h1 class="bg-gradient-to-r from-neutral-50/80 via-neutral-200 to-neutral-50 bg-clip-text font-outfit text-4xl font-medium text-transparent">
+	<h1
+		class="bg-gradient-to-r from-neutral-50/80 via-neutral-200 to-neutral-50 bg-clip-text font-outfit text-4xl font-medium text-transparent">
 		Introducing RugPull Prevention Middleware for
 
 		<div class="relative z-40 inline-block h-full">
 			<div class="relative z-[51]">
 				{#if !started}
-					<div class="absolute z-[100] h-32 font-outfit font-semibold text-brand-ethereum">Ethereum</div>
+					<div class="absolute z-[100] h-32 font-outfit font-semibold text-brand-ethereum">
+						Ethereum
+					</div>
 				{:else}
 					{#key currentIndex}
 						<div

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-   export let src: string;
-   export let autoplay = true
-   export let loop = true
-   export let renderer = 'svg'
-   export let background = 'transparent'
-   export let classList = ''
+	export let src: string;
+	export let autoplay = true;
+	export let loop = true;
+	export let renderer = 'svg';
+	export let background = 'transparent';
+	export let classList = '';
 
 	let LottiePlayer: typeof import('@lottiefiles/svelte-lottie-player');
 

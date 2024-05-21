@@ -5,11 +5,4 @@ import GlowingStarsTitle from './GlowingStarsTitle.svelte';
 import Illustration from './Illustration.svelte';
 import Star from './Star.svelte';
 
-export {
-	Glow,
-	GlowingStarsDescription,
-	GlowingStarsBackgroundCard,
-	GlowingStarsTitle,
-	Illustration,
-	Star
-};
+export { Glow, GlowingStarsDescription, GlowingStarsBackgroundCard, GlowingStarsTitle, Illustration, Star };
