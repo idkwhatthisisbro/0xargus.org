@@ -4,7 +4,7 @@
 	import { tweened } from 'svelte/motion';
 	import { backOut } from 'svelte/easing';
 
-	const words = ['Ethereum', 'Solana', 'Arbitrum'];
+	const words = ['Ethereum', 'BSC', 'Solana', 'Polygon'];
 	let currentIndex = 0;
 	let width = 0;
 	let started = false;

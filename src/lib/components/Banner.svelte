@@ -128,7 +128,7 @@
 
 							<a
 								aria-label="join the whitelist"
-								href="https://verifications.0xargus.org"
+								href="/verification"
 								class={cn([
 									// mobile
 									'flex w-max rounded-md border border-indigo-500 p-1',
@@ -143,7 +143,7 @@
 			{/if}
 			<a
 				aria-label="Join the whitelist"
-				href="https://verifications.0xargus.org"
+				href="/verification"
 				class={cn([
 					// desktop
 					'font-regular rounded-md border border-indigo-500 px-4 py-1 lg:flex',

@@ -315,7 +315,10 @@
 		</div>
 
 		<!-- ROADMAP -->
-		<Roadmap {data} />
+		<div class="flex w-full flex-col gap-16">
+			<h1 class="w-full text-6xl font-bold text-white">ROADMAP</h1>
+			<Roadmap {data} />
+		</div>
 	</main>
 
 	<Footer />

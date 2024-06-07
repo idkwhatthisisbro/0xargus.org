@@ -1,4 +1,4 @@
-<footer class="w-full rounded-lg shadow">
+<footer class="z-10 w-full rounded-lg shadow">
 	<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
 		<div class="sm:flex sm:items-center sm:justify-between">
 			<a

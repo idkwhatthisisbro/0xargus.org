@@ -3,7 +3,7 @@
 		title: string;
 		objective: string;
 		details: string;
-		status: 'IN PROGRESS' | 'COMING SOON' | 'COMPLETED';
+		status: 'COMING SOON' | 'IN PROGRESS' | 'COMPLETED';
 		date: string;
 		cardBg: string;
 	}[] = [];
@@ -11,33 +11,33 @@
 
 <div class="flex w-full max-w-full flex-col gap-16">
 	<div class="flex w-full max-w-full snap-x snap-mandatory overflow-x-auto scroll-smooth">
-		{#each data as { title, objective, details, status, date, cardBg }, i}
+		{#each data as { title, objective, details, status, date }, i}
 			{#if i < 6}
 				<div
-					class={`flex h-[800px] min-w-[500px] snap-start snap-always flex-col gap-8 p-14 text-white ${cardBg}`}>
-					{#if i === 0}
-						<div class="w-full text-start">
-							<h1
-								class="text-4xl font-medium text-white underline decoration-fuchsia-600 underline-offset-8 [text-decoration-thickness:8px]">
-								ROADMAP
-							</h1>
-						</div>
-					{/if}
+					class={`relative flex min-w-[500px] snap-start snap-always flex-col gap-12 bg-[url('$lib/assets/subtle-prism.svg')] bg-cover bg-center p-8 text-white`}>
+					<div
+						class="absolute inset-0 bg-black"
+						class:opacity-90={status === 'COMING SOON'}
+						class:opacity-40={status === 'IN PROGRESS'}
+						class:opacity-80={status === 'COMPLETED'}>
+					</div>
+					<!-- STATUS -->
+					<div
+						class="z-10 px-4 text-3xl"
+						class:text-yellow-600={status === 'IN PROGRESS'}
+						class:text-fuchsia-600={status === 'COMING SOON'}
+						class:text-green-600={status === 'COMPLETED'}>
+						<h2 class="font-semibold">{status}</h2>
+						<h2 class="font-thin">{date}</h2>
+					</div>
 
-					<!-- CONTENT -->
-					<div class="mt-auto flex h-[85%] flex-col gap-4">
+					<div
+						class="z-10 flex h-full flex-col gap-2 rounded-lg border-2 bg-[#0E0C15] bg-opacity-70 p-4"
+						class:border-yellow-600={status === 'IN PROGRESS'}
+						class:border-fuchsia-600={status === 'COMING SOON'}
+						class:border-green-600={status === 'COMPLETED'}>
 						<!-- TITLE -->
 						<h2 class="text-2xl font-bold uppercase text-white">{title}</h2>
-
-						<!-- STATUS -->
-						<div
-							class="text-3xl"
-							class:text-yellow-600={status === 'IN PROGRESS'}
-							class:text-fuchsia-600={status === 'COMING SOON'}
-							class:text-green-600={status === 'COMPLETED'}>
-							<h2 class="font-semibold">{status}</h2>
-							<h2 class="font-thin">{date}</h2>
-						</div>
 
 						<!-- OBJECTIVE -->
 						<div class="mt-4 flex flex-col gap-1">
@@ -66,8 +66,8 @@
 
 							<ul>
 								{#each details as detail}
-									<li class="mb-2">
-										<strong class="uppercase">{detail.split(':')[0]}:</strong><br />
+									<li class="mb-4">
+										<strong class="uppercase underline">{detail.split(':')[0]}:</strong><br />
 										{detail.split(':')[1]}
 									</li>
 								{/each}
