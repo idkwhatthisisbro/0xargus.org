@@ -17,10 +17,18 @@
 	}
 </script>
 
-<section {id} class={cn('mt-4 grid w-full items-center justify-center gap-4 py-8 sm:mt-12 sm:py-16')}>
-	<h2 class={cn('z-[198] mx-auto py-2 text-center font-outfit text-4xl font-bold leading-snug text-neutral-300 sm:text-6xl w-full', `${titleMaxWidth}`)}>
+<section
+	{id}
+	class={cn('mt-4 grid w-full items-center justify-center gap-4 py-8 sm:mt-12 sm:py-16')}>
+	<h2
+		class={cn(
+			'z-[198] mx-auto w-full py-2 text-center font-outfit text-4xl font-bold leading-snug text-neutral-300 sm:text-6xl',
+			`${titleMaxWidth}`
+		)}>
 		{@html colorizeTitle()}
 	</h2>
 
-	<h3 class="m-auto mt-4 max-w-4xl text-center text-xl text-neutral-300 sm:mt-8 sm:text-3xl">{subtitle}</h3>
+	<h3 class="m-auto mt-4 max-w-4xl text-center text-xl text-neutral-300 sm:mt-8 sm:text-3xl">
+		{subtitle}
+	</h3>
 </section>

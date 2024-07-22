@@ -20,11 +20,30 @@
 			class="absolute animate-spin"
 			style="left: {position.x}%; top: {position.y}%; animation-duration: {position.duration}s; animation-delay: {position.delay}ms;"
 			on:animationend={() => (stars[i] = starProperties())}>
-			<svg class="animate-scale-in-out block" style="animation-duration: {position.duration}s;" width="20" height="20" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M15.527 29.8867L16.4373 15.3762H14.5117L15.527 29.8867Z" fill="#FFFFFF" opacity={position.brightness}></path>
-				<path d="M15.4395 0.883957L14.5117 15.377H16.4373L15.4395 0.883957Z" fill="#FFFFFF" opacity={position.brightness}></path>
-				<path d="M30.0024 15.3394L15.4727 14.4128V16.3359L30.0024 15.3394Z" fill="#FFFFFF" opacity={position.brightness}></path>
-				<path d="M0.962891 15.4268L15.4752 16.3359V14.4128L0.962891 15.4268Z" fill="#FFFFFF" opacity={position.brightness}></path>
+			<svg
+				class="animate-scale-in-out block"
+				style="animation-duration: {position.duration}s;"
+				width="20"
+				height="20"
+				viewBox="0 0 31 30"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M15.527 29.8867L16.4373 15.3762H14.5117L15.527 29.8867Z"
+					fill="#FFFFFF"
+					opacity={position.brightness}></path>
+				<path
+					d="M15.4395 0.883957L14.5117 15.377H16.4373L15.4395 0.883957Z"
+					fill="#FFFFFF"
+					opacity={position.brightness}></path>
+				<path
+					d="M30.0024 15.3394L15.4727 14.4128V16.3359L30.0024 15.3394Z"
+					fill="#FFFFFF"
+					opacity={position.brightness}></path>
+				<path
+					d="M0.962891 15.4268L15.4752 16.3359V14.4128L0.962891 15.4268Z"
+					fill="#FFFFFF"
+					opacity={position.brightness}></path>
 			</svg>
 		</span>
 	{/each}

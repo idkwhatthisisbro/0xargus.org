@@ -1,4 +1,5 @@
-<div class="relative h-[900px] w-full animate-pulse space-y-4 rounded-xl bg-neutral-800 px-12 py-24 pb-32">
+<div
+	class="relative h-[900px] w-full animate-pulse space-y-4 rounded-xl bg-neutral-800 px-12 py-24 pb-32">
 	<div class="group flex w-full items-center justify-center gap-x-4">
 		{#each Array(3) as _, i}
 			<!-- <div class="relative flex items-center justify-center rounded-full border border-white/[0.3] p-1"> -->

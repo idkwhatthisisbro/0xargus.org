@@ -26,7 +26,10 @@
 			let dynamicLength = Math.max(1, scrollYProgress * svgHeight * 0.5);
 			dynamicLength = Math.min(dynamicLength, svgHeight * 0.2);
 
-			baseY = Math.max(0, Math.min(svgHeight - dynamicLength, baseY + (scrollDelta > 0 ? velo * 75 : -velo * 75)));
+			baseY = Math.max(
+				0,
+				Math.min(svgHeight - dynamicLength, baseY + (scrollDelta > 0 ? velo * 75 : -velo * 75))
+			);
 
 			y1.set(baseY);
 			y2.set(baseY + dynamicLength);
@@ -47,15 +50,39 @@
 			style="box-shadow: {scrollYProgress > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}">
 			<div
 				class="h-2 w-2 rounded-full border border-neutral-300 bg-white"
-				style="background-color: {scrollYProgress > 0 ? 'white' : 'var(--purple-500)'}; border-color: {scrollYProgress > 0 ? 'white' : 'var(--purple-600)'}">
+				style="background-color: {scrollYProgress > 0
+					? 'white'
+					: 'var(--purple-500)'}; border-color: {scrollYProgress > 0
+					? 'white'
+					: 'var(--purple-600)'}">
 			</div>
 		</div>
 
-		<svg viewBox={`0 0 20 ${svgHeight}`} width="20" height={svgHeight} class="ml-4 hidden lg:block" aria-hidden="true">
-			<path d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.97} l -18 24V ${svgHeight}`} fill="none" stroke="#9091A0" stroke-opacity="0.16" />
-			<path d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.97} l -18 24V ${svgHeight}`} fill="none" stroke="url(#gradient)" stroke-width="4" class="motion-reduce:hidden" />
+		<svg
+			viewBox={`0 0 20 ${svgHeight}`}
+			width="20"
+			height={svgHeight}
+			class="ml-4 hidden lg:block"
+			aria-hidden="true">
+			<path
+				d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.97} l -18 24V ${svgHeight}`}
+				fill="none"
+				stroke="#9091A0"
+				stroke-opacity="0.16" />
+			<path
+				d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.97} l -18 24V ${svgHeight}`}
+				fill="none"
+				stroke="url(#gradient)"
+				stroke-width="4"
+				class="motion-reduce:hidden" />
 			<defs>
-				<linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1={$y1} y2={$y2}>
+				<linearGradient
+					id="gradient"
+					gradientUnits="userSpaceOnUse"
+					x1="0"
+					x2="0"
+					y1={$y1}
+					y2={$y2}>
 					<stop offset="0%" stop-color="transparent" stop-opacity="0"></stop>
 					<stop offset="10%" stop-color="transparent" stop-opacity="1"></stop>
 					<stop offset="0.325" stop-color="#6344F5"></stop>

@@ -18,7 +18,11 @@
 
 		try {
 			// check if user exists
-			const { data, error } = await supabase.from('users').select('*').eq('tg_id', user?.id).single();
+			const { data, error } = await supabase
+				.from('users')
+				.select('*')
+				.eq('tg_id', user?.id)
+				.single();
 			data ? (registeredStatus = true) : (registeredStatus = false);
 		} catch (error) {}
 	});

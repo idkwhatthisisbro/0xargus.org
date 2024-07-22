@@ -19,5 +19,7 @@
 	exit={{
 		opacity: 0
 	}}>
-	<div use:motion class="absolute left-1/2 z-10 h-[4px] w-[4px] -translate-x-1/2 rounded-full bg-purple-500 shadow-2xl shadow-purple-400 blur-[1px]" />
+	<div
+		use:motion
+		class="absolute left-1/2 z-10 h-[4px] w-[4px] -translate-x-1/2 rounded-full bg-purple-500 shadow-2xl shadow-purple-400 blur-[1px]" />
 </Motion>

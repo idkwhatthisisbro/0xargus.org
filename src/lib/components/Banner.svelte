@@ -30,7 +30,11 @@
 				'lg:gap-4'
 			])}>
 			{#if Countdown && showBanner}
-				<Countdown from={PRESALE_DATE} dateFormat="YYYY-MM-DD H:m:s" zone="Etc/Universal" let:remaining>
+				<Countdown
+					from={PRESALE_DATE}
+					dateFormat="YYYY-MM-DD H:m:s"
+					zone="Etc/Universal"
+					let:remaining>
 					<div
 						class={cn([
 							'flex',
@@ -61,7 +65,9 @@
 								</span>
 							{/if}
 
-							<p class="font-outfit text-sm font-bold tracking-wide md:hidden">$ARGUS PRESALE IN:</p>
+							<p class="font-outfit text-sm font-bold tracking-wide md:hidden">
+								$ARGUS PRESALE IN:
+							</p>
 						</div>
 
 						<div
@@ -87,23 +93,31 @@
 
 								<div class="flex justify-between gap-2 md:w-[330px]">
 									{#if remaining.done === false}
-										<span class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
-											<span class="text-xl font-bold text-white lg:text-2xl">{remaining.totalDays}</span>
+										<span
+											class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
+											<span class="text-xl font-bold text-white lg:text-2xl"
+												>{remaining.totalDays}</span>
 											{remaining.totalDays == 1 ? 'Day' : 'Days'}
 										</span>
 
-										<span class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
-											<span class="text-xl font-bold text-white lg:text-2xl">{remaining.hours}</span>
+										<span
+											class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
+											<span class="text-xl font-bold text-white lg:text-2xl"
+												>{remaining.hours}</span>
 											Hours
 										</span>
 
-										<span class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
-											<span class="text-xl font-bold text-white lg:text-2xl">{remaining.minutes}</span>
+										<span
+											class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
+											<span class="text-xl font-bold text-white lg:text-2xl"
+												>{remaining.minutes}</span>
 											Mins
 										</span>
 
-										<span class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
-											<span class="text-xl font-bold text-white lg:text-2xl">{remaining.seconds}</span>
+										<span
+											class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
+											<span class="text-xl font-bold text-white lg:text-2xl"
+												>{remaining.seconds}</span>
 											Secs
 										</span>
 									{:else}
@@ -114,7 +128,7 @@
 
 							<a
 								aria-label="join the whitelist"
-								href="https://verifications.0xargus.org"
+								href="/verification"
 								class={cn([
 									// mobile
 									'flex w-max rounded-md border border-indigo-500 p-1',
@@ -129,7 +143,7 @@
 			{/if}
 			<a
 				aria-label="Join the whitelist"
-				href="https://verifications.0xargus.org"
+				href="/verification"
 				class={cn([
 					// desktop
 					'font-regular rounded-md border border-indigo-500 px-4 py-1 lg:flex',

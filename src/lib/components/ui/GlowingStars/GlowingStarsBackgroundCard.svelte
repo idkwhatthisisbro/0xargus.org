@@ -5,7 +5,11 @@
 	let mouseEnter = false;
 </script>
 
-<div role="presentation" on:mouseenter={() => (mouseEnter = true)} on:mouseleave={() => (mouseEnter = false)} class={cn('h-full w-full rounded-xl border border-white/[0.2] p-4', className)}>
+<div
+	role="presentation"
+	on:mouseenter={() => (mouseEnter = true)}
+	on:mouseleave={() => (mouseEnter = false)}
+	class={cn('h-full w-full rounded-xl border border-white/[0.2] p-4', className)}>
 	<div class="flex items-center justify-center">
 		<Illustration {mouseEnter} />
 	</div>

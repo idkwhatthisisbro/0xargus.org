@@ -13,7 +13,13 @@
 	let key: string;
 
 	function shiftFocus(key: string) {
-		if ((!/[0-9]/.test(key) && num && key) || key === 'ArrowRight' || key === 'ArrowLeft' || key === 'Backspace') return;
+		if (
+			(!/[0-9]/.test(key) && num && key) ||
+			key === 'ArrowRight' ||
+			key === 'ArrowLeft' ||
+			key === 'Backspace'
+		)
+			return;
 		if (value === ' ') {
 			value = '';
 			return;
@@ -69,7 +75,11 @@
 		const paste = e.clipboardData?.getData('text');
 		if (!paste) return;
 		let pasteValue = paste.replace(num ? /[^0-9]/g : '', '').slice(0, codes.length - index);
-		const newCodes = [...codes.slice(0, index), ...pasteValue.split(''), ...codes.slice(index + pasteValue.length)];
+		const newCodes = [
+			...codes.slice(0, index),
+			...pasteValue.split(''),
+			...codes.slice(index + pasteValue.length)
+		];
 		codes = newCodes;
 	}
 </script>
