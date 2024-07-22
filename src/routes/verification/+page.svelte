@@ -118,7 +118,6 @@
 				}
 
 				if (payload.new.phone_confirmed_at) {
-					console.log('ran');
 					verifications.phone = false;
 					newStep = 2;
 
@@ -193,7 +192,7 @@
 		},
 		{
 			header: 'Verify your email',
-			subheader: 'Please enter your full legal name and email address to continue.'
+			subheader: 'A verification link has beeen sent to your email. Check your spam folder if you can\'t find it.'
 		},
 		{
 			header: 'Verify your phone number',
@@ -210,6 +209,7 @@
 	];
 	const { allErrors, form, message, enhance, errors, submitting, constraints, submit, capture, restore } = superForm(data.form, {
 		validators: zod(whitelistSchema),
+		
 		dataType: 'json',
 		id: 'verification',
 		errorSelector: '[aria-invalid="true"],[data-invalid]',
@@ -314,13 +314,13 @@
 						{#if $form.step === 0 && !verifications.email}
 							<!-- Full Name -->
 							<div class="grid gap-2">
-								<label for="name">Full Legal Name <span class="text-red-400">*</span></label>
+								<label for="name">Full Legal Name<span class="text-red-400">*</span></label>
 								<div class="relative">
 									<Scale class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
 									<InfoIcon class="absolute right-0 top-1/2 mx-4 -translate-y-1/2 transform text-indigo-400/75 " />
 									<input
 										class={cn(
-											'form-input h-full w-full rounded-xl border-0 bg-neutral-700 px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500',
+											'form-input h-full w-full rounded-xl border-0 bg-neutral-700 text-input px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-0 ',
 											$form.step > 0 && 'border-green-500 ring-green-500 '
 										)}
 										use:focusOnMount
@@ -330,13 +330,14 @@
 										disabled={$form.step > 1}
 										id="name"
 										placeholder="John Doe"
-										{...$constraints.name} />
+										{...$constraints.name}
+									 />
 								</div>
 							</div>
 
 							<!-- Email -->
 							<div class="grid gap-2">
-								<label for="email">Email*</label>
+								<label for="email">Email<span class="text-red-400">*</span></label>
 								<div class="relative">
 									<Mail class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
 									<input
@@ -346,7 +347,7 @@
 										id="email"
 										type="email"
 										placeholder="hello@moon.com"
-										{...$constraints.email} />
+										 />
 								</div>
 							</div>
 						{/if}

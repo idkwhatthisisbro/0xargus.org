@@ -16,3 +16,15 @@
 		@apply bg-purple-700 text-white;
 	}
 }
+/* Required to change color of Autofill */
+@layer components {
+	.autofill-text:-webkit-autofill {
+		-webkit-text-fill-color: white;
+	}
+
+	.text-input {
+		@apply autofill-text; /* set text colour (white) */
+		@apply autofill:shadow-[inset_0_0_0px_1000px_#000]; /* set 'background' colour (black)*/
+		@apply autofill:text-2xl; /* set font size */
+	}
+}

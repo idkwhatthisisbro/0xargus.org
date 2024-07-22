@@ -16,7 +16,7 @@ import { P } from '../../constants';
 /** @type {import('./$types').PageServerLoad} */
 export const load = async ({ url }) => {
 	const queryParams = url.searchParams;
-	const email = queryParams.get('e');
+	const email = decodeURIComponent(queryParams.get('e') || '');
 
 	if (email) zod(whitelistSchema).defaults.email = email;
 
@@ -27,7 +27,6 @@ export const load = async ({ url }) => {
 
 export const actions: Actions = {
 	default: async (request) => {
-		console.log('running');
 		const form = await superValidate(request, zod(whitelistSchema));
 
 		// message(form, 'Invalid form', { status: 403 });
