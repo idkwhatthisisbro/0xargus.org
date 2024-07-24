@@ -76,8 +76,8 @@
 		},
 		{
 			circle: 'Rugs',
-			desc: 'Fraudsters evolve, and so does Argus. Our AI analyzes the blockchain, adapting to protect you.',
-			tag: 'Evolution'
+			desc: 'Argus uses technologies such as permit2 to safeguard your holdings in a trustless way.',
+			tag: 'Trustless'
 		}
 	];
 	const FaqData = [
@@ -116,10 +116,9 @@
 			data: { label: 'User subscribes contract via 0xArgus extension or Dapp' },
 			position: { x: 0, y: 0 },
 
-			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			class:
-				'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
+				'flex ring-2 shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			// @ts-ignore
 			sourcePosition: 'bottom',
 			// @ts-ignore
@@ -130,11 +129,10 @@
 			id: 'A',
 			type: 'default',
 			data: { label: 'ArgusAI Scans for Fraudulent Activities 24/7' },
-			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
 			class:
-				'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
+				'flex ring-2 shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			position: { x: 0, y: 175 },
 			// @ts-ignore
 			sourcePosition: 'bottom',
@@ -148,8 +146,7 @@
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
 			class:
-				'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
-			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
+				'flex ring-2 shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			position: { x: -200, y: 250 },
 			parentNode: 'A',
 			extent: 'parent',
@@ -162,7 +159,7 @@
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 
 			class:
-				'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
+				'flex ring-2 shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			data: { label: 'Continue Monitoring' },
 			position: { x: 200, y: 250 },
 			parentNode: 'A',
@@ -178,8 +175,7 @@
 			type: 'input',
 			data: { label: 'User subscribes contract via 0xArgus extension or Dapp' },
 			position: { x: 0, y: 0 },
-			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-full',
-			class: 'flex ring-2 font-outfit ring-indigo-900 items-center justify-center rounded-xl',
+			class: 'flex ring-2 ring-indigo-900 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			// @ts-ignore
 			sourcePosition: 'bottom',
@@ -191,10 +187,9 @@
 			id: 'A',
 			type: 'default',
 			data: { label: 'ArgusAI Scans for Fraudulent Activities 24/7' },
-			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
 
 			class:
-				'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
+				'flex ring-2 shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			position: { x: 0, y: 175 },
 			// @ts-ignore
@@ -209,8 +204,7 @@
 
 			style: 'color: #ffffff; background-color: transparent; z-index: 53;',
 			class:
-				'flex ring-2 font-outfit shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
-			// class: 'flex ring-2  font-outfit shadow-2xl ring-indigo-500 items-center justify-center rounded-xl',
+				'flex ring-2 shadow-2xl text-white ring-indigo-900 items-center justify-center rounded-xl',
 			position: { x: 0, y: 250 },
 			parentNode: 'A',
 			extent: 'parent',
@@ -525,7 +519,7 @@
 		<section class={cn('z-[51] mt-20 flex w-full items-center justify-center sm:py-36')}>
 			<div class="grid items-center justify-center text-center">
 				<h3
-					class="bg-gradientt-tr from-purple-500 via-purple-600 to-indigo-500 bg-clip-text font-outfit text-6xl font-bold text-transparent text-white">
+					class="bg-gradientt-tr from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-6xl font-bold text-transparent text-white">
 					<span
 						style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
 						class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl"
@@ -561,8 +555,8 @@
 				<div
 					class={cn(
 						'z-[55] mt-12 flex w-full flex-col items-center overflow-hidden rounded-3xl border border-white/[0.2] shadow-lg  md:w-auto md:p-24',
-						'gap-y-12 rounded-xl bg-indigo-950/10 transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 sm:py-12 md:rounded-3xl md:p-10',
-						'group-1:rounded-r container relative h-full p-4 backdrop-blur-3xl backdrop-filter sm:even:border-[6px] sm:even:border-purple-500/50 lg:odd:-mb-16'
+						'gap-y-12 rounded-xl bg-indigo-950/[0.01] transition duration-200 ease-in-out hover:shadow-[0_0_60px_-15px_hsla(274,66%,32%,0.6)] sm:p-4 sm:py-12 md:rounded-3xl md:p-10',
+						'group-1:rounded-r xsm:even:border-[6px] container relative h-full p-4 backdrop-blur-3xl backdrop-filter md:even:border-violet-600/25 lg:odd:-mb-16 lg:even:border-white/[0.1]'
 					)}>
 					<!-- Text -->
 					<div class="shadow-3xl z-50 flex w-full flex-col space-y-4 p-4 text-neutral-300">
@@ -572,13 +566,13 @@
 								class="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-radial from-neutral-800 to-neutral-900/50 p-4 shadow-xl">
 								{#if index === 0}
 									<!-- content here -->
-									<BotIcon class="h-10 w-full text-purple-600" />
+									<BotIcon class="h-10 w-full text-violet-600" />
 								{:else if index === 1}
 									<!-- else if content here -->
-									<CandlestickChartIcon class="h-10 w-full text-purple-600" />
+									<CandlestickChartIcon class="h-10 w-full text-violet-600" />
 								{:else if index === 2}
 									<!-- else if content here -->
-									<EyeIcon class="h-10 w-full text-purple-600" />
+									<EyeIcon class="h-10 w-full text-violet-600" />
 								{/if}
 							</div>
 						</div>
@@ -589,8 +583,10 @@
 					</div>
 
 					<!-- BG Blur -->
-					<div
-						class={`group-[:nth-of-type({3})_&]:-right-[10rem] group-[:nth-of-type({3})_&]:-left-[10rem] group-2:-left-[20rem] group-2:right-auto group-2:-right-[20rem] absolute -bottom-[20rem] z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#581c87_0%,transparent_70%)] blur-3xl group-odd:left-auto sm:-bottom-[10rem]`} />
+					{#if index !== 1}
+						<div
+							class={`group-[:nth-of-type({3})_&]:-right-[10rem] group-[:nth-of-type({3})_&]:-left-[10rem] group-2:-left-[20rem] group-2:right-auto group-2:-right-[20rem] absolute -bottom-[20rem] z-0 aspect-1 h-auto w-[40rem] bg-[radial-gradient(ellipse_at_center,_#6d28d9_0%,transparent_100%)] blur-3xl group-odd:left-auto sm:-bottom-[30rem]`} />
+					{/if}
 
 					{#if index === 0}
 						<div style="bg" class="h-64 w-full sm:h-96 sm:w-[30rem]" />

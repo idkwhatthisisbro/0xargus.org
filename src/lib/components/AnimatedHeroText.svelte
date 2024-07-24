@@ -4,7 +4,8 @@
 	import { tweened } from 'svelte/motion';
 	import { backOut } from 'svelte/easing';
 
-	const words = ['Ethereum', 'BSC', 'Solana', 'Polygon'];
+	// DO NOT ADD WORDS THAT YOU WONT USE, AS IT RENDERS ALL WORDS
+	const words = ['Ethereum', 'Solana', 'Arbitrum'];
 	let currentIndex = 0;
 	let width = 0;
 	let started = false;
@@ -28,24 +29,22 @@
 	});
 </script>
 
-<div class="relative mb-24 h-full text-center font-outfit text-4xl text-white sm:mt-6">
+<div class="relative mb-20 h-full text-center text-4xl text-white sm:mt-6">
 	<h1
-		class="bg-gradient-to-r from-neutral-50/80 via-neutral-200 to-neutral-50 bg-clip-text font-outfit text-4xl font-medium text-transparent">
+		class="z-[100] min-h-12 bg-gradient-to-r from-neutral-50/80 via-neutral-200 to-neutral-50 bg-clip-text text-4xl font-medium leading-none text-transparent">
 		Introducing RugPull Prevention Middleware for
 
 		<div class="relative z-40 inline-block h-full">
-			<div class="relative z-[51]">
+			<div class="relative z-[51] ml-0.5 leading-none">
 				{#if !started}
-					<div class="absolute z-[100] h-32 font-outfit font-semibold text-brand-ethereum">
-						Ethereum
-					</div>
+					<div class="absolute z-[100] h-32 font-bold text-brand-ethereum">Ethereum</div>
 				{:else}
 					{#key currentIndex}
 						<div
 							in:fly={{ y: 30, duration: 600, easing: backOut }}
 							out:fly={{ y: -20, duration: 500 }}
 							bind:clientWidth={width}
-							class="absolute z-[100] h-32 font-outfit font-semibold"
+							class="absolute z-[100] h-32 font-bold leading-none"
 							class:text-brand-ethereum={words[currentIndex] === 'Ethereum'}
 							class:text-brand-solana={words[currentIndex] === 'Solana'}
 							class:text-brand-arbitrum={words[currentIndex] === 'Arbitrum'}>

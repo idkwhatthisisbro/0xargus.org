@@ -98,7 +98,7 @@
 	<Navbar />
 
 	<main
-		class="mx-auto flex w-full max-w-7xl grow flex-col items-center justify-center gap-40 px-[30px] font-outfit">
+		class="mx-auto flex w-full max-w-7xl grow flex-col items-center justify-center gap-40 px-[30px]">
 		<!-- WHITELIST CTA FORM -->
 		<div class="flex flex-col items-center gap-14">
 			<div class="flex flex-col items-center gap-4">

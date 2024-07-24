@@ -33,7 +33,7 @@
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
 </svelte:head>
 
-<!-- <div class="w-full text-3xl text-white font-outfit flex flex-col items-center justify-center" style="height: {viewportHeight}px;">
+<!-- <div class="w-full text-3xl text-white  flex flex-col items-center justify-center" style="height: {viewportHeight}px;">
    <h1>Hello, {user}!</h1>
 
    <WhitelistForm data={data.form} id='whitelist-webapp' />
@@ -48,7 +48,7 @@
 	<img class="h-8 w-8" src="/logo.png" alt="logo" />
 </nav>
 
-<div style="height: {viewportHeight}px;" class="relative flex w-full flex-col items-center justify-center pt-32 font-outfit -antialiased">
+<div style="height: {viewportHeight}px;" class="relative flex w-full flex-col items-center justify-center pt-32  -antialiased">
 	<div class="mx-auto p-4">
 		<h1 class="relative z-10 bg-gradient-to-b from-neutral-200 to-neutral-400 bg-clip-text text-center font-sans text-3xl font-bold text-transparent sm:to-neutral-600 sm:text-7xl">
 			Join the waitlist

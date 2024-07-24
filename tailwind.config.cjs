@@ -6,6 +6,7 @@ import svgToDataUri from 'mini-svg-data-uri';
 import tailwindChildren from 'tailwind-children'
 import tailwindForms from '@tailwindcss/forms'
 import tailwindContainerQueries from '@tailwindcss/container-queries'
+const colors = require('tailwindcss/colors');
 
 const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
@@ -14,6 +15,7 @@ const config = {
 		extend: {
 
 			colors: {
+				// purple: colors.violet,
 				brand: {
 					bgPrimary: '#06000f',
 					// bgPrimary: '#10002b',
@@ -56,6 +58,8 @@ const config = {
 			fontFamily: {
 				outfit: ['Outfit', 'sans-serif'],
 				saira: ['Saira Stencil One', 'system-ui'],
+				"gt-walsheim": ["GT-Walsheim", 'system-ui']
+
 			},
 			animation: {
 				// ...other animations

@@ -11,7 +11,7 @@
 		title="Frequently Asked Questions"
 		titleMaxWidth="max-w-xl"
 		coloredPart="Frequently"
-		subtitle="Get answers to the most common questions about 0xArgus" />
+		subtitle="Get answers to the most common questions about our products." />
 
 	<div class="flex items-center justify-center px-12 text-white sm:px-0">
 		<AccordionL.Root class="w-full lg:max-w-[80%]">

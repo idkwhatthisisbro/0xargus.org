@@ -146,37 +146,33 @@
 						},
 						{ taint: false }
 					);
+
+					if (payload.new.phone_confirmed_at) {
+						verifications.phone = false;
+						newStep = 2;
+
+						// Set subscribe store to true, if step is 2 [1/2]
+						isSubscribed.set({ subscribed: true, email: payload.new.email });
+						payload.new.step != 2 && handleStep(2);
+					} else if (payload.new.email_confirmed_at) {
+						verifications.email = false;
+						newStep = 1;
+						// Turns phone from null to object if user confirms email
+						$form.phone = { number: '', otp: '' };
+						payload.new.step != 1 && handleStep(1);
+					} else {
+						return;
+					}
+
+					form.update(
+						(form) => {
+							form.step = newStep;
+							return form;
+						},
+						{ taint: false }
+					);
 				}
-<<<<<<< HEAD
-
-				if (payload.new.phone_confirmed_at) {
-					verifications.phone = false;
-					newStep = 2;
-
-					// Set subscribe store to true, if step is 2 [1/2]
-					isSubscribed.set({ subscribed: true, email: payload.new.email });
-					payload.new.step != 2 && handleStep(2);
-				} else if (payload.new.email_confirmed_at) {
-					verifications.email = false;
-					newStep = 1;
-					// Turns phone from null to object if user confirms email
-					$form.phone = { number: '', otp: '' };
-					payload.new.step != 1 && handleStep(1);
-				} else {
-					return;
-				}
-
-				form.update(
-					(form) => {
-						form.step = newStep;
-						return form;
-					},
-					{ taint: false }
-				);
-			})
-=======
 			)
->>>>>>> origin/master
 			.subscribe();
 
 		// TODO: fix cleanup on supabase subscription
@@ -227,7 +223,8 @@
 		},
 		{
 			header: 'Verify your email',
-			subheader: 'A verification link has beeen sent to your email. Check your spam folder if you can\'t find it.'
+			subheader:
+				"A verification link has beeen sent to your email. Check your spam folder if you can't find it."
 		},
 		{
 			header: 'Verify your phone number',
@@ -255,7 +252,7 @@
 		restore
 	} = superForm(data.form, {
 		validators: zod(whitelistSchema),
-		
+
 		dataType: 'json',
 		id: 'verification',
 		errorSelector: '[aria-invalid="true"],[data-invalid]',
@@ -301,9 +298,10 @@
 	});
 </script>
 
+<!-- 
 {#if dev}
 	<SuperDebug data={$form} />
-{/if}
+{/if} -->
 <MetaTags
 	title="Presale Identity Verification"
 	titleTemplate="%s - 0xArgus"
@@ -337,13 +335,13 @@
 	<Navbar />
 </div>
 
-<div class="mt-8 flex flex-col items-center justify-center sm:mt-12">
+<div class="mt-8 flex flex-col items-center justify-center sm:mt-6">
 	<Section maxWidth="4xl" class="w-full text-white">
 		{#if !loading}
 			<div
-				class="relative min-h-[900px] rounded-xl border border-white/[0.2] bg-neutral-900 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
+				class="relative min-h-[900px] rounded-xl border border-white/[0.05] bg-black/25 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
 				<div
-					class="relative -top-12 mx-auto -mt-8 flex h-24 w-24 items-center justify-center rounded-full border-b-4 border-white/[0.2] bg-neutral-950 pb-4 sm:mb-12 md:-mt-16 lg:-mt-24">
+					class="relative -top-12 mx-auto -mt-8 flex h-20 w-20 items-center justify-center rounded-full border-b-4 border-white/[0.2] bg-neutral-950 pb-4 sm:mb-12 md:-mt-16 lg:-mt-24">
 					<div class="absolute inset-0">
 						<enhanced:img
 							src="$lib/assets/logo.png?enhanced"
@@ -365,7 +363,7 @@
 
 				<!-- INFO -->
 				<div class="mt-8 space-y-4 py-12 text-center">
-					<h1 class="text-4xl text-neutral-100">{currentHeaderText.header}</h1>
+					<h1 class="text-4xl capitalize text-neutral-100">{currentHeaderText.header}</h1>
 					<p class="text-lg text-neutral-300">{currentHeaderText.subheader}</p>
 				</div>
 
@@ -377,11 +375,13 @@
 							<div class="grid gap-2">
 								<label for="name">Full Legal Name<span class="text-red-400">*</span></label>
 								<div class="relative">
-									<Scale class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
-									<InfoIcon class="absolute right-0 top-1/2 mx-4 -translate-y-1/2 transform text-indigo-400/75 " />
+									<Scale
+										class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
+									<InfoIcon
+										class="absolute right-0 top-1/2 mx-4 -translate-y-1/2 transform text-indigo-400/75 " />
 									<input
 										class={cn(
-											'form-input h-full w-full rounded-xl border-0 bg-neutral-700 text-input px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-0 ',
+											'text-input form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-0 ',
 											$form.step > 0 && 'border-green-500 ring-green-500 '
 										)}
 										use:focusOnMount
@@ -391,8 +391,7 @@
 										disabled={$form.step > 1}
 										id="name"
 										placeholder="John Doe"
-										{...$constraints.name}
-									 />
+										{...$constraints.name} />
 								</div>
 							</div>
 
@@ -400,22 +399,22 @@
 							<div class="grid gap-2">
 								<label for="email">Email<span class="text-red-400">*</span></label>
 								<div class="relative">
-									<Mail class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
+									<Mail
+										class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
 									<input
 										aria-invalid={$errors.email ? 'true' : undefined}
 										bind:value={$form.email}
-										class="form-input h-full w-full rounded-xl border-0 bg-neutral-700 px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500"
+										class="form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500"
 										id="email"
 										type="email"
-										placeholder="hello@moon.com"
-										 />
+										placeholder="hello@moon.com" />
 								</div>
 							</div>
 						{/if}
 						<!-- Verify Email -->
 						{#if $form.step === 0 && verifications.email}
 							<div
-								class="flex h-[400px] flex-col items-center gap-4 rounded-xl bg-neutral-800 p-12 font-outfit text-neutral-100">
+								class="flex h-[400px] flex-col items-center gap-4 rounded-xl bg-white/[0.1] p-12 text-neutral-100">
 								<div class="w-32 rounded-lg">
 									<CustomLottiePlayer loop={true} src={'/mail2.json'} />
 								</div>
@@ -491,15 +490,10 @@
 						<!-- Info -->
 						{#if $form.step == 0 && !verifications.email}
 							<br />
-<<<<<<< HEAD
-							<div class="flex items-center justify-center gap-x-4 rounded-xl border border-white/[0.2] px-4 py-6 text-xs text-neutral-500 shadow-md sm:px-8 sm:text-base lg:items-start">
-								<ShieldEllipsis class="bg-gradient-tr min-h-6 min-w-6 text-xl text-indigo-500 sm:text-sm lg:h-8 lg:w-8" />
-=======
 							<div
-								class="flex items-center justify-center gap-x-4 rounded-xl border border-white/[0.1] px-8 py-6 text-base text-neutral-500 shadow-xl lg:items-start">
+								class="flex items-center justify-center gap-x-4 rounded-xl border border-white/[0.2] px-4 py-6 text-xs text-neutral-500 shadow-md sm:px-8 sm:text-base lg:items-start">
 								<ShieldEllipsis
-									class="bg-gradient-tr min-h-6 min-w-6 text-blue-600 lg:h-8 lg:w-8" />
->>>>>>> origin/master
+									class="bg-gradient-tr min-h-6 min-w-6 text-xl text-indigo-500 sm:text-sm lg:h-8 lg:w-8" />
 
 								<p>
 									ID Verification may be triggered if your using a VPN, if you have one on, please

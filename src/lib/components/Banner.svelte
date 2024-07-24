@@ -18,7 +18,7 @@
 
 <div class="w-full overflow-hidden">
 	<div
-		class="flex w-full transform items-center justify-center bg-gradient-to-tr from-indigo-700/50 via-indigo-700/55 to-indigo-600/50 font-outfit shadow backdrop-filter transition-transform duration-300"
+		class="flex w-full transform items-center justify-center bg-gradient-to-tr from-slate-800/50 via-slate-900/55 to-gray-700/50 shadow backdrop-filter transition-transform duration-300"
 		class:-translate-y-full={!showBanner}>
 		<div
 			class={cn([
@@ -45,7 +45,7 @@
 						])}>
 						<div
 							class={cn([
-								'flex justify-center gap-4 font-outfit font-bold tracking-wide',
+								'flex justify-center gap-4  font-bold tracking-wide',
 								// mobile
 								'items-center text-sm',
 								// desktop
@@ -54,7 +54,7 @@
 							{#if remaining.totalDays <= 7}
 								<span
 									class={cn([
-										'flex items-center gap-2 rounded-full bg-indigo-500 py-1 font-outfit font-bold',
+										'flex items-center gap-2 rounded-full bg-indigo-500 py-1  font-bold',
 										// mobile
 										'px-2 text-sm',
 										// desktop
@@ -65,9 +65,7 @@
 								</span>
 							{/if}
 
-							<p class="font-outfit text-sm font-bold tracking-wide md:hidden">
-								$ARGUS PRESALE IN:
-							</p>
+							<p class=" text-sm tracking-wider md:hidden">$ARGUS PRESALE IN:</p>
 						</div>
 
 						<div
@@ -79,14 +77,14 @@
 								// desktop
 								''
 							])}>
-							<div class="flex items-end gap-2">
+							<div class="flex items-center gap-4">
 								<p
 									class={cn([
-										'font-outfit font-bold tracking-wide',
+										' font-semibold tracking-wider',
 										// mobile
 										'hidden',
 										// desktop
-										'md:flex md:items-end md:justify-center md:gap-4 md:text-base'
+										'md:flex md:items-center md:justify-center md:gap-4 md:text-base'
 									])}>
 									$ARGUS PRESALE IN:
 								</p>
@@ -94,28 +92,28 @@
 								<div class="flex justify-between gap-2 md:w-[330px]">
 									{#if remaining.done === false}
 										<span
-											class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
+											class="flex grow items-baseline justify-center gap-1.5 text-sm text-indigo-500 lg:text-sm">
 											<span class="text-xl font-bold text-white lg:text-2xl"
 												>{remaining.totalDays}</span>
 											{remaining.totalDays == 1 ? 'Day' : 'Days'}
 										</span>
 
 										<span
-											class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
+											class="flex grow items-baseline justify-center gap-1.5 text-sm text-indigo-500 lg:text-sm">
 											<span class="text-xl font-bold text-white lg:text-2xl"
 												>{remaining.hours}</span>
 											Hours
 										</span>
 
 										<span
-											class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
+											class="flex grow items-baseline justify-center gap-1.5 text-sm text-indigo-500 lg:text-sm">
 											<span class="text-xl font-bold text-white lg:text-2xl"
 												>{remaining.minutes}</span>
 											Mins
 										</span>
 
 										<span
-											class="flex grow items-baseline justify-center gap-1 text-sm text-indigo-500 lg:text-base">
+											class="flex grow items-baseline justify-center gap-1.5 text-sm text-indigo-500 lg:text-sm">
 											<span class="text-xl font-bold text-white lg:text-2xl"
 												>{remaining.seconds}</span>
 											Secs
@@ -150,7 +148,7 @@
 					// mobile
 					'hidden',
 					// hover, transition
-					'hover:scale-105 hover:transition hover:duration-300'
+					'text-sm font-medium tracking-wider hover:scale-105 hover:transition hover:duration-300'
 				])}>
 				JOIN THE WHITELIST
 			</a>

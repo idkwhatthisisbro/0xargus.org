@@ -22,8 +22,8 @@
 			<br />
 			<br />
 
-			Get started with the Argus Beta today. Access our documentation to learn more about how Argus
-			can protect your assets.
+			Get started with the Argus Beta today, and access our documentation to learn more about how
+			Argus can protect your assets.
 		</p>
 
 		<a

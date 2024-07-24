@@ -40,8 +40,7 @@
 		text['error'];
 </script>
 
-<div
-	class="bg-bgPrimary flex h-[400px] flex-col items-center gap-4 p-12 font-outfit text-neutral-100">
+<div class="bg-bgPrimary flex h-[400px] flex-col items-center gap-4 p-12 text-neutral-100">
 	<div class="w-32 rounded-lg">
 		<CustomLottiePlayer loop={currentText.lottie.loop} src={'/' + currentText.lottie.name} />
 	</div>

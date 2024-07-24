@@ -24,6 +24,9 @@
 	}
 </script>
 
+<p class="w-full p-2 text-sm text-zinc-400 sm:hidden">
+	Whitelisting has started, enter your email and join today!
+</p>
 <form
 	class={cn(
 		// classes for both forms
@@ -31,7 +34,7 @@
 		// Additional classes for whitelist-hero form
 		id === 'whitelist-hero' && [
 			// Global
-			'relative z-50 flex h-16 w-full justify-end rounded-3xl bg-zinc-900 px-4 py-4 font-outfit shadow-2xl sm:max-w-[720px]'
+			'relative z-50 flex h-16 w-full justify-end rounded-3xl bg-zinc-900 px-4 py-4  shadow-2xl sm:max-w-[720px]'
 			// Desktop
 			// Mobile
 			// Focus/Hover
@@ -47,7 +50,7 @@
 	)}
 	on:submit|preventDefault={handleSubmit}>
 	<input
-		placeholder="hello@moon.com"
+		placeholder="hello@example.com"
 		type="email"
 		name="email"
 		aria-invalid={$formErrors ? 'true' : undefined}
@@ -58,12 +61,12 @@
 			// Additional classes for whitelist-hero form
 			id === 'whitelist-hero' && [
 				// Global
-				'absolute inset-0 h-full w-full rounded-3xl bg-transparent p-4 pl-8 text-2xl text-white',
+				'absolute inset-0 h-full w-full rounded-3xl bg-transparent p-4 pl-8 text-xl text-white',
 				// Desktop
 				// Mobile
 				// Animations
 				// Focus/Hover
-				'focus:outline-none focus:outline-indigo-500 focus:ring focus:ring-indigo-500'
+				'placeholder:text-xl focus:outline-none focus:outline-indigo-500 focus:ring focus:ring-indigo-500'
 			],
 			// Additional classes for whitelist-footer form
 			id === 'whitelist-footer' && [
@@ -116,7 +119,7 @@
 			{:else}
 				<div
 					class="hidden rounded-full bg-zinc-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-zinc-600 sm:block">
-					<MailPlus class="m-auto h-4 w-4 rounded-full text-xs" />
+					<ArrowRight class="m-auto h-4 w-4 rounded-full text-xs" />
 				</div>
 
 				<!-- Mobile -->
@@ -132,11 +135,11 @@
 
 {#if id === 'whitelist-hero'}
 	<div
-		class="z-50 mt-8 hidden items-center justify-center gap-x-2 font-outfit text-base font-medium tracking-wide text-zinc-600 sm:flex">
-		<Clock class="hidden w-5 sm:block" />
+		class="z-50 mt-8 hidden items-center justify-center gap-x-1 text-sm font-semibold italic tracking-wide text-zinc-600 sm:flex">
+		<!-- <Clock class="hidden w-3.5 sm:block" /> -->
 		<p>
 			<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible
-			genesis founder slots remaining.
+			genesis founder slots remaining.*
 		</p>
 	</div>
 {/if}

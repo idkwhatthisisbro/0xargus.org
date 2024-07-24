@@ -20,7 +20,7 @@
 			// mobile
 			'h-16 w-16',
 			// desktop
-			'h-10 w-10'
+			'h-8 w-8'
 		])}>
 		<enhanced:img src={Logo} alt="logo" class="h-full w-full" />
 	</a>
@@ -28,7 +28,7 @@
 	<!-- DESKTOP MENU -->
 	<div class="hidden w-full md:flex md:items-center md:gap-4">
 		<div
-			class="flex w-full items-center justify-center gap-8 text-nowrap font-outfit text-lg font-medium text-white">
+			class="text-md flex w-full items-center justify-center gap-8 text-nowrap font-medium text-white">
 			<a
 				aria-label="presale"
 				href={BASE_URL + '/presale'}
@@ -95,7 +95,7 @@
 		<a
 			aria-label="presale"
 			href={BASE_URL + '/presale'}
-			class="relative rounded-lg bg-white/10 px-4 py-1 font-outfit text-lg font-medium text-indigo-500 backdrop-blur-3xl backdrop-filter duration-200 ease-in-out hover:text-neutral-300"
+			class="relative rounded-lg bg-white/10 px-4 py-1 text-lg font-medium text-indigo-500 backdrop-blur-3xl backdrop-filter duration-200 ease-in-out hover:text-neutral-300"
 			>Presale
 			<div
 				class="absolute -right-0 -top-3 z-10 rounded bg-gradient-radial from-green-500 via-green-400 to-green-600 px-1 text-xs tracking-wider text-white">

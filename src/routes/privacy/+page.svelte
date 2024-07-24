@@ -12,7 +12,7 @@
 <div class="flex min-h-screen flex-col gap-20">
 	<Navbar />
 
-	<main class="mx-auto flex w-full max-w-7xl grow flex-col gap-20 px-[30px] font-outfit">
+	<main class="mx-auto flex w-full max-w-7xl grow flex-col gap-20 px-[30px]">
 		<h2 class="text-2xl font-semibold text-white">Privacy Policy</h2>
 		<p class="text-white">
 			1. Introduction Welcome to 0xArgus. We are committed to protecting your privacy and ensuring
