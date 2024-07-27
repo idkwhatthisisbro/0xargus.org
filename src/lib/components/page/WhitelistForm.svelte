@@ -24,7 +24,7 @@
 	}
 </script>
 
-<p class="w-full p-2 text-sm text-zinc-400 sm:hidden">
+<p class="w-full p-2 text-sm text-slate-400 sm:hidden">
 	Whitelisting has started, enter your email and join today!
 </p>
 <form
@@ -34,7 +34,7 @@
 		// Additional classes for whitelist-hero form
 		id === 'whitelist-hero' && [
 			// Global
-			'relative z-50 flex h-16 w-full justify-end rounded-3xl bg-zinc-900 px-4 py-4  shadow-2xl sm:max-w-[720px]'
+			'relative z-50 flex h-16 w-full justify-end rounded-3xl  px-4 py-4  shadow-2xl sm:max-w-[720px]'
 			// Desktop
 			// Mobile
 			// Focus/Hover
@@ -61,7 +61,7 @@
 			// Additional classes for whitelist-hero form
 			id === 'whitelist-hero' && [
 				// Global
-				'absolute inset-0 h-full w-full rounded-3xl bg-transparent p-4 pl-8 text-xl text-white',
+				'absolute inset-0 h-full w-full rounded-3xl bg-transparent bg-gradient-to-tr from-slate-800/50 via-slate-900/55  to-gray-700/50 p-4 pl-8 text-xl text-white ',
 				// Desktop
 				// Mobile
 				// Animations
@@ -71,7 +71,7 @@
 			// Additional classes for whitelist-footer form
 			id === 'whitelist-footer' && [
 				// Global
-				'relative z-20 w-full rounded-l-lg border border-zinc-700 bg-zinc-950 p-2 text-white duration-300 ease-in-out placeholder:text-zinc-400 sm:placeholder:text-zinc-700',
+				'relative z-20 w-full rounded-l-lg border border-slate-700 bg-slate-950 p-2 text-white duration-300 ease-in-out placeholder:text-slate-400 sm:placeholder:text-slate-700',
 				// Desktop
 				// Mobile
 				// Animations
@@ -90,7 +90,7 @@
 			// Additional classes for whitelist-hero form
 			id === 'whitelist-hero' && [
 				// Global
-				'absolute inset-y-0 right-0 flex items-center justify-center bg-transparent bg-gradient-to-tr from-zinc-700 via-zinc-800 to-zinc-900 text-white shadow-2xl',
+				'absolute inset-y-0 right-0 flex items-center justify-center bg-transparent bg-gradient-to-tr from-slate-800/75 via-slate-900/75 to-gray-700/50 text-white shadow-2xl',
 				// Desktop
 				'-sm:rounded-l-none group transform font-bold tracking-wide sm:m-0 sm:h-full sm:w-auto sm:space-x-2 sm:rounded-3xl sm:border-0 sm:px-6 sm:py-2',
 				// Mobile
@@ -99,12 +99,12 @@
 				'transition duration-300 ease-in-out',
 				// Focus/Hover
 				'hover:scale-105 focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-500',
-				'disabled:cursor-not-allowed disabled:border-transparent disabled:bg-zinc-700 disabled:text-zinc-500 disabled:opacity-50 disabled:shadow-none disabled:hover:scale-100'
+				'disabled:cursor-not-allowed disabled:border-transparent disabled:bg-slate-700 disabled:text-slate-500 disabled:opacity-50 disabled:shadow-none disabled:hover:scale-100'
 			],
 			// Additional classes for whitelist-footer forms
 			id === 'whitelist-footer' && [
 				// Global
-				'z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-zinc-700 p-2 text-zinc-500 transition duration-300 ease-in-out',
+				'z-10 h-full transform cursor-pointer rounded-r-lg border border-l-0 border-slate-700 p-2 text-slate-500 transition duration-300 ease-in-out',
 				// Desktop
 				// Mobile
 				// Animations
@@ -113,17 +113,17 @@
 			]
 		)}>
 		{#if id === 'whitelist-hero'}
-			<p class="hidden tracking-widest sm:block">JOIN THE WHITELIST</p>
+			<p class="hidden font-semibold tracking-wider text-slate-300 sm:block">JOIN THE WHITELIST</p>
 			{#if $isSubmitting}
 				<Circle size="16" color="#fff" unit="px" duration="1s" />
 			{:else}
 				<div
-					class="hidden rounded-full bg-zinc-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-zinc-600 sm:block">
+					class="hidden rounded-full bg-slate-700 p-2 text-xs shadow-lg duration-200 ease-in-out group-hover:bg-slate-600 sm:block">
 					<ArrowRight class="m-auto h-4 w-4 rounded-full text-xs" />
 				</div>
 
 				<!-- Mobile -->
-				<ChevronRight class="h-5 w-5 text-zinc-300 sm:hidden" />
+				<ChevronRight class="h-5 w-5 text-slate-300 sm:hidden" />
 			{/if}
 		{/if}
 
@@ -135,7 +135,7 @@
 
 {#if id === 'whitelist-hero'}
 	<div
-		class="z-50 mt-8 hidden items-center justify-center gap-x-1 text-sm font-semibold italic tracking-wide text-zinc-600 sm:flex">
+		class="z-50 mt-8 hidden items-center justify-center gap-x-1 text-sm font-semibold italic tracking-wide text-slate-600 sm:flex">
 		<!-- <Clock class="hidden w-3.5 sm:block" /> -->
 		<p>
 			<span class="inline-block self-stretch sm:hidden">Join the whitelist - </span> 1300/1500 eligible

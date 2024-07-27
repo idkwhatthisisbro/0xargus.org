@@ -258,7 +258,6 @@
 		errorSelector: '[aria-invalid="true"],[data-invalid]',
 		resetForm: false,
 		onUpdated: (event) => {
-			console.log($errors);
 			event.form.valid &&
 				(($form.step === 0 && (verifications.email = true)) ||
 					($form.step === 1 &&
@@ -381,13 +380,12 @@
 										class="absolute right-0 top-1/2 mx-4 -translate-y-1/2 transform text-indigo-400/75 " />
 									<input
 										class={cn(
-											'text-input form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-0 ',
+											'text-input form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500 ',
 											$form.step > 0 && 'border-green-500 ring-green-500 '
 										)}
-										use:focusOnMount
-										aria-invalid={$errors.name ? 'true' : undefined}
 										type="text"
 										bind:value={$form.name}
+										aria-invalid={$errors.name ? 'true' : undefined}
 										disabled={$form.step > 1}
 										id="name"
 										placeholder="John Doe"
@@ -402,11 +400,11 @@
 									<Mail
 										class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
 									<input
-										aria-invalid={$errors.email ? 'true' : undefined}
-										bind:value={$form.email}
 										class="form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500"
-										id="email"
 										type="email"
+										bind:value={$form.email}
+										aria-invalid={$errors.email ? 'true' : undefined}
+										id="email"
 										placeholder="hello@moon.com" />
 								</div>
 							</div>

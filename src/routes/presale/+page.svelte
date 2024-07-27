@@ -3,14 +3,16 @@
 	import Countdown from '$lib/components/Countdown.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { PRESALE_DATE } from '../../constants';
-	import { ArrowRightCircleIcon, AlertCircleIcon } from 'lucide-svelte';
-	import DistOverview from '/static/tokenomics/dist-overview.svg?component';
+	import { ArrowRightIcon, AlertCircleIcon } from 'lucide-svelte';
+	// import DistOverview from '/static/tokenomics/dist-overview.svg?component';
 	import DistOverviewLight from '/static/tokenomics/dist-overview-light.svg?component';
-	import DistOverviewDark from '/static/tokenomics/dist-overview-dark.svg?component';
-	import LockupPeriodsDark from '/static/tokenomics/lockup-periods-dark.svg?component';
+	import DistOverviewDark from '/static/tokenomics/dist-overview-dark2.svg?component';
+	import LockupPeriodsDark from '/static/tokenomics/lockup-periods-dark2.svg?component';
 
 	import CirulationSchedule from '/static/tokenomics/circulation-schedule.svg?component';
-	import SuperchargedRewards from '/static/tokenomics/supercharged-rewards.svg?component';
+	import SuperchargedRewards from '/static/tokenomics/supercharged-rewards2.svg?component';
+	import PresaleBackground from '/static/presale-background.png?component';
+
 	import Roadmap from '$lib/components/Roadmap.svelte';
 	import { BASE_URL } from '../../constants';
 
@@ -108,6 +110,11 @@
 
 			<img src="/cardanoCoin.png" alt="coin" class="h-44" />
 
+			<div
+				class="absolute -top-24 -z-10 h-[650px] w-full bg-cover bg-center"
+				style={`background-image: url("${PresaleBackground}"); `}>
+			</div>
+
 			<Countdown
 				from={PRESALE_DATE}
 				dateFormat="YYYY-MM-DD H:m:s"
@@ -143,9 +150,9 @@
 			<a
 				aria-label="join the whitelist"
 				href="{BASE_URL}/verification"
-				class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-900 to-purple-500 px-8 py-4 text-xl font-bold text-white">
+				class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-700 via-indigo-800 to-indigo-600 px-8 py-4 text-xl font-bold tracking-wider text-indigo-100 duration-200 hover:scale-105">
 				JOIN THE WHITELIST
-				<ArrowRightCircleIcon class="h-8 w-8 text-purple-200" />
+				<ArrowRightIcon class="h-8 w-8 text-indigo-200" />
 			</a>
 		</div>
 
