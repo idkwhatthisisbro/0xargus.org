@@ -150,7 +150,7 @@
 			<img
 				src="/safari-hero.svg"
 				alt="Safari Hero Background"
-				class="absolute inset-x-0 -bottom-52 z-0 h-[450px] w-full sm:-bottom-60 sm:h-[500px]" />
+				class="x-bottom-52 absolute inset-x-0 -bottom-[20rem] z-0 h-[450px] w-full sm:-bottom-60 sm:h-[500px]" />
 		{:else}
 			<!-- TODO: Make this effecient -->
 			<WavyBackground />
