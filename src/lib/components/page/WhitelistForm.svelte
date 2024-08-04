@@ -11,11 +11,21 @@
 	const isSubmitting = writable(false);
 	// Store for form errors
 	const formErrors = writable('');
+	let inputElement: HTMLInputElement;
 
 	export let id: 'whitelist-hero' | 'whitelist-footer';
 	// Function to handle form submission
 	async function handleSubmit() {
 		const emailValue = $email;
+
+		if (emailValue === '') {
+			formErrors.set('Please enter your email');
+			if (id === 'whitelist-hero' && inputElement) {
+				inputElement.focus();
+			}
+			return;
+		}
+
 		isSubmitting.set(true);
 		// Simulate a 750ms loading state
 		await new Promise((resolve) => setTimeout(resolve, 750));
@@ -50,6 +60,7 @@
 	)}
 	on:submit|preventDefault={handleSubmit}>
 	<input
+		bind:this={inputElement}
 		placeholder="hello@example.com"
 		type="email"
 		name="email"
@@ -61,7 +72,7 @@
 			// Additional classes for whitelist-hero form
 			id === 'whitelist-hero' && [
 				// Global
-				'absolute inset-0 h-full w-full rounded-3xl bg-transparent bg-gradient-to-tr from-slate-800/50 via-slate-900/55  to-gray-700/50 p-4 pl-8 text-xl text-white ',
+				'absolute inset-0 h-full w-full rounded-3xl bg-transparent bg-gradient-to-tr from-slate-800/50 via-slate-900/55  to-gray-700/50 p-4 pl-8 text-xl text-white invalid:text-red-500',
 				// Desktop
 				// Mobile
 				// Animations

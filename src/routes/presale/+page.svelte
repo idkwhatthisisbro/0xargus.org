@@ -5,16 +5,48 @@
 	import { PRESALE_DATE } from '../../constants';
 	import { ArrowRightIcon, AlertCircleIcon } from 'lucide-svelte';
 	// import DistOverview from '/static/tokenomics/dist-overview.svg?component';
-	import DistOverviewLight from '/static/tokenomics/dist-overview-light.svg?component';
-	import DistOverviewDark from '/static/tokenomics/dist-overview-dark2.svg?component';
-	import LockupPeriodsDark from '/static/tokenomics/lockup-periods-dark2.svg?component';
+	import DistOverviewDark from '/static/tokenomics/tokenomics.svg?component';
+	import LockupPeriodsDark from '/static/tokenomics/lockup-release.svg?component';
 
 	import CirulationSchedule from '/static/tokenomics/circulation-schedule.svg?component';
 	import SuperchargedRewards from '/static/tokenomics/supercharged-rewards2.svg?component';
-	import PresaleBackground from '/static/presale-background.png?component';
+	import PresaleBackground from '/static/tokenomics/78.png?component';
 
 	import Roadmap from '$lib/components/Roadmap.svelte';
 	import { BASE_URL } from '../../constants';
+
+	// Move to util
+	function formatDate(inputDate) {
+		const date = new Date(inputDate);
+
+		// Ensure the date is interpreted as UTC
+		date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+
+		const months = [
+			'JAN',
+			'FEB',
+			'MAR',
+			'APR',
+			'MAY',
+			'JUN',
+			'JUL',
+			'AUG',
+			'SEP',
+			'OCT',
+			'NOV',
+			'DEC'
+		];
+		const month = months[date.getUTCMonth()];
+		const day = date.getUTCDate().toString().padStart(2, '0');
+		const year = date.getUTCFullYear();
+
+		let hours = date.getUTCHours();
+		const ampm = hours >= 12 ? 'PM' : 'AM';
+		hours = hours % 12;
+		hours = hours ? hours : 12; // Convert 0 to 12
+
+		return `${month} ${day}, ${year} ${hours}${ampm} UTC`;
+	}
 
 	const data: {
 		title: string;
@@ -98,21 +130,21 @@
 
 <div class="flex min-h-screen flex-col gap-20">
 	<Navbar />
-
 	<main
 		class="mx-auto flex w-full max-w-7xl grow flex-col items-center justify-center gap-40 px-[30px]">
 		<!-- WHITELIST CTA FORM -->
 		<div class="flex flex-col items-center gap-14">
 			<div class="flex flex-col items-center gap-4">
-				<h1 class="font-regular text-6xl text-white">Genesis Founders Presale</h1>
-				<h2 class="text-2xl font-light text-gray-100">MAY 04, 2024 3PM UTC</h2>
+				<h1 class="text-center text-3xl text-white sm:text-6xl">Genesis Founders Presale</h1>
+				<h2 class="text-xl font-light text-gray-100 sm:text-2xl">{formatDate(PRESALE_DATE)}</h2>
 			</div>
 
-			<img src="/cardanoCoin.png" alt="coin" class="h-44" />
-
-			<div
-				class="absolute -top-24 -z-10 h-[650px] w-full bg-cover bg-center"
-				style={`background-image: url("${PresaleBackground}"); `}>
+			<div class="relative h-44 bg-red-500">
+				<img src="/cardanoCoin.png" alt="coin" class="h-44" />
+				<div
+					class="xh-[400px] absolute inset-0 -z-10 h-96 w-full bg-cover bg-bottom filter"
+					style={`background-image: url("${PresaleBackground}"); `}>
+				</div>
 			</div>
 
 			<Countdown
@@ -141,7 +173,7 @@
 							<span class="text-6xl font-bold text-violet-200">{remaining.seconds}</span>
 							<span class="font-regular text-2xl text-gray-500">Seconds</span>
 						</span>
-					{:else}
+					{:else if remaining.done === true}
 						<h2>The time has come!</h2>
 					{/if}
 				</div>
@@ -150,9 +182,9 @@
 			<a
 				aria-label="join the whitelist"
 				href="{BASE_URL}/verification"
-				class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-700 via-indigo-800 to-indigo-600 px-8 py-4 text-xl font-bold tracking-wider text-indigo-100 duration-200 hover:scale-105">
+				class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-700 via-purple-800 to-purple-600 px-8 py-4 text-xl font-bold tracking-wider text-purple-100 duration-200 hover:scale-105">
 				JOIN THE WHITELIST
-				<ArrowRightIcon class="h-8 w-8 text-indigo-200" />
+				<ArrowRightIcon class="h-8 w-8 text-purple-100/95" />
 			</a>
 		</div>
 
@@ -181,8 +213,8 @@
 						DO?
 					</h1>
 					<p class="text-center text-2xl text-white/80">
-						Depending on your, holding Argus yields you. No transaction fees <br />
-						when using the product, to revenue share and DAO votes.
+						Argus Sentry charges $ARGUS tokens for transaction fees, the fee amount is reduced
+						proportionally to your holdings, It also gives you revenue share and DAO votes.
 					</p>
 				</div>
 				<img src="/tg-welcomeBanner.gif" class="w-[560px] rounded-md" alt="" />
@@ -249,8 +281,8 @@
 						proportionally to their token holdings.
 					</li>
 					<li>
-						The initial distribution at launch is 1,000,000,000 $ARGUS tokens, subject to various
-						lockup schedules.
+						The initial unlocked distribution at launch is 650,000,000 $ARGUS tokens, subject to
+						various lockup schedules.
 					</li>
 				</ul>
 			</div>
@@ -275,7 +307,7 @@
 				</div>
 
 				<!-- TOKEN LOCKUP PERIODS -->
-				<div class="flex flex-col gap-10">
+				<div class="w-full gap-y-10">
 					<LockupPeriodsDark class="w-full rounded-md" />
 
 					<p class="text-white/80">

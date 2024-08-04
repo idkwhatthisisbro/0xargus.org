@@ -25,7 +25,7 @@
 		hours: number;
 		minutes: number;
 		seconds: number;
-		done: boolean;
+		done: boolean | null;
 	}
 
 	let remaining: RemainingTime = {
@@ -37,7 +37,7 @@
 		hours: 0,
 		minutes: 0,
 		seconds: 0,
-		done: true
+		done: null
 	};
 
 	let timer: ReturnType<typeof setInterval>;

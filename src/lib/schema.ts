@@ -27,7 +27,7 @@ const number = z.string().superRefine((arg, ctx) => {
 });
 
 export const whitelistSchema = z.object({
-	name: z.string().min(6),
+	name: z.string().min(6).optional(),
 	email: z.string().email(),
 	phone: z
 		.object({

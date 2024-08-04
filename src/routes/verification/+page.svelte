@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade, fly } from 'svelte/transition';
 	import { format } from 'date-fns';
 	import Section from '$lib/layouts/Section.svelte';
 	import { InfoIcon, Mail, MoveRight, PersonStanding, Scale, ShieldEllipsis } from 'lucide-svelte';
@@ -224,7 +225,7 @@
 		{
 			header: 'Verify your email',
 			subheader:
-				"A verification link has beeen sent to your email. Check your spam folder if you can't find it."
+				"A verification link has been sent to your email. Check your spam folder if you can't find it."
 		},
 		{
 			header: 'Verify your phone number',
@@ -338,6 +339,7 @@
 	<Section maxWidth="4xl" class="w-full text-white">
 		{#if !loading}
 			<div
+				transition:fade={{ duration: 300 }}
 				class="relative min-h-[900px] rounded-xl border border-white/[0.05] bg-black/25 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
 				<div
 					class="relative -top-12 mx-auto -mt-8 flex h-20 w-20 items-center justify-center rounded-full border-b-4 border-white/[0.2] bg-neutral-950 pb-4 sm:mb-12 md:-mt-16 lg:-mt-24">
@@ -351,7 +353,13 @@
 				<div class="group flex w-full items-center justify-center gap-x-4">
 					{#each Array(3) as _, i}
 						<div
-							class={`inset-0 h-12 w-12 transform-gpu rounded-full transition duration-200 ease-in-out ${$form.step >= i ? 'bg-gradient-radial from-green-400 to-green-800' : 'bg-neutral-300'} shadow-xl`}>
+							class={`inset-0 h-12 w-12 transform-gpu rounded-full transition duration-200 ease-in-out ${
+								$form.step === i
+									? 'scale-110 bg-gradient-radial from-green-400 to-green-800'
+									: $form.step > i
+										? 'bg-gradient-radial from-green-400 to-green-800'
+										: 'bg-neutral-300'
+							} shadow-xl`}>
 						</div>
 						{#if i !== 2}
 							<hr class="w-12 border-white/[0.2]" />
@@ -361,10 +369,16 @@
 				<!-- Status -->
 
 				<!-- INFO -->
-				<div class="mt-8 space-y-4 py-12 text-center">
-					<h1 class="text-4xl capitalize text-neutral-100">{currentHeaderText.header}</h1>
-					<p class="text-lg text-neutral-300">{currentHeaderText.subheader}</p>
-				</div>
+				{#key $form.step}
+					<div class="mt-8 space-y-4 py-12 text-center">
+						<h1
+							transition:fly={{ y: -50, duration: 600 }}
+							class="text-4xl capitalize text-neutral-100">
+							{currentHeaderText.header}
+						</h1>
+						<p class="text-lg text-neutral-300">{currentHeaderText.subheader}</p>
+					</div>
+				{/key}
 
 				<!-- FORM START -->
 				{#if !$isSubscribed.subscribed || $form.step < 2}
@@ -372,16 +386,17 @@
 						{#if $form.step === 0 && !verifications.email}
 							<!-- Full Name -->
 							<div class="grid gap-2">
-								<label for="name">Full Legal Name<span class="text-red-400">*</span></label>
-								<div class="relative">
+								<label for="name">Full Legal Name<span class="text-red-4000">*</span></label>
+								<div in:fade={{ duration: 200 }} class="relative">
 									<Scale
 										class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
 									<InfoIcon
 										class="absolute right-0 top-1/2 mx-4 -translate-y-1/2 transform text-indigo-400/75 " />
 									<input
 										class={cn(
-											'text-input form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500 ',
-											$form.step > 0 && 'border-green-500 ring-green-500 '
+											// ' focus:ring-2 focus:ring-violet-600 ',
+											`text-input duration-50 form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow ease-in-out invalid:ring-2 invalid:!ring-red-500 focus:ring-2 focus:ring-violet-600`,
+											$form.step > 0 && 'border-green-500 ring-green-500   '
 										)}
 										type="text"
 										bind:value={$form.name}
@@ -396,11 +411,11 @@
 							<!-- Email -->
 							<div class="grid gap-2">
 								<label for="email">Email<span class="text-red-400">*</span></label>
-								<div class="relative">
+								<div in:fade={{ duration: 200 }} class="relative">
 									<Mail
 										class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
 									<input
-										class="form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:border-2 invalid:border-red-500 invalid:ring-red-500"
+										class="form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:!ring-red-500 focus:ring-2 focus:ring-violet-500"
 										type="email"
 										bind:value={$form.email}
 										aria-invalid={$errors.email ? 'true' : undefined}
@@ -412,6 +427,7 @@
 						<!-- Verify Email -->
 						{#if $form.step === 0 && verifications.email}
 							<div
+								in:fade={{ duration: 200 }}
 								class="flex h-[400px] flex-col items-center gap-4 rounded-xl bg-white/[0.1] p-12 text-neutral-100">
 								<div class="w-32 rounded-lg">
 									<CustomLottiePlayer loop={true} src={'/mail2.json'} />
