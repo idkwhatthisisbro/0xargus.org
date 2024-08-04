@@ -25,6 +25,7 @@
 	import IconUniswap from '$lib/assets/uniswap.svg?component';
 	import IconSafePal from '$lib/assets/safepal.svg?component';
 	import Icon1inch from '$lib/assets/1inch.svg?component';
+
 	import { isSubscribed } from '$lib/stores/form.js';
 	import { Modal } from 'svelte-simple-modal';
 
@@ -145,8 +146,15 @@
 
 		<Stars numStars={5} />
 
-		<!-- TODO: Make this effecient -->
-		<WavyBackground />
+		{#if isSafari}
+			<img
+				src="/safari-hero.svg"
+				alt="Safari Hero Background"
+				class="absolute inset-x-0 -bottom-52 z-0 h-[450px] w-full sm:-bottom-60 sm:h-[500px]" />
+		{:else}
+			<!-- TODO: Make this effecient -->
+			<WavyBackground />
+		{/if}
 	</main>
 	<!-- HERO END -->
 
