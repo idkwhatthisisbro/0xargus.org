@@ -1,9 +1,11 @@
 <script lang="ts">
 	// TODO: Add localization
+
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import JoinTheWhitelist from '$lib/components/page/JoinTheWhitelist.svelte';
 
+	import { fade } from 'svelte/transition';
 	import AnimatedHeroText from '$lib/components/AnimatedHeroText.svelte';
 	import ExtensionsCard from '$lib/components/ExtensionsCard.svelte';
 	import InvestFearlesslyCard from '$lib/components/InvestFearlesslyCard.svelte';
@@ -20,11 +22,6 @@
 	import { SvelteFlow, type Node } from '@xyflow/svelte';
 	import '@xyflow/svelte/dist/style.css';
 	import { MetaTags } from 'svelte-meta-tags';
-	// ICONS
-	import IconMetamask from '$lib/assets/metamask.svg?component';
-	import IconUniswap from '$lib/assets/uniswap.svg?component';
-	import IconSafePal from '$lib/assets/safepal.svg?component';
-	import Icon1inch from '$lib/assets/1inch.svg?component';
 
 	import { isSubscribed } from '$lib/stores/form.js';
 	import { Modal } from 'svelte-simple-modal';
@@ -42,6 +39,7 @@
 		edges,
 		nodes
 	} from '$lib/data';
+	import Marquee from '$lib/components/Marquee.svelte';
 
 	const styles = {
 		styleWindow: { backgroundColor: '#06000f', 'border-radius': '1rem', padding: '1rem' },
@@ -132,12 +130,38 @@
 				{#if !$isSubscribed.subscribed}
 					<WhitelistForm id="whitelist-hero" />
 				{:else}
-					<div
-						class="hover:bg-indigo-600' z-[1000] mt-12 flex flex-col items-center justify-center rounded-xl bg-gradient-radial from-slate-800 to-slate-900 p-4 shadow-xl sm:px-8">
-						<p class="text-lg font-medium text-white">
-							🎉 You are already subscribed to our whitelist.
-						</p>
-						<p class="text-base font-medium text-indigo-200">Stay tuned for updates!</p>
+					<div class="relative z-[32] w-full max-w-xl px-4 sm:px-0">
+						<div
+							class="mt-10 rounded-xl bg-gradient-to-tr from-slate-800/80 via-slate-900/85 to-gray-700/80 p-4 shadow-xl backdrop-blur-sm sm:mt-16 sm:p-5">
+							<div class="flex items-center justify-between gap-4 sm:gap-6">
+								<div class="flex items-center space-x-4">
+									<div
+										class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500 sm:h-12 sm:w-12">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-6 w-6 text-white sm:h-7 sm:w-7"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor">
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M5 13l4 4L19 7" />
+										</svg>
+									</div>
+									<div>
+										<p class="text-base font-medium text-white sm:text-lg">Whitelist Confirmed</p>
+										<p class="text-sm text-indigo-200 sm:text-base">You're all set for updates</p>
+									</div>
+								</div>
+								<a
+									href="/dashboard"
+									class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:px-5 sm:py-2.5 sm:text-base">
+									View Status
+								</a>
+							</div>
+						</div>
 					</div>
 				{/if}
 				<!-- WHITELIST BUTTON END -->
@@ -150,7 +174,7 @@
 			<img
 				src="/safari-hero.svg"
 				alt="Safari Hero Background"
-				class="x-bottom-52 absolute inset-x-0 -bottom-[20rem] z-0 h-[450px] w-full sm:-bottom-60 sm:h-[500px]" />
+				class="x-bottom-52 absolute inset-x-0 -bottom-72 z-0 h-[450px] w-full sm:-bottom-60 sm:h-[500px]" />
 		{:else}
 			<!-- TODO: Make this effecient -->
 			<WavyBackground />
@@ -170,14 +194,14 @@
 				subtitle="Our platform is the bridge to a safer DeFi experience, providing the robust protection you need to navigate the blockchain space with confidence." />
 
 			<div
-				class="mt-12 flex w-full flex-wrap gap-4 rounded-xl border border-dashed border-white/[0.2] sm:mt-24">
-				{#each [Icon1inch, IconMetamask, IconUniswap, IconSafePal] as icon}
-					<div
-						class="flex flex-1 items-center justify-center border border-dashed border-neutral-400/5 px-2 py-8 sm:p-12">
-						<svelte:component this={icon} class="h-[30px] saturate-0" />
-					</div>
-				{/each}
+				class="absolute left-1/2 top-0 -z-[100] -translate-x-1/2 blur-3xl xl:top-48"
+				aria-hidden="true">
+				<div
+					class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
+					style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
 			</div>
+
+			<Marquee />
 
 			<!-- FEATURES SECTION-->
 			<SectionHeader
@@ -208,75 +232,76 @@
 					</div>
 				{/each}
 
-				<InvestFearlesslyCard class="col-span-1 lg:col-span-full" />
 				<ExtensionsCard class="col-span-full" />
+				<InvestFearlesslyCard class="col-span-1 lg:col-span-full" />
 			</div>
 		</Section>
 	</GridAndDotBackgroundsSmallGrid>
 	<!-- Product Summary + Features End -->
 
-	<Section id="howitworks" className="relative pb-0">
-		<!-- <Stars numStars={10} slot="background" /> -->
-		<!-- <enhanced:img  src="/test3.png" class="absolute inset-0 z-[1000] h-36 w-full opacity-50 blur-md" alt="gradient" /> -->
-
-		<SvgBlur
-			class="absolute -right-[15rem] top-[25rem] z-[55] hidden opacity-40 sm:-right-[35rem] sm:bottom-32 sm:top-auto sm:block" />
-		<SvgBlur
-			class="absolute -left-[15rem] top-[25rem] z-[55] opacity-40 sm:-left-[35rem] sm:bottom-32 sm:top-auto" />
-
-		<!-- <Spotlight fill="#a855f7" className="blur-3xl absolute z-[51]" /> -->
-
+	<Section id="howitworks" class="relative w-full overflow-hidden bg-white text-black">
+		<div class="absolute inset-0 z-0 bg-gradient-to-br from-[#06000f] to-[#0a0015]"></div>
+		<div
+			class="absolute inset-0 z-0 bg-gradient-to-br from-purple-900/30 via-transparent to-indigo-900/30">
+		</div>
+		<div
+			class="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,rgba(79,70,229,0.15),transparent_70%)]">
+		</div>
 		<SectionHeader
 			title="Crypto Safeguards: The Argus Approach"
 			coloredPart="Crypto Safeguards:"
 			titleMaxWidth="max-w-xl"
+			noPadding
+			my="my-0"
 			subtitle="Discover the steps involved in safeguarding your digital assets with our cutting-edge technology." />
 
 		<div
 			class="relative right-0 flex h-[1150px] w-full items-center justify-center overflow-hidden sm:hidden">
 			<SvelteFlow
-				style="background-color: #00000000; z-index: 52;"
-				attributionPosition="bottom-right"
+				style="background-color: #00000000; z-index: 60;"
+				proOptions={{ hideAttribution: true }}
 				nodes={nodesMobile}
 				fitView
-				fitViewOptions={{ minZoom: 100, duration: 2 }}
+				fitViewOptions={{ minZoom: 100 }}
 				edges={edgesMobile}
-				nodesDraggable={false}
-				nodesConnectable={false}
-				elementsSelectable={false}>
-				<!-- <Background patternColor="#0a0a0a" bgColor="#00000000" /> -->
+				zoomOnDoubleClick={false}
+				zoomOnScroll={false}
+				panOnScroll={false}
+				panOnDrag={false}>
 			</SvelteFlow>
 
-			<!-- Hide Attribution -->
-			<div class="absolute bottom-0 right-0 z-[53] h-12 w-20 bg-neutral-950" />
-			<!-- Overlay to prevent moving -->
-			<div class="absolute inset-0 z-[53]" />
+			<div class="absolute inset-0 z-[61]" />
 		</div>
 
 		<div
-			class={'svelte-flow-container relative hidden w-full items-center justify-center overflow-hidden sm:flex sm:h-[1000px]'}>
+			class={'relative hidden w-full items-center justify-center overflow-hidden sm:flex sm:h-[1150px]'}>
 			<SvelteFlow
-				style="background-color: #00000000; z-index: 52;"
-				attributionPosition="bottom-right"
+				proOptions={{ hideAttribution: true }}
+				style="background-color: #00000000; z-index: 60;"
 				{nodes}
 				fitView
-				fitViewOptions={{ duration: 2 }}
-				{edges}
-				nodesDraggable={false}
-				nodesConnectable={false}
-				elementsSelectable={false}>
-				<!-- <Background bgColor="#00000000" /> -->
-			</SvelteFlow>
-
-			<!-- Hide Attribution -->
-			<div class="absolute bottom-0 right-0 z-[53] h-12 w-20 bg-neutral-950" />
-			<!-- Overlay to prevent moving -->
-			<div class="absolute inset-0 z-[53]" />
+				fitViewOptions={{ minZoom: 100 }}
+				{edges} />
+			<div class="absolute inset-0 z-[60]" />
 		</div>
+		<div class="mt-32" />
+		<svg
+			viewBox="0 0 1440 75"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			width="100%"
+			class="absolute -bottom-2 left-0 right-0 z-[1000] bg-transparent"
+			style="transform: rotate(180deg);">
+			<path
+				class="z-[53]"
+				d="M-100 58C-100 58 218.416 36.3297 693.5 36.3297C1168.58 36.3297 1487 58 1487 58V-3.8147e-06H-100V58Z"
+				fill="#06000f"></path>
+		</svg>
 	</Section>
 
-	<Section maxWidth="full" class="relative">
-		<section class={cn('z-[51] mt-20 flex w-full items-center justify-center sm:py-36')}>
+	<Section maxWidth="full" class="relative ">
+		<section
+			class={cn('z-[51] mx-auto mt-20 flex w-full max-w-4xl items-center justify-center sm:py-36')}>
 			<div class="grid items-center justify-center text-center">
 				<h3
 					class="bg-gradientt-tr from-purple-500 via-purple-600 to-indigo-500 bg-clip-text text-6xl font-bold text-transparent text-white">
@@ -295,16 +320,18 @@
 
 					of Crypto
 				</h3>
-				<p class="mx-auto mt-8 max-w-4xl text-center text-3xl text-neutral-300">
+				<p class=" mt-8 text-center text-3xl text-neutral-300">
 					Turn Pro by harnessing the power of AI, add Argus to your arsenal with support for over 8
 					chains.
 				</p>
-				<a
-					class="group m-auto mt-8 flex w-48 items-center justify-center rounded-full border border-purple-700/30 px-3 py-2 text-sm text-white shadow-md duration-200 ease-in-out"
-					style="background: linear-gradient(90.33deg,rgba(40,36,160,.25),hsla(0,12%,67%,.25)); white-space: nowrap;"
-					href="/presale"
-					>Explore The Presale <ArrowRightIcon
-						class="ml-2 h-4 transform-gpu transition duration-300 group-hover:translate-x-0.5" /></a>
+				<div class="flex items-center justify-center">
+					<a
+						class="group mt-8 flex w-48 items-center justify-center rounded-full border border-purple-700/30 px-3 py-2 text-sm text-white shadow-md duration-200 ease-in-out"
+						style="background: linear-gradient(90.33deg,rgba(40,36,160,.25),hsla(0,12%,67%,.25)); white-space: nowrap;"
+						href="/presale"
+						>Explore The Presale <ArrowRightIcon
+							class="ml-2 h-4 transform-gpu transition duration-300 group-hover:translate-x-0.5" /></a>
+				</div>
 			</div>
 		</section>
 
@@ -357,7 +384,7 @@
 							class="absolute inset-x-0 bottom-0 z-[50] h-64 rounded-xl sm:h-96" />
 					{:else}
 						<div class="relative z-50 h-64 sm:h-96 sm:max-w-[30rem]">
-							<enhanced:img src={img} alt="img" loading="lazy" class="h-full w-full rounded-xl" />
+							<img src={img} alt="img" loading="lazy" class="h-full w-full rounded-xl" />
 						</div>
 					{/if}
 				</div>

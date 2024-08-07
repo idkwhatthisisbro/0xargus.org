@@ -84,6 +84,8 @@
 				.select('*')
 				.eq('email', $isSubscribed.email || $form.email)
 				.maybeSingle();
+			console.log($isSubscribed.email);
+			console.log($form.email);
 			console.log(data);
 			data &&
 				form.update(
@@ -116,23 +118,23 @@
 				'postgres_changes',
 				{ event: 'UPDATE', schema: 'public', filter: `email=eq.${$form.email}` },
 				(payload) => {
+					if ($form.step == 2) {
+						return;
+					}
 					let newStep: number;
 
-					if (!(payload.new.email == $form.email)) {
-						return;
-					}
-
 					if (payload.new.phone_confirmed_at) {
+						newStep = 2;
+						verifications.phone = false;
+
+						// Set subscribe store to true, if step is 2 [1/2]
+						isSubscribed.set({ subscribed: true, email: payload.new.email });
+						payload.new.step != 2 && handleStep(2);
+					} else if (payload.new.email_confirmed_at && !payload.new.phone_confirmed_at) {
 						console.log('ran');
-						verifications.phone = false;
-						newStep = 2;
 
-						// Set subscribe store to true, if step is 2 [1/2]
-						isSubscribed.set({ subscribed: true, email: payload.new.email });
-						payload.new.step != 2 && handleStep(2);
-					} else if (payload.new.email_confirmed_at) {
-						verifications.email = false;
 						newStep = 1;
+						verifications.email = false;
 						// Turns phone from null to object if user confirms email
 						$form.phone = { number: '', otp: '' };
 						payload.new.step != 1 && handleStep(1);
@@ -140,6 +142,8 @@
 						return;
 					}
 
+					console.log(newStep);
+					console.log(form);
 					form.update(
 						(form) => {
 							form.step = newStep;
@@ -147,31 +151,7 @@
 						},
 						{ taint: false }
 					);
-
-					if (payload.new.phone_confirmed_at) {
-						verifications.phone = false;
-						newStep = 2;
-
-						// Set subscribe store to true, if step is 2 [1/2]
-						isSubscribed.set({ subscribed: true, email: payload.new.email });
-						payload.new.step != 2 && handleStep(2);
-					} else if (payload.new.email_confirmed_at) {
-						verifications.email = false;
-						newStep = 1;
-						// Turns phone from null to object if user confirms email
-						$form.phone = { number: '', otp: '' };
-						payload.new.step != 1 && handleStep(1);
-					} else {
-						return;
-					}
-
-					form.update(
-						(form) => {
-							form.step = newStep;
-							return form;
-						},
-						{ taint: false }
-					);
+					console.log($form.step);
 				}
 			)
 			.subscribe();
@@ -202,6 +182,16 @@
 			clearInterval(interval as NodeJS.Timeout);
 			interval = null;
 			startCountdown(); // Restart the countdown
+		}
+	}
+
+	function handleResendCode() {
+		console.log('clicked');
+		if (time === 0) {
+			// @ts-ignore
+			$form.phone.otp = '';
+			restartCountdown();
+			submit();
 		}
 	}
 
@@ -259,6 +249,7 @@
 		errorSelector: '[aria-invalid="true"],[data-invalid]',
 		resetForm: false,
 		onUpdated: (event) => {
+			console.log(event.form);
 			event.form.valid &&
 				(($form.step === 0 && (verifications.email = true)) ||
 					($form.step === 1 &&
@@ -298,10 +289,9 @@
 	});
 </script>
 
-<!-- 
 {#if dev}
 	<SuperDebug data={$form} />
-{/if} -->
+{/if}
 <MetaTags
 	title="Presale Identity Verification"
 	titleTemplate="%s - 0xArgus"
@@ -340,12 +330,12 @@
 		{#if !loading}
 			<div
 				transition:fade={{ duration: 300 }}
-				class="relative min-h-[900px] rounded-xl border border-white/[0.05] bg-black/25 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
+				class="relative min-h-[900px] rounded-xl border-white/[0.05] bg-gradient-to-tr from-slate-800/50 via-slate-950/55 to-gray-700/20 px-4 py-8 shadow-2xl md:p-16 lg:px-32 lg:py-24">
 				<div
-					class="relative -top-12 mx-auto -mt-8 flex h-20 w-20 items-center justify-center rounded-full border-b-4 border-white/[0.2] bg-neutral-950 pb-4 sm:mb-12 md:-mt-16 lg:-mt-24">
+					class="relative -top-12 mx-auto -mt-8 flex h-20 w-20 items-center justify-center rounded-full border-b-4 border-white/[0.2] bg-brand-bgPrimary pb-4 sm:mb-12 md:-mt-16 lg:-mt-24">
 					<div class="absolute inset-0">
 						<enhanced:img
-							src="$lib/assets/logo.png?enhanced"
+							src="/static/cardanoCoin.png?enhanced"
 							alt="logo"
 							class="p-6 drop-shadow-2xl sm:p-4" />
 					</div>
@@ -371,9 +361,7 @@
 				<!-- INFO -->
 				{#key $form.step}
 					<div class="mt-8 space-y-4 py-12 text-center">
-						<h1
-							transition:fly={{ y: -50, duration: 600 }}
-							class="text-4xl capitalize text-neutral-100">
+						<h1 in:fade={{ duration: 250 }} class="text-4xl capitalize text-neutral-100">
 							{currentHeaderText.header}
 						</h1>
 						<p class="text-lg text-neutral-300">{currentHeaderText.subheader}</p>
@@ -386,7 +374,7 @@
 						{#if $form.step === 0 && !verifications.email}
 							<!-- Full Name -->
 							<div class="grid gap-2">
-								<label for="name">Full Legal Name<span class="text-red-4000">*</span></label>
+								<label for="name">Full Legal Name<span class="text-red-400">*</span></label>
 								<div in:fade={{ duration: 200 }} class="relative">
 									<Scale
 										class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
@@ -395,7 +383,7 @@
 									<input
 										class={cn(
 											// ' focus:ring-2 focus:ring-violet-600 ',
-											`text-input duration-50 form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow ease-in-out invalid:ring-2 invalid:!ring-red-500 focus:ring-2 focus:ring-violet-600`,
+											`text-input duration-50 form-input h-full w-full rounded-xl border-0 bg-white/[0.075] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow ease-in-out invalid:ring-2 invalid:!ring-red-500 focus:ring-2 focus:ring-violet-600`,
 											$form.step > 0 && 'border-green-500 ring-green-500   '
 										)}
 										type="text"
@@ -415,7 +403,7 @@
 									<Mail
 										class="absolute top-1/2 mx-4 w-6 -translate-y-1/2 transform text-indigo-500" />
 									<input
-										class="form-input h-full w-full rounded-xl border-0 bg-white/[0.1] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:!ring-red-500 focus:ring-2 focus:ring-violet-500"
+										class="form-input h-full w-full rounded-xl border-0 bg-white/[0.075] px-6 py-6 pl-12 text-xl text-neutral-300 placeholder-neutral-500 shadow invalid:!ring-red-500 focus:ring-2 focus:ring-violet-500"
 										type="email"
 										bind:value={$form.email}
 										aria-invalid={$errors.email ? 'true' : undefined}
@@ -472,7 +460,7 @@
 											inputStyle="width: 72px; height: 72px; font-size: 25px;"
 											separatorClass="text-white"
 											bind:value={$form.phone.otp}
-											inputClass="rounded-xl text-xl text-white bg-neutral-800 border-white/[0.2] focus:ring-2 focus:ring-blue-500/50  focus:ring-offset-blue-500 -border focus:outline-none shadow-xl"
+											inputClass="rounded-xl text-xl text-white bg-white/[0.075] border-white/[0.2] focus:ring-2 focus:ring-blue-500/50  focus:ring-offset-blue-500 -border focus:outline-none shadow-xl"
 											numOfInputs={6} />
 									</div>
 								{/if}
@@ -486,18 +474,20 @@
 										Sent to mobile {$form.phone.number} -
 									{/if}
 									<button
-										on:click={() => {
-											if (!time) {
-												// @ts-ignore
-												$form.phone.otp = '';
-												restartCountdown();
-												submit();
-											}
+										on:click|preventDefault={() => {
+											handleResendCode();
 										}}
 										class="text-blue-600 underline underline-offset-2 duration-200 ease-in-out {time
 											? 'cursor-default text-neutral-500'
-											: 'text-blue-600 hover:text-blue-700'}"
-										>{time ? `resend in ${time}` : 'Resend Code'}</button>
+											: 'text-blue-600 hover:text-blue-700'}">
+										<span class="inline-block w-[100px] whitespace-nowrap text-center">
+											{#if time}
+												resend in {time}
+											{:else}
+												Resend Code
+											{/if}
+										</span>
+									</button>
 								</p>
 							</div>
 						{/if}
@@ -534,7 +524,7 @@
 									}}
 									type="button"
 									class={cn(
-										'mt-12 h-full w-full flex-grow rounded-lg bg-neutral-700 px-8 py-6 shadow-xl duration-200 ease-in-out hover:bg-neutral-700'
+										'mt-12 h-full w-full flex-grow rounded-lg bg-white/[0.1] px-8 py-6 shadow-xl duration-200 ease-in-out hover:bg-white/[0.125]'
 									)}>Go Back</button>
 							{:else}
 								{@const disabled = !!$allErrors.length || $submitting}
@@ -564,38 +554,44 @@
 				{:else}
 					<!-- Success Receipt -->
 					<div
-						class="rounded-xl bg-gradient-radial from-white/95 via-neutral-200 to-neutral-100/95 px-12 py-12 shadow-xl backdrop-blur-3xl backdrop-filter">
-						<h3 class="mt-8 text-2xl font-medium text-neutral-700">Registration Details</h3>
-						<hr class="mt-2 border-neutral-700" />
-						<div class="mt-4 flex justify-around">
-							<div class="gap grid text-center">
-								<p class="font-bold tracking-wide text-neutral-500">REGISTERED AS</p>
-								<p class="text-neutral-700">
-									{$form.name}
-								</p>
+						transition:fade={{ duration: 250 }}
+						class="relative rounded-xl bg-gradient-to-br from-slate-800/90 via-slate-900/90 to-indigo-900/90 px-12 py-12 shadow-2xl backdrop-blur-3xl backdrop-filter">
+						<div class="absolute inset-0 rounded-xl bg-purple-500/5 blur-md"></div>
+						<div class="relative z-10">
+							<h3 class="mt-8 text-2xl font-medium text-neutral-100">Registration Details</h3>
+							<hr class="mt-2 border-neutral-400/30" />
+							<div class="mt-4 flex justify-around">
+								<div class="gap grid text-center">
+									<p class="font-bold tracking-wide text-neutral-300">REGISTERED AS</p>
+									<p class="text-neutral-100">
+										{$form.name}
+									</p>
+								</div>
+								<div class="gap grid text-center">
+									<p class="font-bold tracking-wide text-neutral-300">REGISTERED ON</p>
+									<p class="text-neutral-100">
+										{formattedDate}
+									</p>
+								</div>
 							</div>
-							<div class="gap grid text-center">
-								<p class="font-bold tracking-wide text-neutral-500">REGISTERED ON</p>
-								<p class="text-neutral-700">
-									{formattedDate}
-								</p>
-							</div>
+
+							<h3 class="mt-8 text-2xl font-medium text-neutral-100">Additional Information</h3>
+							<hr class="mt-2 border-neutral-400/30" />
+
+							<p class="mt-6 font-bold tracking-wide text-neutral-300">ABOUT DEPOSITS</p>
+							<p class="leading-relaxed text-neutral-200">
+								Your purchase will be confirmed when your deposit clears. If your deposit doesn't
+								clear immediately, that's fine – you have until {formattedLastInvestmentDay} to finalize
+								your purchase. If you secure an allocation and do not fund your allocation by the deadline,
+								you will be unable to secure future allocations in 0xArgus sales.
+							</p>
+							<p class="mt-6 font-bold tracking-wide text-neutral-300">
+								WHEN WILL I RECEIVE TOKENS?
+							</p>
+							<p class="leading-relaxed text-neutral-200">
+								The Argus team will be distributing tokens 6 days from the close of the sale ({formattedTokenReleaseDate}).
+							</p>
 						</div>
-
-						<h3 class="mt-8 text-2xl font-medium text-neutral-700">Additional Information</h3>
-						<hr class="mt-2 border-neutral-700" />
-
-						<p class="mt-6 font-bold tracking-wide text-neutral-500">ABOUT DEPOSITS</p>
-						<p class="leading-normal text-neutral-900">
-							Your purchase will be confirmed when your deposit clears. If your deposit doesn’t
-							clear immediately, that’s fine – you have until {formattedLastInvestmentDay} to finalize
-							your purchase. If you secure an allocation and do not fund your allocation by the deadline,
-							you will be unable to secure future allocations in 0xArgus sales.
-						</p>
-						<p class="mt-6 font-bold tracking-wide text-neutral-500">WHEN WILL I RECEIVE TOKENS?</p>
-						<p class="leading-normal text-neutral-700">
-							The Argus team will be distributing tokens 6 days from the close of the sale ({formattedTokenReleaseDate}).
-						</p>
 					</div>
 				{/if}
 			</div>

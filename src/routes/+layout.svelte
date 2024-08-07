@@ -8,6 +8,6 @@
 	// inject({ mode: dev ? 'development' : 'production' });
 </script>
 
-<div class="font-gt-walsheim relative overflow-hidden">
+<div class="redlative overflow-hidden font-gt-walsheim">
 	<slot />
 </div>

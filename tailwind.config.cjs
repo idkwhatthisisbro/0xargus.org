@@ -6,10 +6,13 @@ import svgToDataUri from 'mini-svg-data-uri';
 import tailwindChildren from 'tailwind-children'
 import tailwindForms from '@tailwindcss/forms'
 import tailwindContainerQueries from '@tailwindcss/container-queries'
+import flowbitePlugin from 'flowbite/plugin'
+
+
 const colors = require('tailwindcss/colors');
 
 const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'],
 
 	theme: {
 		extend: {
@@ -23,7 +26,6 @@ const config = {
 					ethereum: '#a855f7',
 					solana: '#6366f1',
 					arbitrum: '#3b82f6',
-
 				},
 				neutral: {
 					50: '#F9FAFB',
@@ -83,6 +85,7 @@ const config = {
 	},
 
 	plugins: [
+		flowbitePlugin,
 		tailwindChildren,
 		tailwindForms({strategy: 'class'}),
 		tailwindAspectRatio,

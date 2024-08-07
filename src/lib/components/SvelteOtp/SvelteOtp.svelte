@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, afterUpdate } from 'svelte';
 	import OtpItem from './OtpItem.svelte';
+	import { fade } from 'svelte/transition';
 
 	export let numOfInputs: number = 6;
 	export let value = '';
@@ -48,7 +49,10 @@
 	$: value = codes.join('');
 </script>
 
-<div class={`${disableDefaultStyle ? '' : 'wrapper'} ${wrapperClass}`} style={wrapperStyle}>
+<div
+	transition:fade={{ duration: 250 }}
+	class={`${disableDefaultStyle ? '' : 'wrapper'} ${wrapperClass}`}
+	style={wrapperStyle}>
 	{#each codes as value, i (i)}
 		<OtpItem
 			num={numberOnly}

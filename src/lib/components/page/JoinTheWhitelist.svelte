@@ -21,10 +21,38 @@
 		{#if !$isSubscribed.subscribed}
 			<WhitelistForm id="whitelist-footer" />
 		{:else}
-			<div
-				class="mt-12 flex flex-col items-center justify-center rounded-xl border border-white/[0.2] p-4 shadow-xl sm:px-8">
-				<p class="text-lg text-neutral-300">🎉 You are already subscribed to our whitelist.</p>
-				<p class="text-base text-neutral-400">Stay tuned for updates!</p>
+			<div class="relative z-[32] w-full max-w-xl px-4 sm:px-0">
+				<div
+					class="mt-10 rounded-xl border border-white/[0.2] p-4 shadow-xl backdrop-blur-sm sm:mt-16 sm:p-5">
+					<div class="flex items-center justify-between gap-4 sm:gap-6">
+						<div class="flex items-center space-x-4">
+							<div
+								class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500 sm:h-12 sm:w-12">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-6 w-6 text-white sm:h-7 sm:w-7"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M5 13l4 4L19 7" />
+								</svg>
+							</div>
+							<div>
+								<p class="text-base font-medium text-white sm:text-lg">Whitelist Confirmed</p>
+								<p class="text-sm text-indigo-200 sm:text-base">You're all set for updates</p>
+							</div>
+						</div>
+						<a
+							href="/dashboard"
+							class="rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:px-5 sm:py-2.5 sm:text-base">
+							View Status
+						</a>
+					</div>
+				</div>
 			</div>
 		{/if}
 	</div>

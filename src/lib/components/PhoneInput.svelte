@@ -2,6 +2,7 @@
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { TelInput, normalizedCountries, isSelected, clickOutsideAction } from 'svelte-tel-input';
 	import 'svelte-tel-input/styles/flags.css';
+	import { fade } from 'svelte/transition';
 
 	let selectedCountry: any = null;
 	onMount(async () => {
@@ -99,6 +100,7 @@
 
 {#if selectedCountry}
 	<div
+		transition:fade={{ duration: 250 }}
 		class="relative flex rounded-lg duration-200 ease-in-out {!valid
 			? `ring-2 ring-red-500 focus-within:ring-offset-red-500/50 focus:outline-none `
 			: ``}">
@@ -106,7 +108,7 @@
 			<button
 				id="states-button"
 				data-dropdown-toggle="dropdown-states"
-				class="-border relative z-10 inline-flex flex-shrink-0 items-center overflow-hidden whitespace-nowrap rounded-l-lg border-r border-neutral-900/30 bg-neutral-700 px-4 py-2.5 text-center text-lg font-medium text-neutral-100 duration-200 ease-in-out hover:bg-neutral-600 focus:outline-none"
+				class="-border relative z-10 inline-flex flex-shrink-0 items-center overflow-hidden whitespace-nowrap rounded-l-lg border-r border-slate-900/30 bg-white/[0.1] px-4 py-2.5 text-center text-lg font-medium text-slate-100 duration-200 ease-in-out hover:bg-slate-600 focus:outline-none"
 				type="button"
 				role="combobox"
 				aria-label="dropdown-countries"
@@ -117,7 +119,7 @@
 				{#if selectedCountry && selectedCountry !== null}
 					<div class="inline-flex items-center text-left">
 						<span class="flag flag-{selectedCountry.toLowerCase()} mr-3 flex-shrink-0" />
-						<span class="text-neutral-300">+{selectedCountryDialCode}</span>
+						<span class="text-slate-300">+{selectedCountryDialCode}</span>
 					</div>
 				{:else}
 					Please select
@@ -137,7 +139,7 @@
 			{#if isOpen}
 				<div
 					id="dropdown-countries"
-					class="absolute z-10 max-w-fit translate-y-11 divide-y divide-neutral-100 overflow-hidden rounded bg-neutral-800 shadow"
+					class="absolute z-10 max-w-fit translate-y-11 divide-y divide-slate-100 overflow-hidden rounded bg-slate-900 shadow"
 					data-popper-reference-hidden=""
 					data-popper-escaped=""
 					data-popper-placement="bottom"
@@ -145,13 +147,13 @@
 					aria-labelledby="country-button"
 					tabindex="-1">
 					<div
-						class="max-h-48 overflow-y-auto text-lg text-neutral-300"
+						class="max-h-48 overflow-y-auto text-lg text-slate-300"
 						aria-labelledby="countries-button"
 						role="listbox">
 						<input
 							aria-autocomplete="list"
 							type="text"
-							class="text-neutral-30 0 sticky top-0 w-full bg-neutral-800 px-4 py-4 placeholder-neutral-300 focus:outline-none"
+							class="text-slate-30 0 sticky top-0 w-full bg-slate-800 px-4 py-4 placeholder-slate-300 focus:outline-none"
 							bind:value={searchText}
 							placeholder={searchPlaceholder} />
 						{#each sortCountries(normalizedCountries, searchText) as country (country.id)}
@@ -162,17 +164,17 @@
 									value={country.iso2}
 									type="button"
 									class="inline-flex w-full overflow-hidden px-4 py-2 text-lg
-                             hover:bg-neutral-600 active:bg-neutral-600
+                             hover:bg-slate-600 active:bg-slate-600
                             {isActive
-										? 'bg-neutral-600 text-neutral-200'
-										: 'text-neutral-300 hover:text-white'}"
+										? 'bg-slate-600 text-slate-200'
+										: 'text-slate-300 hover:text-white'}"
 									on:click={(e) => {
 										handleSelect(country.iso2, e);
 									}}>
 									<div class="inline-flex items-center text-left">
 										<span class="flag flag-{country.iso2.toLowerCase()} mr-3 flex-shrink-0" />
 										<span class="mr-2">{country.name}</span>
-										<span class="text-neutral-400">+{country.dialCode}</span>
+										<span class="text-slate-400">+{country.dialCode}</span>
 									</div>
 								</button>
 							</div>
@@ -189,7 +191,7 @@
 			bind:valid
 			{options}
 			required={true}
-			class="s  -border-neutral-600 -border-l-white/[0.2] block w-full rounded-r-lg bg-neutral-700 p-6 text-lg text-neutral-300
-        placeholder-neutral-400 outline-none focus:outline-none" />
+			class="s  -border-slate-600 -border-l-white/[0.2] block w-full rounded-r-lg bg-white/[0.075] p-6 text-lg text-slate-300
+        placeholder-slate-400 outline-none focus:outline-none" />
 	</div>
 {/if}

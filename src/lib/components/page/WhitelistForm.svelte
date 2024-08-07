@@ -4,6 +4,7 @@
 	import { AlertCircle, ArrowRight, ChevronRight, Clock, MailPlus } from 'lucide-svelte';
 	import { Circle } from 'svelte-loading-spinners';
 	import { cn } from '$lib/utils/cn';
+	import { fade } from 'svelte/transition';
 
 	// Store for the email input value
 	const email = writable('');
@@ -38,6 +39,7 @@
 	Whitelisting has started, enter your email and join today!
 </p>
 <form
+	in:fade={{ duration: 1000 }}
 	class={cn(
 		// classes for both forms
 		'',
@@ -72,7 +74,7 @@
 			// Additional classes for whitelist-hero form
 			id === 'whitelist-hero' && [
 				// Global
-				'absolute inset-0 h-full w-full rounded-3xl bg-transparent bg-gradient-to-tr from-slate-800/50 via-slate-900/55  to-gray-700/50 p-4 pl-8 text-xl text-white invalid:text-red-500',
+				'absolute inset-0 h-full w-full rounded-3xl border-0 bg-transparent bg-gradient-to-tr from-slate-800/50 via-slate-900/55  to-gray-700/50 p-4 pl-8 text-xl text-white invalid:text-red-500',
 				// Desktop
 				// Mobile
 				// Animations

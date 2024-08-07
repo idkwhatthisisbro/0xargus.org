@@ -1,6 +1,4 @@
 import FeatureCard1 from '$lib/assets/FeatureCard1.png?enhanced';
-import FeatureCard2 from '$lib/assets/FeatureCard2.png?enhanced';
-import FeatureCard3 from '$lib/assets/FeatureCard3.png?enhanced';
 import { writable } from 'svelte/store';
 
 export const howItWorkCards = [
@@ -12,12 +10,12 @@ export const howItWorkCards = [
 	{
 		title: 'Rug Pull Protection',
 		desc: 'Our system is designed to detect any large liquidity withdrawals, and any malicious changes to the contract, including: unauthorized minting of new tokens, changes to transaction fees.  If such activity is detected, Argus will immediately execute a transaction to secure your holdings.',
-		img: FeatureCard2
+		img: '/FeatureCard2.svg'
 	},
 	{
 		title: 'Real-Time Monitoring',
 		desc: 'Argus SentryAI is constantly monitoring for any malicious transactions in real time. With Auto-Protect, you can effortlessly safeguard your entire portfolio with a single click. So, get peace of mind, knowing your guardian Argus is always on the watch!',
-		img: FeatureCard3
+		img: '/FeatureCard3.svg'
 	}
 ];
 

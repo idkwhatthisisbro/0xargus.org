@@ -11,8 +11,7 @@
 	let active: string | null = null;
 </script>
 
-<nav
-	class="z-50 mx-auto flex w-full max-w-7xl items-center justify-between bg-brand-bgPrimary px-[30px] py-6">
+<nav class="z-50 mx-auto flex w-full max-w-7xl items-center justify-between px-[30px] py-6">
 	<a
 		aria-label="home"
 		href={BASE_URL}

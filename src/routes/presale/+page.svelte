@@ -128,23 +128,33 @@
 	];
 </script>
 
-<div class="flex min-h-screen flex-col gap-20">
+<div class="relative flex min-h-screen flex-col gap-20">
 	<Navbar />
 	<main
 		class="mx-auto flex w-full max-w-7xl grow flex-col items-center justify-center gap-40 px-[30px]">
 		<!-- WHITELIST CTA FORM -->
 		<div class="flex flex-col items-center gap-14">
-			<div class="flex flex-col items-center gap-4">
-				<h1 class="text-center text-3xl text-white sm:text-6xl">Genesis Founders Presale</h1>
-				<h2 class="text-xl font-light text-gray-100 sm:text-2xl">{formatDate(PRESALE_DATE)}</h2>
+			<div class="flex flex-col items-center gap-8">
+				<h1 class="text-center text-5xl font-extrabold tracking-tight text-white sm:text-7xl">
+					<span
+						class="bg-gradient-to-r from-indigo-400 to-purple-600 bg-clip-text text-transparent">
+						Genesis
+					</span>
+					<span class="ml-2">Founders Presale</span>
+				</h1>
+				<h2 class="text-2xl font-light text-indigo-200 sm:text-3xl">
+					<time datetime={PRESALE_DATE} class="flex items-center justify-center">
+						{formatDate(PRESALE_DATE)}
+					</time>
+				</h2>
 			</div>
 
-			<div class="relative h-44 bg-red-500">
-				<img src="/cardanoCoin.png" alt="coin" class="h-44" />
-				<div
-					class="xh-[400px] absolute inset-0 -z-10 h-96 w-full bg-cover bg-bottom filter"
-					style={`background-image: url("${PresaleBackground}"); `}>
-				</div>
+			<div class="h-44 w-full overflow-hidden">
+				<img src="/cardanoCoin.png" alt="coin" class="mx-auto h-44" />
+				<img
+					src={PresaleBackground}
+					alt="Presale Background"
+					class="absolute inset-0 -top-24 -z-50 h-[750px] w-full object-cover blur-[0.5px] filter" />
 			</div>
 
 			<Countdown
@@ -152,137 +162,176 @@
 				dateFormat="YYYY-MM-DD H:m:s"
 				zone="Etc/Universal"
 				let:remaining>
-				<div class="flex gap-10 text-2xl text-white">
+				<div class="flex gap-10 text-3xl text-white">
 					{#if remaining.done === false}
-						<span class="flex flex-col items-center justify-center gap-2">
-							<span class="text-6xl font-bold text-violet-200">{remaining.totalDays}</span>
-							<span class="font-regular text-2xl text-gray-500">Days</span>
+						<span class="flex flex-col items-center justify-center gap-3">
+							<span
+								class="text-7xl font-bold text-violet-200 transition-all duration-300 ease-in-out hover:text-violet-300"
+								>{remaining.totalDays}</span>
+							<span class="text-2xl font-medium text-indigo-300">Days</span>
 						</span>
 
-						<span class="flex flex-col items-center justify-center gap-2">
-							<span class="text-6xl font-bold text-violet-200">{remaining.hours}</span>
-							<span class="font-regular text-2xl text-gray-500">Hours</span>
+						<span class="flex flex-col items-center justify-center gap-3">
+							<span
+								class="text-7xl font-bold text-violet-200 transition-all duration-300 ease-in-out hover:text-violet-300"
+								>{remaining.hours}</span>
+							<span class="text-2xl font-medium text-indigo-300">Hours</span>
 						</span>
 
-						<span class="flex flex-col items-center justify-center gap-2">
-							<span class="text-6xl font-bold text-violet-200">{remaining.minutes}</span>
-							<span class="font-regular text-2xl text-gray-500">Minutes</span>
+						<span class="flex flex-col items-center justify-center gap-3">
+							<span
+								class="text-7xl font-bold text-violet-200 transition-all duration-300 ease-in-out hover:text-violet-300"
+								>{remaining.minutes}</span>
+							<span class="text-2xl font-medium text-indigo-300">Minutes</span>
 						</span>
 
-						<span class="flex flex-col items-center justify-center gap-2">
-							<span class="text-6xl font-bold text-violet-200">{remaining.seconds}</span>
-							<span class="font-regular text-2xl text-gray-500">Seconds</span>
+						<span class="flex flex-col items-center justify-center gap-3">
+							<span
+								class="text-7xl font-bold text-violet-200 transition-all duration-300 ease-in-out hover:text-violet-300"
+								>{remaining.seconds}</span>
+							<span class="text-2xl font-medium text-indigo-300">Seconds</span>
 						</span>
 					{:else if remaining.done === true}
-						<h2>The time has come!</h2>
+						<h2 class="text-5xl font-bold text-violet-200">The time has come!</h2>
 					{/if}
 				</div>
 			</Countdown>
 
 			<a
-				aria-label="join the whitelist"
 				href="{BASE_URL}/verification"
-				class="flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-700 via-purple-800 to-purple-600 px-8 py-4 text-xl font-bold tracking-wider text-purple-100 duration-200 hover:scale-105">
-				JOIN THE WHITELIST
-				<ArrowRightIcon class="h-8 w-8 text-purple-100/95" />
+				class="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-2xl font-bold text-white shadow-lg transition-all duration-300 hover:shadow-purple-500/30 focus:outline-none focus:ring-4 focus:ring-purple-300">
+				<span
+					class="relative flex items-center rounded-xl bg-gray-900 px-10 py-4 transition-all duration-75 ease-in group-hover:bg-opacity-0">
+					<span class="mr-3">Join Whitelist</span>
+					<svg
+						class="h-7 w-7 transition-transform duration-300 group-hover:translate-x-2"
+						fill="currentColor"
+						viewBox="0 0 20 20"
+						xmlns="http://www.w3.org/2000/svg">
+						<path
+							fill-rule="evenodd"
+							d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+							clip-rule="evenodd" />
+					</svg>
+				</span>
 			</a>
 		</div>
-
-		<div class="relative grid w-full auto-rows-auto grid-cols-3 gap-4 px-8">
+		<div
+			class="relative grid w-full auto-rows-auto grid-cols-1 gap-6 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-3">
 			<!-- PRESALE CARD -->
 			<div
-				class="relative col-span-full flex flex-col items-center justify-center gap-16 overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl @container">
-				<div class="flex flex-col items-center gap-3">
-					<h1 class="text-4xl font-semibold text-white">PHASE 1: GENESIS FOUNDERS PRESALE</h1>
-				</div>
+				class="col-span-full flex flex-col items-center justify-center gap-8 overflow-hidden rounded-xl border border-gray-400/10 bg-white/5 p-8 shadow-2xl backdrop-blur-md transition-all duration-300 hover:shadow-purple-500/20">
+				<h1 class="text-center text-3xl font-bold text-white md:text-4xl">
+					PHASE 1: GENESIS FOUNDERS PRESALE
+				</h1>
+				<p class="text-center text-lg text-gray-300">
+					Be among the first to secure your position in the future of decentralized finance.
+				</p>
 				<span
-					class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[400px]" />
+					class="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-10 blur-[100px]"
+				></span>
 			</div>
 
 			<!-- WHAT DOES 0XARGUS DO CARD -->
 			<div
-				class="relative col-span-full flex flex-col items-center justify-center gap-16 overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
-				<div class="flex flex-col items-center gap-3">
-					<h1 class="text-4xl font-semibold text-white">
-						WHAT DOES
-						<span
-							style="text-shadow: 1px 0 26px #c084fc; box-shadow: 0 0 27px 0 rgba(126, 34, 206,.5); background: linear-gradient(180deg,rgba(120,34,260,.25) 50%,rgba(75,20,150,.15)) "
-							class="rounded-2xl bg-opacity-50 px-2 py-1 text-white shadow-2xl">
-							$ARGUS
-						</span>
-						DO?
-					</h1>
-					<p class="text-center text-2xl text-white/80">
-						Argus Sentry charges $ARGUS tokens for transaction fees, the fee amount is reduced
-						proportionally to your holdings, It also gives you revenue share and DAO votes.
-					</p>
-				</div>
-				<img src="/tg-welcomeBanner.gif" class="w-[560px] rounded-md" alt="" />
+				class="col-span-full flex flex-col items-center justify-center gap-8 overflow-hidden rounded-xl border border-gray-400/10 bg-white/5 p-8 shadow-2xl backdrop-blur-md transition-all duration-300 hover:shadow-blue-500/20">
+				<h1 class="text-center text-3xl font-bold text-white md:text-4xl">
+					WHAT DOES
+					<span
+						class="inline-block rounded-lg bg-gradient-to-r from-purple-600 to-blue-500 px-2 py-1 text-white shadow-lg">
+						$ARGUS
+					</span>
+					DO?
+				</h1>
+				<p class="max-w-3xl text-center text-lg text-gray-300">
+					Argus Sentry charges $ARGUS tokens for transaction fees, with the fee amount reduced
+					proportionally to your holdings. It also provides revenue sharing and DAO voting rights to
+					token holders.
+				</p>
+				<img
+					src="/tg-welcomeBanner.gif"
+					class="w-full max-w-[560px] rounded-lg shadow-lg"
+					alt="Argus Welcome Banner" />
 				<span
-					class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[400px]" />
+					class="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-10 blur-[100px]"
+				></span>
 			</div>
 
 			<!-- TERMS OF SALE CARD -->
 			<div
-				class="relative col-span-1 flex items-center justify-center overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
-				<div class="flex flex-col gap-3">
-					<div class="flex items-center gap-2">
-						<AlertCircleIcon class="text-violet-500" />
-						<h2 class="text-2xl font-semibold text-white">Terms of Sale:</h2>
-					</div>
-					<div>
-						<ul class="text-white/80">
-							<li>Purchase minimum: $100</li>
-							<li>Purchase maximum: $2000</li>
-							<li>Hard-cap: $100,000</li>
-						</ul>
-					</div>
+				class="col-span-1 flex flex-col justify-between overflow-hidden rounded-xl border border-gray-400/10 bg-white/5 p-6 shadow-2xl backdrop-blur-md transition-all duration-300 hover:shadow-violet-500/20">
+				<div class="mb-4 flex items-center gap-2">
+					<AlertCircleIcon class="h-6 w-6 text-violet-500" />
+					<h2 class="text-2xl font-bold text-white">Terms of Sale</h2>
 				</div>
+				<ul class="space-y-2 text-gray-300">
+					<li class="flex items-center">
+						<ArrowRightIcon class="mr-2 h-4 w-4 text-violet-400" /> Purchase minimum: $100
+					</li>
+					<li class="flex items-center">
+						<ArrowRightIcon class="mr-2 h-4 w-4 text-violet-400" /> Purchase maximum: $2000
+					</li>
+					<li class="flex items-center">
+						<ArrowRightIcon class="mr-2 h-4 w-4 text-violet-400" /> Hard-cap: $100,000
+					</li>
+				</ul>
 				<span
-					class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[100px]" />
+					class="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 opacity-10 blur-[50px]"
+				></span>
 			</div>
 
 			<!-- ABOUT TOKEN LAUNCH CARD -->
 			<div
-				class="relative col-span-2 flex items-center justify-center overflow-hidden rounded-md border border-gray-700 bg-zinc-900/5 p-10 shadow-2xl">
-				<div class="flex flex-col gap-3">
-					<div class="flex items-center gap-2">
-						<AlertCircleIcon class="text-violet-500" />
-						<h2 class="text-2xl font-semibold text-white">About The Token Launch</h2>
-					</div>
-					<p class="text-white/80">
-						Users registered for the token sale will receive an email with a unique link to enter
-						the queue prior to the start of the sale. After the sale starts, users who are already
-						in the waiting room will be given a random place in line, ahead of those who arrive
-						after the sale starts. Users arriving after the sale starts get a first-come,
-						first-served place in line after those in the waiting room.
-					</p>
+				class="col-span-1 flex flex-col justify-between overflow-hidden rounded-xl border border-gray-400/10 bg-white/5 p-6 shadow-2xl backdrop-blur-md transition-all duration-300 hover:shadow-blue-500/20 md:col-span-2">
+				<div class="mb-4 flex items-center gap-2">
+					<AlertCircleIcon class="h-6 w-6 text-blue-500" />
+					<h2 class="text-2xl font-bold text-white">About The Token Launch</h2>
 				</div>
+				<p class="text-gray-300">
+					Registered users will receive a unique link to enter the queue before the sale starts.
+					Early arrivals get randomized positions, followed by first-come, first-served for
+					latecomers. Join the waiting room for the best chance at participating in this
+					groundbreaking token sale.
+				</p>
 				<span
-					class="absolute h-1/4 w-2/4 bg-gradient-to-r from-[#93C5FD] via-[#5A9AF8] to-[#3B82F6] opacity-30 blur-[100px]" />
+					class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 opacity-10 blur-[50px]"
+				></span>
 			</div>
 		</div>
 
 		<!-- TOKENOMICS -->
 		<div class="flex flex-col gap-16">
-			<h1 class="text-6xl font-bold text-white">TOKENOMICS</h1>
+			<h1 class="text-center text-6xl font-bold text-white">TOKENOMICS</h1>
 
-			<div>
-				<h2 class="text-2xl text-white">Highlights</h2>
-				<ul class="list-disc text-white/80">
-					<li>
-						$ARGUS is a deflationary currency with a 1B supply cap. This cap fosters scarcity and
-						value appreciation over time.
+			<div class="rounded-xl bg-white/5 p-8 backdrop-blur-sm">
+				<h2 class="mb-6 text-3xl font-semibold text-violet-400">Key Highlights</h2>
+				<ul class="space-y-4 text-white/90">
+					<li class="flex items-start">
+						<ArrowRightIcon class="mr-2 mt-1 h-6 w-6 flex-shrink-0 text-violet-400" />
+						<span
+							><strong class="text-violet-300">Deflationary Model:</strong> $ARGUS has a capped supply
+							of 1 billion tokens, promoting scarcity and potential long-term value appreciation.</span>
 					</li>
-					<li>
-						All token holders can stake to receive their proportional fraction of the platform’s
-						revenue, with no lockup or bonding required to do so. This model grants freedom and
-						liquidity, allowing all participants to benefit from the ecosystem’s success
-						proportionally to their token holdings.
+					<li class="flex items-start">
+						<ArrowRightIcon class="mr-2 mt-1 h-6 w-6 flex-shrink-0 text-violet-400" />
+						<span
+							><strong class="text-violet-300">Inclusive Staking:</strong> All token holders can stake
+							their $ARGUS to earn a share of the platform's revenue, with no mandatory lockup periods
+							or bonding requirements.</span>
 					</li>
-					<li>
-						The initial unlocked distribution at launch is 650,000,000 $ARGUS tokens, subject to
-						various lockup schedules.
+					<li class="flex items-start">
+						<ArrowRightIcon class="mr-2 mt-1 h-6 w-6 flex-shrink-0 text-violet-400" />
+						<span
+							><strong class="text-violet-300">Initial Distribution:</strong> 650,000,000 $ARGUS tokens
+							will be unlocked at launch, with various lockup schedules applied to ensure controlled
+							circulation.</span>
+					</li>
+					<li class="flex items-start">
+						<ArrowRightIcon class="mr-2 mt-1 h-6 w-6 flex-shrink-0 text-violet-400" />
+						<span
+							><strong class="text-violet-300">Ecosystem Alignment:</strong> The tokenomics model is
+							designed to align interests, rewarding participants based on their token holdings and fostering
+							long-term ecosystem growth.</span>
 					</li>
 				</ul>
 			</div>
@@ -296,7 +345,8 @@
 					</div>
 
 					<DistOverview class="w-full" /> <p class="text-white/80"> This diagram provides a visual breakdown of the token distribution percentages. It helps stakeholders quickly grasp how tokens are divided and the proportion each category holds. </p> </div> -->
-				<div class="flex flex-col gap-10">
+				<div class="flex flex-col gap-10 rounded-xl bg-gray-800 p-8 shadow-lg">
+					<h2 class="mb-4 text-2xl font-semibold text-violet-400">Token Distribution Overview</h2>
 					<!-- <DistOverviewLight class="w-full rounded-md" /> -->
 					<DistOverviewDark class="w-full rounded-md" />
 					<p class="text-white/80">
@@ -305,27 +355,23 @@
 						holds.
 					</p>
 				</div>
-
 				<!-- TOKEN LOCKUP PERIODS -->
-				<div class="w-full gap-y-10">
+				<div class="flex flex-col gap-10 rounded-xl bg-gray-800 p-8 shadow-lg">
+					<h2 class="mb-4 text-2xl font-semibold text-violet-400">Token Lockup Periods</h2>
 					<LockupPeriodsDark class="w-full rounded-md" />
-
 					<p class="text-white/80">
-						This table details the lockup periods and release schedules. This provides a concise
-						reference for investors and stakeholders to understand when different portions of tokens
-						will become liquid and enter circulation, facilitating better investment and strategic
-						decisions.
+						This table details the lockup periods and release schedules for different token
+						allocations. It provides a concise reference for investors and stakeholders to
+						understand when different portions of tokens will become liquid and enter circulation,
+						facilitating better investment and strategic decisions.
 					</p>
 				</div>
 
 				<!-- TOKEN CIRCULATION SCHEDULE -->
-				<div class="flex flex-col gap-10">
-					<div>
-						<h1 class="text-center text-2xl text-white">Token Circulation Schedule</h1>
-					</div>
-
-					<CirulationSchedule class="w-full" />
-
+				<!-- TOKEN CIRCULATION SCHEDULE -->
+				<div class="flex flex-col gap-10 rounded-xl bg-gray-800 p-8 shadow-lg">
+					<h2 class="mb-4 text-2xl font-semibold text-violet-400">Token Circulation Schedule</h2>
+					<CirulationSchedule class="w-full rounded-md" />
 					<p class="text-white/80">
 						This diagram depicts the cumulative circulating supply of tokens over time, from launch
 						through to month 36. It tracks the increase in circulating tokens as they are released
@@ -335,17 +381,13 @@
 				</div>
 
 				<!-- SUPERCHARGED REVENUE SHARE -->
-				<div class="flex flex-col items-center gap-10">
-					<div>
-						<h1 class="text-center text-2xl text-white">Supercharged Revenue Share</h1>
-					</div>
-
-					<SuperchargedRewards class="w-[600px]" />
-
+				<div class="flex flex-col gap-10 rounded-xl bg-gray-800 p-8 shadow-lg">
+					<h2 class="mb-4 text-2xl font-semibold text-violet-400">Supercharged Revenue Share</h2>
+					<SuperchargedRewards class="w-full rounded-md" />
 					<p class="text-white/80">
 						Although a significant portion of the Initial Distribution unlocks over time, some
 						portions do not. In order to foster a high staking ratio and orderly markets, 0xArgus
-						had been designed to provide Supercharged Rewards to Genesis Founding Members and Public
+						has been designed to provide Supercharged Rewards to Genesis Founding Members and Public
 						Presale participants that stake their unlocked tokens throughout the full duration of
 						their vesting period.
 					</p>

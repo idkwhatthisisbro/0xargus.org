@@ -126,6 +126,8 @@ export const actions: Actions = {
 					break;
 			}
 
+			console.log('hi');
+
 			return { form };
 		} catch (error) {
 			console.error(error);
